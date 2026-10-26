@@ -92,7 +92,8 @@ def check_versions(skill_version: str) -> None:
 
 
 def check_links() -> None:
-    documents = [ROOT / "SKILL.md", ROOT / "README.md", ROOT / "AGENTS.md", ROOT / "tests" / "README.md"]
+    documents = [ROOT / "SKILL.md", ROOT / "README.md", ROOT / "README.zh-CN.md", ROOT / "AGENTS.md",
+                 ROOT / "tests" / "README.md"]
     documents += sorted((ROOT / "references").glob("*.md"))
     for document in documents:
         text = read(document)

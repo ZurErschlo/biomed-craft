@@ -1,22 +1,24 @@
 # plain-paper
 
-按正刊和大子刊的写法，写作、优化和审校英文学术文本；同时去掉 AI 腔、工程化表达、防御性表达和与研究本身无关的过程性表述。覆盖论文每一部分、补充材料、图注、表注和图内文字，也适用于研究方案、回复审稿信、知情同意书和汇报幻灯片。
+English | [中文](README.zh-CN.md)
 
-规则来自四处，按优先级：作者本人在稿件、方案、图表和幻灯片上的修改决定；124 篇正刊和大子刊研究论文（正文、补充材料和图表）；GitHub 上的同类 skill；期刊作者指南和报告规范。采用 [Agent Skills](https://agentskills.io) 格式，可用于 Claude Code、Codex 和其他支持 SKILL.md 的代理。
+[![Check package](https://github.com/ZurErschlo/plain-paper/actions/workflows/validate.yml/badge.svg)](https://github.com/ZurErschlo/plain-paper/actions/workflows/validate.yml)
 
-[English](#english)
+An agent skill for writing, editing and reviewing English academic text to the standard of flagship journals (Lancet, NEJM, JAMA, BMJ, Nature, Science, Cell) and their major sub-journals. It also removes AI-style patterns, engineering jargon, defensive hedging and narration about the writing process. It covers every section of a research article, supplementary material, figure legends, table notes and text inside figures, as well as protocols, response letters, consent forms and slides.
 
-## 最常见的五类问题
+The rules come from four sources, in this order of priority: the author's own editing decisions on manuscripts, protocols, figures and slides; 124 research articles from flagship journals and their major sub-journals (main text, supplements, figures and tables); public skills for removing AI-style writing; and journal instructions and reporting guidelines. The skill uses the [Agent Skills](https://agentskills.io) format and works with Claude Code, Codex and other agents that read `SKILL.md`.
+
+## The five most common problems
 
 ```text
-对照框架      The central gap is not cost. It is coverage.
-过程叙述      In the revised version, we reran the pipeline (see 02_model.R).
-工程化表达    Our pipeline cleaned and merged the records with seed = 2024.
-防御性表达    It is important to note that these estimates could potentially change.
-图注内部信息  Figure 2: This figure shows incidence from amr_rate_v2, suggesting a decline.
+Contrast frame          The central gap is not cost. It is coverage.
+Process narration       In the revised version, we reran the pipeline (see 02_model.R).
+Engineering register    Our pipeline cleaned and merged the records with seed = 2024.
+Defensive writing       It is important to note that these estimates could potentially change.
+Internal legend text    Figure 2: This figure shows incidence from amr_rate_v2, suggesting a decline.
 ```
 
-改写后：
+After editing:
 
 ```text
 Coverage was the main constraint: uptake fell from 64% to 41% in districts that lost nurses.
@@ -25,102 +27,89 @@ The estimates depend on the assumed duration of infectiousness (appendix p 9).
 Figure 2: Incidence of drug-resistant tuberculosis by WHO region, 2010–2022
 ```
 
-## 安装
+## Installation
 
-用 skills CLI（推荐，自动链接到本机已装的代理）：
+With the skills CLI (recommended; it links the skill to the agents installed on your machine):
 
 ```bash
 npx skills add ZurErschlo/plain-paper
 ```
 
-在 Claude Code 里作为插件安装：
+As a Claude Code plugin:
 
 ```text
 /plugin marketplace add ZurErschlo/plain-paper
 /plugin install plain-paper@plain-paper
 ```
 
-或直接克隆到代理的 skills 目录：
+Or clone it into your agent's skills folder:
 
 ```bash
 git clone https://github.com/ZurErschlo/plain-paper.git ~/.claude/skills/plain-paper
 ```
 
-Codex 用 `~/.codex/skills/plain-paper`；其他代理放到各自的 skills 目录，或让代理读取仓库根目录的 `SKILL.md`。
+For Codex use `~/.codex/skills/plain-paper`. For other agents, put the folder in their skills directory or point them to `SKILL.md` at the repository root.
 
-## 使用
+## Usage
 
-直接说要做什么，代理会按需加载：
+Ask for what you need; the agent loads the skill and the references it requires:
 
-- 起草：“用 plain-paper 根据这些结果写 Results，目标期刊 Lancet Infectious Diseases。”
-- 优化：“润色这段 Discussion，去掉 AI 腔和防御性表达。”
-- 审校：“逐条审校这份 Methods，用原文、改为、原因三栏给出。”
-- 检查：“检查 figures/ 里的 R 绘图代码和图注有没有内部信息。”
+- Draft: "Use plain-paper to write the Results from these tables for The Lancet Infectious Diseases."
+- Optimise: "Polish this Discussion and remove the AI-style and defensive wording."
+- Review: "Review this Methods section item by item, with columns Original, Revised and Reason."
+- Check: "Check the R plotting code in figures/ and the legends for variable names, file names and other project-only labels."
 
-也可以直接运行检查脚本（Python 3.10 以上，只用标准库；读取 PDF 需要 pdftotext）：
+The checking scripts run on their own (Python 3.10 or later, standard library only; PDF input needs `pdftotext`):
 
 ```bash
 python3 scripts/scan.py manuscript.docx
 python3 scripts/scan.py --profile --journal lancet draft.md
 python3 scripts/scan.py --strict legends.md figures/*.R
 python3 scripts/check_preservation.py original.docx revised.docx
+python3 scripts/calibrate.py ~/Zotero
 ```
 
-`scan.py` 读取 Word、Markdown、Quarto、LaTeX、PowerPoint、PDF、SVG 以及 R 和 Python 绘图代码，按规则编号列出问题，并把句长、限定语、连接词、对照框架等频率与正刊的参考范围对比。`check_preservation.py` 对比改前改后的数字、引用、图表与附录编号和链接，确认改写没有丢失或新增事实。
+`scan.py` reads Word, Markdown, Quarto, LaTeX, PowerPoint, PDF, SVG, and R or Python plotting code. It lists findings by rule ID and compares sentence length, hedges, connectives and contrast frames with the ranges found in flagship journals. `check_preservation.py` compares the numbers, citations, figure, table and appendix references, and links before and after an edit, so you can confirm that no fact was lost or added. `calibrate.py` rebuilds the reference rates from a folder of flagship-journal PDFs in your own field.
 
-## 工作原理
+## How it works
 
-- `SKILL.md` 给出流程：先判断文档类型、所在部分、研究设计和目标期刊，再按顺序处理过程叙述、工程化、防御性、AI 句式和词汇、章节写法、期刊体例，最后复查。
-- `references/` 按需读取：句子与段落、各部分写法、各刊体例、图表、四类不该出现的表达、AI 句式与词表、其他文件类型、数字与格式、语料说明、示例和来源。
-- `scripts/rules.json` 有 83 条规则，分三级：must（正刊几乎不印，或属于内部信息）、review（结合上下文判断）、density（正刊常见，只看频率）。每条规则都附有必须命中和不得命中的例句。
-- 分级依据语料：一个词或句式在 2023 年前的正刊研究论文里出现的比例不超过约 3%，才列为 must。`scripts/calibrate.py` 可用你自己领域的正刊 PDF 重新校准。
+- `SKILL.md` sets the workflow: identify the document, section, study design and target journal; then deal with process narration, engineering register, defensive writing, AI-style sentence shapes and vocabulary, section conventions and journal style, in that order; then check the result.
+- `references/` holds the detail, loaded when needed: sentences and paragraphs, sections, journal styles, figures and tables, the kinds of text that do not belong in a paper, AI-style patterns and word lists, other document types, numbers and format, the calibration corpus, worked examples and sources.
+- `scripts/rules.json` holds 83 rules at three levels: must (flagship journals almost never print it, or it is internal material), review (judge in context) and density (common in flagship journals; reported only as a rate). Every rule comes with examples it must match and examples it must not match.
+- Levels follow the corpus: a word or construction is must-fix only if it appears in about 3% or fewer of research articles published in flagship journals before 2023.
 
-| 类别 | 内容 | 条数 |
+| Category | Covers | Rules |
 |---|---|---|
-| CON | 对照框架（not X but Y 等） | 10 |
-| DEF | 防御性表达 | 11 |
-| META | 过程和元数据叙述 | 11 |
-| ENG | 工程化表达 | 9 |
-| LEX | 正刊少用的词 | 10 |
-| STR | 句式与标点 | 10 |
-| HYG | 内部信息（文件名、变量名、占位符等） | 11 |
-| FMT | 数字、语法与格式 | 5 |
-| CAP | 图注与表注 | 1 |
-| FIG | 图内文字 | 5 |
+| CON | Contrast frames ("not X but Y" and relatives) | 10 |
+| DEF | Defensive hedging and disclaimers | 11 |
+| META | Process and metadata narration | 11 |
+| ENG | Engineering and software register | 9 |
+| LEX | Words flagship journals rarely print | 10 |
+| STR | Sentence shapes and punctuation | 10 |
+| HYG | Internal material (file names, variable names, placeholders) | 11 |
+| FMT | Numbers, grammar and format | 5 |
+| CAP | Figure legends and table notes | 1 |
+| FIG | Text inside figures | 5 |
 
-## 验证
+## Verification
 
 ```bash
 python3 scripts/validate_package.py
 python3 -m unittest discover -s tests -v
 ```
 
-测试覆盖：每条规则的例句；各种文件格式的读取；命令行退出码；正刊风格段落零误报；must 级规则在 2023 年前正刊论文中的出现比例不超过 10%。`tests/fixtures/cases.json` 是给代理做改写测试的案例，核对方法见 [tests/README.md](tests/README.md)。
+The tests cover every rule's examples, each input format, the command-line options and exit codes, a flagship-style passage with no findings, and a guard that keeps must-level style rules rare in pre-2023 flagship articles. CI runs them on Linux, macOS and Windows with Python 3.10 and 3.13, and checks the skills CLI discovery and the Claude Code plugin manifest. `tests/fixtures/cases.json` holds rewrite cases for testing an agent with the skill; [tests/README.md](tests/README.md) explains how to score them.
 
-语料偏重感染病、耐药和建模研究，NEJM、BMJ、JAMA、Science 的样本较小，相应的参考范围只是粗略值。
+The corpus leans towards infectious disease, antimicrobial resistance and modelling, and the NEJM, BMJ, JAMA and Science groups are small, so their reference ranges are rough.
 
-## 来源
+## Sources
 
-完整清单见 [references/sources.md](references/sources.md)。主要参考了 [blader/humanizer](https://github.com/blader/humanizer)、[op7418/Humanizer-zh](https://github.com/op7418/Humanizer-zh)、[hardikpandya/stop-slop](https://github.com/hardikpandya/stop-slop)、[matsuikentaro1/humanizer_academic](https://github.com/matsuikentaro1/humanizer_academic) 等仓库，以及 Kobak 等（Science Advances 2025）和 Liang 等（Nature Human Behaviour 2025）关于科研写作中大模型用词的研究。所有文字为本仓库原创；无许可或非商业许可的仓库只借鉴思路并注明出处。
+The full list is in [references/sources.md](references/sources.md). The main public sources are [blader/humanizer](https://github.com/blader/humanizer), [op7418/Humanizer-zh](https://github.com/op7418/Humanizer-zh), [hardikpandya/stop-slop](https://github.com/hardikpandya/stop-slop) and [matsuikentaro1/humanizer_academic](https://github.com/matsuikentaro1/humanizer_academic), together with research on the vocabulary of language models in scientific writing by Kobak and colleagues (Science Advances 2025) and Liang and colleagues (Nature Human Behaviour 2025). All wording in this repository is original; repositories without a licence or with a non-commercial licence contributed ideas only and are credited.
 
-## 版本
+## Version history
 
-见 [CHANGELOG.md](CHANGELOG.md)。
+See [CHANGELOG.md](CHANGELOG.md).
 
-## 许可
+## License
 
 [MIT](LICENSE)
-
-## English
-
-plain-paper helps an agent write, edit and review English academic writing to the standard of flagship journals (Lancet, NEJM, JAMA, BMJ, Nature, Science, Cell) and their major sub-journals. It covers every section of a research article, supplements, figure legends, table notes and text inside figures, plus protocols, response letters, consent forms and slides. It removes AI-style patterns ("not X but Y" contrast frames, stock vocabulary, em-dash asides), engineering jargon, defensive hedging and process or metadata narration.
-
-Install with `npx skills add ZurErschlo/plain-paper`, as a Claude Code plugin (`/plugin marketplace add ZurErschlo/plain-paper`), or by cloning into your agent's skills folder. Then ask your agent to draft, polish, review or check a manuscript. The scripts run on Python 3.10 or later with the standard library:
-
-```bash
-python3 scripts/scan.py --profile manuscript.docx
-python3 scripts/check_preservation.py original.docx revised.docx
-python3 scripts/calibrate.py ~/Zotero   # rebuild reference rates from your own flagship PDFs
-```
-
-Rule levels are calibrated on 124 research articles from flagship journals; see [references/calibration.md](references/calibration.md).
