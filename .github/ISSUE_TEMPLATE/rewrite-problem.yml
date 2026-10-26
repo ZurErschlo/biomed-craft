@@ -1,0 +1,36 @@
+name: Rewrite or scan problem
+description: A rewrite changed a fact, kept a tell or over-edited, or the scanner flagged correct text.
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What went wrong
+      options:
+        - The rewrite added or dropped a fact, number or citation
+        - The rewrite changed the strength of a claim
+        - A tell survived the rewrite
+        - The rewrite changed text that was fine
+        - The scanner flagged correct text (false positive)
+        - The scanner missed a problem
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: Input
+      description: The text or file excerpt. Remove anything private or unpublished.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output or scanner report
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: How you ran it
+      description: Agent and model, your prompt, or the scan.py command, and the target journal.

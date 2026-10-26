@@ -1,0 +1,362 @@
+#!/usr/bin/env python3
+"""Rebuild calibration.json and corpus.json from a folder of journal PDFs.
+
+Finds research articles from flagship journals and their major sub-journals by
+the DOI printed on the first two pages, cleans the text (reference lists, back
+matter, captions, running heads), and records how often each rule in
+rules.json fires in their prose, together with the style profile used by
+`scan.py --profile`. Only statistics and DOI metadata are written; no article
+text leaves the machine. Needs pdftotext (poppler).
+"""
+
+from __future__ import annotations
+
+import argparse
+import concurrent.futures as futures
+import datetime as dt
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import textstats as ts  # noqa: E402
+
+# DOI prefix -> (family, journal). Order matters: first match wins.
+JOURNALS = [
+    (r"10\.1016/s0140-6736", "lancet", "Lancet"),
+    (r"10\.1016/s1473-3099", "lancet", "Lancet Infect Dis"),
+    (r"10\.1016/s2214-109x", "lancet", "Lancet Glob Health"),
+    (r"10\.1016/s2468-2667", "lancet", "Lancet Public Health"),
+    (r"10\.1016/s2213-2600", "lancet", "Lancet Respir Med"),
+    (r"10\.1016/s2666-5247", "lancet", "Lancet Microbe"),
+    (r"10\.1016/s2352-3018", "lancet", "Lancet HIV"),
+    (r"10\.1016/s2589-7500", "lancet", "Lancet Digit Health"),
+    (r"10\.1016/s1470-2045", "lancet", "Lancet Oncol"),
+    (r"10\.1016/s1474-4422", "lancet", "Lancet Neurol"),
+    (r"10\.1016/s2215-0366", "lancet", "Lancet Psychiatry"),
+    (r"10\.1016/s2213-8587", "lancet", "Lancet Diabetes Endocrinol"),
+    (r"10\.1016/s2468-1253", "lancet", "Lancet Gastroenterol Hepatol"),
+    (r"10\.1016/s2352-3026", "lancet", "Lancet Haematol"),
+    (r"10\.1016/s2665-9913", "lancet", "Lancet Rheumatol"),
+    (r"10\.1016/s2352-4642", "lancet", "Lancet Child Adolesc Health"),
+    (r"10\.1016/s2542-5196", "lancet", "Lancet Planet Health"),
+    (r"10\.1016/s2666-7568", "lancet", "Lancet Healthy Longev"),
+    (r"10\.1056/nejm", "nejm", "NEJM"),
+    (r"10\.1001/jama\.\d", "jama", "JAMA"),
+    (r"10\.1001/jama(?!networkopen|healthforum)[a-z]+", "jama", "JAMA specialty"),
+    (r"10\.1136/bmj(?:[.-]|$)", "bmj", "BMJ"),
+    (r"10\.7326/", "annals", "Ann Intern Med"),
+    (r"10\.1038/s41586|10\.1038/nature\d", "nature", "Nature"),
+    (r"10\.1038/s41591", "nature", "Nat Med"),
+    (r"10\.1038/s41564", "nature", "Nat Microbiol"),
+    (r"10\.1038/s41562", "nature", "Nat Hum Behav"),
+    (r"10\.1038/s4158[78]|10\.1038/s4159[0-4]|10\.1038/s4155[6-9]|10\.1038/s4156[0-7]", "nature", "Nature research journal"),
+    (r"10\.1038/s4156[8]|10\.1038/s4157\d|10\.1038/s4158[0-6]", "nature", "Nature Reviews"),
+    (r"10\.1016/j\.cell\.", "cell", "Cell"),
+    (r"10\.1126/scitranslmed", "science", "Sci Transl Med"),
+    (r"10\.1126/science", "science", "Science"),
+]
+JOURNAL_PATTERNS = [(re.compile(p, re.IGNORECASE), f, j) for p, f, j in JOURNALS]
+DOI = re.compile(r"10\.\d{4,9}/[^\s\"<>,;]+", re.IGNORECASE)
+SKIP_DIRS = ("node_modules", ".git", ".venv", "site-packages", ".app", "__pycache__")
+SUPPLEMENT_NAME = re.compile(
+    r"mmc\d|_moesm|_esm|-s00\d|suppl|supplement|appendix|supporting|_si[_.]|_sm\.|checklist|reviewer|response",
+    re.IGNORECASE,
+)
+SUPPLEMENT_START = re.compile(
+    r"^\s*(?:Supplementary\s+(?:appendix|information|materials?|methods)|Supplemental\s+(?:Online\s+Content|materials?)"
+    r"|(?:Web\s*)?appendix\b|Supporting\s+information|Peer\s+Review\s+File|Reporting\s+Summary)",
+    re.IGNORECASE,
+)
+SUPPLEMENT_TEXT = re.compile(
+    r"This appendix formed part of the original submission|Supplemental Online Content|Supplementary Materials for"
+    r"|Author manuscript|HHS Public Access|Europe PMC Funders Group"
+    r"|provided by the authors to give readers additional information|In the format provided by the authors and unedited",
+    re.IGNORECASE,
+)
+
+HEADING_MAIN = {
+    "introduction", "background", "methods", "method", "online methods", "materials and methods",
+    "methods summary", "results", "discussion", "conclusion", "conclusions", "research in context",
+    "summary", "abstract", "starmethods", "star methods", "method details", "experimental procedures",
+    "experimental model and subject details", "experimental model and study participant details",
+    "quantification and statistical analysis",
+}
+HEADING_REFERENCES = {"references", "references and notes", "bibliography", "methods references", "notes and references"}
+HEADING_BACK = {
+    "acknowledgements", "acknowledgments", "contributors", "author contributions", "declaration of interests",
+    "competing interests", "data sharing", "data availability", "code availability", "funding",
+    "role of the funding source", "ethics declarations", "additional information", "supplementary information",
+    "reporting summary", "extended data", "peer review information", "reprints and permissions",
+    "publisher's note", "publisher’s note", "open access", "rights and permissions", "article information",
+    "conflict of interest disclosures", "funding/support", "role of the funder/sponsor", "group information",
+    "data sharing statement", "additional contributions", "supplementary materials", "editor's note",
+    "inclusion and ethics", "ethics", "consent for publication", "author information",
+    "key resources table", "resource availability", "lead contact", "materials availability",
+    "declaration of generative ai and ai-assisted technologies in the writing process",
+}
+NOISE_LINE = re.compile(
+    r"^(?:www\.|https?://|doi:|DOI|©|Copyright|Downloaded from|Vol\s+\d+|N Engl J Med|JAMA\.|BMJ \d{4}|"
+    r"Nature \||Cell \d|Science \d|Articles$|Original Article$|Original Investigation$|RESEARCH$|Article$|"
+    r"Published online|Accepted|Received|See Online|See Comment|For the|Correspondence to|\d+$)",
+)
+LIGATURES = {"ﬁ": "fi", "ﬂ": "fl", "ﬀ": "ff", "ﬃ": "ffi", "ﬄ": "ffl", "­": ""}
+
+
+def find_pdfs(roots: list[Path]) -> list[Path]:
+    found = []
+    for root in roots:
+        for directory, dirnames, filenames in os.walk(root):
+            dirnames[:] = [d for d in dirnames if not any(s in d for s in SKIP_DIRS)]
+            for name in filenames:
+                if name.lower().endswith(".pdf"):
+                    found.append(Path(directory) / name)
+    return found
+
+
+def pdf_text(path: Path, first: int | None = None, last: int | None = None) -> str:
+    command = ["pdftotext", "-q"]
+    if first:
+        command += ["-f", str(first)]
+    if last:
+        command += ["-l", str(last)]
+    try:
+        result = subprocess.run(command + [str(path), "-"], capture_output=True, text=True, timeout=120)
+    except (subprocess.TimeoutExpired, OSError):
+        return ""
+    text = result.stdout
+    for old, new in LIGATURES.items():
+        text = text.replace(old, new)
+    return text
+
+
+def doi_from_name(name: str) -> str:
+    decoded = name.replace("%2528", "(").replace("%2529", ")").replace("%28", "(").replace("%29", ")")
+    for pattern, prefix in (
+        (r"(s4\d{4}-\d{3}-\d{5}-[\dx])", "10.1038/"),
+        (r"(NEJM[a-z]{1,3}\d{5,8})", "10.1056/"),
+        (r"(S\d{4}-\d{3}[\dX]\(\d{2}\)\d{5}-[\dX])", "10.1016/"),
+    ):
+        match = re.search(pattern, decoded, re.IGNORECASE)
+        if match:
+            return (prefix + match.group(1)).lower()
+    return ""
+
+
+def identify(path: Path) -> dict | None:
+    head = pdf_text(path, 1, 2)
+    joined = re.sub(r"(10\.\d{4,9}/(?:\S*?[-/(])?)\s*\n\s*", r"\1", head)
+    candidates = [d.rstrip(".)]") for d in DOI.findall(joined)]
+    from_name = doi_from_name(path.name)
+    if from_name:
+        candidates.append(from_name)
+    for doi in candidates:
+        doi = doi.lower()
+        for pattern, family, journal in JOURNAL_PATTERNS:
+            if pattern.match(doi):
+                supplement = (bool(SUPPLEMENT_NAME.search(path.name)) or bool(SUPPLEMENT_START.search(head[:400]))
+                              or bool(SUPPLEMENT_TEXT.search(head[:3000])))
+                return {"doi": doi, "family": family, "journal": journal, "path": str(path),
+                        "supplement": supplement, "head": head}
+    return None
+
+
+def year_of(doi: str, text: str) -> int | None:
+    match = re.search(r"s\d{4}-\d{3}[\dx]\((\d{2})\)", doi)
+    if match:
+        return 2000 + int(match.group(1))
+    match = re.search(r"/s4\d{4}-0(\d{2})-", doi)
+    if match:
+        return 2000 + int(match.group(1))
+    for pattern in (
+        r"Published online[^0-9]{0,40}\d{1,2},?\s+((?:19|20)\d{2})",
+        r"Published:\s*\d{1,2}\s+\w+\s+((?:19|20)\d{2})",
+        r"©\s*((?:19|20)\d{2})", r"Copyright\s*©?\s*((?:19|20)\d{2})",
+        r"N Engl J Med\s+((?:19|20)\d{2})", r"JAMA\.\s*((?:19|20)\d{2})", r"BMJ\s+((?:19|20)\d{2})",
+        r"Lancet[^\n]{0,40}?((?:19|20)\d{2})", r"Accepted[^0-9]{0,20}\d{1,2}\s+\w+\s+((?:19|20)\d{2})",
+    ):
+        match = re.search(pattern, text[:6000])
+        if match:
+            year = int(match.group(1))
+            if 1990 <= year <= dt.date.today().year + 1:
+                return year
+    return None
+
+
+def normalise_heading(line: str) -> str:
+    return re.sub(r"[^a-z/’' ]", "", line.lower()).strip()
+
+
+def clean_article(text: str) -> tuple[list[str], set[str]]:
+    """Return prose paragraphs and the set of main headings seen."""
+    lines = text.splitlines()
+    kept: list[str] = []
+    headings: set[str] = set()
+    skipping = False
+    for raw in lines:
+        line = raw.strip()
+        if not line:
+            kept.append("")
+            continue
+        heading = normalise_heading(line)
+        if len(line) < 70 and heading in HEADING_REFERENCES:
+            skipping = True
+            kept.append("")
+            continue
+        if len(line) < 120 and heading in HEADING_BACK:
+            skipping = True
+            kept.append("")
+            continue
+        if len(line) < 70 and heading in HEADING_MAIN:
+            headings.add(heading)
+            skipping = False
+            kept.append("")
+            continue
+        if skipping or NOISE_LINE.match(line):
+            continue
+        kept.append(line)
+    paragraphs = []
+    for _, paragraph in ts._paragraphs(list(enumerate(kept))):
+        if ts.is_caption(paragraph) or re.match(r"^(?:Panel|Box)\s*\d*[:.]", paragraph):
+            continue
+        paragraph = re.sub(r"(?<=[a-z)\]%])\d{1,3}(?:[,–-]\d{1,3})*(?=[\s.,;:)])", "", paragraph)
+        paragraph = re.sub(r"(?<=[a-z][.,;:])\d{1,3}(?:[,–-]\d{1,3})*(?=\s+[A-Z])", "", paragraph)
+        paragraphs.append(paragraph)
+    return paragraphs, headings
+
+
+def good_sentence(sentence: str) -> bool:
+    tokens = sentence.split()
+    if len(tokens) < 5 or not re.match(r"^[A-Z(\[“\"]", sentence) or not re.search(r"[.!?][\"”')\]]?$", sentence):
+        return False
+    alpha = sum(bool(re.search(r"[A-Za-z]{2,}", t)) for t in tokens)
+    return alpha / len(tokens) >= 0.6
+
+
+def analyse(record: dict, rules: list[ts.Rule]) -> dict | None:
+    text = pdf_text(Path(record["path"]))
+    paragraphs, headings = clean_article(text)
+    sentences, prose = [], []
+    for paragraph in paragraphs:
+        kept = [s for s in ts.split_sentences(paragraph) if good_sentence(s)]
+        if kept:
+            sentences.extend(kept)
+            prose.append(" ".join(kept))
+    words = len(ts.words(" ".join(sentences)))
+    if words < 800:
+        return None
+    methods_headings = {"methods", "online methods", "materials and methods", "methods summary", "starmethods",
+                        "star methods", "method details", "experimental procedures"}
+    is_research = bool(headings & methods_headings) and ("results" in headings or "discussion" in headings)
+    is_review = record["journal"] == "Nature Reviews" or bool(
+        re.search(r"^\s*(?:Review|Review Article|Seminar|Series|Clinical Review|Perspective|Comment)\s*$",
+                  record["head"][:600], re.MULTILINE))
+    kind = "research" if is_research and not is_review else ("review" if is_review else "other")
+    hits = {}
+    for rule in rules:
+        if "prose" not in rule.scopes or rule.formats:
+            continue
+        count = 0
+        for paragraph in prose:
+            count += len(ts.rule_matches(rule, paragraph))
+        if count:
+            hits[rule.id] = count
+    return {
+        "doi": record["doi"], "family": record["family"], "journal": record["journal"],
+        "year": year_of(record["doi"], record["head"] + text[:4000]), "type": kind,
+        "words": words, "sentences": len(sentences), "profile": ts.profile(sentences), "hits": hits,
+    }
+
+
+def summarise(papers: list[dict], rule_ids: list[str]) -> dict:
+    words = sum(p["words"] for p in papers)
+    summary = {"papers": len(papers), "words": words, "metrics": {}}
+    for metric in ts.PROFILE_METRICS:
+        values = [p["profile"][metric] for p in papers if metric in p["profile"]]
+        if values:
+            summary["metrics"][metric] = {
+                q: round(ts._quantile(values, v), 3)
+                for q, v in (("p10", 0.10), ("p25", 0.25), ("p50", 0.50), ("p75", 0.75), ("p90", 0.90))
+            }
+    summary["rules"] = {}
+    for rule_id in rule_ids:
+        total = sum(p["hits"].get(rule_id, 0) for p in papers)
+        with_hit = sum(1 for p in papers if p["hits"].get(rule_id))
+        summary["rules"][rule_id] = {
+            "per_10k_words": round(total * 10000 / words, 3) if words else 0.0,
+            "paper_share": round(with_hit / len(papers), 3) if papers else 0.0,
+        }
+    return summary
+
+
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("roots", nargs="+", type=Path, help="folders to search for PDFs")
+    parser.add_argument("--out-dir", type=Path, default=Path(__file__).resolve().parent,
+                        help="where to write calibration.json and corpus.json (default: this folder)")
+    parser.add_argument("--workers", type=int, default=8)
+    args = parser.parse_args(argv)
+    if not shutil.which("pdftotext"):
+        parser.error("pdftotext (poppler) is required")
+
+    _, rules = ts.load_rules()
+    prose_rules = [r for r in rules if r.kind == "regex" and "prose" in r.scopes and not r.formats]
+    rule_ids = [r.id for r in prose_rules]
+    pdfs = find_pdfs([r.expanduser() for r in args.roots])
+    print(f"Scanning {len(pdfs)} PDFs for journal DOIs", file=sys.stderr)
+    with futures.ThreadPoolExecutor(args.workers) as pool:
+        identified = [r for r in pool.map(identify, pdfs) if r]
+    articles: dict[str, dict] = {}
+    supplements = 0
+    for record in identified:
+        if record["supplement"]:
+            supplements += 1
+            continue
+        current = articles.get(record["doi"])
+        if current is None or os.path.getsize(record["path"]) > os.path.getsize(current["path"]):
+            articles[record["doi"]] = record
+    print(f"{len(articles)} unique articles ({supplements} supplements or author manuscripts skipped)", file=sys.stderr)
+    with futures.ThreadPoolExecutor(args.workers) as pool:
+        analysed = [a for a in pool.map(lambda r: analyse(r, prose_rules), articles.values()) if a]
+
+    research = [p for p in analysed if p["type"] == "research"]
+    groups = {"core": research}
+    for family in sorted({p["family"] for p in research}):
+        groups[family] = [p for p in research if p["family"] == family]
+    groups["core_before_2023"] = [p for p in research if p["year"] and p["year"] < 2023]
+    groups["core_2023_on"] = [p for p in research if p["year"] and p["year"] >= 2023]
+    groups["reviews_and_other"] = [p for p in analysed if p["type"] != "research"]
+
+    calibration = {
+        "version": 1,
+        "generated": dt.date.today().isoformat(),
+        "description": "Rule rates and style profile of research articles in flagship journals and their major "
+                       "sub-journals. Built by calibrate.py; statistics only.",
+        "method": {
+            "selection": "First DOI on pages 1-2 (or in the file name) matched to the journal list in calibrate.py; "
+                         "supplements, author manuscripts and duplicates removed.",
+            "cleaning": "pdftotext; reference lists, back matter, running heads, captions, panels and superscript "
+                        "citation numbers removed; only complete sentences kept.",
+            "research_article": "Has a Methods heading and a Results or Discussion heading; reviews excluded.",
+            "metrics": "Per-paper values; quantiles across papers. Rule rates are pooled per 10 000 words.",
+        },
+        "groups": {name: summarise(papers, rule_ids) for name, papers in groups.items() if papers},
+    }
+    corpus = [
+        {k: p[k] for k in ("doi", "family", "journal", "year", "type", "words", "sentences")}
+        for p in sorted(analysed, key=lambda p: (p["family"], p["year"] or 0, p["doi"]))
+    ]
+    args.out_dir.mkdir(parents=True, exist_ok=True)
+    (args.out_dir / "calibration.json").write_text(json.dumps(calibration, indent=1) + "\n", encoding="utf-8")
+    (args.out_dir / "corpus.json").write_text(json.dumps(corpus, indent=1) + "\n", encoding="utf-8")
+    print(f"{len(research)} research articles, {len(analysed) - len(research)} other items; wrote "
+          f"{args.out_dir / 'calibration.json'}", file=sys.stderr)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

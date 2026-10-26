@@ -1,0 +1,23 @@
+name: New pattern or writing problem
+description: A tell, a weak construction or a journal convention that the skill does not handle.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: example
+    attributes:
+      label: Example
+      description: A short passage that shows the problem. Remove anything private or unpublished.
+    validations:
+      required: true
+  - type: textarea
+    id: better
+    attributes:
+      label: How a flagship journal would print it
+      description: Your rewrite, and if possible a published article (DOI) that writes it this way.
+    validations:
+      required: true
+  - type: textarea
+    id: rule
+    attributes:
+      label: Closest existing rule
+      description: Name the rule ID that comes closest (see scripts/rules.json) and why it misses this case.

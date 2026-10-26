@@ -1,0 +1,1415 @@
+[
+ {
+  "doi": "10.7326/m14-2385",
+  "family": "annals",
+  "journal": "Ann Intern Med",
+  "year": 2015,
+  "type": "research",
+  "words": 1198,
+  "sentences": 47
+ },
+ {
+  "doi": "10.1136/bmj.h6895",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2016,
+  "type": "research",
+  "words": 6194,
+  "sentences": 285
+ },
+ {
+  "doi": "10.1136/bmj.l4898",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2019,
+  "type": "other",
+  "words": 5603,
+  "sentences": 218
+ },
+ {
+  "doi": "10.1136/bmj.l5894",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2019,
+  "type": "research",
+  "words": 5615,
+  "sentences": 242
+ },
+ {
+  "doi": "10.1136/bmj.n1022",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2021,
+  "type": "research",
+  "words": 5278,
+  "sentences": 246
+ },
+ {
+  "doi": "10.1136/bmj.n71",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2021,
+  "type": "research",
+  "words": 5830,
+  "sentences": 276
+ },
+ {
+  "doi": "10.1136/bmj-2022-073043\b",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2023,
+  "type": "research",
+  "words": 7903,
+  "sentences": 367
+ },
+ {
+  "doi": "10.1136/bmj-2024\u2011082945",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2025,
+  "type": "research",
+  "words": 6953,
+  "sentences": 293
+ },
+ {
+  "doi": "10.1136/bmj-2024\u2011083868",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2025,
+  "type": "research",
+  "words": 6463,
+  "sentences": 292
+ },
+ {
+  "doi": "10.1136/bmj-2025-084909\b",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2026,
+  "type": "other",
+  "words": 3822,
+  "sentences": 194
+ },
+ {
+  "doi": "10.1016/j.cell.2014.03.026",
+  "family": "cell",
+  "journal": "Cell",
+  "year": null,
+  "type": "research",
+  "words": 6111,
+  "sentences": 248
+ },
+ {
+  "doi": "10.1016/j.cell.2019.05.031",
+  "family": "cell",
+  "journal": "Cell",
+  "year": null,
+  "type": "research",
+  "words": 14394,
+  "sentences": 570
+ },
+ {
+  "doi": "10.1016/j.cell.2024.05.039",
+  "family": "cell",
+  "journal": "Cell",
+  "year": null,
+  "type": "research",
+  "words": 1384,
+  "sentences": 63
+ },
+ {
+  "doi": "10.1016/j.cell.2026.04.023",
+  "family": "cell",
+  "journal": "Cell",
+  "year": null,
+  "type": "research",
+  "words": 11307,
+  "sentences": 518
+ },
+ {
+  "doi": "10.1016/j.cell.2025.05.030",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2025,
+  "type": "research",
+  "words": 1489,
+  "sentences": 50
+ },
+ {
+  "doi": "10.1016/j.cell.2025.05.039",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2025,
+  "type": "research",
+  "words": 907,
+  "sentences": 45
+ },
+ {
+  "doi": "10.1016/j.cell.2026.02.004",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2026,
+  "type": "research",
+  "words": 10936,
+  "sentences": 459
+ },
+ {
+  "doi": "10.1016/j.cell.2026.02.008",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2026,
+  "type": "research",
+  "words": 1805,
+  "sentences": 76
+ },
+ {
+  "doi": "10.1016/j.cell.2026.02.016",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2026,
+  "type": "research",
+  "words": 1612,
+  "sentences": 69
+ },
+ {
+  "doi": "10.1016/j.cell.2026.07.022",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2026,
+  "type": "research",
+  "words": 2331,
+  "sentences": 91
+ },
+ {
+  "doi": "10.1001/jama.2014.9087",
+  "family": "jama",
+  "journal": "JAMA",
+  "year": 2014,
+  "type": "research",
+  "words": 3486,
+  "sentences": 149
+ },
+ {
+  "doi": "10.1001/jama.2018.1917",
+  "family": "jama",
+  "journal": "JAMA",
+  "year": 2018,
+  "type": "other",
+  "words": 3995,
+  "sentences": 145
+ },
+ {
+  "doi": "10.1001/jamainternmed.2022.5261",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2022,
+  "type": "research",
+  "words": 3447,
+  "sentences": 134
+ },
+ {
+  "doi": "10.1001/jama.2024.2759",
+  "family": "jama",
+  "journal": "JAMA",
+  "year": 2024,
+  "type": "research",
+  "words": 5158,
+  "sentences": 239
+ },
+ {
+  "doi": "10.1001/jamadermatol.2025.1276",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2025,
+  "type": "research",
+  "words": 3044,
+  "sentences": 138
+ },
+ {
+  "doi": "10.1001/jama.2026.3277",
+  "family": "jama",
+  "journal": "JAMA",
+  "year": 2026,
+  "type": "research",
+  "words": 3916,
+  "sentences": 157
+ },
+ {
+  "doi": "10.1016/s1473-3099(14)70847-3",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2014,
+  "type": "research",
+  "words": 3971,
+  "sentences": 151
+ },
+ {
+  "doi": "10.1016/s2215-0366(14)00055-8",
+  "family": "lancet",
+  "journal": "Lancet Psychiatry",
+  "year": 2014,
+  "type": "research",
+  "words": 4170,
+  "sentences": 171
+ },
+ {
+  "doi": "10.1016/s0140-6736(15)60901-1",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2015,
+  "type": "other",
+  "words": 24652,
+  "sentences": 832
+ },
+ {
+  "doi": "10.1016/s1473-3099(15)00350-3",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2015,
+  "type": "research",
+  "words": 5032,
+  "sentences": 171
+ },
+ {
+  "doi": "10.1016/s1473-3099(15)00417-x",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2015,
+  "type": "research",
+  "words": 3841,
+  "sentences": 135
+ },
+ {
+  "doi": "10.1016/s2352-3018(15)00247-7",
+  "family": "lancet",
+  "journal": "Lancet HIV",
+  "year": 2015,
+  "type": "research",
+  "words": 4328,
+  "sentences": 136
+ },
+ {
+  "doi": "10.1016/s1473-3099(16)30208-0",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2016,
+  "type": "research",
+  "words": 3136,
+  "sentences": 164
+ },
+ {
+  "doi": "10.1016/s2468-2667(16)30035-4",
+  "family": "lancet",
+  "journal": "Lancet Public Health",
+  "year": 2016,
+  "type": "research",
+  "words": 3769,
+  "sentences": 138
+ },
+ {
+  "doi": "10.1016/s2352-3018(17)30089-9",
+  "family": "lancet",
+  "journal": "Lancet HIV",
+  "year": 2017,
+  "type": "research",
+  "words": 4352,
+  "sentences": 156
+ },
+ {
+  "doi": "10.1016/s0140-6736(18)32561-3",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2018,
+  "type": "other",
+  "words": 6978,
+  "sentences": 221
+ },
+ {
+  "doi": "10.1016/s1473-3099(18)30605-4",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2018,
+  "type": "research",
+  "words": 4100,
+  "sentences": 139
+ },
+ {
+  "doi": "10.1016/s1473-3099(18)30724-2",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2018,
+  "type": "research",
+  "words": 5120,
+  "sentences": 215
+ },
+ {
+  "doi": "10.1016/s2214-109x(18)30219-5",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2018,
+  "type": "research",
+  "words": 3664,
+  "sentences": 127
+ },
+ {
+  "doi": "10.1016/s2352-3018(18)30215-7",
+  "family": "lancet",
+  "journal": "Lancet HIV",
+  "year": 2018,
+  "type": "research",
+  "words": 3971,
+  "sentences": 160
+ },
+ {
+  "doi": "10.1016/s0140-6736(19)31288-7",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2019,
+  "type": "research",
+  "words": 5116,
+  "sentences": 170
+ },
+ {
+  "doi": "10.1016/s1473-3099(19)30307-x",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2019,
+  "type": "research",
+  "words": 4885,
+  "sentences": 158
+ },
+ {
+  "doi": "10.1016/s2214-109x(19)30229-3",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2019,
+  "type": "review",
+  "words": 843,
+  "sentences": 39
+ },
+ {
+  "doi": "10.1016/s2214-109x(19)30272-4",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2019,
+  "type": "research",
+  "words": 3950,
+  "sentences": 177
+ },
+ {
+  "doi": "10.1016/s2214-109x(19)30488-7",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2019,
+  "type": "research",
+  "words": 3946,
+  "sentences": 141
+ },
+ {
+  "doi": "10.1016/s0140-6736(20)30068-4",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2020,
+  "type": "research",
+  "words": 6294,
+  "sentences": 216
+ },
+ {
+  "doi": "10.1016/s0140-6736(20)30157-4",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2020,
+  "type": "research",
+  "words": 6727,
+  "sentences": 228
+ },
+ {
+  "doi": "10.1016/s0140-6736(20)32657-x",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2020,
+  "type": "research",
+  "words": 3207,
+  "sentences": 126
+ },
+ {
+  "doi": "10.1016/s2214-109x(20)30022-x",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2020,
+  "type": "research",
+  "words": 3884,
+  "sentences": 126
+ },
+ {
+  "doi": "10.1016/s2214-109x(20)30231-x",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2020,
+  "type": "research",
+  "words": 4227,
+  "sentences": 150
+ },
+ {
+  "doi": "10.1016/s2214-109x(20)30358-2",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2020,
+  "type": "research",
+  "words": 5124,
+  "sentences": 193
+ },
+ {
+  "doi": "10.1016/s2214-109x(20)30459-9",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2020,
+  "type": "research",
+  "words": 3806,
+  "sentences": 150
+ },
+ {
+  "doi": "10.1016/s2352-3018(20)30119-3",
+  "family": "lancet",
+  "journal": "Lancet HIV",
+  "year": 2020,
+  "type": "research",
+  "words": 4020,
+  "sentences": 184
+ },
+ {
+  "doi": "10.1016/s2352-4642(20)30248-0",
+  "family": "lancet",
+  "journal": "Lancet Child Adolesc Health",
+  "year": 2020,
+  "type": "research",
+  "words": 4372,
+  "sentences": 188
+ },
+ {
+  "doi": "10.1016/s2468-2667(20)30209-7",
+  "family": "lancet",
+  "journal": "Lancet Public Health",
+  "year": 2020,
+  "type": "research",
+  "words": 4042,
+  "sentences": 156
+ },
+ {
+  "doi": "10.1016/s0140-6736(21)02724-0",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2021,
+  "type": "research",
+  "words": 8715,
+  "sentences": 264
+ },
+ {
+  "doi": "10.1016/s1473-3099(21)00449-7",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2021,
+  "type": "research",
+  "words": 5045,
+  "sentences": 196
+ },
+ {
+  "doi": "10.1016/s1473-3099(21)00627-7",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2021,
+  "type": "research",
+  "words": 3628,
+  "sentences": 130
+ },
+ {
+  "doi": "10.1016/s1473-3099(21)00744-1",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2021,
+  "type": "research",
+  "words": 4086,
+  "sentences": 131
+ },
+ {
+  "doi": "10.1016/s2214-109x(21)00221-7",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2021,
+  "type": "research",
+  "words": 3256,
+  "sentences": 123
+ },
+ {
+  "doi": "10.1016/s2214-109x(21)00299-0",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2021,
+  "type": "research",
+  "words": 3647,
+  "sentences": 133
+ },
+ {
+  "doi": "10.1016/s2352-3018(21)00127-2",
+  "family": "lancet",
+  "journal": "Lancet HIV",
+  "year": 2021,
+  "type": "research",
+  "words": 4465,
+  "sentences": 166
+ },
+ {
+  "doi": "10.1016/s2468-2667(21)00046-3",
+  "family": "lancet",
+  "journal": "Lancet Public Health",
+  "year": 2021,
+  "type": "research",
+  "words": 3408,
+  "sentences": 119
+ },
+ {
+  "doi": "10.1016/s2468-2667(21)00112-2",
+  "family": "lancet",
+  "journal": "Lancet Public Health",
+  "year": 2021,
+  "type": "other",
+  "words": 2456,
+  "sentences": 94
+ },
+ {
+  "doi": "10.1016/s2542-5196(21)00280-1",
+  "family": "lancet",
+  "journal": "Lancet Planet Health",
+  "year": 2021,
+  "type": "research",
+  "words": 4643,
+  "sentences": 169
+ },
+ {
+  "doi": "10.1016/s1473-3099(22)00877-5",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2022,
+  "type": "review",
+  "words": 4223,
+  "sentences": 180
+ },
+ {
+  "doi": "10.1016/s2214-109x(22)00113-9",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2022,
+  "type": "research",
+  "words": 4152,
+  "sentences": 152
+ },
+ {
+  "doi": "10.1016/s2214-109x(22)00455-7",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2022,
+  "type": "research",
+  "words": 3773,
+  "sentences": 173
+ },
+ {
+  "doi": "10.1016/s2214-109x(22)00498-3",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2022,
+  "type": "research",
+  "words": 5695,
+  "sentences": 200
+ },
+ {
+  "doi": "10.1016/s2468-2667(22)00225-0",
+  "family": "lancet",
+  "journal": "Lancet Public Health",
+  "year": 2022,
+  "type": "research",
+  "words": 5608,
+  "sentences": 179
+ },
+ {
+  "doi": "10.1016/s2589-7500(22)00128-5",
+  "family": "lancet",
+  "journal": "Lancet Digit Health",
+  "year": 2022,
+  "type": "other",
+  "words": 2633,
+  "sentences": 92
+ },
+ {
+  "doi": "10.1016/s2666-5247(22)00387-1",
+  "family": "lancet",
+  "journal": "Lancet Microbe",
+  "year": 2022,
+  "type": "research",
+  "words": 4640,
+  "sentences": 169
+ },
+ {
+  "doi": "10.1016/s1473-3099(23)00184-6",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2023,
+  "type": "research",
+  "words": 5296,
+  "sentences": 191
+ },
+ {
+  "doi": "10.1016/s1473-3099(23)00372-9",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2023,
+  "type": "research",
+  "words": 4926,
+  "sentences": 192
+ },
+ {
+  "doi": "10.1016/s1474-4422(23)00370-8",
+  "family": "lancet",
+  "journal": "Lancet Neurol",
+  "year": 2023,
+  "type": "research",
+  "words": 5678,
+  "sentences": 219
+ },
+ {
+  "doi": "10.1016/s2213-2600(23)00389-2",
+  "family": "lancet",
+  "journal": "Lancet Respir Med",
+  "year": 2023,
+  "type": "research",
+  "words": 5403,
+  "sentences": 212
+ },
+ {
+  "doi": "10.1016/s0140-6736(24)00862-6",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2024,
+  "type": "review",
+  "words": 4758,
+  "sentences": 163
+ },
+ {
+  "doi": "10.1016/s0140-6736(24)00878-x",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2024,
+  "type": "review",
+  "words": 6048,
+  "sentences": 236
+ },
+ {
+  "doi": "10.1016/s0140-6736(24)01867-1",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2024,
+  "type": "research",
+  "words": 10906,
+  "sentences": 387
+ },
+ {
+  "doi": "10.1016/s1473-3099(24)00007-0",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2024,
+  "type": "research",
+  "words": 8476,
+  "sentences": 245
+ },
+ {
+  "doi": "10.1016/s1473-3099(24)00144-0",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2024,
+  "type": "review",
+  "words": 5480,
+  "sentences": 185
+ },
+ {
+  "doi": "10.1016/s1473-3099(24)00796-5",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2024,
+  "type": "research",
+  "words": 3499,
+  "sentences": 138
+ },
+ {
+  "doi": "10.1016/s2213-2600(24)00295-9",
+  "family": "lancet",
+  "journal": "Lancet Respir Med",
+  "year": 2024,
+  "type": "research",
+  "words": 3679,
+  "sentences": 155
+ },
+ {
+  "doi": "10.1016/s2214-109x(24)00284-5",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2024,
+  "type": "research",
+  "words": 2472,
+  "sentences": 88
+ },
+ {
+  "doi": "10.1016/s0140-6736(25)00311-3",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2025,
+  "type": "research",
+  "words": 7335,
+  "sentences": 266
+ },
+ {
+  "doi": "10.1016/s0140-6736(25)00397-6",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2025,
+  "type": "research",
+  "words": 7652,
+  "sentences": 259
+ },
+ {
+  "doi": "10.1016/s1473-3099(25)00108-2",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2025,
+  "type": "research",
+  "words": 4308,
+  "sentences": 154
+ },
+ {
+  "doi": "10.1016/s1473-3099(25)00118-5",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2025,
+  "type": "research",
+  "words": 4584,
+  "sentences": 183
+ },
+ {
+  "doi": "10.1016/s2468-2667(25)00039-8",
+  "family": "lancet",
+  "journal": "Lancet Public Health",
+  "year": 2025,
+  "type": "research",
+  "words": 3504,
+  "sentences": 147
+ },
+ {
+  "doi": "10.1016/s0140-6736(26)00307-7",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2026,
+  "type": "research",
+  "words": 4125,
+  "sentences": 150
+ },
+ {
+  "doi": "10.1016/s2213-8587(26)00002-1",
+  "family": "lancet",
+  "journal": "Lancet Diabetes Endocrinol",
+  "year": 2026,
+  "type": "research",
+  "words": 4783,
+  "sentences": 180
+ },
+ {
+  "doi": "10.1016/s2215-0366(26)00033-7",
+  "family": "lancet",
+  "journal": "Lancet Psychiatry",
+  "year": 2026,
+  "type": "review",
+  "words": 4928,
+  "sentences": 215
+ },
+ {
+  "doi": "10.1038/nature14236",
+  "family": "nature",
+  "journal": "Nature",
+  "year": null,
+  "type": "other",
+  "words": 5457,
+  "sentences": 223
+ },
+ {
+  "doi": "10.1038/nature14540",
+  "family": "nature",
+  "journal": "Nature",
+  "year": null,
+  "type": "other",
+  "words": 6226,
+  "sentences": 301
+ },
+ {
+  "doi": "10.1038/nature16044",
+  "family": "nature",
+  "journal": "Nature",
+  "year": null,
+  "type": "research",
+  "words": 7045,
+  "sentences": 329
+ },
+ {
+  "doi": "10.1038/s41591-018-0213-5",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2018,
+  "type": "other",
+  "words": 4445,
+  "sentences": 195
+ },
+ {
+  "doi": "10.1038/s41591-018-0316-z",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2018,
+  "type": "other",
+  "words": 3425,
+  "sentences": 163
+ },
+ {
+  "doi": "10.1038/s41592-019-0654-x",
+  "family": "nature",
+  "journal": "Nature research journal",
+  "year": 2019,
+  "type": "review",
+  "words": 5285,
+  "sentences": 229
+ },
+ {
+  "doi": "10.1038/s41580-020-00313-\u200bx",
+  "family": "nature",
+  "journal": "Nature Reviews",
+  "year": 2020,
+  "type": "review",
+  "words": 16940,
+  "sentences": 740
+ },
+ {
+  "doi": "10.1038/s41586-020-2238-4",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2020,
+  "type": "research",
+  "words": 5049,
+  "sentences": 182
+ },
+ {
+  "doi": "10.1038/s41577-021-00524-\u200bz",
+  "family": "nature",
+  "journal": "Nature Reviews",
+  "year": 2021,
+  "type": "review",
+  "words": 14304,
+  "sentences": 621
+ },
+ {
+  "doi": "10.1038/s41586-021-04014-z",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2021,
+  "type": "other",
+  "words": 3568,
+  "sentences": 177
+ },
+ {
+  "doi": "10.1038/s41591-021-01599-w",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2021,
+  "type": "research",
+  "words": 6957,
+  "sentences": 309
+ },
+ {
+  "doi": "10.1038/s41586-022-05688-9",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2022,
+  "type": "research",
+  "words": 11976,
+  "sentences": 597
+ },
+ {
+  "doi": "10.1038/s41576-023-00586-w",
+  "family": "nature",
+  "journal": "Nature Reviews",
+  "year": 2023,
+  "type": "review",
+  "words": 9805,
+  "sentences": 427
+ },
+ {
+  "doi": "10.1038/s41591-023-02475-5",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2023,
+  "type": "other",
+  "words": 3596,
+  "sentences": 149
+ },
+ {
+  "doi": "10.1038/s41591-023-02552-9",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2023,
+  "type": "research",
+  "words": 8402,
+  "sentences": 352
+ },
+ {
+  "doi": "10.1038/s41579-024-01010-8",
+  "family": "nature",
+  "journal": "Nature Reviews",
+  "year": 2024,
+  "type": "review",
+  "words": 8461,
+  "sentences": 226
+ },
+ {
+  "doi": "10.1038/s41579-024-01025-1",
+  "family": "nature",
+  "journal": "Nature Reviews",
+  "year": 2024,
+  "type": "review",
+  "words": 7493,
+  "sentences": 292
+ },
+ {
+  "doi": "10.1038/s41579-024-01054-w",
+  "family": "nature",
+  "journal": "Nature Reviews",
+  "year": 2024,
+  "type": "review",
+  "words": 7429,
+  "sentences": 279
+ },
+ {
+  "doi": "10.1038/s41586-024-08378-w",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2024,
+  "type": "research",
+  "words": 7614,
+  "sentences": 389
+ },
+ {
+  "doi": "10.1038/s41587-024-02182-7",
+  "family": "nature",
+  "journal": "Nature research journal",
+  "year": 2024,
+  "type": "research",
+  "words": 7493,
+  "sentences": 349
+ },
+ {
+  "doi": "10.1038/s41588-024-02052-7",
+  "family": "nature",
+  "journal": "Nature research journal",
+  "year": 2024,
+  "type": "research",
+  "words": 4142,
+  "sentences": 183
+ },
+ {
+  "doi": "10.1038/s41590-024-01952-4",
+  "family": "nature",
+  "journal": "Nature research journal",
+  "year": 2024,
+  "type": "research",
+  "words": 5971,
+  "sentences": 243
+ },
+ {
+  "doi": "10.1038/s41591-024-02880-4",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2024,
+  "type": "research",
+  "words": 7444,
+  "sentences": 328
+ },
+ {
+  "doi": "10.1038/s41591-024-03483-9",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2024,
+  "type": "research",
+  "words": 7276,
+  "sentences": 262
+ },
+ {
+  "doi": "10.1038/s41564-025-02030-7",
+  "family": "nature",
+  "journal": "Nat Microbiol",
+  "year": 2025,
+  "type": "research",
+  "words": 8110,
+  "sentences": 333
+ },
+ {
+  "doi": "10.1038/s41564-025-02201-6",
+  "family": "nature",
+  "journal": "Nat Microbiol",
+  "year": 2025,
+  "type": "research",
+  "words": 8079,
+  "sentences": 366
+ },
+ {
+  "doi": "10.1038/s41564-025-02217-y",
+  "family": "nature",
+  "journal": "Nat Microbiol",
+  "year": 2025,
+  "type": "research",
+  "words": 10159,
+  "sentences": 436
+ },
+ {
+  "doi": "10.1038/s41586-025-09098-5",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2025,
+  "type": "research",
+  "words": 11000,
+  "sentences": 454
+ },
+ {
+  "doi": "10.1038/s41591-025-03668-w",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2025,
+  "type": "other",
+  "words": 1527,
+  "sentences": 62
+ },
+ {
+  "doi": "10.1038/s41591-025-03678-8",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2025,
+  "type": "research",
+  "words": 5802,
+  "sentences": 241
+ },
+ {
+  "doi": "10.1038/s41591-025-03724-5",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2025,
+  "type": "research",
+  "words": 14097,
+  "sentences": 628
+ },
+ {
+  "doi": "10.1038/s41591-025-03848-8",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2025,
+  "type": "research",
+  "words": 5448,
+  "sentences": 250
+ },
+ {
+  "doi": "10.1038/s41591-025-03890-6",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2025,
+  "type": "research",
+  "words": 7441,
+  "sentences": 320
+ },
+ {
+  "doi": "10.1038/s41591-025-04139-y",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2025,
+  "type": "research",
+  "words": 9370,
+  "sentences": 367
+ },
+ {
+  "doi": "10.1038/s41575-026-01232-6",
+  "family": "nature",
+  "journal": "Nature Reviews",
+  "year": 2026,
+  "type": "review",
+  "words": 6885,
+  "sentences": 307
+ },
+ {
+  "doi": "10.1038/s41586-026-10157-8",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2026,
+  "type": "research",
+  "words": 5111,
+  "sentences": 253
+ },
+ {
+  "doi": "10.1038/s41586-026-10265-5",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2026,
+  "type": "other",
+  "words": 2617,
+  "sentences": 120
+ },
+ {
+  "doi": "10.1038/s41586-026-10266-4",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2026,
+  "type": "research",
+  "words": 8990,
+  "sentences": 426
+ },
+ {
+  "doi": "10.1038/s41586-026-10344-7",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2026,
+  "type": "research",
+  "words": 6268,
+  "sentences": 281
+ },
+ {
+  "doi": "10.1038/s41586-026-10452-4",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2026,
+  "type": "research",
+  "words": 17068,
+  "sentences": 678
+ },
+ {
+  "doi": "10.1038/s41586-026-10466-y",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2026,
+  "type": "research",
+  "words": 7047,
+  "sentences": 328
+ },
+ {
+  "doi": "10.1038/s41586-026-10705-2",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2026,
+  "type": "research",
+  "words": 6652,
+  "sentences": 303
+ },
+ {
+  "doi": "10.1038/s41586-026-10877-x",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2026,
+  "type": "research",
+  "words": 9268,
+  "sentences": 410
+ },
+ {
+  "doi": "10.1038/s41591-026-04222-y",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2026,
+  "type": "research",
+  "words": 5860,
+  "sentences": 208
+ },
+ {
+  "doi": "10.1038/s41591-026-04342-5",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2026,
+  "type": "research",
+  "words": 6832,
+  "sentences": 278
+ },
+ {
+  "doi": "10.1038/s41591-026-04357-y",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2026,
+  "type": "research",
+  "words": 10729,
+  "sentences": 465
+ },
+ {
+  "doi": "10.1038/s41591-026-04430-6",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2026,
+  "type": "other",
+  "words": 6410,
+  "sentences": 232
+ },
+ {
+  "doi": "10.1038/s41591-026-04476-6",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2026,
+  "type": "research",
+  "words": 5503,
+  "sentences": 229
+ },
+ {
+  "doi": "10.1038/s41591-026-04479-3",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2026,
+  "type": "research",
+  "words": 5054,
+  "sentences": 173
+ },
+ {
+  "doi": "10.1038/s41591-026-04502-7",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2026,
+  "type": "research",
+  "words": 9151,
+  "sentences": 427
+ },
+ {
+  "doi": "10.1038/s41591-026-04589-y",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2026,
+  "type": "research",
+  "words": 7036,
+  "sentences": 323
+ },
+ {
+  "doi": "10.1056/nejmoa1602046",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2016,
+  "type": "research",
+  "words": 4465,
+  "sentences": 155
+ },
+ {
+  "doi": "10.1056/nejmoa2101016",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2021,
+  "type": "research",
+  "words": 4709,
+  "sentences": 178
+ },
+ {
+  "doi": "10.1056/nejmoa2117166",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2022,
+  "type": "research",
+  "words": 4721,
+  "sentences": 192
+ },
+ {
+  "doi": "10.1056/nejmoa2503304",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2026,
+  "type": "research",
+  "words": 3706,
+  "sentences": 151
+ },
+ {
+  "doi": "10.1056/nejmoa2505783",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2026,
+  "type": "research",
+  "words": 4205,
+  "sentences": 169
+ },
+ {
+  "doi": "10.1056/nejmoa2507874",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2026,
+  "type": "research",
+  "words": 4306,
+  "sentences": 163
+ },
+ {
+  "doi": "10.1056/nejmoa2509761",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2026,
+  "type": "research",
+  "words": 3681,
+  "sentences": 155
+ },
+ {
+  "doi": "10.1056/nejmoa2513428",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2026,
+  "type": "other",
+  "words": 3444,
+  "sentences": 144
+ },
+ {
+  "doi": "10.1056/nejmoa2516491",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2026,
+  "type": "research",
+  "words": 3762,
+  "sentences": 144
+ },
+ {
+  "doi": "10.1126/science.aaf2693",
+  "family": "science",
+  "journal": "Science",
+  "year": null,
+  "type": "other",
+  "words": 3211,
+  "sentences": 123
+ },
+ {
+  "doi": "10.1126/science.adi8577",
+  "family": "science",
+  "journal": "Science",
+  "year": null,
+  "type": "other",
+  "words": 6186,
+  "sentences": 249
+ },
+ {
+  "doi": "10.1126/science.ady3027",
+  "family": "science",
+  "journal": "Science",
+  "year": null,
+  "type": "research",
+  "words": 9957,
+  "sentences": 449
+ },
+ {
+  "doi": "10.1126/science.adz9353",
+  "family": "science",
+  "journal": "Science",
+  "year": null,
+  "type": "research",
+  "words": 10267,
+  "sentences": 430
+ },
+ {
+  "doi": "10.1126/science.aed1656",
+  "family": "science",
+  "journal": "Science",
+  "year": null,
+  "type": "research",
+  "words": 3357,
+  "sentences": 123
+ }
+]

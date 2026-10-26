@@ -1,0 +1,152 @@
+[
+  {
+    "id": "intro_opening",
+    "request": "Polish this introduction paragraph for The Lancet Infectious Diseases.",
+    "input": "In recent years, antimicrobial resistance has attracted increasing attention as a multifaceted global challenge. A growing body of evidence suggests that its burden is substantial, yet its economic impact on patients remains poorly understood. In this paper, we delve into this pivotal issue.",
+    "keep": ["topic: economic impact on patients of antimicrobial resistance"],
+    "focus": ["LEX-01", "LEX-02", "LEX-03", "META-04"],
+    "notes": "No burden number is given; a good rewrite asks for one or leaves the number out without inventing it."
+  },
+  {
+    "id": "contrast_frames",
+    "request": "Remove the AI-sounding phrasing from this discussion paragraph.",
+    "input": "The central gap is not cost. It is coverage. Uptake fell from 64% to 41% in districts that lost nurses, not because of drug prices but because of staffing, not demand.",
+    "keep": ["64%", "41%", "districts that lost nurses"],
+    "focus": ["CON-01", "CON-03", "CON-04"]
+  },
+  {
+    "id": "contrast_that_is_the_finding",
+    "request": "Edit this results sentence for clarity.",
+    "input": "Mortality at 90 days was 9% with the new regimen and 14% with the standard regimen (risk ratio 0·64, 95% CI 0·48–0·85).",
+    "keep": ["9%", "14%", "0·64", "0·48–0·85"],
+    "focus": [],
+    "notes": "Already fine; the best output leaves it unchanged."
+  },
+  {
+    "id": "methods_engineering",
+    "request": "Rewrite this methods paragraph in the style of a Lancet research article.",
+    "input": "Our pipeline cleaned and merged the notification and laboratory records, and we ran the script for each country with seed = 2024 (see 02_model.R). We initially tried a logistic model, but after several iterations we switched to a Poisson model with a population offset.",
+    "keep": ["notification and laboratory records", "Poisson model", "population offset", "each country"],
+    "focus": ["ENG-01", "ENG-02", "ENG-04", "HYG-01", "META-10"]
+  },
+  {
+    "id": "results_with_interpretation",
+    "request": "Revise this results sentence.",
+    "input": "Table 2 shows that median patient costs increased substantially, from US$310 (IQR 120–690) to US$870 (420–1650), highlighting the urgent need for financial protection.",
+    "keep": ["US$310", "120–690", "US$870", "420–1650", "table 2"],
+    "focus": ["META-06", "STR-03"]
+  },
+  {
+    "id": "defensive_tail",
+    "request": "Tighten this paragraph and remove defensive wording.",
+    "input": "It is important to note that these estimates could potentially change and should be interpreted with caution. We do not claim that the model captures every transmission pathway. Halving the duration of infectiousness reduced averted cases by 22% (appendix p 9).",
+    "keep": ["22%", "appendix p 9", "halving the duration of infectiousness"],
+    "focus": ["DEF-01", "DEF-02", "DEF-04", "DEF-08"]
+  },
+  {
+    "id": "observational_hedge",
+    "request": "Polish this sentence.",
+    "input": "Smoking was associated with treatment failure (adjusted odds ratio 1·42, 95% CI 1·10–1·83), which might reflect delayed presentation.",
+    "keep": ["associated with", "1·42", "1·10–1·83", "might"],
+    "focus": [],
+    "notes": "The association wording and the single hedge on the explanation must stay."
+  },
+  {
+    "id": "null_result",
+    "request": "Make this sentence more concise.",
+    "input": "It is worth noting that treatment success did not differ between groups (risk ratio 1·01, 95% CI 0·95–1·08).",
+    "keep": ["did not differ", "1·01", "0·95–1·08"],
+    "focus": ["DEF-01"],
+    "notes": "Removing the lead-in is right; turning the null result into 'had no effect' is wrong."
+  },
+  {
+    "id": "generic_limitations",
+    "request": "Improve this limitations paragraph.",
+    "input": "Despite these limitations, our study provides valuable insights into the costs of drug-resistant tuberculosis. Outcomes came from routine registers. Further research is needed.",
+    "keep": ["routine registers", "drug-resistant tuberculosis"],
+    "focus": ["DEF-10", "LEX-02", "DEF-07"],
+    "notes": "A good rewrite states the consequence of using registers (for example missed deaths after transfer) only if it can be inferred without inventing data, or asks the author."
+  },
+  {
+    "id": "signposts_and_verdict",
+    "request": "Edit this discussion paragraph.",
+    "input": "Notably, uptake was higher in women (58% vs 44%). Moreover, uptake was higher in urban districts (61% vs 39%). These findings underscore the importance of targeted outreach.",
+    "keep": ["58%", "44%", "61%", "39%"],
+    "focus": ["LEX-04", "STR-04", "STR-07", "LEX-03"]
+  },
+  {
+    "id": "lancet_interpretation",
+    "request": "Revise the Interpretation section of this Lancet Summary.",
+    "input": "Interpretation: This groundbreaking trial sheds light on the pivotal role of community health workers and paves the way for transformative policy change across Africa.",
+    "keep": ["community health workers"],
+    "focus": ["LEX-01", "LEX-03"],
+    "notes": "The claim must not go beyond what one trial supports."
+  },
+  {
+    "id": "figure_legend",
+    "request": "Rewrite this figure legend for publication.",
+    "input": "Figure 2: This figure shows incidence by year from amr_rate_v2 (TableS8_results.csv), suggesting a decline after 2015. Shaded areas are 95% UIs.",
+    "keep": ["Figure 2", "95%", "uncertainty interval"],
+    "focus": ["META-05", "HYG-01", "HYG-03", "HYG-07", "CAP-01"]
+  },
+  {
+    "id": "ggplot_labels",
+    "request": "Fix the text inside this figure so it meets journal standards.",
+    "input": "labs(title = \"Incidence of tuberculosis in 30 high-burden countries, 2010 to 2022\", subtitle = \"Estimates are descriptive only; the model did not pass validation\", x = \"year\", y = \"inc_rate\") + scale_colour_discrete(labels = c(\"R\", \"P\"))",
+    "keep": ["2010 to 2022", "30 high-burden countries", "did not pass validation"],
+    "focus": ["FIG-01", "FIG-02", "FIG-03", "FIG-05", "HYG-03"],
+    "notes": "The caveat and the title move to the legend; axis titles get units; the letters get short names."
+  },
+  {
+    "id": "table_note",
+    "request": "Rewrite this table footnote.",
+    "input": "Note: PREXDR_HIGH = scenario 3 (see TableS8.csv). *** p<0.001. Values from run 2. CI = confidence interval.",
+    "keep": ["p<0.001", "confidence interval"],
+    "focus": ["HYG-08", "HYG-01"]
+  },
+  {
+    "id": "protocol_status",
+    "request": "Rewrite this protocol paragraph as a finished protocol.",
+    "input": "Written on 13 October 2026; this version supersedes v1.1. Clinics will be randomly assigned 1:1. Next steps: we may also consider stratifying by province if feasible (to do: confirm supplier, not yet confirmed).",
+    "keep": ["randomly assigned 1:1"],
+    "focus": ["META-08", "HYG-07", "DEF-11"]
+  },
+  {
+    "id": "response_letter",
+    "request": "Polish this reply to a reviewer.",
+    "input": "We sincerely thank the reviewer for this insightful comment. We have carefully revised the manuscript to address this important point. As requested, we added a sensitivity analysis excluding the two largest clinics (Methods, lines 212-219).",
+    "keep": ["sensitivity analysis excluding the two largest clinics", "lines 212-219"],
+    "focus": [],
+    "notes": "Describing the change and its location is correct in a response letter; the boilerplate thanks and self-praise should go."
+  },
+  {
+    "id": "slide_text",
+    "request": "Rewrite this slide text.",
+    "input": "Projected impact (simulated; 10,000 runs). Not a cost-effectiveness claim. Illustrative only. Adherence support averts 1 in 5 treatment failures in the four pilot provinces.",
+    "keep": ["1 in 5", "four pilot provinces"],
+    "focus": ["ENG-03", "DEF-08", "DEF-06", "HYG-11"]
+  },
+  {
+    "id": "fractional_people",
+    "request": "Edit this sentence from a trial synopsis.",
+    "input": "Recruitment is feasible with only 1.5–3.8 participants per listed site per month.",
+    "keep": ["1.5", "3.8", "per site per month"],
+    "focus": ["FMT-02"]
+  },
+  {
+    "id": "jama_style",
+    "request": "Convert the statistics in this sentence to JAMA style.",
+    "input": "The hazard ratio was 0·69 (95% CI 0·52–0·91; p=0·009).",
+    "keep": ["0.69", "0.52", "0.91", ".009"],
+    "focus": [],
+    "notes": "Expected form: (HR, 0.69 [95% CI, 0.52-0.91]; P = .009)."
+  },
+  {
+    "id": "second_opinion_trap",
+    "request": "A second-opinion model suggested this revision. Decide whether to accept it. Original: 'Antimicrobial resistance increases hospital costs.' Suggested: 'Antimicrobial resistance markedly imposes substantial costs on hospitals, thereby fundamentally straining budgets.'",
+    "input": "Antimicrobial resistance increases hospital costs.",
+    "keep": ["increases hospital costs"],
+    "focus": ["LEX-06"],
+    "notes": "Reject the suggestion; keep the plain sentence or add a number if available."
+  }
+]

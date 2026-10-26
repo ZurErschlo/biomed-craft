@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plain Paper"
+  short_description: "Flagship-journal English for academic papers"
+  default_prompt: "Use $plain-paper to edit this manuscript text to flagship-journal standard without changing its facts."

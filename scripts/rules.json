@@ -1,0 +1,1938 @@
+{
+  "version": "1.0.0",
+  "levels": {
+    "must": "Fix on sight: flagship journals almost never print this, or it is internal material.",
+    "review": "Judge in context: often a tell, sometimes the right word.",
+    "density": "Normal in flagship journals; reported only as a rate per 1000 words."
+  },
+  "scopes": {
+    "prose": "Body text",
+    "caption": "Figure legends and table titles or notes",
+    "table": "Table cells",
+    "slide": "Slide text",
+    "figure": "Text inside figures, read from plotting code or SVG"
+  },
+  "categories": {
+    "CON": "Contrast frames used as a rhetorical device",
+    "DEF": "Defensive hedging, disclaimers and pre-emptive rebuttals",
+    "META": "Process or metadata narration that is not about the research",
+    "ENG": "Engineering or software register used for research procedures",
+    "LEX": "Vocabulary that flagship journals rarely print",
+    "STR": "Structural and punctuation tells",
+    "HYG": "Internal material that must not reach a publication",
+    "FMT": "Number, grammar and style conventions",
+    "CAP": "Figure legends and table notes",
+    "FIG": "Text inside figures"
+  },
+  "rules": [
+    {
+      "id": "CON-01",
+      "category": "CON",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:is|are|was|were)\\s+not\\s+(?:just\\s+|only\\s+|simply\\s+|merely\\s+)?(?!(?:statistically|significant|significantly|different|associated|available|known|clear|possible|feasible|required|necessary|related|correlated|reported|observed|detected|measured|recorded|included|eligible|affected|altered|changed|modified|sufficient|adequate|large|small|high|low|due|yet|always|necessarily|powered|randomi[sz]ed|blinded|masked|consistent)\\b)(?:a\\s+|an\\s+|the\\s+)?[A-Za-z][\\w-]*(?:\\s+[A-Za-z][\\w-]*){0,5}[.;]\\s+(?:It|They|This|These|That)\\s+(?:is|are|was|were)\\b",
+      "flags": "i",
+      "hint": "Negate-then-assert across two sentences. State what it is; keep a contrast only when two measured things are compared.",
+      "examples": {
+        "hit": [
+          "The central gap is not cost. It is coverage.",
+          "This is not an observed matching rate. It is a costing scenario.",
+          "The problem was not the model. It was the data."
+        ],
+        "miss": [
+          "The difference was not significant. It was small.",
+          "Treatment was not associated with mortality. It was associated with readmission.",
+          "PrEP was not used for 359 sexual intercourses (26%); it was used at a suboptimal dose.",
+          "Some men were not found at their homes or had migrated out of the study area. They were replaced."
+        ]
+      }
+    },
+    {
+      "id": "CON-02",
+      "category": "CON",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bnot\\s+(?:only|just|simply|merely)\\b[^.;!?]{1,100}?\\bbut\\b",
+      "flags": "i",
+      "hint": "'Not only X but also Y' adds emphasis without content. Name both items plainly.",
+      "examples": {
+        "hit": [
+          "This affects not only patients but also clinicians."
+        ],
+        "miss": [
+          "These data are not only incomplete."
+        ]
+      }
+    },
+    {
+      "id": "CON-03",
+      "category": "CON",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:is|are|was|were)\\s+not\\s+(?!(?:only|just|simply|merely|statistically|significant(?:ly)?|associated|different)\\b)[^.;!?,]{1,60}?\\s+but\\s+(?!also\\b|not\\b)",
+      "flags": "i",
+      "hint": "'X is not A but B' correction. Write the positive statement; keep the contrast only if A was a real, stated alternative.",
+      "examples": {
+        "hit": [
+          "The barrier is not cost but access.",
+          "This was not a failure of the drug but a failure of delivery."
+        ],
+        "miss": [
+          "The difference was not significant but showed a trend.",
+          "Data were not available, but estimates were imputed."
+        ]
+      }
+    },
+    {
+      "id": "CON-04",
+      "category": "CON",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": ",\\s+not\\s+(?!(?:only|just|least|all|always|necessarily|significantly|statistically|including|shown|applicable|reported|available|otherwise|specified)\\b)[a-z][^,.;!?]{0,50}[.;)]",
+      "flags": "i",
+      "hint": "Clause-final ', not X' correction. Delete it unless X is a claim the reader would otherwise make.",
+      "examples": {
+        "hit": [
+          "Costs rose because of staffing, not drug prices.",
+          "The model describes transmission, not treatment."
+        ],
+        "miss": [
+          "Results are not shown (data not shown).",
+          "Values were similar, not significantly different."
+        ]
+      }
+    },
+    {
+      "id": "CON-05",
+      "category": "CON",
+      "level": "density",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\brather\\s+than\\b",
+      "flags": "i",
+      "hint": "'Rather than' is fine for a method choice. Count it towards contrast density.",
+      "examples": {
+        "hit": [
+          "We used a Poisson model rather than a negative binomial model."
+        ],
+        "miss": [
+          "The effect was rather large."
+        ]
+      }
+    },
+    {
+      "id": "CON-06",
+      "category": "CON",
+      "level": "density",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\binstead\\s+of\\b|(?:^|(?<=[.!?]\\s))Instead,",
+      "flags": "i",
+      "hint": "Counts towards contrast density.",
+      "examples": {
+        "hit": [
+          "We used costs instead of charges.",
+          "Instead, we fitted a mixed model."
+        ],
+        "miss": [
+          "Costs were higher."
+        ]
+      }
+    },
+    {
+      "id": "CON-07",
+      "category": "CON",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:is|are|was|were)\\s+not\\s+about\\b|\\bnot\\s+about\\s+[^.;!?]{1,60}[.;,]\\s*(?:it'?s|it\\s+is|but)\\s+about\\b",
+      "flags": "i",
+      "hint": "'Not about X; about Y' framing. State Y directly.",
+      "examples": {
+        "hit": [
+          "This is not about incidence; it is about value.",
+          "The question is not about cost but about access."
+        ],
+        "miss": [
+          "We asked about cost."
+        ]
+      }
+    },
+    {
+      "id": "CON-08",
+      "category": "CON",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "(?:^|[.!?]\\s+)Not\\s+[^.!?]{1,40}\\.\\s+Not\\s+",
+      "flags": "",
+      "hint": "Negative listing ('Not X. Not Y.'). Say what the thing is.",
+      "examples": {
+        "hit": [
+          "Not a cure. Not a vaccine. A diagnostic."
+        ],
+        "miss": [
+          "Not all patients responded."
+        ]
+      }
+    },
+    {
+      "id": "CON-09",
+      "category": "CON",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bless\\s+about\\b[^.;!?]{1,80}\\bmore\\s+about\\b",
+      "flags": "i",
+      "hint": "'Less about X, more about Y'. State Y directly.",
+      "examples": {
+        "hit": [
+          "The decision is less about cost and more about feasibility."
+        ],
+        "miss": [
+          "Fewer than half were tested."
+        ]
+      }
+    },
+    {
+      "id": "CON-10",
+      "category": "CON",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bnot\\b[^.;!?]{1,80}[;.]\\s+(?:instead|rather)\\b|(?:^|(?<=[.!?]\\s))Rather,\\s",
+      "flags": "i",
+      "hint": "'Not X; instead/rather Y'. Write Y as the finding.",
+      "examples": {
+        "hit": [
+          "The effect was not driven by age; instead, it reflected access.",
+          "Rather, the effect reflected access."
+        ],
+        "miss": [
+          "Rather than imputing, we excluded missing values."
+        ]
+      }
+    },
+    {
+      "id": "DEF-01",
+      "category": "DEF",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bit\\s+(?:should|must)\\s+be\\s+(?:noted|emphasi[sz]ed|stressed|acknowledged|recogni[sz]ed|mentioned|highlighted)\\s+that\\b|\\bit\\s+is\\s+(?:important|worth|crucial|essential|critical|noteworthy|necessary)\\s+(?:to\\s+(?:note|mention|emphasi[sz]e|highlight|stress|remember|recogni[sz]e|acknowledge|point\\s+out)|noting|mentioning)\\b|\\bneedless\\s+to\\s+say\\b|\\bit\\s+goes\\s+without\\s+saying\\b|\\bit\\s+bears\\s+(?:mentioning|repeating)\\b",
+      "flags": "i",
+      "hint": "Throat-clearing before a point. Delete the lead-in and state the point.",
+      "examples": {
+        "hit": [
+          "It should be noted that the sample was small.",
+          "It is important to note that costs varied.",
+          "It is worth noting that uptake was low."
+        ],
+        "miss": [
+          "We noted that uptake was low."
+        ]
+      }
+    },
+    {
+      "id": "DEF-02",
+      "category": "DEF",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:may|might|could|can)\\s+(?:potentially|possibly|perhaps|conceivably|plausibly|presumably)\\b|\\b(?:potentially|possibly|perhaps)\\s+(?:may|might|could)\\b|\\bit\\s+is\\s+(?:possible|plausible|conceivable)\\s+that\\s+[^.;!?]{0,60}\\b(?:may|might|could)\\b",
+      "flags": "i",
+      "hint": "Stacked hedges. Keep one hedge, on the explanation only.",
+      "examples": {
+        "hit": [
+          "This may potentially reduce costs.",
+          "It is possible that the effect might reflect confounding."
+        ],
+        "miss": [
+          "This might reduce costs."
+        ]
+      }
+    },
+    {
+      "id": "DEF-03",
+      "category": "DEF",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bto\\s+(?:some|a\\s+(?:certain|large|great|lesser|limited))\\s+(?:extent|degree)\\b|\\bin\\s+some\\s+(?:cases|instances|sense|respects)\\b|\\bin\\s+a\\s+sense\\b|\\bsomewhat\\b|\\barguably\\b|\\bin\\s+(?:certain|some)\\s+(?:circumstances|contexts)\\b",
+      "flags": "i",
+      "hint": "Qualifier the reader cannot check. Give the bound or the number, or delete it.",
+      "examples": {
+        "hit": [
+          "Costs were to some extent higher.",
+          "The results were somewhat inconsistent."
+        ],
+        "miss": [
+          "In some countries, costs were higher."
+        ]
+      }
+    },
+    {
+      "id": "DEF-04",
+      "category": "DEF",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bshould\\s+be\\s+interpreted\\s+(?:with\\s+(?:caution|care)|cautiously)\\b|\\bshould\\s+not\\s+be\\s+(?:interpreted|taken|construed|confused|seen|read)\\b|\\b(?:does|do|did)\\s+not\\s+(?:by\\s+(?:itself|themselves)\\s+)?(?:establish|prove|imply|guarantee)\\s+(?:that|causality|causation|a\\s+causal|an\\s+effect|efficacy|benefit|superiority|equivalence)\\b|\\bremains?\\s+conditional\\s+on\\b|\\brather\\s+than\\s+(?:a|an)\\s+(?:universal|definitive|exact|precise|causal)\\b",
+      "flags": "i",
+      "hint": "Defensive tail. State a limitation once, where the estimate is reported or in the limitations paragraph. Appraising another study is fine.",
+      "examples": {
+        "hit": [
+          "These estimates should be interpreted with caution.",
+          "This does not establish causality."
+        ],
+        "miss": [
+          "We did not establish a registry."
+        ]
+      }
+    },
+    {
+      "id": "DEF-05",
+      "category": "DEF",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bwe\\s+(?:are|were|have\\s+been)\\s+(?:upfront|transparent|open|candid|honest|frank)\\s+(?:about|that)\\b|\\bwe\\s+(?:openly|candidly|honestly|frankly|readily)\\s+(?:acknowledge|admit|note|concede)\\b|\\bwe\\s+(?:acknowledge|concede)\\s+that\\b|\\badmittedly\\b|\\bto\\s+be\\s+(?:clear|transparent|fair|honest)\\b",
+      "flags": "i",
+      "hint": "Narrated candour. State the limitation and its consequence.",
+      "examples": {
+        "hit": [
+          "We are upfront about this limitation.",
+          "We acknowledge that the sample was small.",
+          "Admittedly, the data are sparse."
+        ],
+        "miss": [
+          "We acknowledge the help of the field team."
+        ]
+      }
+    },
+    {
+      "id": "DEF-06",
+      "category": "DEF",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bfor\\s+illustrative\\s+purposes\\b|\\b(?:illustrative|indicative)\\s+(?:only|estimates?|figures?|purposes)\\b|\\bshould\\s+be\\s+(?:viewed|seen|regarded|treated)\\s+as\\s+(?:illustrative|indicative|exploratory|approximate)\\b",
+      "flags": "i",
+      "hint": "Status disclaimer. Report the estimate with its uncertainty and design instead.",
+      "examples": {
+        "hit": [
+          "These figures are indicative only.",
+          "The scenario is shown for illustrative purposes."
+        ],
+        "miss": [
+          "An illustrative case is described in the appendix."
+        ]
+      }
+    },
+    {
+      "id": "DEF-07",
+      "category": "DEF",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:more|further|additional|future)\\s+(?:research|studies|work|investigation|evidence)\\s+(?:is|are|will\\s+be)\\s+(?:needed|required|warranted|necessary)\\b(?=\\s*\\.|\\s+to\\s+(?:confirm|validate|explore|understand|elucidate|investigate|examine)\\s+(?:these|this|our|the)\\s+(?:findings|results|observations|association|relationship)\\b)",
+      "flags": "i",
+      "hint": "Generic call for research. Name the design, population or outcome that would resolve a stated uncertainty.",
+      "examples": {
+        "hit": [
+          "Further research is needed.",
+          "More studies are needed to confirm these findings."
+        ],
+        "miss": [
+          "Trials in children are needed to define the dose."
+        ]
+      }
+    },
+    {
+      "id": "DEF-08",
+      "category": "DEF",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bwe\\s+do\\s+not\\s+(?:claim|suggest|imply|argue)\\s+that\\b|\\bthis\\s+(?:does\\s+not\\s+mean|is\\s+not\\s+to\\s+say)\\s+that\\b|\\bnot\\s+(?:a|an)\\s+[\\w-]+\\s+claim\\b|\\bnor\\s+do\\s+we\\s+(?:claim|suggest)\\b",
+      "flags": "i",
+      "hint": "Pre-empting a misreading nobody made. Delete; let the design and numbers set the boundary.",
+      "examples": {
+        "hit": [
+          "We do not claim that the model is complete.",
+          "This does not mean that screening is ineffective.",
+          "This is not a cost-effectiveness claim."
+        ],
+        "miss": [
+          "Patients did not claim reimbursement."
+        ]
+      }
+    },
+    {
+      "id": "DEF-09",
+      "category": "DEF",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:one|some|critics|sceptics|skeptics|readers)\\s+(?:may|might|could)\\s+(?:argue|object|contend|wonder)\\b|\\bit\\s+(?:could|might|may)\\s+be\\s+argued\\s+that\\b|\\ba\\s+(?:natural|tempting|common)\\s+(?:objection|concern)\\s+(?:is|would\\s+be)\\b",
+      "flags": "i",
+      "hint": "Arguing with an absent opponent. Present the evidence; answer objections only in a response letter.",
+      "examples": {
+        "hit": [
+          "One might argue that the sample is small.",
+          "It could be argued that costs are overstated.",
+          "A natural objection is that uptake varies."
+        ],
+        "miss": [
+          "Clinicians asked whether uptake varied."
+        ]
+      }
+    },
+    {
+      "id": "DEF-10",
+      "category": "DEF",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:despite|notwithstanding)\\s+(?:these|this|such)\\s+(?:limitations?|caveats?|constraints?|weaknesses)\\b|\\b(?:while|although)\\s+(?:our|this)\\s+(?:study|analysis|work)\\s+has\\s+(?:some\\s+|several\\s+|certain\\s+)?limitations\\b",
+      "flags": "i",
+      "hint": "Formula that softens limitations. Say what still holds and why.",
+      "examples": {
+        "hit": [
+          "Despite these limitations, our findings provide useful evidence."
+        ],
+        "miss": [
+          "Our study has several limitations."
+        ]
+      }
+    },
+    {
+      "id": "DEF-11",
+      "category": "DEF",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bnot\\s+(?:yet\\s+)?(?:approved|confirmed|finali[sz]ed)\\b|\\b(?:course|class)\\s+(?:proposal|assignment|project)\\s+only\\b|\\bnot\\s+for\\s+(?:recruitment|distribution|citation)\\b|\\bwe\\s+hope\\s+to\\s+(?:obtain|secure|receive|confirm)\\b",
+      "flags": "i",
+      "hint": "Status disclaimer or wish. State the plan with its milestone, or delete.",
+      "examples": {
+        "hit": [
+          "Supply is not yet confirmed.",
+          "Course proposal only.",
+          "We hope to obtain funding."
+        ],
+        "miss": [
+          "The drug was approved in 2019."
+        ]
+      }
+    },
+    {
+      "id": "META-01",
+      "category": "META",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:earlier|previous|prior|first|second|revised|updated|current|latest|original)\\s+(?:version|draft|iteration|round)\\s+of\\s+(?:this|our|the\\s+present)\\b|\\b(?:in|from)\\s+(?:the|this|our)\\s+(?:revised|updated|previous|earlier|current|latest)\\s+(?:version|draft|manuscript|submission)\\b|\\bthe\\s+earlier\\s+(?:[\\w-]+\\s+)?(?:outcome|design|model|analysis|approach|draft)\\b",
+      "flags": "i",
+      "hint": "Document history in the text. Describe the study as it stands; revision history belongs in the response letter.",
+      "skip_docs": [
+        "response"
+      ],
+      "examples": {
+        "hit": [
+          "In the revised version, we added a sensitivity analysis.",
+          "the earlier version of this protocol",
+          "(the earlier win-probability outcome)"
+        ],
+        "miss": [
+          "the 2022 version of the WHO guidelines",
+          "an updated version of the WHO guideline"
+        ]
+      }
+    },
+    {
+      "id": "META-02",
+      "category": "META",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bas\\s+(?:requested|suggested|recommended|pointed\\s+out|noted)\\s+by\\s+(?:the\\s+)?(?:reviewers?|editors?|referees?)\\b|\\bin\\s+response\\s+to\\s+(?:the\\s+)?(?:reviewers?|editors?|referees?)\\b|\\b(?:Reviewer|Referee)\\s+\\d\\b",
+      "flags": "i",
+      "hint": "Reviewer correspondence inside the manuscript. Move it to the response letter.",
+      "skip_docs": [
+        "response"
+      ],
+      "examples": {
+        "hit": [
+          "As requested by the reviewer, we added a figure.",
+          "In response to the reviewers' comments, we",
+          "Reviewer 2 asked for subgroup results."
+        ],
+        "miss": [
+          "Two reviewers screened titles independently."
+        ]
+      }
+    },
+    {
+      "id": "META-03",
+      "category": "META",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b[Ii]n\\s+(?:this|the\\s+(?:following|next|present))\\s+(?:section|subsection)s?\\b|\\b[Tt]he\\s+(?:remainder|rest)\\s+of\\s+(?:this|the)\\s+(?:paper|article|section|manuscript|chapter)\\b|\\bWe\\s+now\\s+turn\\s+to\\b|\\bas\\s+we\\s+will\\s+(?:see|show|discuss)\\b|\\b(?:is|are)\\s+(?:discussed|described|presented)\\s+in\\s+the\\s+(?:next|following)\\s+section\\b|\\b[Tt]his\\s+section\\s+(?:describes|presents|outlines|discusses|summari[sz]es|covers)\\b",
+      "flags": "",
+      "hint": "Section preview or roadmap. Start with the content. (A one-sentence roadmap may close a review's introduction.)",
+      "examples": {
+        "hit": [
+          "In this section, we describe the model.",
+          "The remainder of this paper is organised as follows.",
+          "This section describes the data."
+        ],
+        "miss": [
+          "In this study, we estimated costs.",
+          "In the following analysis, costs were discounted."
+        ]
+      }
+    },
+    {
+      "id": "META-04",
+      "category": "META",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b[Ii]n\\s+this\\s+(?:paper|article|manuscript|report),?\\s+we\\s+(?:will\\s+)?(?:describe|discuss|present|outline|review|introduce|explore|examine|propose|show)\\b",
+      "flags": "",
+      "hint": "Paper-level preview. Flagship articles state the aim ('We aimed to…', 'Here we show…').",
+      "examples": {
+        "hit": [
+          "In this paper, we describe a new approach."
+        ],
+        "miss": [
+          "In this trial, we found lower mortality."
+        ]
+      }
+    },
+    {
+      "id": "META-05",
+      "category": "META",
+      "level": "must",
+      "scopes": [
+        "caption"
+      ],
+      "pattern": "^(?:Figure|Fig\\.?|Table)?\\s*S?\\d*[A-Za-z]?\\s*[:.|]?\\s*(?:This|The)\\s+(?:figure|graph|chart|plot|table|panel|diagram|map)\\s+(?:shows|illustrates|depicts|presents|displays|represents|summari[sz]es|provides|compares|visuali[sz]es)\\b|^(?:Figure|Fig\\.?)\\s*S?\\d+[A-Za-z]?\\s*[:.|]\\s*(?:Figure|Graph|Chart|Plot)\\s+(?:shows|illustrates|depicts)\\b",
+      "flags": "i",
+      "hint": "Legend describing itself. Start with what is plotted, as a noun phrase.",
+      "examples": {
+        "hit": [
+          "Figure 2: This figure shows the incidence of tuberculosis by year.",
+          "The figure shows incidence by region."
+        ],
+        "miss": [
+          "Figure 2: Incidence of tuberculosis by year, 2010–2020",
+          "Figure 1. Shown are the cumulative incidence curves."
+        ]
+      }
+    },
+    {
+      "id": "META-06",
+      "category": "META",
+      "level": "review",
+      "scopes": [
+        "prose"
+      ],
+      "pattern": "\\b(?:Table|Figure|Fig\\.)\\s+S?\\d+[A-Za-z]?\\s+(?:shows|illustrates|depicts|presents|displays|summari[sz]es|provides|demonstrates|reveals)\\b",
+      "flags": "",
+      "hint": "Pointer as subject. Lead with the result and cite the item in parentheses, e.g. '(table 2)'.",
+      "examples": {
+        "hit": [
+          "Table 2 shows the baseline characteristics."
+        ],
+        "miss": [
+          "Baseline characteristics are shown in table 2."
+        ]
+      }
+    },
+    {
+      "id": "META-07",
+      "category": "META",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b(?:Certainly|Absolutely|Great\\s+question)[!,]|\\bI\\s+hope\\s+(?:this|that)\\s+helps\\b|\\bHere(?:\\s+is|'s|’s)\\s+(?:the|a|your)\\s+(?:revised|updated|rewritten|polished|edited|improved|final)\\b|\\bAs\\s+an\\s+AI\\b|\\blet\\s+me\\s+know\\s+if\\b|\\bfeel\\s+free\\s+to\\b|\\bI\\s+(?:have|'ve)\\s+(?:revised|rewritten|polished|edited|updated)\\b",
+      "flags": "i",
+      "hint": "Chat residue. Delete.",
+      "examples": {
+        "hit": [
+          "Certainly! Here is the revised abstract.",
+          "I hope this helps.",
+          "Let me know if you want changes."
+        ],
+        "miss": [
+          "We revised the protocol in 2020."
+        ]
+      }
+    },
+    {
+      "id": "META-08",
+      "category": "META",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b(?:draft|provisional|tentative|internal|working|placeholder)\\s+(?:version|estimates?|results?|figures?|analys[ie]s|numbers|values|labels?|title)\\b|\\bfor\\s+internal\\s+use\\b|\\b(?:written|prepared|drafted|compiled|last\\s+updated)\\s+(?:on\\s+)?\\d{1,2}\\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+\\d{4}\\b|\\bsupersedes?\\b|\\breplaces\\s+(?:the\\s+)?(?:previous|earlier|prior)\\s+(?:version|document|draft)\\b",
+      "flags": "i",
+      "hint": "Status, date stamp or provenance label. Publication text carries none of these.",
+      "examples": {
+        "hit": [
+          "Provisional estimates are shown.",
+          "Last updated 13 October 2026.",
+          "This document supersedes the earlier plan."
+        ],
+        "miss": [
+          "Participants were recruited on 13 October 2025."
+        ]
+      }
+    },
+    {
+      "id": "META-09",
+      "category": "META",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b(?:execution|working|lab|analysis|project)\\s+(?:log|notes|notebook|diary)\\b|\\b(?:our|the)\\s+(?:internal|working)\\s+(?:document|report|notes|plan|memo)\\b|\\b(?:research|study)\\s+plan\\s+(?:section|§)\\s*\\d|\\bsee\\s+(?:the\\s+)?(?:research|study)\\s+plan\\b|\\bper\\s+the\\s+(?:research|study)\\s+plan\\b",
+      "flags": "i",
+      "hint": "Pointer to an internal document. Cite only published or supplementary material.",
+      "examples": {
+        "hit": [
+          "Details are in the execution log.",
+          "see the research plan",
+          "(research plan section 7.2)"
+        ],
+        "miss": [
+          "The statistical analysis plan was published before unblinding."
+        ]
+      }
+    },
+    {
+      "id": "META-10",
+      "category": "META",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:initially|originally|first)\\s+(?:tried|attempted)\\b|\\bafter\\s+(?:several|multiple|many|repeated|a\\s+few)\\s+(?:iterations|attempts|rounds|tries|reruns|re-runs)\\b|\\bwe\\s+(?:re-?ran|reran)\\b|\\b(?:re-?run|rerun)\\s+(?:the|our|all)\\s+(?:analysis|analyses|model|models|pipeline|code|scripts?)\\b",
+      "flags": "i",
+      "hint": "Working history. Report the method used and, if it matters, the pre-specified alternative.",
+      "skip_docs": [
+        "response"
+      ],
+      "examples": {
+        "hit": [
+          "We initially tried a logistic model.",
+          "After several iterations, the model converged.",
+          "We reran the analysis with corrected data."
+        ],
+        "miss": [
+          "The model was first described by Smith.",
+          "Patients were first screened for eligibility.",
+          "This iteration of GBD provides estimates for nine new countries."
+        ]
+      }
+    },
+    {
+      "id": "META-11",
+      "category": "META",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:must|should)\\s+(?:remain|be\\s+kept|stay)\\s+consistent\\s+(?:across|with|throughout)\\b|\\btakes?\\s+precedence\\s+over\\b|\\bfor\\s+consistency\\s+with\\s+(?:the\\s+)?(?:previous|earlier|rest\\s+of\\s+the)\\s+(?:draft|version|document|sections?)\\b",
+      "flags": "i",
+      "hint": "Writing instructions leaking into the text. Delete.",
+      "examples": {
+        "hit": [
+          "These labels must remain consistent across the title and eligibility criteria.",
+          "Original reports take precedence over summaries."
+        ],
+        "miss": [
+          "Definitions were consistent across sites."
+        ]
+      }
+    },
+    {
+      "id": "ENG-01",
+      "category": "ENG",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bpipelines?\\b(?!\\s+(?:of|for)\\s+(?:new\\s+)?(?:drugs?|vaccines?|candidates?|antibiotics?|agents?))",
+      "flags": "i",
+      "hint": "Software word for a research procedure. Describe what was done to the data or participants (unless it names a published tool).",
+      "examples": {
+        "hit": [
+          "Our pipeline cleaned and merged the records."
+        ],
+        "miss": [
+          "a pipeline of new antibiotics"
+        ]
+      }
+    },
+    {
+      "id": "ENG-02",
+      "category": "ENG",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "(?<!\\.)\\b(?:ran|run|executed|deployed|debugged|refactored|cached|dumped)\\s+(?:the\\s+|our\\s+|a\\s+|all\\s+|each\\s+)?(?:scripts?|code|pipeline|functions?|notebooks?|jobs?|batch|quer(?:y|ies))\\b|(?<!\\.)\\b(?:was|were)\\s+(?:stored|cached|dumped|written)\\s+(?:to|in)\\s+(?:a\\s+)?(?:file|folder|directory|database|disk)\\b",
+      "flags": "i",
+      "hint": "Code operation in the text. Describe the analysis, not the software steps.",
+      "examples": {
+        "hit": [
+          "We ran the script for each country.",
+          "Output was stored in a file per scenario."
+        ],
+        "miss": [
+          "We ran a logistic regression.",
+          "The DIALOGUE.run function was applied to the list."
+        ]
+      }
+    },
+    {
+      "id": "ENG-03",
+      "category": "ENG",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b\\d{1,3}(?:[,   ]?\\d{3})*\\s+(?:model\\s+)?(?:runs|simulation\\s+runs|simulated\\s+(?:trials|runs|datasets)|iterations|replicates|seeds)\\b",
+      "flags": "i",
+      "hint": "Implementation count. Keep it in Methods as a methodological detail (e.g. 'We drew 1000 parameter sets'); remove it from Results, summaries and slides.",
+      "examples": {
+        "hit": [
+          "In 10,000 simulated trials, power was 82%.",
+          "We used 1000 model runs."
+        ],
+        "miss": [
+          "1000 participants were enrolled."
+        ]
+      }
+    },
+    {
+      "id": "ENG-04",
+      "category": "ENG",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b(?:random\\s+)?seed\\s*(?:=|:|of|was\\s+set\\s+to)\\s*\\d+|\\bset\\.seed\\s*\\(|\\bchecksums?\\b|\\bmd5\\b|\\bsha-?(?:1|256|512)\\b|\\bcommit\\s+[0-9a-f]{7,40}\\b",
+      "flags": "i",
+      "hint": "Reproducibility internals. Put code and data availability in the availability statement; seeds and checksums stay in the repository.",
+      "examples": {
+        "hit": [
+          "seed = 2024",
+          "with a random seed of 42",
+          "The SHA-256 checksum matched."
+        ],
+        "miss": [
+          "Cells were seeded on plates."
+        ]
+      }
+    },
+    {
+      "id": "ENG-05",
+      "category": "ENG",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:sanity[- ]check(?:s|ed|ing)?|source\\s+of\\s+truth|out\\s+of\\s+the\\s+box|drop-in|plug-and-play|happy\\s+path|first-class\\s+(?:citizen|support)|under\\s+the\\s+hood|battle-tested|production-ready|unblock(?:s|ed|ing)?|low-hanging\\s+fruit|move\\s+the\\s+needle|deep[- ]dive|circle\\s+back|game[- ]changer|north\\s+star|best-in-class)\\b",
+      "flags": "i",
+      "hint": "Engineering or business slang. Use the scientific term.",
+      "examples": {
+        "hit": [
+          "We performed a sanity check on the totals.",
+          "The model is a drop-in replacement.",
+          "a deep dive into costs"
+        ],
+        "miss": [
+          "We checked the totals against national reports."
+        ]
+      }
+    },
+    {
+      "id": "ENG-06",
+      "category": "ENG",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:end-to-end|state-of-the-art|toggl(?:e|es|ed|ing)|guardrails?|knobs?|modules?)\\b",
+      "flags": "i",
+      "hint": "Software register. Check whether a plain scientific term fits.",
+      "examples": {
+        "hit": [
+          "a state-of-the-art model",
+          "the transmission module"
+        ],
+        "miss": [
+          "the transmission model"
+        ]
+      }
+    },
+    {
+      "id": "ENG-07",
+      "category": "ENG",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption"
+      ],
+      "pattern": "(?:\\b[A-Za-z]{2,}|\\d)\\s*(?:->|→|=>|⇒|⟶)\\s*(?:[A-Za-z]{2,}|\\d)|(?:^|\\s)[↑↓](?:\\s|\\w)|(?<!\\w)w/o?(?=\\s)|\\b\\d+(?:\\.\\d+)?x\\s+(?:higher|lower|more|less|faster|slower|greater|larger|smaller)\\b",
+      "flags": "i",
+      "hint": "Arrows, operators or shorthand standing in for words. Write the words ('led to', 'increased', 'three times').",
+      "examples": {
+        "hit": [
+          "incidence → mortality",
+          "costs ↑ with age",
+          "a 3x higher risk",
+          "patients w/ diabetes"
+        ],
+        "miss": [
+          "a risk two to three times higher",
+          "parameter chains (A → B → C)"
+        ]
+      }
+    },
+    {
+      "id": "ENG-08",
+      "category": "ENG",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:were|was)\\s+(?:indexed|handled|filled|re-?aggregated|flagged|parsed|wrangled)\\b|\\b(?:analytical|analytic)\\s+units?\\b|\\bdecision\\s+(?:family|families|form)\\b|\\bevidence\\s+(?:streams?|domains?)\\b|\\barchitecture\\b",
+      "flags": "i",
+      "hint": "Procedure or system words in a results or methods sentence. Name what was measured or compared.",
+      "examples": {
+        "hit": [
+          "Records were indexed by country.",
+          "We combined three evidence streams.",
+          "the model architecture"
+        ],
+        "miss": [
+          "Records were linked by country."
+        ]
+      }
+    },
+    {
+      "id": "ENG-09",
+      "category": "ENG",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b(?:num|den|hi|lo)/(?:den|num|lo|hi)\\b|\\b(?:TRUE|FALSE|NULL|NaN)\\b|==|!=|\\s<-\\s|\\b[a-z_][\\w.]*\\$[a-z_]\\w*",
+      "flags": "",
+      "hint": "Code token in text. Replace with the quantity's name.",
+      "examples": {
+        "hit": [
+          "num/den was computed per country",
+          "where data$age == 0"
+        ],
+        "miss": [
+          "costs in US$2025",
+          "true positive rate"
+        ]
+      }
+    },
+    {
+      "id": "LEX-01",
+      "category": "LEX",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b(?:delv(?:e|es|ed|ing)|tapestr(?:y|ies)|testament|realms?|garner(?:s|ed|ing)?|meticulous(?:ly)?|plethora|unravel(?:s|led|ed|ling|ing)?|cutting-edge|groundbreaking|showcas(?:e|es|ed|ing)|unveil(?:s|ed|ing)?|underexplored|invaluable|myriad|intricate(?:ly)?|intricacies|transformative|intriguing(?:ly)?|commendable|revolutioni[sz](?:e|es|ed|ing)|spearhead(?:s|ed|ing)?|nestled|vibrant|endeavou?rs?|bedrock|linchpin|game-changing)\\b",
+      "flags": "i",
+      "hint": "Word that flagship research articles almost never print. Use a plain word or delete.",
+      "examples": {
+        "hit": [
+          "We delve into the determinants of uptake.",
+          "a rich tapestry of factors",
+          "This is a groundbreaking analysis.",
+          "We showcase the model.",
+          "intricate interplay"
+        ],
+        "miss": [
+          "We examined the determinants of uptake."
+        ]
+      }
+    },
+    {
+      "id": "LEX-02",
+      "category": "LEX",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\ba\\s+growing\\s+body\\s+of\\b|\\battracted\\s+(?:increasing|growing|considerable|significant|much|widespread)\\s+(?:attention|interest)\\b|\\b(?:ever-)?(?:evolving|changing|shifting)\\s+landscape\\b|\\bin\\s+the\\s+realm\\s+of\\b|\\bbridg(?:e|es|ed|ing)\\s+(?:the|this|a)\\s+gap\\b|\\bopen(?:s|ed|ing)?\\s+(?:up\\s+)?new\\s+avenues\\b|\\bvaluable\\s+insights?\\b|\\ba\\s+testament\\s+to\\b|\\bnavigat(?:e|es|ed|ing)\\s+(?:the\\s+)?(?:complex|complexities|challenges|landscape|uncertaint)|\\bin\\s+today'?s\\s+(?:rapidly\\s+)?(?:evolving|changing|world)\\b|\\bin\\s+an\\s+era\\s+of\\b|\\bin\\s+the\\s+modern\\s+era\\b",
+      "flags": "i",
+      "hint": "Stock phrase absent from flagship research articles. Replace with the specific fact.",
+      "examples": {
+        "hit": [
+          "A growing body of evidence suggests benefit.",
+          "Antimicrobial resistance has attracted increasing attention.",
+          "provides valuable insights",
+          "These data bridge the gap in surveillance."
+        ],
+        "miss": [
+          "Six trials have reported benefit."
+        ]
+      }
+    },
+    {
+      "id": "LEX-03",
+      "category": "LEX",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\bmultifaceted\\b|\\binterplay\\b|\\bplays?\\s+an?\\s+(?:pivotal|crucial|vital|key|critical|central|instrumental|integral|important|major|significant)\\s+role\\b|\\btaken\\s+together\\b|\\bcollectively,|\\bremarkabl(?:e|y)\\b|\\bunderscor(?:e|es|ed|ing)\\b|\\bleverag(?:e|es|ed|ing)\\b|\\bholistic(?:ally)?\\b|\\bempower(?:s|ed|ing|ment)?\\b|\\bnovel\\b(?!\\s+coronavirus)|\\bnuanced?\\b|\\blandscape\\b|\\binsights?\\b|\\bfoster(?:s|ed|ing)?\\b(?!\\s+(?:care|home|parents?|child(?:ren)?|famil))|\\bpivotal\\b(?!\\s+(?:trials?|stud(?:y|ies)|phase))|\\bunprecedented\\b|\\bfundamentally\\b|\\bin\\s+recent\\s+years\\b|\\bparamount\\b|\\bharness(?:es|ed|ing)?\\b|\\bstreamlin(?:e|es|ed|ing)\\b|\\bembark(?:s|ed|ing)?\\b|\\bbolster(?:s|ed|ing)?\\b|\\bnoteworthy\\b|\\bcornerstone\\b|\\bseamless(?:ly)?\\b(?!\\s+(?:phase|transition|design|adaptive))|\\bpav(?:e|es|ed|ing)\\s+the\\s+way\\b|\\bshed(?:s|ding)?\\s+(?:new\\s+|further\\s+)?light\\s+on\\b",
+      "flags": "i",
+      "hint": "Uncommon in flagship articles before 2023 and rising since. Keep only when it carries meaning; otherwise use the plain word or the number.",
+      "examples": {
+        "hit": [
+          "Uptake plays a key role in control.",
+          "Taken together, these results",
+          "This underscores the burden.",
+          "We leverage routine data.",
+          "a novel approach",
+          "Vaccination is the cornerstone of control.",
+          "These results pave the way for trials.",
+          "This study sheds light on costs."
+        ],
+        "miss": [
+          "SARS-CoV-2 is a novel coronavirus.",
+          "children in foster care",
+          "a pivotal phase 3 trial",
+          "The trial had a seamless phase 2-3 design."
+        ]
+      }
+    },
+    {
+      "id": "LEX-04",
+      "category": "LEX",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "(?:^|(?<=[.!?]\\s))(?:Notably|Importantly|Interestingly|Crucially|Critically|Remarkably|Strikingly|Intriguingly|Of\\s+note|Significantly),",
+      "flags": "",
+      "hint": "Sentence-initial signpost telling the reader what to feel. Delete it, or say why the point matters.",
+      "examples": {
+        "hit": [
+          "Notably, uptake was low.",
+          "Importantly, costs fell."
+        ],
+        "miss": [
+          "Uptake was low."
+        ]
+      }
+    },
+    {
+      "id": "LEX-05",
+      "category": "LEX",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\brobust(?:ly|ness)?\\b(?!\\s+(?:standard\\s+errors?|variance|sandwich|estimat\\w*|regression|to\\b|poisson|covariance|inference|SEs?\\b))|\\bcomprehensive(?:ly)?\\b(?!\\s+(?:metabolic|geriatric|cancer\\s+cent|care\\s+cent|sexuality))|\\bcrucial(?:ly)?\\b|\\bcritical(?:ly)?\\b(?!\\s+(?:ill\\b|illness|care|appraisal|limb|values?\\b|period|access))|\\bvaluable\\b",
+      "flags": "i",
+      "hint": "Praise adjective. Replace with the property that earns it (sample size, coverage, precision), or delete.",
+      "examples": {
+        "hit": [
+          "a robust framework",
+          "a comprehensive analysis",
+          "a crucial step",
+          "critical gaps"
+        ],
+        "miss": [
+          "robust standard errors",
+          "estimates were robust to alternative priors",
+          "critically ill patients",
+          "critical care"
+        ]
+      }
+    },
+    {
+      "id": "LEX-06",
+      "category": "LEX",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b(?:impos(?:e|es|ed|ing)|markedly|thereby|fundamentally|utili[sz](?:e|es|ed|ing|ation)|elucidat(?:e|es|ed|ing|ion)|underpin(?:s|ned|ning)?|delineat(?:e|es|ed|ing)|commenc(?:e|es|ed|ing)|aforementioned|heretofore|wherein|whereby|albeit)\\b",
+      "flags": "i",
+      "hint": "Formal substitute for a plain word ('use', 'explain', 'support', 'start'). Second-opinion models often suggest these; prefer the plain word.",
+      "examples": {
+        "hit": [
+          "AMR imposes substantial costs.",
+          "We utilised routine data.",
+          "thereby reducing costs"
+        ],
+        "miss": [
+          "We used routine data."
+        ]
+      }
+    },
+    {
+      "id": "LEX-07",
+      "category": "LEX",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b(?:substantially|considerably|dramatically|drastically|sharply|markedly|greatly|vastly|tremendously|enormously|hugely|substantial|considerable|dramatic|drastic|tremendous|enormous|vast)\\b",
+      "flags": "i",
+      "hint": "Size word without a number. Give the estimate instead.",
+      "unless": "number",
+      "examples": {
+        "hit": [
+          "Costs increased substantially.",
+          "Antimicrobial resistance causes a substantial burden of disease."
+        ],
+        "miss": [
+          "Costs increased substantially, from US$12 to US$31 per patient.",
+          "Resistance caused a substantial burden: 1·27 million deaths in 2019."
+        ]
+      }
+    },
+    {
+      "id": "LEX-08",
+      "category": "LEX",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bsignificant(?:ly)?\\b(?!\\s+(?:other|others|figures?|digits?))",
+      "flags": "i",
+      "hint": "'Significant' without a statistical test. Reserve it for statistical significance, or use 'large' with the number.",
+      "unless": "statistics",
+      "examples": {
+        "hit": [
+          "This is a significant problem for health systems."
+        ],
+        "miss": [
+          "Mortality was significantly lower (p=0·03).",
+          "The difference was statistically significant (95% CI 1.1-2.3).",
+          "Report P values to two significant figures."
+        ]
+      }
+    },
+    {
+      "id": "LEX-09",
+      "category": "LEX",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bto\\s+(?:the\\s+best\\s+of\\s+)?our\\s+knowledge\\b|\\bfor\\s+the\\s+first\\s+time\\b|\\b(?:the|a)\\s+first\\s+(?:study|report|analysis|trial|estimate|systematic\\s+review|model)\\s+to\\b",
+      "flags": "i",
+      "hint": "Priority claim. Keep one, only if a search supports it and the journal prints such claims (e.g. a Lancet Research in context panel).",
+      "examples": {
+        "hit": [
+          "To our knowledge, this is the first study to report costs.",
+          "for the first time"
+        ],
+        "miss": [
+          "This was the first visit."
+        ]
+      }
+    },
+    {
+      "id": "LEX-10",
+      "category": "LEX",
+      "level": "density",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b(?:potential(?:ly)?|key|enhanc(?:e|es|ed|ing|ement)|facilitat(?:e|es|ed|ing)|highlight(?:s|ed|ing)?|various|diverse|particularly|additionally|furthermore|moreover)\\b",
+      "flags": "i",
+      "hint": "Common in flagship journals; a problem only at high density.",
+      "examples": {
+        "hit": [
+          "Additionally, various factors may enhance uptake."
+        ],
+        "miss": [
+          "Uptake was higher in women."
+        ]
+      }
+    },
+    {
+      "id": "STR-01",
+      "category": "STR",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "—|(?<=\\w)--(?=\\w)|\\s--\\s",
+      "flags": "",
+      "hint": "Em dash. Flagship articles use about one per 1700 words. Use a comma, parentheses or a new sentence.",
+      "examples": {
+        "hit": [
+          "The effect—small but real—persisted."
+        ],
+        "miss": [
+          "Incidence fell between 2010–2020."
+        ]
+      }
+    },
+    {
+      "id": "STR-02",
+      "category": "STR",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "(?<=[A-Za-z])\\s–\\s(?=[A-Za-z])",
+      "flags": "",
+      "hint": "Spaced en dash used as a dash. Use a comma, parentheses or a new sentence; keep en dashes for ranges.",
+      "examples": {
+        "hit": [
+          "The effect – small but real – persisted."
+        ],
+        "miss": [
+          "2010–2020"
+        ]
+      }
+    },
+    {
+      "id": "STR-03",
+      "category": "STR",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": ",\\s+(?:thereby\\s+)?(?:highlighting|underscoring|underlining|emphasi[sz]ing|reflecting|showcasing|illustrating|demonstrating|signal(?:l)?ing|reinforcing|cementing|solidifying|reaffirming|marking|paving)\\s+(?:the|its|their|a|an|how|that)\\s+(?:need|importance|potential|role|value|urgency|significance|relevance|centrality|promise|critical|crucial|pivotal|way|growing|broader)\\b",
+      "flags": "i",
+      "hint": "-ing tail that announces significance. End on the fact; put the implication in the Discussion.",
+      "examples": {
+        "hit": [
+          "Mortality fell by 20%, highlighting the need for scale-up.",
+          "Costs were high, underscoring the importance of prevention."
+        ],
+        "miss": [
+          "Costs rose, reflecting the number of tests."
+        ]
+      }
+    },
+    {
+      "id": "STR-04",
+      "category": "STR",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "kind": "builtin",
+      "hint": "Two or more sentences in one paragraph open with Moreover, Furthermore, Additionally, In addition, Notably, Importantly, Interestingly, Crucially, Collectively or Remarkably. Keep at most one; repair the logic instead.",
+      "examples": {
+        "hit": [
+          "Moreover, costs rose. Furthermore, uptake fell."
+        ],
+        "miss": [
+          "However, costs rose. Uptake fell."
+        ]
+      }
+    },
+    {
+      "id": "STR-05",
+      "category": "STR",
+      "level": "review",
+      "scopes": [
+        "prose"
+      ],
+      "kind": "builtin",
+      "hint": "Rhetorical question in prose. State the answer.",
+      "examples": {
+        "hit": [
+          "Why does uptake vary? Access is the main reason."
+        ],
+        "miss": [
+          "Uptake varied by district."
+        ]
+      }
+    },
+    {
+      "id": "STR-06",
+      "category": "STR",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:The\\s+(?:answer|result|reason|key|takeaway|bottom\\s+line|catch|twist|upshot|lesson|verdict)|Here(?:'s|’s|\\s+is)\\s+(?:why|the\\s+thing|what\\s+matters)|The\\s+reason\\s+is\\s+simple|One\\s+thing\\s+is\\s+clear)\\s*[:?]",
+      "flags": "i",
+      "hint": "Colon or question set-up before a reveal. State the point.",
+      "examples": {
+        "hit": [
+          "The answer: coverage.",
+          "Here's why:"
+        ],
+        "miss": [
+          "The result was a 20% reduction."
+        ]
+      }
+    },
+    {
+      "id": "STR-07",
+      "category": "STR",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:This|These|Our|Such)\\s+(?:findings?|results?|data|observations?|estimates?)\\s+(?:underscores?|highlights?|emphasi[sz]es?|illustrates?|reinforces?|showcases?|demonstrates?)\\s+(?:the\\s+)?(?:importance|need|urgency|value|potential|critical|crucial|pivotal|significance|relevance)\\b|\\bThis\\s+(?:is|represents|constitutes)\\s+(?:a|an)\\s+(?:noteworthy|remarkable|striking|important|significant|key|crucial|major|notable)\\s+(?:finding|result|observation|step|advance|contribution)\\b|\\b(?:These|Our)\\s+findings\\s+(?:have|carry)\\s+(?:important|significant|major|profound|far-reaching)\\s+implications\\b",
+      "flags": "i",
+      "hint": "Verdict sentence with no new content. Delete it, or state the specific implication.",
+      "examples": {
+        "hit": [
+          "These findings underscore the importance of early diagnosis.",
+          "This is a noteworthy finding.",
+          "Our findings have important implications."
+        ],
+        "miss": [
+          "These findings suggest that early diagnosis reduces mortality."
+        ]
+      }
+    },
+    {
+      "id": "STR-08",
+      "category": "STR",
+      "level": "review",
+      "scopes": [
+        "prose"
+      ],
+      "pattern": "^(?:(?:In\\s+summary|In\\s+conclusion|To\\s+summari[sz]e|Taken\\s+together|In\\s+short|All\\s+in\\s+all),?|Overall,)\\s",
+      "flags": "",
+      "hint": "Summary opener. Keep only for the closing paragraph of the Discussion or Conclusion.",
+      "examples": {
+        "hit": [
+          "In summary, the model fits well."
+        ],
+        "miss": [
+          "Overall survival was 62%."
+        ]
+      }
+    },
+    {
+      "id": "STR-09",
+      "category": "STR",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide",
+        "table"
+      ],
+      "pattern": "\\*\\*[^*\\n]{1,80}\\*\\*|(?<!\\w)__[^_\\n]{1,80}__(?!\\w)|^#{1,6}\\s+\\w",
+      "flags": "",
+      "hint": "Markdown left in a Word, slide or PDF document. Remove the markup.",
+      "formats": [
+        "docx",
+        "pptx",
+        "pdf",
+        "txt"
+      ],
+      "examples": {
+        "hit": [
+          "**Background** Tuberculosis is common."
+        ],
+        "miss": [
+          "Background: tuberculosis is common."
+        ]
+      }
+    },
+    {
+      "id": "STR-10",
+      "category": "STR",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "[\\U0001F300-\\U0001FAFF☀-⛿✀-➿]",
+      "flags": "",
+      "hint": "Emoji or pictograph. Remove.",
+      "examples": {
+        "hit": [
+          "Results improved 🎉"
+        ],
+        "miss": [
+          "Results improved"
+        ]
+      }
+    },
+    {
+      "id": "HYG-01",
+      "category": "HYG",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "(?i:\\b[\\w-]+\\.(?:csv|tsv|xlsx|xls|rmd|qmd|ipynb|docx|pptx|json|ya?ml|rds|rdata|rda|dta|sav|sas7bdat|parquet|feather|pkl|pickle|log|sh|ado|py)\\b)|\\b[\\w-]*[a-z_][\\w-]*\\.(?:R|do)\\b",
+      "flags": "",
+      "hint": "File name. Refer to the item by its published label (Table S8, Supplementary Data 1) or move it to the data availability statement.",
+      "skip_urls": true,
+      "examples": {
+        "hit": [
+          "Results are in TableS8_Sensitivity_analyses.csv.",
+          "see 02_model.R"
+        ],
+        "miss": [
+          "see Table 2.",
+          "(B.-T.N., K.R.)",
+          "Code is available at https://github.com/x/y/blob/main/model.R"
+        ]
+      }
+    },
+    {
+      "id": "HYG-02",
+      "category": "HYG",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "(?:(?<![\\w/])~/|(?<![\\w.])\\.{1,2}/|[A-Za-z]:\\\\|(?<![\\w])/(?:Users|home|mnt|data|tmp|var|opt|Volumes)/)[^\\s,;)]*",
+      "flags": "i",
+      "hint": "File path. Remove it.",
+      "examples": {
+        "hit": [
+          "/Users/alfred/Desktop/data.csv",
+          "../outputs/fig1.png"
+        ],
+        "miss": [
+          "1/2 of patients",
+          "and/or"
+        ]
+      }
+    },
+    {
+      "id": "HYG-03",
+      "category": "HYG",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b[a-z][a-z0-9]*(?:_[a-z0-9]+)+\\b",
+      "flags": "",
+      "hint": "snake_case identifier. Use the plain name of the variable or scenario.",
+      "skip_urls": true,
+      "examples": {
+        "hit": [
+          "the variable amr_rate_v2",
+          "scenario base_case"
+        ],
+        "miss": [
+          "base case",
+          "bla_KPC",
+          "All authors completed the form at http://www.icmje.org/coi_disclosure.pdf"
+        ]
+      }
+    },
+    {
+      "id": "HYG-04",
+      "category": "HYG",
+      "level": "review",
+      "scopes": [
+        "caption",
+        "table",
+        "figure"
+      ],
+      "pattern": "\\b[a-z]{2,}(?:[A-Z][a-z0-9]+)+\\b",
+      "flags": "",
+      "hint": "camelCase identifier. Use the plain name.",
+      "skip_urls": true,
+      "examples": {
+        "hit": [
+          "incidenceRate",
+          "totalCost"
+        ],
+        "miss": [
+          "mHealth",
+          "eGFR"
+        ]
+      }
+    },
+    {
+      "id": "HYG-05",
+      "category": "HYG",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\[(?:TODO|TBD|TBC|X{2,}|citation\\s+needed|refs?\\s*\\??|reference\\s*\\??|insert[^\\]]*|add[^\\]]*|DATA\\s+NEEDED[^\\]]*|\\?+|…|\\.\\.\\.)\\]|\\bTODO\\b|\\bTBD\\b|\\bTBC\\b|\\bXXX+\\b|\\?\\?+|\\{\\{[^}]+\\}\\}|<[A-Z_]{3,}>",
+      "flags": "i",
+      "hint": "Placeholder. Fill it or remove it.",
+      "examples": {
+        "hit": [
+          "[TODO]",
+          "[citation needed]",
+          "{{n_total}}",
+          "Costs were XXX."
+        ],
+        "miss": [
+          "[95% CI 1·2–3·4]"
+        ]
+      }
+    },
+    {
+      "id": "HYG-06",
+      "category": "HYG",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "[㐀-䶿一-鿿　-〿！-｠]+",
+      "flags": "",
+      "hint": "Chinese character or full-width punctuation in an English document (native-script author names allowed by the journal are the exception).",
+      "examples": {
+        "hit": [
+          "已核",
+          "Costs（US$）"
+        ],
+        "miss": [
+          "naïve estimates"
+        ]
+      }
+    },
+    {
+      "id": "HYG-07",
+      "category": "HYG",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b\\w+_v\\d+\\b|\\b\\w*_(?:final|draft|old|new|copy|tmp|temp)\\b|\\bv\\d+\\.\\d+(?:\\.\\d+)?\\b",
+      "flags": "",
+      "hint": "Version tag. Publication text has no versions of its own documents.",
+      "skip_urls": true,
+      "examples": {
+        "hit": [
+          "results_v3",
+          "Synopsis v1.1",
+          "fig_final"
+        ],
+        "miss": [
+          "R version 4.3.1"
+        ]
+      }
+    },
+    {
+      "id": "HYG-08",
+      "category": "HYG",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b(?!(?:NC|NZ|NM|NR|NG|NT|NW|XM|XR|WP|YP|GCF|GCA|ERR|SRR|DRR|PRJNA|SAMN)_)[A-Z][A-Z0-9]+(?:_[A-Z0-9]+)+\\b",
+      "flags": "",
+      "hint": "Code-style label. Use the public name of the category (accession numbers and locus tags are fine in genomic methods).",
+      "skip_urls": true,
+      "examples": {
+        "hit": [
+          "WMO_95TH_3D",
+          "PREXDR_HIGH"
+        ],
+        "miss": [
+          "MDR-TB",
+          "the reference genome NC_000962.3",
+          "assembly GCF_000195955.2"
+        ]
+      }
+    },
+    {
+      "id": "HYG-09",
+      "category": "HYG",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b(?:ChatGPT|GPT-?\\d(?:\\.\\d)?|Claude|Gemini|Copilot|large\\s+language\\s+models?|LLMs?)\\b",
+      "flags": "",
+      "hint": "AI tool mentioned. Keep only a disclosure the journal requires and the authors wrote.",
+      "examples": {
+        "hit": [
+          "We used ChatGPT to edit the text."
+        ],
+        "miss": [
+          "We used Stata to fit the models."
+        ]
+      }
+    },
+    {
+      "id": "HYG-10",
+      "category": "HYG",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "utm_source=|chatgpt\\.com|oaicite|contentReference|\\[\\^\\d+\\]|turn\\d+(?:search|view|news)\\d+",
+      "flags": "i",
+      "hint": "Chat or tracking residue in a link or citation. Remove it.",
+      "examples": {
+        "hit": [
+          "https://example.org/?utm_source=chatgpt.com",
+          "as reported[^1]"
+        ],
+        "miss": [
+          "https://doi.org/10.1016/S0140-6736(19)31288-7"
+        ]
+      }
+    },
+    {
+      "id": "HYG-11",
+      "category": "HYG",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\((?:simulated|appendix|post\\s+hoc|internal|placeholder|draft|provisional|descriptive\\s+only|tentative|illustrative)\\)",
+      "flags": "i",
+      "hint": "Status tag in parentheses. Explain once in the methods or legend, or remove.",
+      "examples": {
+        "hit": [
+          "Costs (simulated) were higher.",
+          "see figure (appendix)"
+        ],
+        "miss": [
+          "see appendix (p 5)",
+          "(appendix p 5)"
+        ]
+      }
+    },
+    {
+      "id": "FMT-01",
+      "category": "FMT",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide"
+      ],
+      "pattern": "\\b[Pp]\\s*[=<]\\s*0[.·]000\\b",
+      "flags": "",
+      "hint": "P value printed as 0·000. Report P<0·0001 (or the journal's form) or the exact value.",
+      "examples": {
+        "hit": [
+          "p=0.000",
+          "P < 0·000"
+        ],
+        "miss": [
+          "p<0·0001"
+        ]
+      }
+    },
+    {
+      "id": "FMT-02",
+      "category": "FMT",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b\\d+[.·]\\d+\\s*(?:[–-]|to)?\\s*(?:\\d+[.·]\\d+\\s+)?(?:participants|patients|people|persons|individuals|children|women|men|households|nurses|physicians|clinicians)\\b",
+      "flags": "i",
+      "hint": "Fractional count of people. Say 'an average of' or give whole numbers.",
+      "unless": "average",
+      "examples": {
+        "hit": [
+          "only 1.5–3.8 participants per site"
+        ],
+        "miss": [
+          "an average of 1.5 to 3.8 participants per site"
+        ]
+      }
+    },
+    {
+      "id": "FMT-03",
+      "category": "FMT",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\bdata\\s+(?:is|was|has)\\b",
+      "flags": "i",
+      "hint": "'Data' takes a plural verb in flagship journals ('data are', 'data were').",
+      "examples": {
+        "hit": [
+          "The data is sparse."
+        ],
+        "miss": [
+          "The data were sparse."
+        ]
+      }
+    },
+    {
+      "id": "FMT-04",
+      "category": "FMT",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "pattern": "\\b(?:can|won|don|doesn|didn|isn|aren|wasn|weren|couldn|shouldn|wouldn)['’]t\\b|\\b(?:it|that|there|what)['’]s\\b|\\b(?:we|they|you)['’](?:re|ve|ll|d)\\b|\\blet['’]s\\b",
+      "flags": "i",
+      "hint": "Contraction. Write the full form.",
+      "unless": "quote",
+      "examples": {
+        "hit": [
+          "It's clear that uptake fell.",
+          "We don't know."
+        ],
+        "miss": [
+          "Its effect was small.",
+          "One participant said, “If you don’t respond, we will call you.”"
+        ]
+      }
+    },
+    {
+      "id": "FMT-05",
+      "category": "FMT",
+      "level": "review",
+      "scopes": [
+        "prose"
+      ],
+      "pattern": "(?:^|(?<=[.!?]\\s))\\d[\\d,.·]*\\s+[a-z]",
+      "flags": "",
+      "hint": "Sentence starts with a numeral. Spell it out or rephrase.",
+      "examples": {
+        "hit": [
+          "12 patients died."
+        ],
+        "miss": [
+          "Twelve patients died."
+        ]
+      }
+    },
+    {
+      "id": "CAP-01",
+      "category": "CAP",
+      "level": "review",
+      "scopes": [
+        "caption"
+      ],
+      "pattern": "\\b(?:suggest(?:s|ing)?|indicat(?:es|ing)\\s+that|demonstrat(?:es|ing)\\s+that|reveal(?:s|ing)|confirm(?:s|ing)|highlight(?:s|ing)|underscor(?:es|ing)|clearly|strikingly|remarkably)\\b",
+      "flags": "i",
+      "hint": "Interpretation in a legend. Legends say what is shown; the text says what it means.",
+      "examples": {
+        "hit": [
+          "Figure 2: Incidence by year, suggesting a decline after 2015."
+        ],
+        "miss": [
+          "Figure 2: Incidence by year. Error bars indicate 95% CIs."
+        ]
+      }
+    },
+    {
+      "id": "FIG-01",
+      "category": "FIG",
+      "level": "must",
+      "scopes": [
+        "figure"
+      ],
+      "kind": "builtin",
+      "hint": "Figure-level subtitle, caption or overall title inside the image (labs(subtitle/caption), plot_annotation, suptitle, sub=). Move it to the legend below the figure.",
+      "examples": {
+        "hit": [
+          "labs(subtitle = \"Estimates are descriptive only\")"
+        ],
+        "miss": [
+          "labs(x = \"Year\")"
+        ]
+      }
+    },
+    {
+      "id": "FIG-02",
+      "category": "FIG",
+      "level": "review",
+      "scopes": [
+        "figure"
+      ],
+      "kind": "builtin",
+      "hint": "Plot title in code (labs(title), ggtitle, set_title, main=). A short panel title of a few words is fine; a figure title belongs in the legend.",
+      "examples": {
+        "hit": [
+          "ggtitle(\"Incidence of tuberculosis in 30 high-burden countries, 2010-2022\")"
+        ],
+        "miss": [
+          "labs(y = \"Cases (thousands)\")"
+        ]
+      }
+    },
+    {
+      "id": "FIG-03",
+      "category": "FIG",
+      "level": "must",
+      "scopes": [
+        "figure"
+      ],
+      "kind": "builtin",
+      "hint": "Sentence inside the figure (nine or more words, or a full stop after five or more). Move explanations and caveats to the legend.",
+      "examples": {
+        "hit": [
+          "annotate(\"text\", label = \"Model did not pass validation; interpret with caution.\")"
+        ],
+        "miss": [
+          "annotate(\"text\", label = \"HR 0.69\")"
+        ]
+      }
+    },
+    {
+      "id": "FIG-04",
+      "category": "FIG",
+      "level": "review",
+      "scopes": [
+        "figure"
+      ],
+      "kind": "builtin",
+      "hint": "Long label (over 40 characters). Shorten it and define the full term in the legend.",
+      "examples": {
+        "hit": [
+          "scale_fill_discrete(labels = c(\"All incident cases appropriately treated with WHO regimen\"))"
+        ],
+        "miss": [
+          "scale_fill_discrete(labels = c(\"Appropriate care\"))"
+        ]
+      }
+    },
+    {
+      "id": "FIG-05",
+      "category": "FIG",
+      "level": "review",
+      "scopes": [
+        "figure"
+      ],
+      "kind": "builtin",
+      "hint": "Single-letter category label. Readers cannot decode it; use a short name.",
+      "examples": {
+        "hit": [
+          "scale_colour_discrete(labels = c(\"R\", \"P\"))"
+        ],
+        "miss": [
+          "scale_colour_discrete(labels = c(\"RR-TB\", \"Pre-XDR-TB\"))"
+        ]
+      }
+    }
+  ]
+}
