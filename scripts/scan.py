@@ -2,15 +2,20 @@
 """Check English academic text for AI tells, internal material and style drift.
 
 Reads Markdown, Quarto, R Markdown, LaTeX, Word (.docx), PowerPoint (.pptx),
-PDF (with pdftotext), SVG, and R or Python plotting code, and reports findings
-by rule. It never edits files. Rules live in rules.json; reference rates from
-flagship-journal research articles live in calibration.json.
+PDF (with pdftotext), SVG, and R or Python code, and reports findings by rule.
+It never edits files. Rules live in rules.json; reference rates from research
+articles in leading journals live in calibration.json. Research plans, execution
+logs and analysis code have their own document types.
 
 Examples:
   python3 scan.py manuscript.docx
   python3 scan.py --profile --journal lancet draft.md
+  python3 scan.py --type economic --profile draft.md
   python3 scan.py --strict figures/*.R legends.md
   python3 scan.py --doc response response_letter.docx
+  python3 scan.py --doc plan research_plan.md
+  python3 scan.py --doc log execution_log.md
+  python3 scan.py --doc code analysis/
 """
 
 from __future__ import annotations
@@ -26,7 +31,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import textstats as ts  # noqa: E402
 
 SUFFIXES = {".md", ".markdown", ".txt", ".text", ".qmd", ".rmd", ".tex", ".docx", ".pptx", ".pdf", ".svg", ".r", ".py"}
-DOC_TYPES = ("manuscript", "response", "protocol", "slides")
+DOC_TYPES = ("manuscript", "response", "protocol", "slides", "plan", "log", "code")
+# Document types compared with journal prose in the density and profile reports.
+JOURNAL_PROSE = ("manuscript", "response", "protocol")
 LEVELS = ("must", "review", "density")
 STACK_OPENER = re.compile(
     r"^(?:Moreover|Furthermore|Additionally|In addition|Notably|Importantly|Interestingly|Crucially|Collectively|Remarkably),"
@@ -35,6 +42,13 @@ FIGURE_LEVEL_ROLES = {"subtitle", "caption", "sub"}
 FIGURE_LEVEL_FUNCTIONS = {"plot_annotation", "suptitle"}
 TITLE_ROLES = {"title", "main"}
 TITLE_FUNCTIONS = {"ggtitle", "set_title", "title"}
+RANDOM_CALL = re.compile(
+    r"\b(?:sample|rnorm|runif|rbinom|rpois|rgamma|rbeta|rexp|rnbinom|rmultinom|rlnorm|rweibull|mvrnorm|rmvnorm"
+    r"|boot|kmeans|randomForest|ranger|mice|cv\.glmnet|createDataPartition|stan|sampling|brm|jags|simulate)\s*\("
+    r"|\bnp\.random\.(?!seed)|\brandom\.(?:random|choice|shuffle|sample|randint|gauss)\s*\(|train_test_split\s*\("
+)
+SEED = re.compile(r"\bset\.seed\s*\(|\bnp\.random\.seed\s*\(|\brandom\.seed\s*\(|default_rng\s*\(\s*\d"
+                  r"|random_state\s*=\s*\d|torch\.manual_seed\s*\(|\bseed\s*=\s*\d")
 DENSITY_LABELS = {
     "contrast_per_1000": "Contrast frames (rather than, not … but, instead of)",
     "ai_signposts_per_1000": "Openers such as Moreover, Notably, Importantly",
@@ -81,7 +95,8 @@ def _figure_role(source: str) -> tuple[str, str]:
     return (match.group(1), match.group(2)) if match else (source, "")
 
 
-def figure_findings(segment: ts.Segment, rules_by_id: dict[str, ts.Rule], label: str) -> list[Finding]:
+def figure_findings(segment: ts.Segment, rules_by_id: dict[str, ts.Rule], label: str,
+                    design: str = "", journal: str = "") -> list[Finding]:
     text = segment.text.strip()
     function, role = _figure_role(segment.source)
     n_words = len(ts.words(text))
@@ -89,7 +104,7 @@ def figure_findings(segment: ts.Segment, rules_by_id: dict[str, ts.Rule], label:
 
     def add(rule_id: str):
         rule = rules_by_id[rule_id]
-        found.append(Finding(rule_id, rule.level, rule.category, label, segment.line, segment.scope,
+        found.append(Finding(rule_id, rule.level_for(design, journal), rule.category, label, segment.line, segment.scope,
                              segment.source, text, _excerpt(text), rule.hint))
 
     if role in FIGURE_LEVEL_ROLES or function in FIGURE_LEVEL_FUNCTIONS:
@@ -106,10 +121,10 @@ def figure_findings(segment: ts.Segment, rules_by_id: dict[str, ts.Rule], label:
 
 
 def scan_segments(segments: list[ts.Segment], rules: list[ts.Rule], label: str, file_format: str,
-                  doc_type: str) -> tuple[list[Finding], list[str]]:
+                  doc_type: str, design: str = "", journal: str = "") -> tuple[list[Finding], list[str]]:
     rules_by_id = {r.id: r for r in rules}
     active = [r for r in ts.regex_rules(rules) if doc_type not in r.skip_docs
-              and (not r.formats or file_format in r.formats)]
+              and (not r.formats or file_format in r.formats) and (not r.docs or doc_type in r.docs)]
     findings: list[Finding] = []
     prose_sentences: list[str] = []
     for segment in segments:
@@ -131,14 +146,15 @@ def scan_segments(segments: list[ts.Segment], rules: list[ts.Rule], label: str, 
                     if match.group(0) not in found.match.split(" | "):
                         found.match += " | " + match.group(0)
                     continue
-                grouped[key] = Finding(rule.id, rule.level, rule.category, label, segment.line, segment.scope,
-                                       segment.source, match.group(0), context, rule.hint)
+                grouped[key] = Finding(rule.id, rule.level_for(design, journal), rule.category, label, segment.line,
+                                       segment.scope, segment.source, match.group(0), context, rule.hint)
                 findings.append(grouped[key])
         if segment.scope in ("prose", "caption", "slide"):
             openers = [s for s in sentences if STACK_OPENER.match(s.strip())]
             if len(openers) >= 2:
                 rule = rules_by_id["STR-04"]
-                findings.append(Finding("STR-04", rule.level, rule.category, label, segment.line, segment.scope,
+                findings.append(Finding("STR-04", rule.level_for(design, journal), rule.category, label, segment.line,
+                                        segment.scope,
                                         segment.source, " / ".join(o.split(",")[0] for o in openers),
                                         _excerpt(openers[0]), rule.hint))
         if segment.scope == "prose" and doc_type != "slides":
@@ -146,10 +162,19 @@ def scan_segments(segments: list[ts.Segment], rules: list[ts.Rule], label: str, 
                 stripped = sentence.strip()
                 if stripped.endswith("?") and not re.search(r"[\"“”']", stripped) and len(ts.words(stripped)) > 3:
                     rule = rules_by_id["STR-05"]
-                    findings.append(Finding("STR-05", rule.level, rule.category, label, segment.line,
+                    findings.append(Finding("STR-05", rule.level_for(design, journal), rule.category, label, segment.line,
                                             segment.scope, segment.source, stripped, _excerpt(stripped), rule.hint))
         if segment.scope == "figure":
-            findings.extend(figure_findings(segment, rules_by_id, label))
+            findings.extend(figure_findings(segment, rules_by_id, label, design, journal))
+    if doc_type == "code" and "CODE-07" in rules_by_id:
+        code_lines = [s for s in segments if s.scope == "code"]
+        if not any(SEED.search(s.text) for s in code_lines):
+            first = next((s for s in code_lines if RANDOM_CALL.search(s.text)), None)
+            if first is not None:
+                rule = rules_by_id["CODE-07"]
+                findings.append(Finding("CODE-07", rule.level_for(design, journal), rule.category, label, first.line, "code",
+                                        first.source, RANDOM_CALL.search(first.text).group(0),
+                                        _excerpt(first.text), rule.hint))
     return findings, prose_sentences
 
 
@@ -221,6 +246,11 @@ def format_number(value) -> str:
 def print_report(result: dict, show_levels: set[str], show_profile: bool, out) -> None:
     findings = [f for f in result["findings"] if f["level"] in show_levels]
     print(f"\n{result['file']}: {result['words']:,} words of prose, {result['sentences']:,} sentences", file=out)
+    if result.get("design"):
+        how = "detected; set --type to change" if result.get("design_detected") else "set with --type"
+        print(f"Study type: {result['design']} ({how})", file=out)
+    elif result.get("design_detected"):
+        print("Study type: not clear from the text; general levels and the core reference group apply", file=out)
     for level in ("must", "review", "density"):
         items = [f for f in findings if f["level"] == level]
         if not items:
@@ -233,7 +263,7 @@ def print_report(result: dict, show_levels: set[str], show_profile: bool, out) -
             print(f"  {where}  [{f['rule']}]{times} \"{f['context']}\"", file=out)
             print(f"      {f['hint']}", file=out)
     if result["density"]:
-        print("\nDENSITY per 1000 words (flagship research median / 90th percentile)", file=out)
+        print("\nDENSITY per 1000 words (leading-journal median / 90th percentile)", file=out)
         for row in result["density"]:
             flag = "  HIGH" if row["high"] else ""
             ref = f"{format_number(row['reference_median'])} / {format_number(row['reference_p90'])}"
@@ -246,8 +276,18 @@ def print_report(result: dict, show_levels: set[str], show_profile: bool, out) -
             print(f"  {row['label']:<46} {format_number(row['value']):>6}   {ref:<12} {row['note']}", file=out)
 
 
-def scan_file(path: Path, rules: list[ts.Rule], doc_type: str, scope: str | None, group: dict | None,
-              label: str | None = None, text: str | None = None) -> dict:
+def choose_group(groups: dict, journal: str, design: str) -> tuple[str, dict | None]:
+    """An explicit --journal wins; otherwise the study-design group, then all research articles."""
+    if journal != "core" and journal in groups:
+        return journal, groups[journal]
+    if design in groups:
+        return design, groups[design]
+    return ("core", groups["core"]) if "core" in groups else (None, None)
+
+
+def scan_file(path: Path, rules: list[ts.Rule], doc_type: str, scope: str | None, groups: dict | None,
+              label: str | None = None, text: str | None = None, design: str = "auto",
+              journal: str = "core") -> dict:
     if text is not None:
         segments = ts.read_markdown(text)
         if scope:
@@ -255,20 +295,30 @@ def scan_file(path: Path, rules: list[ts.Rule], doc_type: str, scope: str | None
                 segment.scope = scope
         file_format = "md"
     else:
-        segments = ts.read_segments(path, scope)
+        segments = ts.read_segments(path, scope, code=doc_type == "code")
         file_format = path.suffix.lower().lstrip(".")
     label = label or str(path)
-    findings, prose_sentences = scan_segments(segments, rules, label, file_format, doc_type)
+    detected = design == "auto"
+    if detected:
+        prose = "\n".join(s.text for s in segments if s.scope == "prose")
+        design = ts.detect_design(prose)[0] if doc_type == "manuscript" and len(ts.words(prose)) >= 200 else ""
+        detected = doc_type == "manuscript" and len(ts.words(prose)) >= 200
+    group_name, group = choose_group(groups or {}, journal, design)
+    family = "" if journal == "core" else journal
+    findings, prose_sentences = scan_segments(segments, rules, label, file_format, doc_type, design, family)
     profile = ts.profile(prose_sentences)
     words = profile.get("words", 0)
+    compared = words >= 200 and doc_type in JOURNAL_PROSE
     return {
         "file": label,
         "words": words,
         "sentences": profile.get("sentences", 0),
         "findings": [asdict(f) for f in findings],
-        "density": density_report(profile, findings, words, group) if words >= 200 else [],
-        "profile": profile_report(profile, group) if words >= 200 else [],
-        "reference_group": None,
+        "density": density_report(profile, findings, words, group) if compared else [],
+        "profile": profile_report(profile, group) if compared else [],
+        "reference_group": group_name,
+        "design": design,
+        "design_detected": detected,
     }
 
 
@@ -276,43 +326,45 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("paths", nargs="+", help="files or folders to check; '-' reads text from stdin")
     parser.add_argument("--doc", choices=DOC_TYPES, default="manuscript",
-                        help="document type; 'response' allows revision narration")
+                        help="document type: 'response' allows revision narration; 'plan', 'log' and 'code' check "
+                             "research plans, execution logs and analysis scripts")
     parser.add_argument("--journal", default="core",
                         help="reference group for density and profile: core, lancet, nejm, jama, bmj, nature, cell, science")
+    parser.add_argument("--type", dest="design", choices=("auto",) + ts.DESIGNS, default="auto",
+                        help="study design; 'auto' guesses it from the text. Sets rule levels and the reference group")
     parser.add_argument("--scope", choices=ts.SCOPES, help="treat all text in the inputs as this scope (e.g. figure)")
     parser.add_argument("--level", choices=("must", "review", "all"), default="review",
                         help="lowest level to list (default: review)")
-    parser.add_argument("--profile", action="store_true", help="compare the style profile with flagship journals")
+    parser.add_argument("--profile", action="store_true", help="compare the style profile with leading journals")
     parser.add_argument("--json", action="store_true", help="print JSON")
     parser.add_argument("--strict", action="store_true", help="exit with status 1 if any must-fix finding is present")
     args = parser.parse_args(argv)
 
     _, rules = ts.load_rules()
-    group = None
+    groups = None
     try:
-        calibration = ts.load_calibration()
-        group = calibration["groups"].get(args.journal)
-        if group is None:
-            parser.error(f"unknown reference group '{args.journal}'; choose from {', '.join(calibration['groups'])}")
+        groups = ts.load_calibration()["groups"]
+        if args.journal not in groups:
+            parser.error(f"unknown reference group '{args.journal}'; choose from {', '.join(groups)}")
     except FileNotFoundError:
-        calibration = None
+        pass
 
     results = []
     for item in args.paths:
         if item == "-":
-            results.append(scan_file(Path("stdin"), rules, args.doc, args.scope, group, "stdin", sys.stdin.read()))
+            results.append(scan_file(Path("stdin"), rules, args.doc, args.scope, groups, "stdin", sys.stdin.read(),
+                                     args.design, args.journal))
             continue
         for path in collect_paths([item]):
             if not path.exists():
                 parser.error(f"no such file: {path}")
             try:
-                result = scan_file(path, rules, args.doc, args.scope, group)
+                result = scan_file(path, rules, args.doc, args.scope, groups, design=args.design,
+                                   journal=args.journal)
             except (OSError, RuntimeError, KeyError, ValueError) as error:
                 print(f"{path}: cannot read ({error})", file=sys.stderr)
                 continue
             results.append(result)
-    for result in results:
-        result["reference_group"] = args.journal if group else None
 
     show = {"must"} if args.level == "must" else ({"must", "review"} if args.level == "review" else set(LEVELS))
     must_total = sum(1 for r in results for f in r["findings"] if f["level"] == "must")

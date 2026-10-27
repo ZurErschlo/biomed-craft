@@ -69,7 +69,7 @@ Cues:
 - Disclaimer tails: `should be interpreted with caution`, `does not establish causality`, `remains conditional on`, `rather than a universal estimate` (DEF-04).
 - Narrated candour: `We are upfront about…`, `We acknowledge that…`, `Admittedly…` (DEF-05).
 - Status hedges: `indicative only`, `for illustrative purposes` (DEF-06).
-- Generic calls for research: `Further research is needed.` (DEF-07; absent from the 124 flagship articles).
+- Generic calls for research: `Further research is needed.` (DEF-07; rare in research articles in leading journals).
 - Pre-empting misreadings nobody made: `We do not claim that…`, `This does not mean that…`, `This is not a cost-effectiveness claim` (DEF-08).
 - Arguing with an absent opponent: `One might argue that…` (DEF-09).
 - Softening formulas: `Despite these limitations, our findings provide…` (DEF-10).

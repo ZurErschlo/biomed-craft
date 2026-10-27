@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check plain-paper's package files without external dependencies.
+"""Check biomed-craft's package files without external dependencies.
 
 Checks the skill metadata, version numbers, plugin manifests, local links,
 rule definitions and their documentation, and the calibration files.
@@ -47,8 +47,8 @@ def check_skill() -> str:
         return ""
     front = match.group(1)
     name = re.search(r"(?m)^name:\s*(\S+)\s*$", front)
-    if not name or name.group(1) != "plain-paper":
-        problem("SKILL.md name must be plain-paper")
+    if not name or name.group(1) != "biomed-craft":
+        problem("SKILL.md name must be biomed-craft")
     description = re.search(r"(?ms)^description:\s*\|?\n?(.*?)(?=^\w[\w-]*:|\Z)", front)
     text = " ".join(line.strip() for line in description.group(1).splitlines()) if description else ""
     if not text or len(text) > 1024:
@@ -84,17 +84,17 @@ def check_versions(skill_version: str) -> None:
     }
     if len(set(versions.values())) != 1:
         problem(f"Use one version everywhere: {versions}")
-    if plugin.get("name") != "plain-paper" or plugin.get("skills") != ["./"]:
-        problem("plugin.json must be named plain-paper and point its skills at ['./']")
+    if plugin.get("name") != "biomed-craft" or plugin.get("skills") != ["./"]:
+        problem("plugin.json must be named biomed-craft and point its skills at ['./']")
     entry = (marketplace.get("plugins") or [{}])[0]
-    if entry.get("name") != "plain-paper" or entry.get("source") != "./":
-        problem("marketplace.json must list plain-paper with source './'")
+    if entry.get("name") != "biomed-craft" or entry.get("source") != "./":
+        problem("marketplace.json must list biomed-craft with source './'")
 
 
 def check_links() -> None:
     documents = [ROOT / "SKILL.md", ROOT / "README.md", ROOT / "README.zh-CN.md", ROOT / "AGENTS.md",
                  ROOT / "tests" / "README.md"]
-    documents += sorted((ROOT / "references").glob("*.md"))
+    documents += sorted((ROOT / "references").rglob("*.md"))
     for document in documents:
         text = read(document)
         text = re.sub(r"```.*?```", "", text, flags=re.DOTALL)
@@ -110,12 +110,17 @@ def check_links() -> None:
     for reference in sorted((ROOT / "references").glob("*.md")):
         if f"references/{reference.name}" not in skill:
             problem(f"SKILL.md does not link references/{reference.name}")
+    for folder in sorted(p for p in (ROOT / "references").iterdir() if p.is_dir()):
+        index = read(ROOT / "references" / f"{folder.name}.md")
+        for reference in sorted(folder.glob("*.md")):
+            if f"{folder.name}/{reference.name}" not in index:
+                problem(f"references/{folder.name}.md does not link {folder.name}/{reference.name}")
 
 
 def check_rules() -> None:
     data = load_json(ROOT / "scripts" / "rules.json")
     rules = data.get("rules", [])
-    documented = " ".join(read(p) for p in (ROOT / "references").glob("*.md"))
+    documented = " ".join(read(p) for p in (ROOT / "references").rglob("*.md"))
     seen = set()
     for rule in rules:
         rule_id = rule.get("id", "?")
@@ -128,6 +133,10 @@ def check_rules() -> None:
             problem(f"{rule_id}: unknown category")
         if rule.get("level") not in data.get("levels", {}):
             problem(f"{rule_id}: unknown level")
+        known = set(data.get("designs", {})) | set(data.get("families", {}))
+        for target, level in rule.get("levels", {}).items():
+            if target not in known or level not in data.get("levels", {}):
+                problem(f"{rule_id}: level override {target}={level} uses an unknown design, family or level")
         if not rule.get("hint"):
             problem(f"{rule_id}: missing hint")
         if not rule.get("examples", {}).get("hit"):
@@ -154,7 +163,7 @@ def check_calibration() -> None:
     if groups["core"].get("papers") != len(research):
         problem("calibration.json and corpus.json disagree on the number of research articles")
     for paper in corpus:
-        if set(paper) - {"doi", "family", "journal", "year", "type", "words", "sentences"}:
+        if set(paper) - {"doi", "pmcid", "family", "journal", "year", "type", "design", "words", "sentences"}:
             problem(f"corpus.json holds unexpected fields for {paper.get('doi')}")
             break
 

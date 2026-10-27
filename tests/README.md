@@ -9,7 +9,7 @@ python3 scripts/validate_package.py
 python3 -m unittest discover -s tests -v
 ```
 
-They check every rule against its examples, reading of each file format, the command-line options and exit codes, a flagship-style passage with no findings, an AI-style passage with the expected findings, the preservation check, and that must-level style rules stay rare in the calibration corpus.
+They check every rule against its examples, reading of each file format, the command-line options and exit codes, a passage in leading-journal style with no findings, an AI-style passage with the expected findings, the preservation check, and that must-level style rules stay rare in the calibration corpus.
 
 ## Rewrite cases
 

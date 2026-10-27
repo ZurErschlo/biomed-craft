@@ -1,28 +1,56 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "levels": {
-    "must": "Fix on sight: flagship journals almost never print this, or it is internal material.",
+    "must": "Fix on sight: leading journals almost never print this, or it is internal material.",
     "review": "Judge in context: often a tell, sometimes the right word.",
-    "density": "Normal in flagship journals; reported only as a rate per 1000 words."
+    "density": "Normal in leading journals; reported only as a rate per 1000 words."
+  },
+  "designs": {
+    "trial": "Randomised trials",
+    "observational": "Cohort, case-control and cross-sectional studies, including analyses of routine and public databases",
+    "economic": "Health economic evaluations",
+    "systematic-review": "Systematic reviews, meta-analyses and scoping reviews",
+    "diagnostic": "Diagnostic accuracy and test evaluation studies",
+    "modelling": "Disease, transmission and burden models, projections and forecasts",
+    "laboratory": "Laboratory and mechanistic studies (cell, animal, structural, device)",
+    "computational": "Bioinformatics, genomics and other computational studies",
+    "review": "Narrative and clinical reviews",
+    "prediction": "Clinical prediction models, development and validation",
+    "mendelian-randomisation": "Mendelian randomisation and other genetic-epidemiology designs"
+  },
+  "families": {
+    "lancet": "The Lancet and its specialty journals",
+    "nejm": "NEJM",
+    "jama": "JAMA and its specialty journals",
+    "bmj": "The BMJ",
+    "nature": "Nature and the Nature research journals",
+    "cell": "Cell",
+    "science": "Science and Science Translational Medicine",
+    "annals": "Annals of Internal Medicine"
   },
   "scopes": {
     "prose": "Body text",
     "caption": "Figure legends and table titles or notes",
     "table": "Table cells",
     "slide": "Slide text",
-    "figure": "Text inside figures, read from plotting code or SVG"
+    "figure": "Text inside figures, read from plotting code or SVG",
+    "comment": "Comments in analysis code",
+    "code": "Code lines in analysis scripts"
   },
   "categories": {
     "CON": "Contrast frames used as a rhetorical device",
     "DEF": "Defensive hedging, disclaimers and pre-emptive rebuttals",
     "META": "Process or metadata narration that is not about the research",
     "ENG": "Engineering or software register used for research procedures",
-    "LEX": "Vocabulary that flagship journals rarely print",
+    "LEX": "Vocabulary that leading journals rarely print",
     "STR": "Structural and punctuation tells",
     "HYG": "Internal material that must not reach a publication",
     "FMT": "Number, grammar and style conventions",
     "CAP": "Figure legends and table notes",
-    "FIG": "Text inside figures"
+    "FIG": "Text inside figures",
+    "PLAN": "Research plans that are undecided or carry history",
+    "LOG": "Execution logs that will not read clearly later",
+    "CODE": "Analysis code and comments that block a rerun or a reader"
   },
   "rules": [
     {
@@ -34,7 +62,7 @@
         "caption",
         "slide"
       ],
-      "pattern": "\\b(?:is|are|was|were)\\s+not\\s+(?:just\\s+|only\\s+|simply\\s+|merely\\s+)?(?!(?:statistically|significant|significantly|different|associated|available|known|clear|possible|feasible|required|necessary|related|correlated|reported|observed|detected|measured|recorded|included|eligible|affected|altered|changed|modified|sufficient|adequate|large|small|high|low|due|yet|always|necessarily|powered|randomi[sz]ed|blinded|masked|consistent)\\b)(?:a\\s+|an\\s+|the\\s+)?[A-Za-z][\\w-]*(?:\\s+[A-Za-z][\\w-]*){0,5}[.;]\\s+(?:It|They|This|These|That)\\s+(?:is|are|was|were)\\b",
+      "pattern": "\\b(?:is|are|was|were)\\s+not\\s+(?:just\\s+|only\\s+|simply\\s+|merely\\s+)?(?!(?:statistically|significant|significantly|different|associated|available|known|clear|possible|feasible|required|necessary|related|correlated|reported|observed|detected|measured|recorded|included|eligible|affected|altered|changed|modified|sufficient|adequate|large|small|high|low|due|yet|always|necessarily|powered|randomi[sz]ed|blinded|masked|consistent)\\b)(?:a\\s+|an\\s+|the\\s+)?[A-Za-z][\\w-]*(?:\\s+[A-Za-z][\\w-]*){0,5}[.;]\\s+(?:It|They|This|These|That)\\s+(?:is|are|was|were)(?:\\s+[\\w-]+){1,4}\\s*[.]",
       "flags": "i",
       "hint": "Negate-then-assert across two sentences. State what it is; keep a contrast only when two measured things are compared.",
       "examples": {
@@ -47,7 +75,8 @@
           "The difference was not significant. It was small.",
           "Treatment was not associated with mortality. It was associated with readmission.",
           "PrEP was not used for 359 sexual intercourses (26%); it was used at a suboptimal dose.",
-          "Some men were not found at their homes or had migrated out of the study area. They were replaced."
+          "Some men were not found at their homes or had migrated out of the study area. They were replaced.",
+          "Screening is not commissioned as one centrally organised service. It was introduced in 2010 as part of a national programme."
         ]
       }
     },
@@ -256,14 +285,15 @@
         "caption",
         "slide"
       ],
-      "pattern": "\\bit\\s+(?:should|must)\\s+be\\s+(?:noted|emphasi[sz]ed|stressed|acknowledged|recogni[sz]ed|mentioned|highlighted)\\s+that\\b|\\bit\\s+is\\s+(?:important|worth|crucial|essential|critical|noteworthy|necessary)\\s+(?:to\\s+(?:note|mention|emphasi[sz]e|highlight|stress|remember|recogni[sz]e|acknowledge|point\\s+out)|noting|mentioning)\\b|\\bneedless\\s+to\\s+say\\b|\\bit\\s+goes\\s+without\\s+saying\\b|\\bit\\s+bears\\s+(?:mentioning|repeating)\\b",
+      "pattern": "\\bit\\s+(?:should|must)\\s+be\\s+(?:noted|emphasi[sz]ed|stressed|acknowledged|recogni[sz]ed|mentioned|highlighted)\\s+that\\b|\\bit\\s+is\\s+(?:important|worth|crucial|essential|critical|noteworthy|necessary)\\s+(?:to\\s+(?:note|mention|emphasi[sz]e|highlight|stress|remember|recogni[sz]e|acknowledge|point\\s+out)|noting|mentioning)\\b|\\bneedless\\s+to\\s+say\\b|\\bit\\s+goes\\s+without\\s+saying\\b|\\bit\\s+bears\\s+(?:mentioning|repeating)\\b|\\bwe\\s+(?:acknowledge|concede)\\s+that\\b",
       "flags": "i",
       "hint": "Throat-clearing before a point. Delete the lead-in and state the point.",
       "examples": {
         "hit": [
           "It should be noted that the sample was small.",
           "It is important to note that costs varied.",
-          "It is worth noting that uptake was low."
+          "It is worth noting that uptake was low.",
+          "We acknowledge that the sample was small."
         ],
         "miss": [
           "We noted that uptake was low."
@@ -345,13 +375,13 @@
         "caption",
         "slide"
       ],
-      "pattern": "\\bwe\\s+(?:are|were|have\\s+been)\\s+(?:upfront|transparent|open|candid|honest|frank)\\s+(?:about|that)\\b|\\bwe\\s+(?:openly|candidly|honestly|frankly|readily)\\s+(?:acknowledge|admit|note|concede)\\b|\\bwe\\s+(?:acknowledge|concede)\\s+that\\b|\\badmittedly\\b|\\bto\\s+be\\s+(?:clear|transparent|fair|honest)\\b",
+      "pattern": "\\bwe\\s+(?:are|were|have\\s+been)\\s+(?:upfront|transparent|open|candid|honest|frank)\\s+(?:about|that)\\b|\\bwe\\s+(?:openly|candidly|honestly|frankly|readily)\\s+(?:acknowledge|admit|note|concede)\\b|\\badmittedly\\b|\\bto\\s+be\\s+(?:clear|transparent|fair|honest)\\b",
       "flags": "i",
       "hint": "Narrated candour. State the limitation and its consequence.",
       "examples": {
         "hit": [
           "We are upfront about this limitation.",
-          "We acknowledge that the sample was small.",
+          "We readily acknowledge the small sample.",
           "Admittedly, the data are sparse."
         ],
         "miss": [
@@ -502,10 +532,11 @@
         "caption",
         "slide"
       ],
-      "pattern": "\\b(?:earlier|previous|prior|first|second|revised|updated|current|latest|original)\\s+(?:version|draft|iteration|round)\\s+of\\s+(?:this|our|the\\s+present)\\b|\\b(?:in|from)\\s+(?:the|this|our)\\s+(?:revised|updated|previous|earlier|current|latest)\\s+(?:version|draft|manuscript|submission)\\b|\\bthe\\s+earlier\\s+(?:[\\w-]+\\s+)?(?:outcome|design|model|analysis|approach|draft)\\b",
+      "pattern": "\\b(?:earlier|previous|prior|first|second|revised|updated|current|latest|original)\\s+(?:version|draft|iteration|round)\\s+of\\s+(?:this|our|the\\s+present)\\s+(?:manuscript|paper|article|report|protocol|draft|study|analysis|work|submission|plan|chapter|thesis)\\b|\\b(?:in|from)\\s+(?:the|this|our)\\s+(?:revised|updated|previous|earlier|current|latest)\\s+(?:version|draft|manuscript|submission)\\b(?!\\s+of\\s+(?:the|a|an)\\b)|\\bthe\\s+earlier\\s+(?:[\\w-]+\\s+)?(?:outcome|design|draft)\\b",
       "flags": "i",
       "hint": "Document history in the text. Describe the study as it stands; revision history belongs in the response letter.",
       "skip_docs": [
+        "log",
         "response"
       ],
       "examples": {
@@ -516,7 +547,10 @@
         ],
         "miss": [
           "the 2022 version of the WHO guidelines",
-          "an updated version of the WHO guideline"
+          "an updated version of the WHO guideline",
+          "the previous version of this method",
+          "in the previous version of the questionnaire",
+          "the earlier elimination analysis"
         ]
       }
     },
@@ -549,7 +583,7 @@
     {
       "id": "META-03",
       "category": "META",
-      "level": "must",
+      "level": "review",
       "scopes": [
         "prose",
         "caption",
@@ -581,7 +615,7 @@
       ],
       "pattern": "\\b[Ii]n\\s+this\\s+(?:paper|article|manuscript|report),?\\s+we\\s+(?:will\\s+)?(?:describe|discuss|present|outline|review|introduce|explore|examine|propose|show)\\b",
       "flags": "",
-      "hint": "Paper-level preview. Flagship articles state the aim ('We aimed to…', 'Here we show…').",
+      "hint": "Paper-level preview. Leading-journal articles state the aim ('We aimed to…', 'Here we show…').",
       "examples": {
         "hit": [
           "In this paper, we describe a new approach."
@@ -640,9 +674,10 @@
         "caption",
         "table",
         "slide",
-        "figure"
+        "figure",
+        "comment"
       ],
-      "pattern": "\\b(?:Certainly|Absolutely|Great\\s+question)[!,]|\\bI\\s+hope\\s+(?:this|that)\\s+helps\\b|\\bHere(?:\\s+is|'s|’s)\\s+(?:the|a|your)\\s+(?:revised|updated|rewritten|polished|edited|improved|final)\\b|\\bAs\\s+an\\s+AI\\b|\\blet\\s+me\\s+know\\s+if\\b|\\bfeel\\s+free\\s+to\\b|\\bI\\s+(?:have|'ve)\\s+(?:revised|rewritten|polished|edited|updated)\\b",
+      "pattern": "\\bCertainly!|\\b(?:Absolutely|Great\\s+question)[!,]|\\bI\\s+hope\\s+(?:this|that)\\s+helps\\b|\\bHere(?:\\s+is|'s|’s)\\s+(?:the|a|your)\\s+(?:revised|updated|rewritten|polished|edited|improved|final)\\b|\\bAs\\s+an\\s+AI\\b|\\blet\\s+me\\s+know\\s+if\\b|\\bfeel\\s+free\\s+to\\b|\\bI\\s+(?:have|'ve)\\s+(?:revised|rewritten|polished|edited|updated)\\b",
       "flags": "i",
       "hint": "Chat residue. Delete.",
       "examples": {
@@ -652,7 +687,8 @@
           "Let me know if you want changes."
         ],
         "miss": [
-          "We revised the protocol in 2020."
+          "We revised the protocol in 2020.",
+          "Certainly, the trial was not powered for mortality."
         ]
       }
     },
@@ -667,7 +703,7 @@
         "slide",
         "figure"
       ],
-      "pattern": "\\b(?:draft|provisional|tentative|internal|working|placeholder)\\s+(?:version|estimates?|results?|figures?|analys[ie]s|numbers|values|labels?|title)\\b|\\bfor\\s+internal\\s+use\\b|\\b(?:written|prepared|drafted|compiled|last\\s+updated)\\s+(?:on\\s+)?\\d{1,2}\\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+\\d{4}\\b|\\bsupersedes?\\b|\\breplaces\\s+(?:the\\s+)?(?:previous|earlier|prior)\\s+(?:version|document|draft)\\b",
+      "pattern": "\\b(?:draft|provisional|tentative|internal|working|placeholder)\\s+(?:version|estimates?|results?|figures?|analys[ie]s|numbers|values|labels?|title)\\b|\\bfor\\s+internal\\s+use\\b|\\b(?:written|prepared|drafted|compiled|last\\s+updated)\\s+(?:on\\s+)?\\d{1,2}\\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+\\d{4}\\b|\\b(?:this|the)\\s+(?:document|version|draft|file|plan|protocol|report)\\s+supersedes?\\b|\\breplaces\\s+(?:the\\s+)?(?:previous|earlier|prior)\\s+(?:version|document|draft)\\b",
       "flags": "i",
       "hint": "Status, date stamp or provenance label. Publication text carries none of these.",
       "examples": {
@@ -677,9 +713,13 @@
           "This document supersedes the earlier plan."
         ],
         "miss": [
-          "Participants were recruited on 13 October 2025."
+          "Participants were recruited on 13 October 2025.",
+          "This round of the study supersedes all previous estimates."
         ]
-      }
+      },
+      "skip_docs": [
+        "log"
+      ]
     },
     {
       "id": "META-09",
@@ -704,7 +744,10 @@
         "miss": [
           "The statistical analysis plan was published before unblinding."
         ]
-      }
+      },
+      "skip_docs": [
+        "log"
+      ]
     },
     {
       "id": "META-10",
@@ -719,6 +762,7 @@
       "flags": "i",
       "hint": "Working history. Report the method used and, if it matters, the pre-specified alternative.",
       "skip_docs": [
+        "log",
         "response"
       ],
       "examples": {
@@ -730,9 +774,11 @@
         "miss": [
           "The model was first described by Smith.",
           "Patients were first screened for eligibility.",
-          "This iteration of GBD provides estimates for nine new countries."
+          "This iteration of GBD provides estimates for nine new countries.",
+          "We reran the model under alternative scenarios as a sensitivity analysis."
         ]
-      }
+      },
+      "unless": "sensitivity"
     },
     {
       "id": "META-11",
@@ -753,6 +799,34 @@
         ],
         "miss": [
           "Definitions were consistent across sites."
+        ]
+      }
+    },
+    {
+      "id": "META-12",
+      "category": "META",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "comment"
+      ],
+      "pattern": "\\bsub-?agents?\\b|\\bmain\\s+(?:session|agent)\\b|\\bcontext\\s+window\\b|\\bthe\\s+(?:assistant|agent)\\s+(?:decided|chose|suggested|proposed|wrote)\\b|\\b(?:while|when)\\s+the\\s+user\\s+(?:was|slept|is)\\b|\\bthe\\s+user\\s+(?:chose|selected|decided|asked|approved|requested|wants|wanted|said|confirmed)\\b|\\bper\\s+(?:our|the)\\s+(?:chat|conversation|call)\\b|\\b(?:Codex|Claude|ChatGPT|Copilot)\\s+(?:review|session|suggested|said)\\b|\\breview\\s+#\\s?\\d+",
+      "flags": "i",
+      "hint": "Record of how an assistant, a session or a conversation worked. Write what was done to the research and why; name people by role if needed.",
+      "examples": {
+        "hit": [
+          "The subagent reran the model.",
+          "The user chose option B.",
+          "Codex review flagged a bug.",
+          "Changed per our chat."
+        ],
+        "miss": [
+          "We chose a Poisson model because counts were overdispersed.",
+          "The model suggested higher transmission in winter.",
+          "The agent was well tolerated."
         ]
       }
     },
@@ -900,7 +974,7 @@
         "prose",
         "caption"
       ],
-      "pattern": "(?:\\b[A-Za-z]{2,}|\\d)\\s*(?:->|→|=>|⇒|⟶)\\s*(?:[A-Za-z]{2,}|\\d)|(?:^|\\s)[↑↓](?:\\s|\\w)|(?<!\\w)w/o?(?=\\s)|\\b\\d+(?:\\.\\d+)?x\\s+(?:higher|lower|more|less|faster|slower|greater|larger|smaller)\\b",
+      "pattern": "\\b(?!WT\\b)[A-Za-z]{2,}\\s*(?:->|→|=>|⇒|⟶)\\s*(?!(?:Ala|Arg|Asn|Asp|Cys|Gln|Glu|Gly|His|Ile|Leu|Lys|Met|Phe|Pro|Ser|Thr|Trp|Tyr|Val)\\b)(?:[A-Za-z]{2,}|\\d)|\\d\\s*(?:->|→|=>|⇒|⟶)\\s*(?!(?:Ala|Arg|Asn|Asp|Cys|Gln|Glu|Gly|His|Ile|Leu|Lys|Met|Phe|Pro|Ser|Thr|Trp|Tyr|Val)\\b)[A-Za-z]{2,}|(?:^|\\s)[↑↓](?:\\s|\\w)|(?<!\\w)w/o?(?=\\s)|\\b\\d+(?:\\.\\d+)?x\\s+(?:higher|lower|more|less|faster|slower|greater|larger|smaller)\\b",
       "flags": "i",
       "hint": "Arrows, operators or shorthand standing in for words. Write the words ('led to', 'increased', 'three times').",
       "examples": {
@@ -912,7 +986,10 @@
         ],
         "miss": [
           "a risk two to three times higher",
-          "parameter chains (A → B → C)"
+          "parameter chains (A → B → C)",
+          "the Ser4→Gly substitution",
+          "a 3→2 shift",
+          "WT → Rag1−/− chimeras"
         ]
       }
     },
@@ -950,7 +1027,7 @@
         "slide",
         "figure"
       ],
-      "pattern": "\\b(?:num|den|hi|lo)/(?:den|num|lo|hi)\\b|\\b(?:TRUE|FALSE|NULL|NaN)\\b|==|!=|\\s<-\\s|\\b[a-z_][\\w.]*\\$[a-z_]\\w*",
+      "pattern": "\\b(?:num|den|hi|lo)/(?:den|num|lo|hi)\\b|(?<!=\\s)(?<!=)\\b(?:TRUE|FALSE|NULL|NaN)\\b|==|!=|\\s<-\\s|\\b[a-z_][\\w.]*\\$[a-z_]\\w*",
       "flags": "",
       "hint": "Code token in text. Replace with the quantity's name.",
       "examples": {
@@ -960,7 +1037,8 @@
         ],
         "miss": [
           "costs in US$2025",
-          "true positive rate"
+          "true positive rate",
+          "with use.ranks = FALSE"
         ]
       }
     },
@@ -975,20 +1053,22 @@
         "slide",
         "figure"
       ],
-      "pattern": "\\b(?:delv(?:e|es|ed|ing)|tapestr(?:y|ies)|testament|realms?|garner(?:s|ed|ing)?|meticulous(?:ly)?|plethora|unravel(?:s|led|ed|ling|ing)?|cutting-edge|groundbreaking|showcas(?:e|es|ed|ing)|unveil(?:s|ed|ing)?|underexplored|invaluable|myriad|intricate(?:ly)?|intricacies|transformative|intriguing(?:ly)?|commendable|revolutioni[sz](?:e|es|ed|ing)|spearhead(?:s|ed|ing)?|nestled|vibrant|endeavou?rs?|bedrock|linchpin|game-changing)\\b",
+      "pattern": "\\b(?:delv(?:e|es|ed|ing)|tapestr(?:y|ies)|testament|realms?|garner(?:s|ed|ing)?|cutting-edge|groundbreaking|showcas(?:e|es|ed|ing)|unveil(?:s|ed|ing)?|underexplored|commendable|revolutioni[sz](?:e|es|ed|ing)|spearhead(?:s|ed|ing)?|nestled|vibrant|endeavou?rs?|bedrock|linchpin|game-changing)\\b",
       "flags": "i",
-      "hint": "Word that flagship research articles almost never print. Use a plain word or delete.",
+      "hint": "Word that research articles in leading journals almost never print. Use a plain word or delete.",
       "examples": {
         "hit": [
           "We delve into the determinants of uptake.",
           "a rich tapestry of factors",
           "This is a groundbreaking analysis.",
-          "We showcase the model.",
-          "intricate interplay"
+          "We showcase the model."
         ],
         "miss": [
           "We examined the determinants of uptake."
         ]
+      },
+      "levels": {
+        "review": "review"
       }
     },
     {
@@ -1004,7 +1084,7 @@
       ],
       "pattern": "\\ba\\s+growing\\s+body\\s+of\\b|\\battracted\\s+(?:increasing|growing|considerable|significant|much|widespread)\\s+(?:attention|interest)\\b|\\b(?:ever-)?(?:evolving|changing|shifting)\\s+landscape\\b|\\bin\\s+the\\s+realm\\s+of\\b|\\bbridg(?:e|es|ed|ing)\\s+(?:the|this|a)\\s+gap\\b|\\bopen(?:s|ed|ing)?\\s+(?:up\\s+)?new\\s+avenues\\b|\\bvaluable\\s+insights?\\b|\\ba\\s+testament\\s+to\\b|\\bnavigat(?:e|es|ed|ing)\\s+(?:the\\s+)?(?:complex|complexities|challenges|landscape|uncertaint)|\\bin\\s+today'?s\\s+(?:rapidly\\s+)?(?:evolving|changing|world)\\b|\\bin\\s+an\\s+era\\s+of\\b|\\bin\\s+the\\s+modern\\s+era\\b",
       "flags": "i",
-      "hint": "Stock phrase absent from flagship research articles. Replace with the specific fact.",
+      "hint": "Stock phrase absent from research articles in leading journals. Replace with the specific fact.",
       "examples": {
         "hit": [
           "A growing body of evidence suggests benefit.",
@@ -1015,6 +1095,9 @@
         "miss": [
           "Six trials have reported benefit."
         ]
+      },
+      "levels": {
+        "review": "review"
       }
     },
     {
@@ -1030,7 +1113,7 @@
       ],
       "pattern": "\\bmultifaceted\\b|\\binterplay\\b|\\bplays?\\s+an?\\s+(?:pivotal|crucial|vital|key|critical|central|instrumental|integral|important|major|significant)\\s+role\\b|\\btaken\\s+together\\b|\\bcollectively,|\\bremarkabl(?:e|y)\\b|\\bunderscor(?:e|es|ed|ing)\\b|\\bleverag(?:e|es|ed|ing)\\b|\\bholistic(?:ally)?\\b|\\bempower(?:s|ed|ing|ment)?\\b|\\bnovel\\b(?!\\s+coronavirus)|\\bnuanced?\\b|\\blandscape\\b|\\binsights?\\b|\\bfoster(?:s|ed|ing)?\\b(?!\\s+(?:care|home|parents?|child(?:ren)?|famil))|\\bpivotal\\b(?!\\s+(?:trials?|stud(?:y|ies)|phase))|\\bunprecedented\\b|\\bfundamentally\\b|\\bin\\s+recent\\s+years\\b|\\bparamount\\b|\\bharness(?:es|ed|ing)?\\b|\\bstreamlin(?:e|es|ed|ing)\\b|\\bembark(?:s|ed|ing)?\\b|\\bbolster(?:s|ed|ing)?\\b|\\bnoteworthy\\b|\\bcornerstone\\b|\\bseamless(?:ly)?\\b(?!\\s+(?:phase|transition|design|adaptive))|\\bpav(?:e|es|ed|ing)\\s+the\\s+way\\b|\\bshed(?:s|ding)?\\s+(?:new\\s+|further\\s+)?light\\s+on\\b",
       "flags": "i",
-      "hint": "Uncommon in flagship articles before 2023 and rising since. Keep only when it carries meaning; otherwise use the plain word or the number.",
+      "hint": "Uncommon in leading-journal articles before 2023 and rising since. Keep only when it carries meaning; otherwise use the plain word or the number.",
       "examples": {
         "hit": [
           "Uptake plays a key role in control.",
@@ -1211,13 +1294,47 @@
       ],
       "pattern": "\\b(?:potential(?:ly)?|key|enhanc(?:e|es|ed|ing|ement)|facilitat(?:e|es|ed|ing)|highlight(?:s|ed|ing)?|various|diverse|particularly|additionally|furthermore|moreover)\\b",
       "flags": "i",
-      "hint": "Common in flagship journals; a problem only at high density.",
+      "hint": "Common in leading journals; a problem only at high density.",
       "examples": {
         "hit": [
           "Additionally, various factors may enhance uptake."
         ],
         "miss": [
           "Uptake was higher in women."
+        ]
+      }
+    },
+    {
+      "id": "LEX-11",
+      "category": "LEX",
+      "level": "must",
+      "levels": {
+        "review": "review",
+        "laboratory": "review",
+        "computational": "review",
+        "cell": "review",
+        "nature": "review"
+      },
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "pattern": "\\b(?:meticulous(?:ly)?|plethora|unravel(?:s|led|ed|ling|ing)?|invaluable|myriad|intricate(?:ly)?|intricacies|transformative|intriguing(?:ly)?)\\b",
+      "flags": "i",
+      "hint": "Rare in clinical, epidemiological and economic research articles, though reviews and laboratory papers use it. Say what the property is: name the mechanism instead of 'intricate interplay', or say what the data made possible instead of 'invaluable'.",
+      "examples": {
+        "hit": [
+          "the intricate interplay of host and pathogen",
+          "a myriad of factors",
+          "an intriguing finding",
+          "invaluable data"
+        ],
+        "miss": [
+          "an unexpected finding",
+          "many factors"
         ]
       }
     },
@@ -1232,7 +1349,7 @@
       ],
       "pattern": "—|(?<=\\w)--(?=\\w)|\\s--\\s",
       "flags": "",
-      "hint": "Em dash. Flagship articles use about one per 1700 words. Use a comma, parentheses or a new sentence.",
+      "hint": "Em dash. Leading-journal articles use about one per 1700 words. Use a comma, parentheses or a new sentence.",
       "examples": {
         "hit": [
           "The effect—small but real—persisted."
@@ -1463,7 +1580,13 @@
           "(B.-T.N., K.R.)",
           "Code is available at https://github.com/x/y/blob/main/model.R"
         ]
-      }
+      },
+      "levels": {
+        "computational": "review"
+      },
+      "skip_docs": [
+        "log"
+      ]
     },
     {
       "id": "HYG-02",
@@ -1488,7 +1611,10 @@
           "1/2 of patients",
           "and/or"
         ]
-      }
+      },
+      "skip_docs": [
+        "log"
+      ]
     },
     {
       "id": "HYG-03",
@@ -1501,7 +1627,7 @@
         "slide",
         "figure"
       ],
-      "pattern": "\\b[a-z][a-z0-9]*(?:_[a-z0-9]+)+\\b",
+      "pattern": "(?<![`\\-:])(?<!option )(?<!options )(?<!flag )(?<!parameter )(?<!argument )(?<!function )(?<!command )(?<!package )(?<!module )(?<!term )(?<!script )\\b[a-z][a-z0-9]*(?:_[a-z0-9]+)+\\b",
       "flags": "",
       "hint": "snake_case identifier. Use the plain name of the variable or scenario.",
       "skip_urls": true,
@@ -1513,9 +1639,18 @@
         "miss": [
           "base case",
           "bla_KPC",
-          "All authors completed the form at http://www.icmje.org/coi_disclosure.pdf"
+          "All authors completed the form at http://www.icmje.org/coi_disclosure.pdf",
+          "We used the function generate_multihetsep.",
+          "We set --energy_cutoff to 5."
         ]
-      }
+      },
+      "levels": {
+        "laboratory": "review",
+        "computational": "review"
+      },
+      "skip_docs": [
+        "log"
+      ]
     },
     {
       "id": "HYG-04",
@@ -1576,7 +1711,8 @@
         "caption",
         "table",
         "slide",
-        "figure"
+        "figure",
+        "comment"
       ],
       "pattern": "[㐀-䶿一-鿿　-〿！-｠]+",
       "flags": "",
@@ -1602,7 +1738,7 @@
         "slide",
         "figure"
       ],
-      "pattern": "\\b\\w+_v\\d+\\b|\\b\\w*_(?:final|draft|old|new|copy|tmp|temp)\\b|\\bv\\d+\\.\\d+(?:\\.\\d+)?\\b",
+      "pattern": "\\b\\w+_v\\d+\\b|\\b\\w*_(?:final|draft|old|new|copy|tmp|temp)\\b|(?i:\\b(?:protocol|synopsis|plan|draft|manuscript|report|SAP|appendix|supplement|document|questionnaire|codebook|dataset|data\\s+set|model|deck|slides?)\\s+v\\d+(?:\\.\\d+)*\\b)",
       "flags": "",
       "hint": "Version tag. Publication text has no versions of its own documents.",
       "skip_urls": true,
@@ -1613,9 +1749,14 @@
           "fig_final"
         ],
         "miss": [
-          "R version 4.3.1"
+          "R version 4.3.1",
+          "We aligned reads with STAR v2.7.0e.",
+          "Analyses used R v4.3.3 and Stata v16.1."
         ]
-      }
+      },
+      "skip_docs": [
+        "log"
+      ]
     },
     {
       "id": "HYG-08",
@@ -1653,7 +1794,8 @@
         "caption",
         "table",
         "slide",
-        "figure"
+        "figure",
+        "comment"
       ],
       "pattern": "\\b(?:ChatGPT|GPT-?\\d(?:\\.\\d)?|Claude|Gemini|Copilot|large\\s+language\\s+models?|LLMs?)\\b",
       "flags": "",
@@ -1676,7 +1818,8 @@
         "caption",
         "table",
         "slide",
-        "figure"
+        "figure",
+        "comment"
       ],
       "pattern": "utm_source=|chatgpt\\.com|oaicite|contentReference|\\[\\^\\d+\\]|turn\\d+(?:search|view|news)\\d+",
       "flags": "i",
@@ -1714,7 +1857,10 @@
           "see appendix (p 5)",
           "(appendix p 5)"
         ]
-      }
+      },
+      "skip_docs": [
+        "log"
+      ]
     },
     {
       "id": "FMT-01",
@@ -1772,7 +1918,7 @@
       ],
       "pattern": "\\bdata\\s+(?:is|was|has)\\b",
       "flags": "i",
-      "hint": "'Data' takes a plural verb in flagship journals ('data are', 'data were').",
+      "hint": "'Data' takes a plural verb in leading journals ('data are', 'data were').",
       "examples": {
         "hit": [
           "The data is sparse."
@@ -1931,6 +2077,502 @@
         ],
         "miss": [
           "scale_colour_discrete(labels = c(\"RR-TB\", \"Pre-XDR-TB\"))"
+        ]
+      }
+    },
+    {
+      "id": "PLAN-01",
+      "category": "PLAN",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "table"
+      ],
+      "docs": [
+        "plan"
+      ],
+      "pattern": "\\b(?:TODO|TBD|TBC|FIXME)\\b|\\bto\\s+be\\s+(?:confirmed|decided|determined|added|updated|checked|discussed|finali[sz]ed)\\b|\\bif\\s+(?:possible|feasible|time\\s+(?:allows|permits))\\b|\\bnext\\s+steps?\\b|\\bopen\\s+questions?\\b|\\bpending\\s+(?:decision|confirmation|review|discussion|approval)\\b|\\b(?:maybe|perhaps)\\s+(?:we|also)\\b",
+      "flags": "i",
+      "hint": "Unsettled item. A plan states what will be done: decide it, or move it to the to-do list of the execution log.",
+      "examples": {
+        "hit": [
+          "The cut-off is to be confirmed.",
+          "We will add income if possible.",
+          "Next steps: request the registry data.",
+          "Sensitivity analyses (TBD)."
+        ],
+        "miss": [
+          "We will adjust for age, sex and income.",
+          "Participants with pending test results will be excluded."
+        ]
+      }
+    },
+    {
+      "id": "PLAN-02",
+      "category": "PLAN",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "table",
+        "comment"
+      ],
+      "docs": [
+        "plan",
+        "code"
+      ],
+      "pattern": "\\b(?:done|completed|finished|in\\s+progress|ongoing|not\\s+started|on\\s+hold|WIP)\\s*[:)\\]]|[✅✔☑❌⏳🚧]|^\\s*\\[(?:\\s|x|X)\\]|\\bstatus\\s*:",
+      "flags": "i",
+      "hint": "Progress marker. Status belongs in the execution log; the plan describes the method and the code does the work.",
+      "examples": {
+        "hit": [
+          "Data cleaning (done)",
+          "Status: in progress",
+          "[x] Download the WHO data",
+          "✅ Model fitted"
+        ],
+        "miss": [
+          "Analyses will be done in R.",
+          "Follow-up was completed at 12 months."
+        ]
+      }
+    },
+    {
+      "id": "PLAN-03",
+      "category": "PLAN",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "table"
+      ],
+      "docs": [
+        "plan"
+      ],
+      "pattern": "\\b(?:updated|revised|changed|amended|modified|added|removed)\\s+(?:on|in)\\s+(?:\\d|(?:January|February|March|April|May|June|July|August|September|October|November|December)\\b)|\\bpreviously\\b|\\b(?:old|new|original|earlier)\\s+(?:spec(?:ification)?|approach|version|plan)\\b|\\bsupersed(?:es|ed|ing)\\b|\\breplac(?:es|ed)\\s+(?:the\\s+)?(?:previous|earlier|old)\\b|\\bchange\\s*log\\b|\\bas\\s+of\\s+\\d|\\b(?:plan|protocol)\\s+v\\d+(?:\\.\\d+)*\\b",
+      "flags": "i",
+      "hint": "History in the plan. The plan states the current method only; the execution log records what changed, when and why.",
+      "examples": {
+        "hit": [
+          "Updated on 12 May 2026: added income as a covariate.",
+          "Previously we planned a Poisson model.",
+          "This supersedes the earlier specification.",
+          "Plan v3 follows."
+        ],
+        "miss": [
+          "We will update the estimates each year.",
+          "The model is described in the original publication."
+        ]
+      }
+    },
+    {
+      "id": "PLAN-04",
+      "category": "PLAN",
+      "level": "must",
+      "scopes": [
+        "prose",
+        "table"
+      ],
+      "docs": [
+        "plan"
+      ],
+      "pattern": "\\b(?:see|cf\\.?|refer\\s+to|as\\s+(?:recorded|noted|described|logged)\\s+in)\\s+(?:the\\s+)?(?:execution[\\s_-]?)?log\\b|\\bexecution[\\s_-]?log(?:\\.md)?\\b|\\bsee\\s+(?:the\\s+)?(?:archive|notes|chat|thread|meeting\\s+notes)\\b|\\bissue\\s*#\\d+",
+      "flags": "i",
+      "hint": "Pointer to the log or to working notes. The plan stands on its own: write the content here, or leave it in the log.",
+      "examples": {
+        "hit": [
+          "See execution_log.md for details.",
+          "as recorded in the log",
+          "see the meeting notes"
+        ],
+        "miss": [
+          "Counts were log-transformed.",
+          "We will fit a log-linear model."
+        ]
+      }
+    },
+    {
+      "id": "PLAN-05",
+      "category": "PLAN",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "table",
+        "comment"
+      ],
+      "docs": [
+        "plan",
+        "log",
+        "code"
+      ],
+      "pattern": "\\((?:[A-Z]{1,2}\\d{1,3}[a-z]?)(?:\\s*[,;–-]\\s*[A-Z]{1,2}\\d{1,3}[a-z]?)*\\)|\\b(?:decision|item|step|rule|note|requirement|task|change)\\s+[A-Z]{1,2}\\d{1,3}\\b",
+      "hint": "Internal code. Write what it stands for; a reader should not need a key.",
+      "examples": {
+        "hit": [
+          "Use the 2019 estimates (N12).",
+          "as agreed in decision R3",
+          "the rules (R1–R22)"
+        ],
+        "miss": [
+          "Recruitment reached the target (n=120).",
+          "Results are in Table 2.",
+          "The ratio was 1·5 (95% CI 1·2–3·4)."
+        ]
+      }
+    },
+    {
+      "id": "PLAN-06",
+      "category": "PLAN",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "table"
+      ],
+      "docs": [
+        "plan"
+      ],
+      "pattern": "\\b(?:threads?|n_?cores|CPU|GPU|RAM|environment\\s+variables?|Sys\\.setenv|Rprof|profvis|wall[\\s-]?clock|run\\s?time|parallel(?:i[sz]ed)?\\s+(?:over|across|on)\\s+\\d+)\\b",
+      "flags": "i",
+      "hint": "Run detail. The plan says what is computed; how the machine runs it belongs in the code.",
+      "examples": {
+        "hit": [
+          "The model runs on 8 threads.",
+          "Set the environment variable MAX_ITER first.",
+          "Runtime is about 3 hours."
+        ],
+        "miss": [
+          "Participants will be followed for 3 years."
+        ]
+      }
+    },
+    {
+      "id": "PLAN-07",
+      "category": "PLAN",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "table"
+      ],
+      "docs": [
+        "plan"
+      ],
+      "pattern": "\\b[Ww]e\\s+(?:may|might|could)\\s+(?:also\\s+)?(?:use|fit|consider|explore|try|add|include|apply|run|compare)\\b|\\boptionally\\b|\\b[Aa]lternatively,?\\s+we\\s+(?:may|might|could|can|will)\\b",
+      "hint": "Undecided option. Write 'We will use X because Y', or a definite rule: 'If A, we will use B.'",
+      "examples": {
+        "hit": [
+          "We may also explore a negative binomial model.",
+          "Alternatively, we could use multiple imputation."
+        ],
+        "miss": [
+          "If the model does not converge, we will use a simpler structure.",
+          "Results may differ by region."
+        ]
+      }
+    },
+    {
+      "id": "LOG-01",
+      "category": "LOG",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "table"
+      ],
+      "docs": [
+        "log"
+      ],
+      "pattern": "\\b\\d{1,2}/\\d{1,2}/\\d{2,4}\\b|\\b\\d{1,2}(?:st|nd|rd|th)?\\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\\.?,?\\s+\\d{4}\\b|\\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\\.?\\s+\\d{1,2}(?:st|nd|rd|th)?,?\\s+\\d{4}\\b",
+      "hint": "Write dates as YYYY-MM-DD, so entries sort and read the same everywhere.",
+      "examples": {
+        "hit": [
+          "12/05/2026: reran the model.",
+          "On 12 May 2026 we added income.",
+          "Entry for May 12, 2026"
+        ],
+        "miss": [
+          "2026-05-12: added income as a covariate."
+        ]
+      }
+    },
+    {
+      "id": "LOG-02",
+      "category": "LOG",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "table"
+      ],
+      "docs": [
+        "log"
+      ],
+      "pattern": "\\b(?:yesterday|today|tonight|tomorrow|this\\s+(?:morning|afternoon|evening|week)|last\\s+(?:night|week)|earlier\\s+today|just\\s+now)\\b",
+      "flags": "i",
+      "hint": "Relative time. A log is read later; give the date.",
+      "examples": {
+        "hit": [
+          "Fixed the join yesterday.",
+          "Will rerun tomorrow."
+        ],
+        "miss": [
+          "2026-05-12: fixed the join."
+        ]
+      }
+    },
+    {
+      "id": "CODE-01",
+      "category": "CODE",
+      "level": "must",
+      "scopes": [
+        "code"
+      ],
+      "docs": [
+        "code"
+      ],
+      "pattern": "\\bsetwd\\s*\\(|\\bos\\.chdir\\s*\\(",
+      "hint": "Do not set the working directory in a script. Open the project file and build paths from the project root with here::here().",
+      "examples": {
+        "hit": [
+          "setwd(\"~/project/data\")"
+        ],
+        "miss": [
+          "here::here(\"data\", \"input\")"
+        ]
+      }
+    },
+    {
+      "id": "CODE-02",
+      "category": "CODE",
+      "level": "must",
+      "scopes": [
+        "code"
+      ],
+      "docs": [
+        "code"
+      ],
+      "pattern": "\\brm\\s*\\(\\s*list\\s*=\\s*ls\\s*\\(",
+      "hint": "rm(list = ls()) does not give a fresh session. Restart R instead (Session > Restart R).",
+      "examples": {
+        "hit": [
+          "rm(list = ls())"
+        ],
+        "miss": [
+          "rm(tmp)"
+        ]
+      }
+    },
+    {
+      "id": "CODE-03",
+      "category": "CODE",
+      "level": "must",
+      "scopes": [
+        "code"
+      ],
+      "docs": [
+        "code"
+      ],
+      "pattern": "\\binstall\\.packages\\s*\\(|\\bBiocManager::install\\s*\\(|\\b(?:devtools|remotes)::install_github\\s*\\(|^\\s*!?pip\\s+install\\b",
+      "hint": "Install packages once, outside the analysis. Load them at the top of the script, one per line with pacman::p_load().",
+      "examples": {
+        "hit": [
+          "install.packages(\"meta\")"
+        ],
+        "miss": [
+          "pacman::p_load(meta)"
+        ]
+      }
+    },
+    {
+      "id": "CODE-04",
+      "category": "CODE",
+      "level": "must",
+      "scopes": [
+        "code"
+      ],
+      "docs": [
+        "code"
+      ],
+      "pattern": "[\\\"'](?:[A-Za-z]:[\\\\/]|/(?:Users|home|Volumes|mnt|private)/|~/)[^\\\"']*[\\\"']",
+      "hint": "Absolute or home-folder path. Build the path from the project root with here::here() so the script runs on another computer.",
+      "examples": {
+        "hit": [
+          "read.csv(\"/Users/me/project/data.csv\")",
+          "read_excel('C:/data/x.xlsx')"
+        ],
+        "miss": [
+          "read.csv(here::here(\"data\", \"input\", \"cases.csv\"))"
+        ]
+      }
+    },
+    {
+      "id": "CODE-05",
+      "category": "CODE",
+      "level": "must",
+      "scopes": [
+        "code"
+      ],
+      "docs": [
+        "code"
+      ],
+      "pattern": "\\bsave\\.image\\s*\\(|[\\\"'][^\\\"']*\\.R[Dd]ata[\\\"']",
+      "hint": "Do not save or reload the workspace. Write the objects you need with saveRDS() or write.csv() and read them back by name.",
+      "examples": {
+        "hit": [
+          "save.image(\"all.RData\")",
+          "load(\"model.RData\")"
+        ],
+        "miss": [
+          "saveRDS(fit, here::here(\"data\", \"output\", \"fit.rds\"))"
+        ]
+      }
+    },
+    {
+      "id": "CODE-06",
+      "category": "CODE",
+      "level": "must",
+      "scopes": [
+        "code"
+      ],
+      "docs": [
+        "code"
+      ],
+      "pattern": "\\bsource\\s*\\(\\s*(?:here::here\\s*\\(\\s*)?[\\\"'][^\\\"']*(?:function|helper|util|common|setup|config|init)[^\\\"']*[\\\"']",
+      "hint": "A shared helper or setup file hides what this script does. Define the functions the script uses at its top.",
+      "examples": {
+        "hit": [
+          "source(\"functions.R\")",
+          "source(here::here(\"R/helpers.R\"))"
+        ],
+        "miss": [
+          "source_table <- read.csv(here::here(\"data\", \"input\", \"sources.csv\"))"
+        ]
+      }
+    },
+    {
+      "id": "CODE-07",
+      "category": "CODE",
+      "level": "must",
+      "scopes": [
+        "code"
+      ],
+      "docs": [
+        "code"
+      ],
+      "kind": "builtin",
+      "hint": "Random numbers without a seed. Set one seed at the top of the script, for example set.seed(20261027), so results repeat.",
+      "examples": {
+        "hit": [
+          "x <- rnorm(100)"
+        ],
+        "miss": [
+          "set.seed(1); x <- rnorm(100)"
+        ]
+      }
+    },
+    {
+      "id": "CODE-08",
+      "category": "CODE",
+      "level": "must",
+      "scopes": [
+        "comment"
+      ],
+      "docs": [
+        "code"
+      ],
+      "pattern": "\\b(?:changed|updated|modified|fixed|added|removed|renamed|refactored|replaced|reverted|rewrote)\\s+(?:on|in|by|per)\\s+(?:\\d|[A-Z][a-z]+\\s+\\d|v\\d)|\\bv\\d+(?:\\.\\d+)*\\b|\\b(?:old|new|previous|original)\\s+version\\b|\\bwas\\s+previously\\b|\\bno\\s+longer\\s+(?:used|needed)\\b|\\bused\\s+to\\s+be\\b|\\bchange\\s*log\\b",
+      "flags": "i",
+      "hint": "Change history in a comment. Version control and the execution log keep history; the comment says what the code does now and why.",
+      "examples": {
+        "hit": [
+          "Updated on 12 May: added income",
+          "fixed in v2",
+          "the old version used a Poisson model"
+        ],
+        "miss": [
+          "Fit a Poisson model because counts are rare"
+        ]
+      }
+    },
+    {
+      "id": "CODE-09",
+      "category": "CODE",
+      "level": "review",
+      "scopes": [
+        "comment"
+      ],
+      "docs": [
+        "code"
+      ],
+      "pattern": "\\b\\d{4}-\\d{2}-\\d{2}\\b|\\b\\d{1,2}/\\d{1,2}/\\d{2,4}\\b",
+      "hint": "Date in a comment. Keep data access dates in the data dictionary or the plan; keep the comment about the code.",
+      "examples": {
+        "hit": [
+          "2026-05-12 run"
+        ],
+        "miss": [
+          "Restrict to notifications from 2010-2022"
+        ]
+      }
+    },
+    {
+      "id": "CODE-10",
+      "category": "CODE",
+      "level": "must",
+      "scopes": [
+        "comment"
+      ],
+      "docs": [
+        "code"
+      ],
+      "pattern": "\\b(?:see\\s+)?(?:plan|protocol|SAP|research[\\s_]plan)\\s*(?:§|section|sec\\.?)\\s*\\d+(?:\\.\\d+)*|§\\s*\\d+(?:\\.\\d+)*",
+      "flags": "i",
+      "hint": "Section number of the plan. Numbers change when the plan is edited; name the plan section by its heading, once, in the script header.",
+      "examples": {
+        "hit": [
+          "per plan §3.2",
+          "see protocol section 4.1"
+        ],
+        "miss": [
+          "Purpose: fit the transmission model described under Transmission model in the plan"
+        ]
+      }
+    },
+    {
+      "id": "CODE-11",
+      "category": "CODE",
+      "level": "must",
+      "scopes": [
+        "comment"
+      ],
+      "docs": [
+        "code"
+      ],
+      "pattern": "\\b(?:TODO|FIXME|XXX|HACK|TBD)\\b",
+      "hint": "Open item in the code. Record it in the to-do list of the execution log; a finished analysis script carries none.",
+      "examples": {
+        "hit": [
+          "TODO: add income"
+        ],
+        "miss": [
+          "Combine the two sources"
+        ]
+      }
+    },
+    {
+      "id": "CODE-12",
+      "category": "CODE",
+      "level": "review",
+      "scopes": [
+        "comment"
+      ],
+      "docs": [
+        "code"
+      ],
+      "pattern": "^(?:[\\w.$\\[\\]\\\"']+\\s*(?:<-|=|\\|>|%>%)\\s*\\S|(?:library|require|print|plot|ggplot|source|read\\.csv|read_csv|write\\.csv|write_csv|summary|View|head|str|stopifnot)\\s*\\(|[\\w.]+\\([^)]*\\)\\s*$)",
+      "hint": "Commented-out code. Delete it; version control keeps old code. Use an if/else switch for alternatives you still run.",
+      "examples": {
+        "hit": [
+          "fit <- glm(y ~ x, family = poisson)",
+          "View(df)"
+        ],
+        "miss": [
+          "Fit a Poisson model (counts are rare)"
         ]
       }
     }

@@ -1,4 +1,4 @@
 interface:
-  display_name: "Plain Paper"
-  short_description: "Flagship-journal English for academic papers"
-  default_prompt: "Use $plain-paper to edit this manuscript text to flagship-journal standard without changing its facts."
+  display_name: "Biomed Craft"
+  short_description: "End-to-end biomedical research, written to leading-journal standard"
+  default_prompt: "Use $biomed-craft to help with this research document: check the evidence, keep the facts, and write it to the standard of leading journals."

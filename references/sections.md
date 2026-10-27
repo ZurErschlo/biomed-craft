@@ -1,12 +1,12 @@
 # Sections of a research article
 
-What each part of a research article does in flagship journals and their major sub-journals, with templates. Evidence: close reading of 45 research articles (12 trials, 8 cohort studies, 7 modelling studies, 4 economic evaluations, 4 systematic reviews, 5 burden or surveillance studies, 5 diagnostic accuracy studies, 4 laboratory studies), 4 reviews and 16 supplements, plus first-sentence counts from 124 articles. Journal-specific formats are in [journals.md](journals.md).
+What each part of a research article does in leading journals and their major sub-journals, with templates, from close reading of research articles, reviews and supplements across study designs. Journal-specific formats are in [journals.md](journals.md).
 
 ## Title
 
 - Name the topic, population and setting. Add place, period or scale where it matters: `in 120 countries`, `1990–2021`.
 - Lancet family: topic, colon, design label with an article: `…: a randomised, placebo-controlled trial`, `…: a modelling study`. BMJ: the same without the article: `…: prospective cohort study`. NEJM: a short noun phrase with no design label. JAMA: often `Association of X With Y Among Z`.
-- Clinical titles do not state the result (0 of 30 in Lancet, NEJM, BMJ and JAMA). NEJM rewrote one author's result-stating title into a neutral one before publication.
+- Clinical titles in Lancet, NEJM, BMJ and JAMA do not state the result. NEJM rewrote one author's result-stating title into a neutral one before publication.
 - Titles avoid questions, puns, `novel`, `first`, `insights` and abbreviations other than trial acronyms.
 
 ## Abstract or Summary
@@ -50,6 +50,7 @@ Introductions do not list contributions and rarely state hypotheses (laboratory 
 - Modelling: state where the model comes from, what it was fitted to, the counterfactual, how uncertainty was propagated (uncertainty intervals or credible intervals) and the scenarios. Equations and parameter tables go to the appendix with page pointers.
 - Economic evaluation: perspective, currency and price year, outcome (DALYs or QALYs), discount rate, threshold, probabilistic sensitivity analysis, and the CHEERS 2022 statement.
 - Methods describe what was done, in the order a reader needs it. Precedent goes in as a short citation; limits go in the Discussion; next steps do not appear.
+- Methods describe the methods as they were carried out and give the registration number. When the registration was amended, the amendment is answered in the reporting checklist (PRISMA 2020 item 24c) or in one line of the supplement. A decision made after the data were seen is never called prespecified, and a statement that the primary outcome or eligibility changed stays in.
 - Methods describe the analysis in scientific terms. Software steps, file names, seeds and version histories stay out ([register.md](register.md)).
 - Name the reporting guideline in one sentence: `The trial is reported according to CONSORT 2025.`
 - Ethics approval and consent sit with participants (Lancet, NEJM) or in back matter (JAMA, BMJ). The Lancet ends Methods with a fixed role-of-funder sentence.
@@ -81,6 +82,7 @@ Introductions do not list contributions and rarely state hypotheses (laboratory 
 
 - Contributors (CRediT roles where required), declaration of interests, data sharing, funding and role of the funder, acknowledgments, ethics.
 - Write them as public statements. Data and code availability names the repository or the access route; internal file names, script names and folder paths do not appear.
+- Data availability says which data, where (repository and accession number, or the access route and its conditions) and from when. Code availability names a repository that issues a DOI (Zenodo, for example) and the licence. Formats: a Code availability section after Data availability (Nature journals); bullets under Data and code availability (Cell); Data and materials availability with the acknowledgements (Science); a data sharing statement for trials (ICMJE, required by NEJM, JAMA, BMJ and The Lancet).
 - Do not draft an AI-use statement for the authors. Keep one the authors wrote if the journal requires it.
 
 ## Supplementary material

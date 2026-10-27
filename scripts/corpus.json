@@ -5,8 +5,97 @@
   "journal": "Ann Intern Med",
   "year": 2015,
   "type": "research",
+  "design": "systematic-review",
   "words": 1198,
   "sentences": 47
+ },
+ {
+  "doi": "10.1136/bmj.e2292",
+  "pmcid": "PMC3330132",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2012,
+  "type": "research",
+  "design": "economic",
+  "words": 4349,
+  "sentences": 139
+ },
+ {
+  "doi": "10.1136/bmj.f2618",
+  "pmcid": "PMC3649817",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2013,
+  "type": "research",
+  "design": "economic",
+  "words": 3266,
+  "sentences": 121
+ },
+ {
+  "doi": "10.1136/bmj.f6342",
+  "pmcid": "PMC3808080",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2013,
+  "type": "research",
+  "design": "economic",
+  "words": 4230,
+  "sentences": 156
+ },
+ {
+  "doi": "10.1136/bmj.g3743",
+  "pmcid": "PMC4707717",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2014,
+  "type": "review",
+  "design": "review",
+  "words": 6519,
+  "sentences": 275
+ },
+ {
+  "doi": "10.1136/bmj.g3961",
+  "pmcid": "PMC4707708",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2014,
+  "type": "review",
+  "design": "review",
+  "words": 5574,
+  "sentences": 215
+ },
+ {
+  "doi": "10.1136/bmj.g4797",
+  "pmcid": "PMC4707715",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2014,
+  "type": "review",
+  "design": "review",
+  "words": 5800,
+  "sentences": 261
+ },
+ {
+  "doi": "10.1136/bmj.g5243",
+  "pmcid": "PMC4154470",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2014,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 2077,
+  "sentences": 78
+ },
+ {
+  "doi": "10.1136/bmj.g7584",
+  "pmcid": "PMC4285892",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2015,
+  "type": "research",
+  "design": "economic",
+  "words": 3676,
+  "sentences": 127
  },
  {
   "doi": "10.1136/bmj.h6895",
@@ -14,8 +103,97 @@
   "journal": "BMJ",
   "year": 2016,
   "type": "research",
+  "design": "prediction",
   "words": 6194,
   "sentences": 285
+ },
+ {
+  "doi": "10.1136/bmj.i6699",
+  "pmcid": "PMC5225236",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2017,
+  "type": "research",
+  "design": "economic",
+  "words": 4689,
+  "sentences": 166
+ },
+ {
+  "doi": "10.1136/bmj.j1131",
+  "pmcid": "PMC6284324",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2017,
+  "type": "research",
+  "design": "economic",
+  "words": 4972,
+  "sentences": 176
+ },
+ {
+  "doi": "10.1136/bmj.j2856",
+  "pmcid": "PMC5497174",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2017,
+  "type": "research",
+  "design": "modelling",
+  "words": 5599,
+  "sentences": 235
+ },
+ {
+  "doi": "10.1136/bmj.k1315",
+  "pmcid": "PMC5915701",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2018,
+  "type": "research",
+  "design": "observational",
+  "words": 5537,
+  "sentences": 228
+ },
+ {
+  "doi": "10.1136/bmj.l1226",
+  "pmcid": "PMC6446076",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2019,
+  "type": "research",
+  "design": "economic",
+  "words": 5695,
+  "sentences": 230
+ },
+ {
+  "doi": "10.1136/bmj.l1417",
+  "pmcid": "PMC6468887",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2019,
+  "type": "research",
+  "design": "modelling",
+  "words": 4073,
+  "sentences": 163
+ },
+ {
+  "doi": "10.1136/bmj.l1855",
+  "pmcid": "PMC6529852",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2019,
+  "type": "research",
+  "design": "mendelian-randomisation",
+  "words": 4914,
+  "sentences": 185
+ },
+ {
+  "doi": "10.1136/bmj.l4786",
+  "pmcid": "PMC6724407",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2019,
+  "type": "research",
+  "design": "modelling",
+  "words": 5219,
+  "sentences": 192
  },
  {
   "doi": "10.1136/bmj.l4898",
@@ -23,8 +201,31 @@
   "journal": "BMJ",
   "year": 2019,
   "type": "other",
+  "design": "",
   "words": 5603,
   "sentences": 218
+ },
+ {
+  "doi": "10.1136/bmj.l5275",
+  "pmcid": "PMC7850161",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2019,
+  "type": "review",
+  "design": "review",
+  "words": 6777,
+  "sentences": 280
+ },
+ {
+  "doi": "10.1136/bmj.l5383",
+  "pmcid": "PMC6774435",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2019,
+  "type": "research",
+  "design": "modelling",
+  "words": 4282,
+  "sentences": 193
  },
  {
   "doi": "10.1136/bmj.l5894",
@@ -32,8 +233,53 @@
   "journal": "BMJ",
   "year": 2019,
   "type": "research",
+  "design": "observational",
   "words": 5615,
   "sentences": 242
+ },
+ {
+  "doi": "10.1136/bmj.l6258",
+  "pmcid": "PMC6880251",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2019,
+  "type": "research",
+  "design": "observational",
+  "words": 3906,
+  "sentences": 139
+ },
+ {
+  "doi": "10.1136/bmj.m322",
+  "pmcid": "PMC7190058",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2020,
+  "type": "research",
+  "design": "economic",
+  "words": 4721,
+  "sentences": 177
+ },
+ {
+  "doi": "10.1136/bmj.m824",
+  "pmcid": "PMC7190075",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2020,
+  "type": "research",
+  "design": "modelling",
+  "words": 6343,
+  "sentences": 196
+ },
+ {
+  "doi": "10.1136/bmj-2021-066542",
+  "pmcid": "PMC8579424",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2021,
+  "type": "research",
+  "design": "economic",
+  "words": 4946,
+  "sentences": 204
  },
  {
   "doi": "10.1136/bmj.n1022",
@@ -41,6 +287,7 @@
   "journal": "BMJ",
   "year": 2021,
   "type": "research",
+  "design": "trial",
   "words": 5278,
   "sentences": 246
  },
@@ -50,8 +297,64 @@
   "journal": "BMJ",
   "year": 2021,
   "type": "research",
+  "design": "systematic-review",
   "words": 5830,
   "sentences": 276
+ },
+ {
+  "doi": "10.1136/bmj-2021-064547",
+  "pmcid": "PMC8845039",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2022,
+  "type": "research",
+  "design": "systematic-review",
+  "words": 3028,
+  "sentences": 119
+ },
+ {
+  "doi": "10.1136/bmj-2021-069679",
+  "pmcid": "PMC9326843",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2022,
+  "type": "research",
+  "design": "observational",
+  "words": 5824,
+  "sentences": 221
+ },
+ {
+  "doi": "10.1136/bmj-2022-071215",
+  "pmcid": "PMC9471225",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2022,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 4609,
+  "sentences": 185
+ },
+ {
+  "doi": "10.1136/bmj-2022-071281",
+  "pmcid": "PMC9645409",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2022,
+  "type": "research",
+  "design": "economic",
+  "words": 4225,
+  "sentences": 162
+ },
+ {
+  "doi": "10.1136/bmj-2022-071932",
+  "pmcid": "PMC9667468",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2022,
+  "type": "research",
+  "design": "observational",
+  "words": 5848,
+  "sentences": 176
  },
  {
   "doi": "10.1136/bmj-2022-073043\b",
@@ -59,8 +362,130 @@
   "journal": "BMJ",
   "year": 2023,
   "type": "research",
+  "design": "modelling",
   "words": 7903,
   "sentences": 367
+ },
+ {
+  "doi": "10.1136/bmj-2023-075037",
+  "pmcid": "PMC10603569",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2023,
+  "type": "review",
+  "design": "review",
+  "words": 6147,
+  "sentences": 253
+ },
+ {
+  "doi": "10.1136/bmj-2023-077784",
+  "pmcid": "PMC10686100",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2023,
+  "type": "research",
+  "design": "modelling",
+  "words": 5254,
+  "sentences": 212
+ },
+ {
+  "doi": "10.1136/bmj-2023-078581",
+  "pmcid": "PMC10912951",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2024,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 4298,
+  "sentences": 188
+ },
+ {
+  "doi": "10.1136/bmj-2023-079089",
+  "pmcid": "PMC11388113",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2024,
+  "type": "research",
+  "design": "systematic-review",
+  "words": 4861,
+  "sentences": 187
+ },
+ {
+  "doi": "10.1136/bmj-2024-080107",
+  "pmcid": "PMC11409395",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2024,
+  "type": "research",
+  "design": "systematic-review",
+  "words": 4015,
+  "sentences": 158
+ },
+ {
+  "doi": "10.1136/bmj-2024-080199",
+  "pmcid": "PMC11480917",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2024,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 4610,
+  "sentences": 168
+ },
+ {
+  "doi": "10.1136/bmj-2024-080409",
+  "pmcid": "PMC11684032",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2024,
+  "type": "research",
+  "design": "observational",
+  "words": 4012,
+  "sentences": 143
+ },
+ {
+  "doi": "10.1136/bmj-2024-081820",
+  "pmcid": "PMC11752448",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2025,
+  "type": "research",
+  "design": "trial",
+  "words": 3033,
+  "sentences": 124
+ },
+ {
+  "doi": "10.1136/bmj-2024-082974",
+  "pmcid": "PMC12305404",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2025,
+  "type": "research",
+  "design": "systematic-review",
+  "words": 3831,
+  "sentences": 134
+ },
+ {
+  "doi": "10.1136/bmj-2024-083424",
+  "pmcid": "PMC12188983",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2025,
+  "type": "research",
+  "design": "systematic-review",
+  "words": 4719,
+  "sentences": 159
+ },
+ {
+  "doi": "10.1136/bmj-2024-083978",
+  "pmcid": "PMC12442227",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2025,
+  "type": "research",
+  "design": "observational",
+  "words": 5081,
+  "sentences": 194
  },
  {
   "doi": "10.1136/bmj-2024\u2011082945",
@@ -68,6 +493,7 @@
   "journal": "BMJ",
   "year": 2025,
   "type": "research",
+  "design": "trial",
   "words": 6953,
   "sentences": 293
  },
@@ -77,8 +503,42 @@
   "journal": "BMJ",
   "year": 2025,
   "type": "research",
+  "design": "modelling",
   "words": 6463,
   "sentences": 292
+ },
+ {
+  "doi": "10.1136/bmj-2025-084320",
+  "pmcid": "PMC12651913",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2025,
+  "type": "research",
+  "design": "trial",
+  "words": 4787,
+  "sentences": 197
+ },
+ {
+  "doi": "10.1136/bmj-2025-084380",
+  "pmcid": "PMC12607009",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2025,
+  "type": "research",
+  "design": "observational",
+  "words": 3860,
+  "sentences": 141
+ },
+ {
+  "doi": "10.1136/bmj-2025-085569",
+  "pmcid": "PMC12498197",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2025,
+  "type": "research",
+  "design": "trial",
+  "words": 3555,
+  "sentences": 147
  },
  {
   "doi": "10.1136/bmj-2025-084909\b",
@@ -86,8 +546,108 @@
   "journal": "BMJ",
   "year": 2026,
   "type": "other",
+  "design": "",
   "words": 3822,
   "sentences": 194
+ },
+ {
+  "doi": "10.1136/bmj-2025-085005",
+  "pmcid": "PMC13000885",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2026,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 4110,
+  "sentences": 169
+ },
+ {
+  "doi": "10.1136/bmj-2025-085295",
+  "pmcid": "PMC12801415",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2026,
+  "type": "research",
+  "design": "trial",
+  "words": 4683,
+  "sentences": 200
+ },
+ {
+  "doi": "10.1136/bmj-2025-085304",
+  "pmcid": "PMC12776922",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2026,
+  "type": "research",
+  "design": "systematic-review",
+  "words": 4493,
+  "sentences": 180
+ },
+ {
+  "doi": "10.1136/bmj-2025-085998",
+  "pmcid": "PMC12915068",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2026,
+  "type": "research",
+  "design": "observational",
+  "words": 4346,
+  "sentences": 168
+ },
+ {
+  "doi": "10.1136/bmj-2025-086384",
+  "pmcid": "PMC12821158",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2026,
+  "type": "research",
+  "design": "observational",
+  "words": 3406,
+  "sentences": 140
+ },
+ {
+  "doi": "10.1136/bmj-2025-086562",
+  "pmcid": "PMC13250720",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2026,
+  "type": "review",
+  "design": "review",
+  "words": 6724,
+  "sentences": 264
+ },
+ {
+  "doi": "10.1136/bmj-2025-087259",
+  "pmcid": "PMC12990035",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2026,
+  "type": "research",
+  "design": "trial",
+  "words": 4538,
+  "sentences": 174
+ },
+ {
+  "doi": "10.1136/bmj-2025-087321",
+  "pmcid": "PMC13081224",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2026,
+  "type": "research",
+  "design": "observational",
+  "words": 3764,
+  "sentences": 146
+ },
+ {
+  "doi": "10.1136/bmj-2025-088939",
+  "pmcid": "PMC13162091",
+  "family": "bmj",
+  "journal": "BMJ",
+  "year": 2026,
+  "type": "research",
+  "design": "trial",
+  "words": 5164,
+  "sentences": 224
  },
  {
   "doi": "10.1016/j.cell.2014.03.026",
@@ -95,6 +655,7 @@
   "journal": "Cell",
   "year": null,
   "type": "research",
+  "design": "laboratory",
   "words": 6111,
   "sentences": 248
  },
@@ -104,6 +665,7 @@
   "journal": "Cell",
   "year": null,
   "type": "research",
+  "design": "computational",
   "words": 14394,
   "sentences": 570
  },
@@ -113,6 +675,7 @@
   "journal": "Cell",
   "year": null,
   "type": "research",
+  "design": "laboratory",
   "words": 1384,
   "sentences": 63
  },
@@ -122,8 +685,460 @@
   "journal": "Cell",
   "year": null,
   "type": "research",
+  "design": "prediction",
   "words": 11307,
   "sentences": 518
+ },
+ {
+  "doi": "10.1016/j.cell.2018.10.027",
+  "pmcid": "PMC6327247",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2018,
+  "type": "research",
+  "design": "computational",
+  "words": 14211,
+  "sentences": 475
+ },
+ {
+  "doi": "10.1016/j.cell.2019.01.001",
+  "pmcid": "PMC6349461",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2019,
+  "type": "research",
+  "design": "computational",
+  "words": 10142,
+  "sentences": 333
+ },
+ {
+  "doi": "10.1016/j.cell.2019.01.029",
+  "pmcid": "PMC6386582",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2019,
+  "type": "research",
+  "design": "laboratory",
+  "words": 8934,
+  "sentences": 328
+ },
+ {
+  "doi": "10.1016/j.cell.2019.03.005",
+  "pmcid": "PMC6526772",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2019,
+  "type": "research",
+  "design": "computational",
+  "words": 9903,
+  "sentences": 426
+ },
+ {
+  "doi": "10.1016/j.cell.2019.05.026",
+  "pmcid": "PMC7173070",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2019,
+  "type": "review",
+  "design": "review",
+  "words": 6192,
+  "sentences": 203
+ },
+ {
+  "doi": "10.1016/j.cell.2020.01.013",
+  "pmcid": "PMC7042715",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 6414,
+  "sentences": 247
+ },
+ {
+  "doi": "10.1016/j.cell.2020.07.005",
+  "pmcid": "PMC7479520",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 10853,
+  "sentences": 457
+ },
+ {
+  "doi": "10.1016/j.cell.2020.09.009",
+  "pmcid": "PMC7521382",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2020,
+  "type": "research",
+  "design": "computational",
+  "words": 11106,
+  "sentences": 426
+ },
+ {
+  "doi": "10.1016/j.cell.2020.09.034",
+  "pmcid": "PMC7489877",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 6064,
+  "sentences": 269
+ },
+ {
+  "doi": "10.1016/j.cell.2020.09.054",
+  "pmcid": "PMC7707104",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 9115,
+  "sentences": 328
+ },
+ {
+  "doi": "10.1016/j.cell.2020.09.061",
+  "pmcid": "PMC7754708",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 8418,
+  "sentences": 293
+ },
+ {
+  "doi": "10.1016/j.cell.2020.12.016",
+  "pmcid": "PMC7864098",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2021,
+  "type": "research",
+  "design": "computational",
+  "words": 13083,
+  "sentences": 487
+ },
+ {
+  "doi": "10.1016/j.cell.2020.12.024",
+  "pmcid": "PMC7868890",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2021,
+  "type": "research",
+  "design": "laboratory",
+  "words": 13391,
+  "sentences": 571
+ },
+ {
+  "doi": "10.1016/j.cell.2021.01.007",
+  "pmcid": "PMC7803150",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2021,
+  "type": "review",
+  "design": "review",
+  "words": 10891,
+  "sentences": 467
+ },
+ {
+  "doi": "10.1016/j.cell.2021.02.012",
+  "pmcid": "PMC9191863",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2021,
+  "type": "review",
+  "design": "review",
+  "words": 7355,
+  "sentences": 295
+ },
+ {
+  "doi": "10.1016/j.cell.2021.03.009",
+  "pmcid": "PMC8054914",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2021,
+  "type": "research",
+  "design": "computational",
+  "words": 26717,
+  "sentences": 1203
+ },
+ {
+  "doi": "10.1016/j.cell.2021.04.028",
+  "pmcid": "PMC8208823",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2021,
+  "type": "research",
+  "design": "computational",
+  "words": 12487,
+  "sentences": 511
+ },
+ {
+  "doi": "10.1016/j.cell.2021.04.037",
+  "pmcid": "PMC8238500",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2021,
+  "type": "research",
+  "design": "laboratory",
+  "words": 14699,
+  "sentences": 708
+ },
+ {
+  "doi": "10.1016/j.cell.2021.04.048",
+  "pmcid": "PMC8238499",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2021,
+  "type": "research",
+  "design": "computational",
+  "words": 14116,
+  "sentences": 575
+ },
+ {
+  "doi": "10.1016/j.cell.2021.06.007",
+  "pmcid": "PMC8358979",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2021,
+  "type": "research",
+  "design": "laboratory",
+  "words": 8679,
+  "sentences": 358
+ },
+ {
+  "doi": "10.1016/j.cell.2021.07.013",
+  "pmcid": "PMC8445022",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2021,
+  "type": "research",
+  "design": "computational",
+  "words": 7735,
+  "sentences": 313
+ },
+ {
+  "doi": "10.1016/j.cell.2021.07.038",
+  "pmcid": "PMC8459317",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2021,
+  "type": "research",
+  "design": "computational",
+  "words": 14935,
+  "sentences": 644
+ },
+ {
+  "doi": "10.1016/j.cell.2022.02.017",
+  "pmcid": "PMC8970296",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2022,
+  "type": "research",
+  "design": "laboratory",
+  "words": 18981,
+  "sentences": 710
+ },
+ {
+  "doi": "10.1016/j.cell.2022.04.008",
+  "pmcid": "PMC9166250",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2022,
+  "type": "research",
+  "design": "computational",
+  "words": 10754,
+  "sentences": 375
+ },
+ {
+  "doi": "10.1016/j.cell.2022.07.004",
+  "pmcid": "PMC9386946",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2022,
+  "type": "review",
+  "design": "review",
+  "words": 7319,
+  "sentences": 270
+ },
+ {
+  "doi": "10.1016/j.cell.2022.07.019",
+  "pmcid": "PMC9490236",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2022,
+  "type": "research",
+  "design": "computational",
+  "words": 10615,
+  "sentences": 389
+ },
+ {
+  "doi": "10.1016/j.cell.2022.07.028",
+  "pmcid": "PMC9439721",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2022,
+  "type": "research",
+  "design": "laboratory",
+  "words": 10933,
+  "sentences": 409
+ },
+ {
+  "doi": "10.1016/j.cell.2022.08.004",
+  "pmcid": "PMC9439720",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2022,
+  "type": "research",
+  "design": "computational",
+  "words": 11727,
+  "sentences": 399
+ },
+ {
+  "doi": "10.1016/j.cell.2022.09.025",
+  "pmcid": "PMC9596381",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2022,
+  "type": "research",
+  "design": "laboratory",
+  "words": 10555,
+  "sentences": 498
+ },
+ {
+  "doi": "10.1016/j.cell.2023.01.041",
+  "pmcid": "PMC9994262",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2023,
+  "type": "research",
+  "design": "laboratory",
+  "words": 7022,
+  "sentences": 292
+ },
+ {
+  "doi": "10.1016/j.cell.2023.04.003",
+  "pmcid": "PMC10187114",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2023,
+  "type": "research",
+  "design": "laboratory",
+  "words": 14007,
+  "sentences": 561
+ },
+ {
+  "doi": "10.1016/j.cell.2023.04.038",
+  "pmcid": "PMC10403364",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2023,
+  "type": "research",
+  "design": "laboratory",
+  "words": 12183,
+  "sentences": 475
+ },
+ {
+  "doi": "10.1016/j.cell.2023.05.008",
+  "pmcid": "PMC10256282",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2023,
+  "type": "research",
+  "design": "laboratory",
+  "words": 11699,
+  "sentences": 428
+ },
+ {
+  "doi": "10.1016/j.cell.2023.08.030",
+  "pmcid": "PMC10789625",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2023,
+  "type": "review",
+  "design": "review",
+  "words": 9582,
+  "sentences": 307
+ },
+ {
+  "doi": "10.1016/j.cell.2023.09.004",
+  "pmcid": "PMC10914680",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2023,
+  "type": "research",
+  "design": "laboratory",
+  "words": 9545,
+  "sentences": 360
+ },
+ {
+  "doi": "10.1016/j.cell.2023.09.011",
+  "pmcid": "PMC10642370",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2023,
+  "type": "research",
+  "design": "laboratory",
+  "words": 10810,
+  "sentences": 468
+ },
+ {
+  "doi": "10.1016/j.cell.2024.05.051",
+  "pmcid": "PMC11290322",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2024,
+  "type": "research",
+  "design": "laboratory",
+  "words": 9038,
+  "sentences": 312
+ },
+ {
+  "doi": "10.1016/j.cell.2024.06.041",
+  "pmcid": "PMC11349379",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2024,
+  "type": "research",
+  "design": "laboratory",
+  "words": 8732,
+  "sentences": 407
+ },
+ {
+  "doi": "10.1016/j.cell.2024.12.015",
+  "pmcid": "PMC11845252",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2025,
+  "type": "research",
+  "design": "laboratory",
+  "words": 6932,
+  "sentences": 224
+ },
+ {
+  "doi": "10.1016/j.cell.2025.03.040",
+  "pmcid": "PMC12173715",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2025,
+  "type": "research",
+  "design": "computational",
+  "words": 12491,
+  "sentences": 422
+ },
+ {
+  "doi": "10.1016/j.cell.2025.04.030",
+  "pmcid": "PMC12456964",
+  "family": "cell",
+  "journal": "Cell",
+  "year": 2025,
+  "type": "research",
+  "design": "laboratory",
+  "words": 9860,
+  "sentences": 416
  },
  {
   "doi": "10.1016/j.cell.2025.05.030",
@@ -131,6 +1146,7 @@
   "journal": "Cell",
   "year": 2025,
   "type": "research",
+  "design": "computational",
   "words": 1489,
   "sentences": 50
  },
@@ -140,6 +1156,7 @@
   "journal": "Cell",
   "year": 2025,
   "type": "research",
+  "design": "laboratory",
   "words": 907,
   "sentences": 45
  },
@@ -149,6 +1166,7 @@
   "journal": "Cell",
   "year": 2026,
   "type": "research",
+  "design": "laboratory",
   "words": 10936,
   "sentences": 459
  },
@@ -158,6 +1176,7 @@
   "journal": "Cell",
   "year": 2026,
   "type": "research",
+  "design": "laboratory",
   "words": 1805,
   "sentences": 76
  },
@@ -167,6 +1186,7 @@
   "journal": "Cell",
   "year": 2026,
   "type": "research",
+  "design": "computational",
   "words": 1612,
   "sentences": 69
  },
@@ -176,6 +1196,7 @@
   "journal": "Cell",
   "year": 2026,
   "type": "research",
+  "design": "laboratory",
   "words": 2331,
   "sentences": 91
  },
@@ -185,6 +1206,7 @@
   "journal": "JAMA",
   "year": 2014,
   "type": "research",
+  "design": "diagnostic",
   "words": 3486,
   "sentences": 149
  },
@@ -194,8 +1216,75 @@
   "journal": "JAMA",
   "year": 2018,
   "type": "other",
+  "design": "",
   "words": 3995,
   "sentences": 145
+ },
+ {
+  "doi": "10.1001/jamainternmed.2019.0677",
+  "pmcid": "PMC6593623",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2019,
+  "type": "research",
+  "design": "observational",
+  "words": 3231,
+  "sentences": 120
+ },
+ {
+  "doi": "10.1001/jamaoncol.2019.2996",
+  "pmcid": "PMC6777271",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2019,
+  "type": "research",
+  "design": "modelling",
+  "words": 4208,
+  "sentences": 181
+ },
+ {
+  "doi": "10.1001/jamaophthalmol.2019.2512",
+  "pmcid": "PMC6646972",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2019,
+  "type": "research",
+  "design": "economic",
+  "words": 3229,
+  "sentences": 131
+ },
+ {
+  "doi": "10.1001/jamasurg.2020.3845",
+  "pmcid": "PMC7512122",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2020,
+  "type": "research",
+  "design": "economic",
+  "words": 3297,
+  "sentences": 130
+ },
+ {
+  "doi": "10.1001/jamainternmed.2021.0366",
+  "pmcid": "PMC7905701",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2021,
+  "type": "research",
+  "design": "observational",
+  "words": 3041,
+  "sentences": 104
+ },
+ {
+  "doi": "10.1001/jamainternmed.2022.4696",
+  "pmcid": "PMC9577882",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2022,
+  "type": "research",
+  "design": "observational",
+  "words": 4131,
+  "sentences": 134
  },
  {
   "doi": "10.1001/jamainternmed.2022.5261",
@@ -203,8 +1292,97 @@
   "journal": "JAMA specialty",
   "year": 2022,
   "type": "research",
+  "design": "observational",
   "words": 3447,
   "sentences": 134
+ },
+ {
+  "doi": "10.1001/jamaoncol.2022.5252",
+  "pmcid": "PMC9650623",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2022,
+  "type": "research",
+  "design": "economic",
+  "words": 3235,
+  "sentences": 119
+ },
+ {
+  "doi": "10.1001/jamapsychiatry.2022.0407",
+  "pmcid": "PMC8968718",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2022,
+  "type": "research",
+  "design": "mendelian-randomisation",
+  "words": 3110,
+  "sentences": 119
+ },
+ {
+  "doi": "10.1001/jamapsychiatry.2022.3788",
+  "pmcid": "PMC9669925",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2022,
+  "type": "research",
+  "design": "observational",
+  "words": 3470,
+  "sentences": 143
+ },
+ {
+  "doi": "10.1001/jamaneurol.2023.1645",
+  "pmcid": "PMC10282956",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2023,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 4033,
+  "sentences": 179
+ },
+ {
+  "doi": "10.1001/jamapediatrics.2023.1478",
+  "pmcid": "PMC10242512",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2023,
+  "type": "research",
+  "design": "systematic-review",
+  "words": 3157,
+  "sentences": 138
+ },
+ {
+  "doi": "10.1001/jamapsychiatry.2022.4974",
+  "pmcid": "PMC9909581",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2023,
+  "type": "research",
+  "design": "computational",
+  "words": 3653,
+  "sentences": 132
+ },
+ {
+  "doi": "10.1001/jamapsychiatry.2023.4294",
+  "pmcid": "PMC10851097",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2023,
+  "type": "research",
+  "design": "observational",
+  "words": 3754,
+  "sentences": 150
+ },
+ {
+  "doi": "10.1001/jamasurg.2022.6818",
+  "pmcid": "PMC9857805",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2023,
+  "type": "research",
+  "design": "economic",
+  "words": 3417,
+  "sentences": 135
  },
  {
   "doi": "10.1001/jama.2024.2759",
@@ -212,8 +1390,75 @@
   "journal": "JAMA",
   "year": 2024,
   "type": "research",
+  "design": "modelling",
   "words": 5158,
   "sentences": 239
+ },
+ {
+  "doi": "10.1001/jamainternmed.2024.1523",
+  "pmcid": "PMC11000136",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2024,
+  "type": "research",
+  "design": "trial",
+  "words": 3292,
+  "sentences": 134
+ },
+ {
+  "doi": "10.1001/jamaneurol.2023.5319",
+  "pmcid": "PMC10804282",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2024,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 3111,
+  "sentences": 137
+ },
+ {
+  "doi": "10.1001/jamaoncol.2024.0057",
+  "pmcid": "PMC10958389",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2024,
+  "type": "research",
+  "design": "systematic-review",
+  "words": 3189,
+  "sentences": 118
+ },
+ {
+  "doi": "10.1001/jamaophthalmol.2024.0918",
+  "pmcid": "PMC11046404",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2024,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 4181,
+  "sentences": 186
+ },
+ {
+  "doi": "10.1001/jamacardio.2024.4812",
+  "pmcid": "PMC11904704",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2025,
+  "type": "research",
+  "design": "economic",
+  "words": 3611,
+  "sentences": 156
+ },
+ {
+  "doi": "10.1001/jamacardio.2024.4991",
+  "pmcid": "PMC11904735",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2025,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 3212,
+  "sentences": 127
  },
  {
   "doi": "10.1001/jamadermatol.2025.1276",
@@ -221,8 +1466,53 @@
   "journal": "JAMA specialty",
   "year": 2025,
   "type": "research",
+  "design": "modelling",
   "words": 3044,
   "sentences": 138
+ },
+ {
+  "doi": "10.1001/jamainternmed.2025.5979",
+  "pmcid": "PMC12624453",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2025,
+  "type": "research",
+  "design": "observational",
+  "words": 3442,
+  "sentences": 142
+ },
+ {
+  "doi": "10.1001/jamaneurol.2025.3307",
+  "pmcid": "PMC12418226",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2025,
+  "type": "research",
+  "design": "systematic-review",
+  "words": 3408,
+  "sentences": 152
+ },
+ {
+  "doi": "10.1001/jamapediatrics.2025.2740",
+  "pmcid": "PMC12418225",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2025,
+  "type": "research",
+  "design": "systematic-review",
+  "words": 3006,
+  "sentences": 112
+ },
+ {
+  "doi": "10.1001/jamasurg.2025.5288",
+  "pmcid": "PMC12676472",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2025,
+  "type": "research",
+  "design": "trial",
+  "words": 3421,
+  "sentences": 148
  },
  {
   "doi": "10.1001/jama.2026.3277",
@@ -230,8 +1520,163 @@
   "journal": "JAMA",
   "year": 2026,
   "type": "research",
+  "design": "trial",
   "words": 3916,
   "sentences": 157
+ },
+ {
+  "doi": "10.1001/jamacardio.2026.0477",
+  "pmcid": "PMC13103878",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 3118,
+  "sentences": 120
+ },
+ {
+  "doi": "10.1001/jamacardio.2026.4445",
+  "pmcid": "PMC13647190",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "systematic-review",
+  "words": 3649,
+  "sentences": 139
+ },
+ {
+  "doi": "10.1001/jamainternmed.2026.0190",
+  "pmcid": "PMC13010197",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "economic",
+  "words": 3399,
+  "sentences": 125
+ },
+ {
+  "doi": "10.1001/jamaneurol.2026.3395",
+  "pmcid": "PMC13621310",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "trial",
+  "words": 3763,
+  "sentences": 184
+ },
+ {
+  "doi": "10.1001/jamaoncol.2026.2157",
+  "pmcid": "PMC13329740",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 3075,
+  "sentences": 134
+ },
+ {
+  "doi": "10.1001/jamaoncol.2026.2661",
+  "pmcid": "PMC13448833",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "trial",
+  "words": 3011,
+  "sentences": 132
+ },
+ {
+  "doi": "10.1001/jamaoncol.2026.2781",
+  "pmcid": "PMC13448836",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "modelling",
+  "words": 3467,
+  "sentences": 127
+ },
+ {
+  "doi": "10.1001/jamaoncol.2026.3747",
+  "pmcid": "PMC13613232",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "observational",
+  "words": 3191,
+  "sentences": 157
+ },
+ {
+  "doi": "10.1001/jamapediatrics.2026.0343",
+  "pmcid": "PMC13010205",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "observational",
+  "words": 3269,
+  "sentences": 131
+ },
+ {
+  "doi": "10.1001/jamapediatrics.2026.2760",
+  "pmcid": "PMC13386298",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "trial",
+  "words": 3247,
+  "sentences": 135
+ },
+ {
+  "doi": "10.1001/jamapediatrics.2026.3067",
+  "pmcid": "PMC13409124",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "trial",
+  "words": 3406,
+  "sentences": 131
+ },
+ {
+  "doi": "10.1001/jamapsychiatry.2026.0428",
+  "pmcid": "PMC13103885",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "trial",
+  "words": 3637,
+  "sentences": 134
+ },
+ {
+  "doi": "10.1001/jamapsychiatry.2026.1443",
+  "pmcid": "PMC13276665",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "systematic-review",
+  "words": 3195,
+  "sentences": 145
+ },
+ {
+  "doi": "10.1001/jamasurg.2026.1796",
+  "pmcid": "PMC13234747",
+  "family": "jama",
+  "journal": "JAMA specialty",
+  "year": 2026,
+  "type": "research",
+  "design": "observational",
+  "words": 3163,
+  "sentences": 140
  },
  {
   "doi": "10.1016/s1473-3099(14)70847-3",
@@ -239,6 +1684,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2014,
   "type": "research",
+  "design": "trial",
   "words": 3971,
   "sentences": 151
  },
@@ -248,6 +1694,7 @@
   "journal": "Lancet Psychiatry",
   "year": 2014,
   "type": "research",
+  "design": "observational",
   "words": 4170,
   "sentences": 171
  },
@@ -257,6 +1704,7 @@
   "journal": "Lancet",
   "year": 2015,
   "type": "other",
+  "design": "",
   "words": 24652,
   "sentences": 832
  },
@@ -266,6 +1714,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2015,
   "type": "research",
+  "design": "observational",
   "words": 5032,
   "sentences": 171
  },
@@ -275,6 +1724,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2015,
   "type": "research",
+  "design": "economic",
   "words": 3841,
   "sentences": 135
  },
@@ -284,6 +1734,7 @@
   "journal": "Lancet HIV",
   "year": 2015,
   "type": "research",
+  "design": "trial",
   "words": 4328,
   "sentences": 136
  },
@@ -293,8 +1744,20 @@
   "journal": "Lancet Infect Dis",
   "year": 2016,
   "type": "research",
+  "design": "systematic-review",
   "words": 3136,
   "sentences": 164
+ },
+ {
+  "doi": "10.1016/s2214-109x(16)30199-1",
+  "pmcid": "PMC6375908",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2016,
+  "type": "research",
+  "design": "modelling",
+  "words": 3040,
+  "sentences": 108
  },
  {
   "doi": "10.1016/s2468-2667(16)30035-4",
@@ -302,8 +1765,31 @@
   "journal": "Lancet Public Health",
   "year": 2016,
   "type": "research",
+  "design": "systematic-review",
   "words": 3769,
   "sentences": 138
+ },
+ {
+  "doi": "10.1016/s2214-109x(17)30205-x",
+  "pmcid": "PMC5471605",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2017,
+  "type": "research",
+  "design": "economic",
+  "words": 4254,
+  "sentences": 172
+ },
+ {
+  "doi": "10.1016/s2215-0366(17)30149-9",
+  "pmcid": "PMC5483485",
+  "family": "lancet",
+  "journal": "Lancet Psychiatry",
+  "year": 2017,
+  "type": "research",
+  "design": "economic",
+  "words": 4355,
+  "sentences": 169
  },
  {
   "doi": "10.1016/s2352-3018(17)30089-9",
@@ -311,8 +1797,20 @@
   "journal": "Lancet HIV",
   "year": 2017,
   "type": "research",
+  "design": "trial",
   "words": 4352,
   "sentences": 156
+ },
+ {
+  "doi": "10.1016/s0140-6736(18)31222-4",
+  "pmcid": "PMC6087711",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2018,
+  "type": "research",
+  "design": "economic",
+  "words": 3850,
+  "sentences": 129
  },
  {
   "doi": "10.1016/s0140-6736(18)32561-3",
@@ -320,6 +1818,7 @@
   "journal": "Lancet",
   "year": 2018,
   "type": "other",
+  "design": "",
   "words": 6978,
   "sentences": 221
  },
@@ -329,6 +1828,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2018,
   "type": "research",
+  "design": "modelling",
   "words": 4100,
   "sentences": 139
  },
@@ -338,6 +1838,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2018,
   "type": "research",
+  "design": "prediction",
   "words": 5120,
   "sentences": 215
  },
@@ -347,6 +1848,7 @@
   "journal": "Lancet Glob Health",
   "year": 2018,
   "type": "research",
+  "design": "economic",
   "words": 3664,
   "sentences": 127
  },
@@ -356,8 +1858,31 @@
   "journal": "Lancet HIV",
   "year": 2018,
   "type": "research",
+  "design": "observational",
   "words": 3971,
   "sentences": 160
+ },
+ {
+  "doi": "10.1016/s0140-6736(18)32277-3",
+  "pmcid": "PMC6484702",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2019,
+  "type": "research",
+  "design": "modelling",
+  "words": 4893,
+  "sentences": 161
+ },
+ {
+  "doi": "10.1016/s0140-6736(19)31281-4",
+  "pmcid": "PMC6727069",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2019,
+  "type": "research",
+  "design": "economic",
+  "words": 4686,
+  "sentences": 193
  },
  {
   "doi": "10.1016/s0140-6736(19)31288-7",
@@ -365,6 +1890,7 @@
   "journal": "Lancet",
   "year": 2019,
   "type": "research",
+  "design": "trial",
   "words": 5116,
   "sentences": 170
  },
@@ -374,6 +1900,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2019,
   "type": "research",
+  "design": "modelling",
   "words": 4885,
   "sentences": 158
  },
@@ -383,6 +1910,7 @@
   "journal": "Lancet Glob Health",
   "year": 2019,
   "type": "review",
+  "design": "review",
   "words": 843,
   "sentences": 39
  },
@@ -392,8 +1920,20 @@
   "journal": "Lancet Glob Health",
   "year": 2019,
   "type": "research",
+  "design": "modelling",
   "words": 3950,
   "sentences": 177
+ },
+ {
+  "doi": "10.1016/s2214-109x(19)30336-5",
+  "pmcid": "PMC6695526",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2019,
+  "type": "research",
+  "design": "economic",
+  "words": 3149,
+  "sentences": 115
  },
  {
   "doi": "10.1016/s2214-109x(19)30488-7",
@@ -401,8 +1941,20 @@
   "journal": "Lancet Glob Health",
   "year": 2019,
   "type": "research",
+  "design": "observational",
   "words": 3946,
   "sentences": 141
+ },
+ {
+  "doi": "10.1016/s2468-2667(19)30246-4",
+  "pmcid": "PMC7098470",
+  "family": "lancet",
+  "journal": "Lancet Public Health",
+  "year": 2019,
+  "type": "research",
+  "design": "modelling",
+  "words": 5209,
+  "sentences": 159
  },
  {
   "doi": "10.1016/s0140-6736(20)30068-4",
@@ -410,6 +1962,7 @@
   "journal": "Lancet",
   "year": 2020,
   "type": "research",
+  "design": "modelling",
   "words": 6294,
   "sentences": 216
  },
@@ -419,8 +1972,20 @@
   "journal": "Lancet",
   "year": 2020,
   "type": "research",
+  "design": "modelling",
   "words": 6727,
   "sentences": 228
+ },
+ {
+  "doi": "10.1016/s0140-6736(20)30260-9",
+  "pmcid": "PMC7159271",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2020,
+  "type": "research",
+  "design": "modelling",
+  "words": 3180,
+  "sentences": 108
  },
  {
   "doi": "10.1016/s0140-6736(20)32657-x",
@@ -428,8 +1993,42 @@
   "journal": "Lancet",
   "year": 2020,
   "type": "research",
+  "design": "modelling",
   "words": 3207,
   "sentences": 126
+ },
+ {
+  "doi": "10.1016/s1470-2045(20)30388-0",
+  "pmcid": "PMC7417808",
+  "family": "lancet",
+  "journal": "Lancet Oncol",
+  "year": 2020,
+  "type": "research",
+  "design": "modelling",
+  "words": 5225,
+  "sentences": 174
+ },
+ {
+  "doi": "10.1016/s1473-3099(20)30144-4",
+  "pmcid": "PMC7158569",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2020,
+  "type": "research",
+  "design": "modelling",
+  "words": 2884,
+  "sentences": 97
+ },
+ {
+  "doi": "10.1016/s2213-2600(19)30282-6",
+  "pmcid": "PMC7113839",
+  "family": "lancet",
+  "journal": "Lancet Respir Med",
+  "year": 2020,
+  "type": "research",
+  "design": "computational",
+  "words": 4748,
+  "sentences": 193
  },
  {
   "doi": "10.1016/s2214-109x(20)30022-x",
@@ -437,6 +2036,7 @@
   "journal": "Lancet Glob Health",
   "year": 2020,
   "type": "research",
+  "design": "economic",
   "words": 3884,
   "sentences": 126
  },
@@ -446,6 +2046,7 @@
   "journal": "Lancet Glob Health",
   "year": 2020,
   "type": "research",
+  "design": "economic",
   "words": 4227,
   "sentences": 150
  },
@@ -455,6 +2056,7 @@
   "journal": "Lancet Glob Health",
   "year": 2020,
   "type": "research",
+  "design": "observational",
   "words": 5124,
   "sentences": 193
  },
@@ -464,8 +2066,20 @@
   "journal": "Lancet Glob Health",
   "year": 2020,
   "type": "research",
+  "design": "systematic-review",
   "words": 3806,
   "sentences": 150
+ },
+ {
+  "doi": "10.1016/s2214-109x(20)30493-9",
+  "pmcid": "PMC7886657",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2020,
+  "type": "research",
+  "design": "economic",
+  "words": 4162,
+  "sentences": 155
  },
  {
   "doi": "10.1016/s2352-3018(20)30119-3",
@@ -473,6 +2087,7 @@
   "journal": "Lancet HIV",
   "year": 2020,
   "type": "research",
+  "design": "observational",
   "words": 4020,
   "sentences": 184
  },
@@ -482,6 +2097,7 @@
   "journal": "Lancet Child Adolesc Health",
   "year": 2020,
   "type": "research",
+  "design": "observational",
   "words": 4372,
   "sentences": 188
  },
@@ -491,8 +2107,31 @@
   "journal": "Lancet Public Health",
   "year": 2020,
   "type": "research",
+  "design": "economic",
   "words": 4042,
   "sentences": 156
+ },
+ {
+  "doi": "10.1016/s2542-5196(20)30224-2",
+  "pmcid": "PMC7508534",
+  "family": "lancet",
+  "journal": "Lancet Planet Health",
+  "year": 2020,
+  "type": "research",
+  "design": "modelling",
+  "words": 3827,
+  "sentences": 110
+ },
+ {
+  "doi": "10.1016/s0140-6736(21)00247-6",
+  "pmcid": "PMC8047799",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2021,
+  "type": "research",
+  "design": "economic",
+  "words": 5039,
+  "sentences": 198
  },
  {
   "doi": "10.1016/s0140-6736(21)02724-0",
@@ -500,8 +2139,20 @@
   "journal": "Lancet",
   "year": 2021,
   "type": "research",
+  "design": "modelling",
   "words": 8715,
   "sentences": 264
+ },
+ {
+  "doi": "10.1016/s1473-3099(20)30700-3",
+  "pmcid": "PMC7505634",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2021,
+  "type": "research",
+  "design": "modelling",
+  "words": 4071,
+  "sentences": 138
  },
  {
   "doi": "10.1016/s1473-3099(21)00449-7",
@@ -509,6 +2160,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2021,
   "type": "research",
+  "design": "modelling",
   "words": 5045,
   "sentences": 196
  },
@@ -518,6 +2170,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2021,
   "type": "research",
+  "design": "modelling",
   "words": 3628,
   "sentences": 130
  },
@@ -527,8 +2180,42 @@
   "journal": "Lancet Infect Dis",
   "year": 2021,
   "type": "research",
+  "design": "economic",
   "words": 4086,
   "sentences": 131
+ },
+ {
+  "doi": "10.1016/s2214-109x(21)00033-4",
+  "pmcid": "PMC8050199",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2021,
+  "type": "research",
+  "design": "economic",
+  "words": 3736,
+  "sentences": 128
+ },
+ {
+  "doi": "10.1016/s2214-109x(21)00040-1",
+  "pmcid": "PMC8064237",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2021,
+  "type": "research",
+  "design": "economic",
+  "words": 4766,
+  "sentences": 174
+ },
+ {
+  "doi": "10.1016/s2214-109x(21)00220-5",
+  "pmcid": "PMC8315146",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2021,
+  "type": "research",
+  "design": "economic",
+  "words": 4201,
+  "sentences": 180
  },
  {
   "doi": "10.1016/s2214-109x(21)00221-7",
@@ -536,6 +2223,7 @@
   "journal": "Lancet Glob Health",
   "year": 2021,
   "type": "research",
+  "design": "systematic-review",
   "words": 3256,
   "sentences": 123
  },
@@ -545,8 +2233,31 @@
   "journal": "Lancet Glob Health",
   "year": 2021,
   "type": "research",
+  "design": "modelling",
   "words": 3647,
   "sentences": 133
+ },
+ {
+  "doi": "10.1016/s2214-109x(21)00340-5",
+  "pmcid": "PMC8526364",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2021,
+  "type": "research",
+  "design": "modelling",
+  "words": 3651,
+  "sentences": 92
+ },
+ {
+  "doi": "10.1016/s2214-109x(21)00447-2",
+  "pmcid": "PMC8692586",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2021,
+  "type": "research",
+  "design": "economic",
+  "words": 5029,
+  "sentences": 183
  },
  {
   "doi": "10.1016/s2352-3018(21)00127-2",
@@ -554,6 +2265,7 @@
   "journal": "Lancet HIV",
   "year": 2021,
   "type": "research",
+  "design": "modelling",
   "words": 4465,
   "sentences": 166
  },
@@ -563,6 +2275,7 @@
   "journal": "Lancet Public Health",
   "year": 2021,
   "type": "research",
+  "design": "observational",
   "words": 3408,
   "sentences": 119
  },
@@ -572,6 +2285,7 @@
   "journal": "Lancet Public Health",
   "year": 2021,
   "type": "other",
+  "design": "",
   "words": 2456,
   "sentences": 94
  },
@@ -581,8 +2295,31 @@
   "journal": "Lancet Planet Health",
   "year": 2021,
   "type": "research",
+  "design": "modelling",
   "words": 4643,
   "sentences": 169
+ },
+ {
+  "doi": "10.1016/s0140-6736(21)02499-5",
+  "pmcid": "PMC8971961",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2022,
+  "type": "research",
+  "design": "economic",
+  "words": 5759,
+  "sentences": 216
+ },
+ {
+  "doi": "10.1016/s1473-3099(22)00320-6",
+  "pmcid": "PMC9225255",
+  "family": "lancet",
+  "journal": "Lancet Infect Dis",
+  "year": 2022,
+  "type": "research",
+  "design": "modelling",
+  "words": 4262,
+  "sentences": 145
  },
  {
   "doi": "10.1016/s1473-3099(22)00877-5",
@@ -590,8 +2327,20 @@
   "journal": "Lancet Infect Dis",
   "year": 2022,
   "type": "review",
+  "design": "review",
   "words": 4223,
   "sentences": 180
+ },
+ {
+  "doi": "10.1016/s2214-109x(21)00517-9",
+  "pmcid": "PMC8789560",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2022,
+  "type": "research",
+  "design": "economic",
+  "words": 3704,
+  "sentences": 155
  },
  {
   "doi": "10.1016/s2214-109x(22)00113-9",
@@ -599,8 +2348,20 @@
   "journal": "Lancet Glob Health",
   "year": 2022,
   "type": "research",
+  "design": "economic",
   "words": 4152,
   "sentences": 152
+ },
+ {
+  "doi": "10.1016/s2214-109x(22)00358-8",
+  "pmcid": "PMC9573849",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2022,
+  "type": "research",
+  "design": "modelling",
+  "words": 3552,
+  "sentences": 103
  },
  {
   "doi": "10.1016/s2214-109x(22)00455-7",
@@ -608,6 +2369,7 @@
   "journal": "Lancet Glob Health",
   "year": 2022,
   "type": "research",
+  "design": "modelling",
   "words": 3773,
   "sentences": 173
  },
@@ -617,8 +2379,31 @@
   "journal": "Lancet Glob Health",
   "year": 2022,
   "type": "research",
+  "design": "economic",
   "words": 5695,
   "sentences": 200
+ },
+ {
+  "doi": "10.1016/s2352-3018(22)00259-4",
+  "pmcid": "PMC9646978",
+  "family": "lancet",
+  "journal": "Lancet HIV",
+  "year": 2022,
+  "type": "research",
+  "design": "modelling",
+  "words": 4525,
+  "sentences": 145
+ },
+ {
+  "doi": "10.1016/s2468-2667(21)00249-8",
+  "pmcid": "PMC8810394",
+  "family": "lancet",
+  "journal": "Lancet Public Health",
+  "year": 2022,
+  "type": "research",
+  "design": "modelling",
+  "words": 5076,
+  "sentences": 160
  },
  {
   "doi": "10.1016/s2468-2667(22)00225-0",
@@ -626,6 +2411,7 @@
   "journal": "Lancet Public Health",
   "year": 2022,
   "type": "research",
+  "design": "modelling",
   "words": 5608,
   "sentences": 179
  },
@@ -635,6 +2421,7 @@
   "journal": "Lancet Digit Health",
   "year": 2022,
   "type": "other",
+  "design": "",
   "words": 2633,
   "sentences": 92
  },
@@ -644,8 +2431,20 @@
   "journal": "Lancet Microbe",
   "year": 2022,
   "type": "research",
+  "design": "laboratory",
   "words": 4640,
   "sentences": 169
+ },
+ {
+  "doi": "10.1016/s0140-6736(23)01301-6",
+  "pmcid": "PMC10364581",
+  "family": "lancet",
+  "journal": "Lancet",
+  "year": 2023,
+  "type": "research",
+  "design": "modelling",
+  "words": 7066,
+  "sentences": 242
  },
  {
   "doi": "10.1016/s1473-3099(23)00184-6",
@@ -653,6 +2452,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2023,
   "type": "research",
+  "design": "trial",
   "words": 5296,
   "sentences": 191
  },
@@ -662,6 +2462,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2023,
   "type": "research",
+  "design": "systematic-review",
   "words": 4926,
   "sentences": 192
  },
@@ -671,6 +2472,7 @@
   "journal": "Lancet Neurol",
   "year": 2023,
   "type": "research",
+  "design": "trial",
   "words": 5678,
   "sentences": 219
  },
@@ -680,8 +2482,31 @@
   "journal": "Lancet Respir Med",
   "year": 2023,
   "type": "research",
+  "design": "trial",
   "words": 5403,
   "sentences": 212
+ },
+ {
+  "doi": "10.1016/s2214-109x(23)00056-6",
+  "pmcid": "PMC10030457",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2023,
+  "type": "research",
+  "design": "economic",
+  "words": 3688,
+  "sentences": 129
+ },
+ {
+  "doi": "10.1016/s2214-109x(23)00220-6",
+  "pmcid": "PMC10369016",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2023,
+  "type": "research",
+  "design": "modelling",
+  "words": 4221,
+  "sentences": 139
  },
  {
   "doi": "10.1016/s0140-6736(24)00862-6",
@@ -689,6 +2514,7 @@
   "journal": "Lancet",
   "year": 2024,
   "type": "review",
+  "design": "review",
   "words": 4758,
   "sentences": 163
  },
@@ -698,6 +2524,7 @@
   "journal": "Lancet",
   "year": 2024,
   "type": "review",
+  "design": "review",
   "words": 6048,
   "sentences": 236
  },
@@ -707,6 +2534,7 @@
   "journal": "Lancet",
   "year": 2024,
   "type": "research",
+  "design": "modelling",
   "words": 10906,
   "sentences": 387
  },
@@ -716,6 +2544,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2024,
   "type": "research",
+  "design": "modelling",
   "words": 8476,
   "sentences": 245
  },
@@ -725,6 +2554,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2024,
   "type": "review",
+  "design": "review",
   "words": 5480,
   "sentences": 185
  },
@@ -734,6 +2564,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2024,
   "type": "research",
+  "design": "trial",
   "words": 3499,
   "sentences": 138
  },
@@ -743,8 +2574,20 @@
   "journal": "Lancet Respir Med",
   "year": 2024,
   "type": "research",
+  "design": "observational",
   "words": 3679,
   "sentences": 155
+ },
+ {
+  "doi": "10.1016/s2214-109x(23)00585-5",
+  "pmcid": "PMC10882211",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2024,
+  "type": "research",
+  "design": "modelling",
+  "words": 4992,
+  "sentences": 169
  },
  {
   "doi": "10.1016/s2214-109x(24)00284-5",
@@ -752,8 +2595,64 @@
   "journal": "Lancet Glob Health",
   "year": 2024,
   "type": "research",
+  "design": "economic",
   "words": 2472,
   "sentences": 88
+ },
+ {
+  "doi": "10.1016/s2214-109x(24)00327-9",
+  "pmcid": "PMC11579304",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2024,
+  "type": "research",
+  "design": "economic",
+  "words": 3674,
+  "sentences": 133
+ },
+ {
+  "doi": "10.1016/s2352-3018(24)00212-1",
+  "pmcid": "PMC11612058",
+  "family": "lancet",
+  "journal": "Lancet HIV",
+  "year": 2024,
+  "type": "research",
+  "design": "modelling",
+  "words": 7638,
+  "sentences": 235
+ },
+ {
+  "doi": "10.1016/s2352-3018(24)00239-x",
+  "pmcid": "PMC11519315",
+  "family": "lancet",
+  "journal": "Lancet HIV",
+  "year": 2024,
+  "type": "research",
+  "design": "economic",
+  "words": 4051,
+  "sentences": 138
+ },
+ {
+  "doi": "10.1016/s2468-2667(24)00185-3",
+  "pmcid": "PMC11447277",
+  "family": "lancet",
+  "journal": "Lancet Public Health",
+  "year": 2024,
+  "type": "research",
+  "design": "modelling",
+  "words": 3685,
+  "sentences": 140
+ },
+ {
+  "doi": "10.1016/s2468-2667(24)00221-4",
+  "pmcid": "PMC11535755",
+  "family": "lancet",
+  "journal": "Lancet Public Health",
+  "year": 2024,
+  "type": "research",
+  "design": "economic",
+  "words": 4200,
+  "sentences": 127
  },
  {
   "doi": "10.1016/s0140-6736(25)00311-3",
@@ -761,6 +2660,7 @@
   "journal": "Lancet",
   "year": 2025,
   "type": "research",
+  "design": "systematic-review",
   "words": 7335,
   "sentences": 266
  },
@@ -770,6 +2670,7 @@
   "journal": "Lancet",
   "year": 2025,
   "type": "research",
+  "design": "modelling",
   "words": 7652,
   "sentences": 259
  },
@@ -779,6 +2680,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2025,
   "type": "research",
+  "design": "modelling",
   "words": 4308,
   "sentences": 154
  },
@@ -788,8 +2690,53 @@
   "journal": "Lancet Infect Dis",
   "year": 2025,
   "type": "research",
+  "design": "computational",
   "words": 4584,
   "sentences": 183
+ },
+ {
+  "doi": "10.1016/s2214-109x(24)00517-5",
+  "pmcid": "PMC11950424",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2025,
+  "type": "research",
+  "design": "economic",
+  "words": 4246,
+  "sentences": 172
+ },
+ {
+  "doi": "10.1016/s2214-109x(24)00538-2",
+  "pmcid": "PMC11868778",
+  "family": "lancet",
+  "journal": "Lancet Glob Health",
+  "year": 2025,
+  "type": "research",
+  "design": "observational",
+  "words": 3909,
+  "sentences": 133
+ },
+ {
+  "doi": "10.1016/s2215-0366(25)00105-1",
+  "pmcid": "PMC12078190",
+  "family": "lancet",
+  "journal": "Lancet Psychiatry",
+  "year": 2025,
+  "type": "research",
+  "design": "economic",
+  "words": 5528,
+  "sentences": 194
+ },
+ {
+  "doi": "10.1016/s2352-3026(25)00168-1",
+  "pmcid": "PMC12405179",
+  "family": "lancet",
+  "journal": "Lancet Haematol",
+  "year": 2025,
+  "type": "research",
+  "design": "economic",
+  "words": 3707,
+  "sentences": 153
  },
  {
   "doi": "10.1016/s2468-2667(25)00039-8",
@@ -797,8 +2744,20 @@
   "journal": "Lancet Public Health",
   "year": 2025,
   "type": "research",
+  "design": "observational",
   "words": 3504,
   "sentences": 147
+ },
+ {
+  "doi": "10.1016/s2468-2667(25)00174-4",
+  "pmcid": "PMC12394792",
+  "family": "lancet",
+  "journal": "Lancet Public Health",
+  "year": 2025,
+  "type": "research",
+  "design": "modelling",
+  "words": 3916,
+  "sentences": 154
  },
  {
   "doi": "10.1016/s0140-6736(26)00307-7",
@@ -806,6 +2765,7 @@
   "journal": "Lancet",
   "year": 2026,
   "type": "research",
+  "design": "trial",
   "words": 4125,
   "sentences": 150
  },
@@ -815,6 +2775,7 @@
   "journal": "Lancet Diabetes Endocrinol",
   "year": 2026,
   "type": "research",
+  "design": "economic",
   "words": 4783,
   "sentences": 180
  },
@@ -824,6 +2785,7 @@
   "journal": "Lancet Psychiatry",
   "year": 2026,
   "type": "review",
+  "design": "review",
   "words": 4928,
   "sentences": 215
  },
@@ -833,6 +2795,7 @@
   "journal": "Nature",
   "year": null,
   "type": "other",
+  "design": "",
   "words": 5457,
   "sentences": 223
  },
@@ -842,6 +2805,7 @@
   "journal": "Nature",
   "year": null,
   "type": "other",
+  "design": "",
   "words": 6226,
   "sentences": 301
  },
@@ -851,6 +2815,7 @@
   "journal": "Nature",
   "year": null,
   "type": "research",
+  "design": "systematic-review",
   "words": 7045,
   "sentences": 329
  },
@@ -860,6 +2825,7 @@
   "journal": "Nat Med",
   "year": 2018,
   "type": "other",
+  "design": "",
   "words": 4445,
   "sentences": 195
  },
@@ -869,6 +2835,7 @@
   "journal": "Nat Med",
   "year": 2018,
   "type": "other",
+  "design": "",
   "words": 3425,
   "sentences": 163
  },
@@ -878,6 +2845,7 @@
   "journal": "Nature research journal",
   "year": 2019,
   "type": "review",
+  "design": "review",
   "words": 5285,
   "sentences": 229
  },
@@ -887,6 +2855,7 @@
   "journal": "Nature Reviews",
   "year": 2020,
   "type": "review",
+  "design": "review",
   "words": 16940,
   "sentences": 740
  },
@@ -896,6 +2865,7 @@
   "journal": "Nature",
   "year": 2020,
   "type": "research",
+  "design": "systematic-review",
   "words": 5049,
   "sentences": 182
  },
@@ -905,6 +2875,7 @@
   "journal": "Nature Reviews",
   "year": 2021,
   "type": "review",
+  "design": "review",
   "words": 14304,
   "sentences": 621
  },
@@ -914,6 +2885,7 @@
   "journal": "Nature",
   "year": 2021,
   "type": "other",
+  "design": "",
   "words": 3568,
   "sentences": 177
  },
@@ -923,6 +2895,7 @@
   "journal": "Nat Med",
   "year": 2021,
   "type": "research",
+  "design": "computational",
   "words": 6957,
   "sentences": 309
  },
@@ -932,8 +2905,64 @@
   "journal": "Nature",
   "year": 2022,
   "type": "research",
+  "design": "computational",
   "words": 11976,
   "sentences": 597
+ },
+ {
+  "doi": "10.1038/s41591-022-01890-4",
+  "pmcid": "PMC9388375",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2022,
+  "type": "research",
+  "design": "modelling",
+  "words": 6414,
+  "sentences": 234
+ },
+ {
+  "doi": "10.1038/s41591-022-01909-w",
+  "pmcid": "PMC9388369",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2022,
+  "type": "research",
+  "design": "observational",
+  "words": 5952,
+  "sentences": 196
+ },
+ {
+  "doi": "10.1038/s41591-022-02012-w",
+  "pmcid": "PMC9671804",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2022,
+  "type": "research",
+  "design": "observational",
+  "words": 5141,
+  "sentences": 202
+ },
+ {
+  "doi": "10.1038/s41591-022-02064-y",
+  "pmcid": "PMC9671807",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2022,
+  "type": "research",
+  "design": "modelling",
+  "words": 4891,
+  "sentences": 154
+ },
+ {
+  "doi": "10.1038/s41562-023-01747-x",
+  "pmcid": "PMC10896714",
+  "family": "nature",
+  "journal": "Nat Hum Behav",
+  "year": 2023,
+  "type": "research",
+  "design": "modelling",
+  "words": 7173,
+  "sentences": 293
  },
  {
   "doi": "10.1038/s41576-023-00586-w",
@@ -941,8 +2970,20 @@
   "journal": "Nature Reviews",
   "year": 2023,
   "type": "review",
+  "design": "review",
   "words": 9805,
   "sentences": 427
+ },
+ {
+  "doi": "10.1038/s41591-023-02429-x",
+  "pmcid": "PMC10353935",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2023,
+  "type": "research",
+  "design": "computational",
+  "words": 6255,
+  "sentences": 205
  },
  {
   "doi": "10.1038/s41591-023-02475-5",
@@ -950,6 +2991,7 @@
   "journal": "Nat Med",
   "year": 2023,
   "type": "other",
+  "design": "",
   "words": 3596,
   "sentences": 149
  },
@@ -959,8 +3001,20 @@
   "journal": "Nat Med",
   "year": 2023,
   "type": "research",
+  "design": "modelling",
   "words": 8402,
   "sentences": 352
+ },
+ {
+  "doi": "10.1038/s41591-023-02600-4",
+  "pmcid": "PMC10719104",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2023,
+  "type": "research",
+  "design": "economic",
+  "words": 11088,
+  "sentences": 368
  },
  {
   "doi": "10.1038/s41579-024-01010-8",
@@ -968,6 +3022,7 @@
   "journal": "Nature Reviews",
   "year": 2024,
   "type": "review",
+  "design": "review",
   "words": 8461,
   "sentences": 226
  },
@@ -977,6 +3032,7 @@
   "journal": "Nature Reviews",
   "year": 2024,
   "type": "review",
+  "design": "review",
   "words": 7493,
   "sentences": 292
  },
@@ -986,6 +3042,7 @@
   "journal": "Nature Reviews",
   "year": 2024,
   "type": "review",
+  "design": "review",
   "words": 7429,
   "sentences": 279
  },
@@ -995,6 +3052,7 @@
   "journal": "Nature",
   "year": 2024,
   "type": "research",
+  "design": "diagnostic",
   "words": 7614,
   "sentences": 389
  },
@@ -1004,6 +3062,7 @@
   "journal": "Nature research journal",
   "year": 2024,
   "type": "research",
+  "design": "computational",
   "words": 7493,
   "sentences": 349
  },
@@ -1013,6 +3072,7 @@
   "journal": "Nature research journal",
   "year": 2024,
   "type": "research",
+  "design": "mendelian-randomisation",
   "words": 4142,
   "sentences": 183
  },
@@ -1022,6 +3082,7 @@
   "journal": "Nature research journal",
   "year": 2024,
   "type": "research",
+  "design": "diagnostic",
   "words": 5971,
   "sentences": 243
  },
@@ -1031,8 +3092,20 @@
   "journal": "Nat Med",
   "year": 2024,
   "type": "research",
+  "design": "observational",
   "words": 7444,
   "sentences": 328
+ },
+ {
+  "doi": "10.1038/s41591-024-03069-5",
+  "pmcid": "PMC11333277",
+  "family": "nature",
+  "journal": "Nat Med",
+  "year": 2024,
+  "type": "research",
+  "design": "economic",
+  "words": 4907,
+  "sentences": 194
  },
  {
   "doi": "10.1038/s41591-024-03483-9",
@@ -1040,6 +3113,7 @@
   "journal": "Nat Med",
   "year": 2024,
   "type": "research",
+  "design": "computational",
   "words": 7276,
   "sentences": 262
  },
@@ -1049,6 +3123,7 @@
   "journal": "Nat Microbiol",
   "year": 2025,
   "type": "research",
+  "design": "laboratory",
   "words": 8110,
   "sentences": 333
  },
@@ -1058,6 +3133,7 @@
   "journal": "Nat Microbiol",
   "year": 2025,
   "type": "research",
+  "design": "laboratory",
   "words": 8079,
   "sentences": 366
  },
@@ -1067,6 +3143,7 @@
   "journal": "Nat Microbiol",
   "year": 2025,
   "type": "research",
+  "design": "laboratory",
   "words": 10159,
   "sentences": 436
  },
@@ -1076,8 +3153,20 @@
   "journal": "Nature",
   "year": 2025,
   "type": "research",
+  "design": "laboratory",
   "words": 11000,
   "sentences": 454
+ },
+ {
+  "doi": "10.1038/s41586-025-09482-1",
+  "pmcid": "PMC12443613",
+  "family": "nature",
+  "journal": "Nature",
+  "year": 2025,
+  "type": "research",
+  "design": "modelling",
+  "words": 11308,
+  "sentences": 396
  },
  {
   "doi": "10.1038/s41591-025-03668-w",
@@ -1085,6 +3174,7 @@
   "journal": "Nat Med",
   "year": 2025,
   "type": "other",
+  "design": "",
   "words": 1527,
   "sentences": 62
  },
@@ -1094,6 +3184,7 @@
   "journal": "Nat Med",
   "year": 2025,
   "type": "research",
+  "design": "observational",
   "words": 5802,
   "sentences": 241
  },
@@ -1103,6 +3194,7 @@
   "journal": "Nat Med",
   "year": 2025,
   "type": "research",
+  "design": "observational",
   "words": 14097,
   "sentences": 628
  },
@@ -1112,6 +3204,7 @@
   "journal": "Nat Med",
   "year": 2025,
   "type": "research",
+  "design": "computational",
   "words": 5448,
   "sentences": 250
  },
@@ -1121,6 +3214,7 @@
   "journal": "Nat Med",
   "year": 2025,
   "type": "research",
+  "design": "prediction",
   "words": 7441,
   "sentences": 320
  },
@@ -1130,6 +3224,7 @@
   "journal": "Nat Med",
   "year": 2025,
   "type": "research",
+  "design": "computational",
   "words": 9370,
   "sentences": 367
  },
@@ -1139,6 +3234,7 @@
   "journal": "Nature Reviews",
   "year": 2026,
   "type": "review",
+  "design": "review",
   "words": 6885,
   "sentences": 307
  },
@@ -1148,6 +3244,7 @@
   "journal": "Nature",
   "year": 2026,
   "type": "research",
+  "design": "laboratory",
   "words": 5111,
   "sentences": 253
  },
@@ -1157,6 +3254,7 @@
   "journal": "Nature",
   "year": 2026,
   "type": "other",
+  "design": "",
   "words": 2617,
   "sentences": 120
  },
@@ -1166,6 +3264,7 @@
   "journal": "Nature",
   "year": 2026,
   "type": "research",
+  "design": "laboratory",
   "words": 8990,
   "sentences": 426
  },
@@ -1175,6 +3274,7 @@
   "journal": "Nature",
   "year": 2026,
   "type": "research",
+  "design": "computational",
   "words": 6268,
   "sentences": 281
  },
@@ -1184,6 +3284,7 @@
   "journal": "Nature",
   "year": 2026,
   "type": "research",
+  "design": "computational",
   "words": 17068,
   "sentences": 678
  },
@@ -1193,6 +3294,7 @@
   "journal": "Nature",
   "year": 2026,
   "type": "research",
+  "design": "laboratory",
   "words": 7047,
   "sentences": 328
  },
@@ -1202,6 +3304,7 @@
   "journal": "Nature",
   "year": 2026,
   "type": "research",
+  "design": "laboratory",
   "words": 6652,
   "sentences": 303
  },
@@ -1211,6 +3314,7 @@
   "journal": "Nature",
   "year": 2026,
   "type": "research",
+  "design": "laboratory",
   "words": 9268,
   "sentences": 410
  },
@@ -1220,6 +3324,7 @@
   "journal": "Nat Med",
   "year": 2026,
   "type": "research",
+  "design": "observational",
   "words": 5860,
   "sentences": 208
  },
@@ -1229,6 +3334,7 @@
   "journal": "Nat Med",
   "year": 2026,
   "type": "research",
+  "design": "systematic-review",
   "words": 6832,
   "sentences": 278
  },
@@ -1238,6 +3344,7 @@
   "journal": "Nat Med",
   "year": 2026,
   "type": "research",
+  "design": "observational",
   "words": 10729,
   "sentences": 465
  },
@@ -1247,6 +3354,7 @@
   "journal": "Nat Med",
   "year": 2026,
   "type": "other",
+  "design": "",
   "words": 6410,
   "sentences": 232
  },
@@ -1256,6 +3364,7 @@
   "journal": "Nat Med",
   "year": 2026,
   "type": "research",
+  "design": "trial",
   "words": 5503,
   "sentences": 229
  },
@@ -1265,6 +3374,7 @@
   "journal": "Nat Med",
   "year": 2026,
   "type": "research",
+  "design": "trial",
   "words": 5054,
   "sentences": 173
  },
@@ -1274,6 +3384,7 @@
   "journal": "Nat Med",
   "year": 2026,
   "type": "research",
+  "design": "observational",
   "words": 9151,
   "sentences": 427
  },
@@ -1283,6 +3394,7 @@
   "journal": "Nat Med",
   "year": 2026,
   "type": "research",
+  "design": "diagnostic",
   "words": 7036,
   "sentences": 323
  },
@@ -1292,8 +3404,119 @@
   "journal": "NEJM",
   "year": 2016,
   "type": "research",
+  "design": "trial",
   "words": 4465,
   "sentences": 155
+ },
+ {
+  "doi": "10.1056/nejmoa2001316",
+  "pmcid": "PMC7121484",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2020,
+  "type": "research",
+  "design": "modelling",
+  "words": 3030,
+  "sentences": 110
+ },
+ {
+  "doi": "10.1056/nejmoa2020283",
+  "pmcid": "PMC7315890",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2020,
+  "type": "research",
+  "design": "observational",
+  "words": 3446,
+  "sentences": 104
+ },
+ {
+  "doi": "10.1056/nejmoa2021436",
+  "pmcid": "PMC7383595",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2020,
+  "type": "research",
+  "design": "trial",
+  "words": 3500,
+  "sentences": 128
+ },
+ {
+  "doi": "10.1056/nejmoa2021680",
+  "pmcid": "PMC7346765",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2020,
+  "type": "research",
+  "design": "observational",
+  "words": 3052,
+  "sentences": 111
+ },
+ {
+  "doi": "10.1056/nejmoa2021801",
+  "pmcid": "PMC7722693",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2020,
+  "type": "research",
+  "design": "trial",
+  "words": 3204,
+  "sentences": 128
+ },
+ {
+  "doi": "10.1056/nejmoa2030340",
+  "pmcid": "PMC7781101",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2020,
+  "type": "research",
+  "design": "trial",
+  "words": 3777,
+  "sentences": 126
+ },
+ {
+  "doi": "10.1056/nejmoa2034577",
+  "pmcid": "PMC7745181",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2020,
+  "type": "research",
+  "design": "trial",
+  "words": 3710,
+  "sentences": 139
+ },
+ {
+  "doi": "10.1056/nejmra2026131",
+  "pmcid": "PMC7727315",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2020,
+  "type": "review",
+  "design": "review",
+  "words": 7614,
+  "sentences": 282
+ },
+ {
+  "doi": "10.1056/nejmra2035343",
+  "pmcid": "PMC7787218",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2020,
+  "type": "review",
+  "design": "review",
+  "words": 2246,
+  "sentences": 69
+ },
+ {
+  "doi": "10.1056/nejmsa2011686",
+  "pmcid": "PMC7269015",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2020,
+  "type": "research",
+  "design": "observational",
+  "words": 3209,
+  "sentences": 140
  },
  {
   "doi": "10.1056/nejmoa2101016",
@@ -1301,8 +3524,97 @@
   "journal": "NEJM",
   "year": 2021,
   "type": "research",
+  "design": "trial",
   "words": 4709,
   "sentences": 178
+ },
+ {
+  "doi": "10.1056/nejmoa2101765",
+  "pmcid": "PMC7944975",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2021,
+  "type": "research",
+  "design": "observational",
+  "words": 3465,
+  "sentences": 124
+ },
+ {
+  "doi": "10.1056/nejmoa2103417",
+  "pmcid": "PMC8362592",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2021,
+  "type": "research",
+  "design": "trial",
+  "words": 3785,
+  "sentences": 158
+ },
+ {
+  "doi": "10.1056/nejmoa2107456",
+  "pmcid": "PMC8174030",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2021,
+  "type": "research",
+  "design": "trial",
+  "words": 3599,
+  "sentences": 135
+ },
+ {
+  "doi": "10.1056/nejmoa2109730",
+  "pmcid": "PMC8531987",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2021,
+  "type": "research",
+  "design": "observational",
+  "words": 3260,
+  "sentences": 118
+ },
+ {
+  "doi": "10.1056/nejmoa2109908",
+  "pmcid": "PMC10662971",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2021,
+  "type": "research",
+  "design": "observational",
+  "words": 3781,
+  "sentences": 157
+ },
+ {
+  "doi": "10.1056/nejmoa2116044",
+  "pmcid": "PMC8693688",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2021,
+  "type": "research",
+  "design": "trial",
+  "words": 4220,
+  "sentences": 134
+ },
+ {
+  "doi": "10.1056/nejmcp2117115",
+  "pmcid": "PMC8820190",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2022,
+  "type": "review",
+  "design": "review",
+  "words": 2922,
+  "sentences": 105
+ },
+ {
+  "doi": "10.1056/nejmoa2115869",
+  "pmcid": "PMC9006771",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2022,
+  "type": "research",
+  "design": "trial",
+  "words": 3712,
+  "sentences": 142
  },
  {
   "doi": "10.1056/nejmoa2117166",
@@ -1310,8 +3622,119 @@
   "journal": "NEJM",
   "year": 2022,
   "type": "research",
+  "design": "trial",
   "words": 4721,
   "sentences": 192
+ },
+ {
+  "doi": "10.1056/nejmoa2204399",
+  "pmcid": "PMC9342588",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2022,
+  "type": "research",
+  "design": "observational",
+  "words": 3397,
+  "sentences": 103
+ },
+ {
+  "doi": "10.1056/nejmoa2208822",
+  "pmcid": "PMC9812289",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2022,
+  "type": "research",
+  "design": "trial",
+  "words": 3554,
+  "sentences": 135
+ },
+ {
+  "doi": "10.1056/nejmoa2211029",
+  "pmcid": "PMC9743802",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2022,
+  "type": "research",
+  "design": "observational",
+  "words": 3766,
+  "sentences": 109
+ },
+ {
+  "doi": "10.1056/nejmra2106441",
+  "pmcid": "PMC9258752",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2022,
+  "type": "review",
+  "design": "review",
+  "words": 3049,
+  "sentences": 103
+ },
+ {
+  "doi": "10.1056/nejmra2200583",
+  "pmcid": "PMC9069993",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2022,
+  "type": "review",
+  "design": "review",
+  "words": 2920,
+  "sentences": 103
+ },
+ {
+  "doi": "10.1056/nejmra2206573",
+  "pmcid": "PMC9454645",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2022,
+  "type": "review",
+  "design": "review",
+  "words": 2785,
+  "sentences": 90
+ },
+ {
+  "doi": "10.1056/nejmoa2210063",
+  "pmcid": "PMC10052223",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2023,
+  "type": "research",
+  "design": "observational",
+  "words": 3073,
+  "sentences": 101
+ },
+ {
+  "doi": "10.1056/nejmoa2309995",
+  "pmcid": "PMC10755839",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2023,
+  "type": "research",
+  "design": "trial",
+  "words": 3840,
+  "sentences": 159
+ },
+ {
+  "doi": "10.1056/nejmra2206346",
+  "pmcid": "PMC9912245",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2023,
+  "type": "review",
+  "design": "review",
+  "words": 4052,
+  "sentences": 143
+ },
+ {
+  "doi": "10.1056/nejmoa2403211",
+  "pmcid": "PMC11687648",
+  "family": "nejm",
+  "journal": "NEJM",
+  "year": 2024,
+  "type": "research",
+  "design": "observational",
+  "words": 3362,
+  "sentences": 112
  },
  {
   "doi": "10.1056/nejmoa2503304",
@@ -1319,6 +3742,7 @@
   "journal": "NEJM",
   "year": 2026,
   "type": "research",
+  "design": "trial",
   "words": 3706,
   "sentences": 151
  },
@@ -1328,6 +3752,7 @@
   "journal": "NEJM",
   "year": 2026,
   "type": "research",
+  "design": "modelling",
   "words": 4205,
   "sentences": 169
  },
@@ -1337,6 +3762,7 @@
   "journal": "NEJM",
   "year": 2026,
   "type": "research",
+  "design": "trial",
   "words": 4306,
   "sentences": 163
  },
@@ -1346,6 +3772,7 @@
   "journal": "NEJM",
   "year": 2026,
   "type": "research",
+  "design": "diagnostic",
   "words": 3681,
   "sentences": 155
  },
@@ -1355,6 +3782,7 @@
   "journal": "NEJM",
   "year": 2026,
   "type": "other",
+  "design": "",
   "words": 3444,
   "sentences": 144
  },
@@ -1364,6 +3792,7 @@
   "journal": "NEJM",
   "year": 2026,
   "type": "research",
+  "design": "trial",
   "words": 3762,
   "sentences": 144
  },
@@ -1373,6 +3802,7 @@
   "journal": "Science",
   "year": null,
   "type": "other",
+  "design": "",
   "words": 3211,
   "sentences": 123
  },
@@ -1382,6 +3812,7 @@
   "journal": "Science",
   "year": null,
   "type": "other",
+  "design": "",
   "words": 6186,
   "sentences": 249
  },
@@ -1391,6 +3822,7 @@
   "journal": "Science",
   "year": null,
   "type": "research",
+  "design": "laboratory",
   "words": 9957,
   "sentences": 449
  },
@@ -1400,6 +3832,7 @@
   "journal": "Science",
   "year": null,
   "type": "research",
+  "design": "computational",
   "words": 10267,
   "sentences": 430
  },
@@ -1409,7 +3842,668 @@
   "journal": "Science",
   "year": null,
   "type": "research",
+  "design": "laboratory",
   "words": 3357,
   "sentences": 123
+ },
+ {
+  "doi": "10.1126/science.aaf7447",
+  "pmcid": "PMC6510330",
+  "family": "science",
+  "journal": "Science",
+  "year": 2017,
+  "type": "research",
+  "design": "laboratory",
+  "words": 2189,
+  "sentences": 75
+ },
+ {
+  "doi": "10.1126/science.aao7294",
+  "pmcid": "PMC6518949",
+  "family": "science",
+  "journal": "Science",
+  "year": 2017,
+  "type": "research",
+  "design": "laboratory",
+  "words": 1351,
+  "sentences": 50
+ },
+ {
+  "doi": "10.1126/science.aar3777",
+  "pmcid": "PMC6510332",
+  "family": "science",
+  "journal": "Science",
+  "year": 2017,
+  "type": "review",
+  "design": "review",
+  "words": 4215,
+  "sentences": 167
+ },
+ {
+  "doi": "10.1126/scitranslmed.aan4669",
+  "pmcid": "PMC6516194",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2017,
+  "type": "research",
+  "design": "observational",
+  "words": 7374,
+  "sentences": 303
+ },
+ {
+  "doi": "10.1126/science.aar3819",
+  "pmcid": "PMC7734383",
+  "family": "science",
+  "journal": "Science",
+  "year": 2018,
+  "type": "research",
+  "design": "computational",
+  "words": 2037,
+  "sentences": 66
+ },
+ {
+  "doi": "10.1126/science.aat6030",
+  "pmcid": "PMC6510303",
+  "family": "science",
+  "journal": "Science",
+  "year": 2018,
+  "type": "research",
+  "design": "modelling",
+  "words": 2708,
+  "sentences": 86
+ },
+ {
+  "doi": "10.1126/science.aat9077",
+  "pmcid": "PMC7745124",
+  "family": "science",
+  "journal": "Science",
+  "year": 2018,
+  "type": "research",
+  "design": "laboratory",
+  "words": 6827,
+  "sentences": 258
+ },
+ {
+  "doi": "10.1126/science.aat9644",
+  "pmcid": "PMC6510304",
+  "family": "science",
+  "journal": "Science",
+  "year": 2018,
+  "type": "review",
+  "design": "review",
+  "words": 6090,
+  "sentences": 210
+ },
+ {
+  "doi": "10.1126/science.aau0780",
+  "pmcid": "PMC6510306",
+  "family": "science",
+  "journal": "Science",
+  "year": 2019,
+  "type": "research",
+  "design": "laboratory",
+  "words": 5794,
+  "sentences": 211
+ },
+ {
+  "doi": "10.1126/science.aau4732",
+  "pmcid": "PMC6683325",
+  "family": "science",
+  "journal": "Science",
+  "year": 2019,
+  "type": "research",
+  "design": "trial",
+  "words": 8091,
+  "sentences": 254
+ },
+ {
+  "doi": "10.1126/science.aau4735",
+  "pmcid": "PMC6683326",
+  "family": "science",
+  "journal": "Science",
+  "year": 2019,
+  "type": "research",
+  "design": "computational",
+  "words": 7636,
+  "sentences": 254
+ },
+ {
+  "doi": "10.1126/science.aau6299",
+  "pmcid": "PMC7745123",
+  "family": "science",
+  "journal": "Science",
+  "year": 2019,
+  "type": "research",
+  "design": "modelling",
+  "words": 2681,
+  "sentences": 84
+ },
+ {
+  "doi": "10.1126/science.aau6323",
+  "pmcid": "PMC7745125",
+  "family": "science",
+  "journal": "Science",
+  "year": 2019,
+  "type": "research",
+  "design": "laboratory",
+  "words": 4427,
+  "sentences": 177
+ },
+ {
+  "doi": "10.1126/scitranslmed.aau8581",
+  "pmcid": "PMC7797624",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2019,
+  "type": "research",
+  "design": "laboratory",
+  "words": 8549,
+  "sentences": 341
+ },
+ {
+  "doi": "10.1126/science.abb2762",
+  "pmcid": "PMC7164635",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 2450,
+  "sentences": 108
+ },
+ {
+  "doi": "10.1126/science.abb3405",
+  "pmcid": "PMC7164518",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 2409,
+  "sentences": 86
+ },
+ {
+  "doi": "10.1126/science.abb5793",
+  "pmcid": "PMC7164482",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "modelling",
+  "words": 5406,
+  "sentences": 196
+ },
+ {
+  "doi": "10.1126/science.abb6936",
+  "pmcid": "PMC7164555",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "modelling",
+  "words": 5063,
+  "sentences": 219
+ },
+ {
+  "doi": "10.1126/science.abb7431",
+  "pmcid": "PMC7402623",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "computational",
+  "words": 2263,
+  "sentences": 90
+ },
+ {
+  "doi": "10.1126/science.abb7498",
+  "pmcid": "PMC7164392",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 1846,
+  "sentences": 71
+ },
+ {
+  "doi": "10.1126/science.abb9263",
+  "pmcid": "PMC7286545",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "computational",
+  "words": 2548,
+  "sentences": 88
+ },
+ {
+  "doi": "10.1126/science.abc6261",
+  "pmcid": "PMC7665312",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 4410,
+  "sentences": 152
+ },
+ {
+  "doi": "10.1126/science.abc8511",
+  "pmcid": "PMC7402624",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 10767,
+  "sentences": 439
+ },
+ {
+  "doi": "10.1126/science.abd3871",
+  "pmcid": "PMC7574914",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 2821,
+  "sentences": 108
+ },
+ {
+  "doi": "10.1126/science.abd5223",
+  "pmcid": "PMC7665311",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 2201,
+  "sentences": 103
+ },
+ {
+  "doi": "10.1126/science.abd7672",
+  "pmcid": "PMC7857399",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "observational",
+  "words": 3211,
+  "sentences": 105
+ },
+ {
+  "doi": "10.1126/science.abd9909",
+  "pmcid": "PMC7857403",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 2172,
+  "sentences": 68
+ },
+ {
+  "doi": "10.1126/science.abe0075",
+  "pmcid": "PMC7920261",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 2323,
+  "sentences": 76
+ },
+ {
+  "doi": "10.1126/science.abe4747",
+  "pmcid": "PMC7857400",
+  "family": "science",
+  "journal": "Science",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 2616,
+  "sentences": 117
+ },
+ {
+  "doi": "10.1126/scitranslmed.abb5883",
+  "pmcid": "PMC7164393",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 7358,
+  "sentences": 286
+ },
+ {
+  "doi": "10.1126/scitranslmed.abc1126",
+  "pmcid": "PMC7319260",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2020,
+  "type": "research",
+  "design": "modelling",
+  "words": 6000,
+  "sentences": 195
+ },
+ {
+  "doi": "10.1126/scitranslmed.abc3103",
+  "pmcid": "PMC7665313",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2020,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 6841,
+  "sentences": 311
+ },
+ {
+  "doi": "10.1126/scitranslmed.abc5332",
+  "pmcid": "PMC7574915",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 5652,
+  "sentences": 226
+ },
+ {
+  "doi": "10.1126/scitranslmed.abc7075",
+  "pmcid": "PMC7574920",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2020,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 7432,
+  "sentences": 288
+ },
+ {
+  "doi": "10.1126/scitranslmed.abc9396",
+  "pmcid": "PMC7402629",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 5836,
+  "sentences": 207
+ },
+ {
+  "doi": "10.1126/scitranslmed.abd2223",
+  "pmcid": "PMC7857408",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2020,
+  "type": "research",
+  "design": "laboratory",
+  "words": 4832,
+  "sentences": 192
+ },
+ {
+  "doi": "10.1126/scitranslmed.abe4282",
+  "pmcid": "PMC8050952",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2020,
+  "type": "research",
+  "design": "observational",
+  "words": 6895,
+  "sentences": 282
+ },
+ {
+  "doi": "10.1126/science.abd9149",
+  "pmcid": "PMC8721651",
+  "family": "science",
+  "journal": "Science",
+  "year": 2021,
+  "type": "review",
+  "design": "review",
+  "words": 7233,
+  "sentences": 271
+ },
+ {
+  "doi": "10.1126/science.abe6959",
+  "pmcid": "PMC7963218",
+  "family": "science",
+  "journal": "Science",
+  "year": 2021,
+  "type": "research",
+  "design": "modelling",
+  "words": 3633,
+  "sentences": 131
+ },
+ {
+  "doi": "10.1126/science.abe7106",
+  "pmcid": "PMC8224270",
+  "family": "science",
+  "journal": "Science",
+  "year": 2021,
+  "type": "research",
+  "design": "laboratory",
+  "words": 3765,
+  "sentences": 150
+ },
+ {
+  "doi": "10.1126/science.abf2946",
+  "pmcid": "PMC7877493",
+  "family": "science",
+  "journal": "Science",
+  "year": 2021,
+  "type": "research",
+  "design": "computational",
+  "words": 2373,
+  "sentences": 97
+ },
+ {
+  "doi": "10.1126/science.abf3546",
+  "pmcid": "PMC8168617",
+  "family": "science",
+  "journal": "Science",
+  "year": 2021,
+  "type": "research",
+  "design": "laboratory",
+  "words": 3685,
+  "sentences": 109
+ },
+ {
+  "doi": "10.1126/science.abf4063",
+  "pmcid": "PMC7919858",
+  "family": "science",
+  "journal": "Science",
+  "year": 2021,
+  "type": "research",
+  "design": "laboratory",
+  "words": 7122,
+  "sentences": 303
+ },
+ {
+  "doi": "10.1126/science.abf6840",
+  "pmcid": "PMC7928838",
+  "family": "science",
+  "journal": "Science",
+  "year": 2021,
+  "type": "research",
+  "design": "laboratory",
+  "words": 2189,
+  "sentences": 73
+ },
+ {
+  "doi": "10.1126/science.abg3055",
+  "pmcid": "PMC8128288",
+  "family": "science",
+  "journal": "Science",
+  "year": 2021,
+  "type": "research",
+  "design": "modelling",
+  "words": 5476,
+  "sentences": 182
+ },
+ {
+  "doi": "10.1126/science.abh2644",
+  "pmcid": "PMC8139423",
+  "family": "science",
+  "journal": "Science",
+  "year": 2021,
+  "type": "research",
+  "design": "computational",
+  "words": 2894,
+  "sentences": 102
+ },
+ {
+  "doi": "10.1126/science.abm0475",
+  "pmcid": "PMC10765478",
+  "family": "science",
+  "journal": "Science",
+  "year": 2021,
+  "type": "research",
+  "design": "trial",
+  "words": 2070,
+  "sentences": 91
+ },
+ {
+  "doi": "10.1126/scitranslmed.abf1906",
+  "pmcid": "PMC8284311",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2021,
+  "type": "research",
+  "design": "laboratory",
+  "words": 9215,
+  "sentences": 354
+ },
+ {
+  "doi": "10.1126/scitranslmed.abf2823",
+  "pmcid": "PMC8099176",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2021,
+  "type": "research",
+  "design": "diagnostic",
+  "words": 3937,
+  "sentences": 153
+ },
+ {
+  "doi": "10.1126/scitranslmed.abf7517",
+  "pmcid": "PMC8128286",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2021,
+  "type": "research",
+  "design": "observational",
+  "words": 5440,
+  "sentences": 199
+ },
+ {
+  "doi": "10.1126/scitranslmed.abg1143",
+  "pmcid": "PMC9836081",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2021,
+  "type": "research",
+  "design": "laboratory",
+  "words": 6834,
+  "sentences": 290
+ },
+ {
+  "doi": "10.1126/scitranslmed.abg4262",
+  "pmcid": "PMC8432953",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2021,
+  "type": "research",
+  "design": "modelling",
+  "words": 4045,
+  "sentences": 147
+ },
+ {
+  "doi": "10.1126/scitranslmed.abi7643",
+  "pmcid": "PMC8432951",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2021,
+  "type": "research",
+  "design": "observational",
+  "words": 3508,
+  "sentences": 126
+ },
+ {
+  "doi": "10.1126/scitranslmed.abl8282",
+  "pmcid": "PMC8961622",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2021,
+  "type": "research",
+  "design": "laboratory",
+  "words": 7190,
+  "sentences": 304
+ },
+ {
+  "doi": "10.1126/science.abi9591",
+  "pmcid": "PMC8995031",
+  "family": "science",
+  "journal": "Science",
+  "year": 2022,
+  "type": "research",
+  "design": "laboratory",
+  "words": 7260,
+  "sentences": 273
+ },
+ {
+  "doi": "10.1126/science.abm5154",
+  "pmcid": "PMC9836201",
+  "family": "science",
+  "journal": "Science",
+  "year": 2022,
+  "type": "research",
+  "design": "observational",
+  "words": 2642,
+  "sentences": 105
+ },
+ {
+  "doi": "10.1126/science.abp8337",
+  "pmcid": "PMC9348752",
+  "family": "science",
+  "journal": "Science",
+  "year": 2022,
+  "type": "research",
+  "design": "computational",
+  "words": 4214,
+  "sentences": 145
+ },
+ {
+  "doi": "10.1126/scitranslmed.abl7430",
+  "pmcid": "PMC10763622",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2022,
+  "type": "research",
+  "design": "trial",
+  "words": 4875,
+  "sentences": 185
+ },
+ {
+  "doi": "10.1126/scitranslmed.abn9237",
+  "pmcid": "PMC9348753",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2022,
+  "type": "research",
+  "design": "observational",
+  "words": 4854,
+  "sentences": 183
+ },
+ {
+  "doi": "10.1126/scitranslmed.abn9836",
+  "pmcid": "PMC9012104",
+  "family": "science",
+  "journal": "Sci Transl Med",
+  "year": 2022,
+  "type": "research",
+  "design": "modelling",
+  "words": 4855,
+  "sentences": 192
  }
 ]

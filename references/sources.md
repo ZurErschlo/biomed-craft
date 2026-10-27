@@ -4,9 +4,9 @@ The rules in this skill come from four places, in this order of priority: the au
 
 ## Published articles
 
-- Calibration corpus: 124 research articles from flagship journals and their major sub-journals, listed by DOI in `scripts/corpus.json`.
-- Close reading of 45 research articles, 4 reviews and 16 paired supplements across trials, cohort studies, modelling, economic evaluation, systematic reviews, burden studies, diagnostic accuracy and laboratory studies, including open-access articles from PubMed Central on topics outside infectious disease.
-- Figure and table inspection of 28 articles page by page, plus legends and table notes from 15 more.
+- Calibration corpus: research articles from leading journals and their major sub-journals, from the author's library and from open-access publisher versions in Europe PMC, listed by DOI in `scripts/corpus.json`.
+- Close reading of research articles, reviews and paired supplements across trials, cohort studies, modelling, economic evaluation, systematic reviews, burden studies, diagnostic accuracy, laboratory and computational studies, on topics well beyond infectious disease.
+- Page-by-page inspection of figures and tables, and counts of legend and table-note conventions across the calibration articles.
 
 ## Public skills and catalogues
 
@@ -51,6 +51,28 @@ Rules from these sources that do not suit research articles were left out: banni
 - STROBE statement. https://www.strobe-statement.org/
 - Bossuyt PM, Reitsma JB, Bruns DE, et al. STARD 2015. BMJ 2015; 351: h5527. https://doi.org/10.1136/bmj.h5527
 - Stevens GA, Alkema L, Black RE, et al. GATHER statement. Lancet 2016; 388: e19–23. https://doi.org/10.1016/S0140-6736(16)30388-9
+
+## Research plans, logs and code
+
+- Wilson G, Bryan J, Cranston K, et al. Good enough practices in scientific computing. PLoS Comput Biol 2017; 13: e1005510. https://doi.org/10.1371/journal.pcbi.1005510
+- Sandve GK, Nekrutenko A, Taylor J, Hovig E. Ten simple rules for reproducible computational research. PLoS Comput Biol 2013; 9: e1003285. https://doi.org/10.1371/journal.pcbi.1003285
+- Noble WS. A quick guide to organizing computational biology projects. PLoS Comput Biol 2009; 5: e1000424. https://doi.org/10.1371/journal.pcbi.1000424
+- Bryan J. Project-oriented workflow. https://www.tidyverse.org/blog/2017/12/workflow-vs-script/
+- The tidyverse style guide. https://style.tidyverse.org/
+- PEP 8, style guide for Python code. https://peps.python.org/pep-0008/
+- TIER Protocol 4.0. https://www.projecttier.org/tier-protocol/protocol-4-0/
+- The Turing Way, research compendia. https://book.the-turing-way.org/reproducible-research/compendia
+- Broman KW, Woo KH. Data organization in spreadsheets. https://kbroman.org/dataorg/
+- Gamble C, Krishan A, Stocken D, et al. Guidelines for the content of statistical analysis plans in clinical trials. JAMA 2017; 318: 2337–43. https://doi.org/10.1001/jama.2017.18556
+- ICH E9: statistical principles for clinical trials. https://database.ich.org/sites/default/files/E9_Guideline.pdf
+- Moher D, Shamseer L, Clarke M, et al. PRISMA-P 2015. Syst Rev 2015; 4: 1. https://doi.org/10.1186/2046-4053-4-1
+- Wang SV, Pottegård A, Crown W, et al. HARPER: a harmonized protocol template for real-world evidence studies. Pharmacoepidemiol Drug Saf 2023. https://doi.org/10.1002/pds.5507
+- Thorn JC, Davies CF, Brookes ST, et al. Content of health economics analysis plans (HEAPs) for trial-based economic evaluations. Value Health 2021; 24: 699–710. https://doi.org/10.1016/j.jval.2020.10.002
+- Pollett S, Johansson MA, Reich NG, et al. EPIFORGE 2020 guidelines for epidemiological forecasting. PLoS Med 2021; 18: e1003793. https://doi.org/10.1371/journal.pmed.1003793
+- Keep a Changelog. https://keepachangelog.com/en/1.1.0/
+- Social Science Data Editors. Template README for replication packages. https://social-science-data-editors.github.io/template_README/
+
+The plan, log and code references follow the author's own decisions where these sources disagree with them: no run-all script, no shared function file, no unit-test scripts, the local R installation instead of a lockfile, and the history of a plan kept in the execution log instead of an amendment table.
 
 ## Journal instructions
 

@@ -12,7 +12,7 @@ body:
   - type: textarea
     id: better
     attributes:
-      label: How a flagship journal would print it
+      label: How a leading journal would print it
       description: Your rewrite, and if possible a published article (DOI) that writes it this way.
     validations:
       required: true

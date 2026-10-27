@@ -1,19 +1,29 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
-  "name": "plain-paper",
+  "name": "biomed-craft",
   "owner": {
     "name": "ZurErschlo",
     "url": "https://github.com/ZurErschlo"
   },
-  "description": "Install plain-paper as a Claude Code plugin.",
+  "description": "Install biomed-craft as a Claude Code plugin.",
   "plugins": [
     {
-      "name": "plain-paper",
+      "name": "biomed-craft",
       "source": "./",
-      "description": "Write and edit English academic papers to flagship-journal standard, without AI-style patterns, engineering jargon, defensive hedging or process narration.",
-      "version": "1.0.0",
+      "description": "End-to-end help with biomedical research: study design, research plans and logs, data and evidence checks, analysis code, figures and tables, manuscripts and replies to reviewers, written to the standard of leading journals.",
+      "version": "2.0.0",
       "license": "MIT",
-      "keywords": ["academic-writing", "scientific-writing", "manuscript", "editing", "figures", "humanize"]
+      "keywords": [
+        "biomedical-research",
+        "academic-writing",
+        "scientific-writing",
+        "systematic-review",
+        "research-plan",
+        "reproducible-research",
+        "manuscript",
+        "figures",
+        "editing"
+      ]
     }
   ]
 }

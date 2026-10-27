@@ -23,7 +23,7 @@ class PackageTest(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_skill_prose_passes_its_own_scanner(self):
-        documents = [ROOT / "SKILL.md"] + sorted(p for p in (ROOT / "references").glob("*.md") if p.name != "sources.md")
+        documents = [ROOT / "SKILL.md"] + sorted(p for p in (ROOT / "references").rglob("*.md") if p.name != "sources.md")
         for document in documents:
             result = scan.scan_file(document, RULES, "manuscript", None, None)
             must = [f"{f['rule']}: {f['context']}" for f in result["findings"] if f["level"] == "must"]
@@ -43,11 +43,11 @@ class PackageTest(unittest.TestCase):
     def test_scripts_run_from_a_copied_skill_folder(self):
         import shutil
         import tempfile
-        with tempfile.TemporaryDirectory(prefix="plain paper ") as directory:
-            copy = Path(directory) / "skills" / "plain-paper"
+        with tempfile.TemporaryDirectory(prefix="biomed craft ") as directory:
+            copy = Path(directory) / "skills" / "biomed-craft"
             shutil.copytree(ROOT, copy, ignore=shutil.ignore_patterns(".git", "__pycache__"))
             result = subprocess.run([sys.executable, str(copy / "scripts" / "scan.py"), "--strict",
-                                     str(copy / "tests" / "fixtures" / "flagship_style.md")],
+                                     str(copy / "tests" / "fixtures" / "leading_style.md")],
                                     capture_output=True, text=True, encoding="utf-8", cwd=directory)
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 

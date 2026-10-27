@@ -1,6 +1,6 @@
 # Sentences and paragraphs
 
-How research articles in flagship journals build sentences and paragraphs. Rates come from 124 research articles in flagship journals and their major sub-journals ([calibration.md](calibration.md)); structural observations come from close reading of 45 articles across study designs.
+How research articles in leading journals build sentences and paragraphs. Rates come from the calibration corpus ([calibration.md](calibration.md)); structural observations come from close reading of articles across study designs.
 
 ## Paragraphs
 
@@ -32,7 +32,7 @@ How research articles in flagship journals build sentences and paragraphs. Rates
 ## Tense and voice
 
 - Past tense for what was done and found. Present tense for established knowledge, model structure, what a figure shows, and interpretation.
-- Passives are normal, especially in Methods: about 36% of sentences in flagship research articles contain one (NEJM 46%, BMJ 21%).
+- Passives are normal, especially in Methods: about 36% of sentences in research articles in leading journals contain one (NEJM 46%, BMJ 21%).
 - `We` appears about 8 times per 1000 words (Lancet about 10; NEJM about 2·5, where the trial is usually the subject).
 
 ## Sentence length
@@ -53,7 +53,7 @@ How research articles in flagship journals build sentences and paragraphs. Rates
 | Laboratory study | show (direct observation) | suggest, indicate (mechanism) |
 
 - Put hedges on interpretations and leave measured results unhedged: `Mortality was 12·4%` (`Mortality appeared to be 12·4%` hedges a measurement).
-- One hedge per claim (DEF-02). Hedges run at a median of 3·2 per 1000 words in flagship research, highest in cohort studies and economic evaluations and lowest in trials.
+- One hedge per claim (DEF-02). Hedges run at a median of 3·2 per 1000 words in leading-journal research, highest in cohort studies and economic evaluations and lowest in trials.
 - Keep hedges that carry real uncertainty: association wording for observational data, scope conditions, the interval, `probably` on an explanation. Deleting them changes the claim.
 - The Lancet uses `might` (13 per 10 000 words) and almost never `may`. NEJM, JAMA and BMJ use `may`.
 
@@ -69,7 +69,7 @@ How research articles in flagship journals build sentences and paragraphs. Rates
 
 - Compare two named, measured things and give both numbers: `Treatment success was 86% with the new regimen and 79% with the standard regimen.`
 - The usual connectives are `by contrast`, `whereas` and `compared with`.
-- Contrast frames (`rather than`, `not … but`, `not only`, a clause-final `, not X`, `instead of`) occur about 0·3 times per 1000 words in flagship research (90th percentile 0·8). They mark technical distinctions, such as a method choice or a definition. They never open an argument (CON rules).
+- Contrast frames (`rather than`, `not … but`, `not only`, a clause-final `, not X`, `instead of`) occur about 0·3 times per 1000 words in leading-journal research (90th percentile 0·8). They mark technical distinctions, such as a method choice or a definition. They never open an argument (CON rules).
 
 ## Connectives
 

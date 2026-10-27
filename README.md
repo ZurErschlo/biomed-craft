@@ -1,110 +1,78 @@
-# plain-paper
+# biomed-craft
 
 English | [中文](README.zh-CN.md)
 
-[![Check package](https://github.com/ZurErschlo/plain-paper/actions/workflows/validate.yml/badge.svg)](https://github.com/ZurErschlo/plain-paper/actions/workflows/validate.yml)
+[![Check package](https://github.com/ZurErschlo/biomed-craft/actions/workflows/validate.yml/badge.svg)](https://github.com/ZurErschlo/biomed-craft/actions/workflows/validate.yml)
 
-An agent skill for writing, editing and reviewing English academic text to the standard of flagship journals (Lancet, NEJM, JAMA, BMJ, Nature, Science, Cell) and their major sub-journals. It also removes AI-style patterns, engineering jargon, defensive hedging and narration about the writing process. It covers every section of a research article, supplementary material, figure legends, table notes and text inside figures, as well as protocols, response letters, consent forms and slides.
+An agent skill for biomedical research, from the research question to the published paper and the reply to reviewers. It starts from writing and goes beyond it: study design, research plans and execution logs, data and evidence, analysis code, figures and tables, manuscripts, reporting checklists and peer review.
 
-The rules come from four sources, in this order of priority: the author's own editing decisions on manuscripts, protocols, figures and slides; 124 research articles from flagship journals and their major sub-journals (main text, supplements, figures and tables); public skills for removing AI-style writing; and journal instructions and reporting guidelines. The skill uses the [Agent Skills](https://agentskills.io) format and works with Claude Code, Codex and other agents that read `SKILL.md`.
+The researcher stays the author. The researcher decides the question, the design, the values that drive the result, the interpretation and what is submitted; the agent prepares the evidence for each decision, does the groundwork (finding and verifying literature and data, checking that numbers agree, drafting and polishing), stops at defined confirmation points, and ends every task by reporting what was done, what was not done and why, what went wrong, and what the researcher needs to decide. Nothing rests on guesses or numbers recalled from memory.
 
-## The five most common problems
+The skill uses the [Agent Skills](https://agentskills.io) format and works with Claude Code, Codex and other agents that read `SKILL.md`.
 
-```text
-Contrast frame          The central gap is not cost. It is coverage.
-Process narration       In the revised version, we reran the pipeline (see 02_model.R).
-Engineering register    Our pipeline cleaned and merged the records with seed = 2024.
-Defensive writing       It is important to note that these estimates could potentially change.
-Internal legend text    Figure 2: This figure shows incidence from amr_rate_v2, suggesting a decline.
-```
+## What it covers
 
-After editing:
-
-```text
-Coverage was the main constraint: uptake fell from 64% to 41% in districts that lost nurses.
-We linked notification and laboratory records by national identifier and removed duplicates.
-The estimates depend on the assumed duration of infectiousness (appendix p 9).
-Figure 2: Incidence of drug-resistant tuberculosis by WHO region, 2010–2022
-```
+- **Writing to the standard of leading journals** (Lancet, NEJM, JAMA, BMJ, Nature, Science, Cell and their major sub-journals): every section, supplements, figure legends, table notes and text inside figures, without AI-style patterns, engineering register, defensive hedging or narration about the process.
+- **Three layers**: a general standard for wording and shared conventions; the target journal's structure and format; the conventions and required content of the study type.
+- **Thirteen study types**: randomised trials, observational and database studies, Mendelian randomisation, systematic reviews and meta-analyses, narrative reviews, health economic evaluations, diagnostic accuracy, clinical prediction models, disease and epidemiological modelling, laboratory and mechanistic studies, computational and omics studies, qualitative and mixed-methods studies. Each file lists the content a paper must contain, what reviewers flag and how strong papers avoid it, and the writing conventions of leading journals.
+- **The rest of a project**: research plans written as a specification someone else could follow, execution logs, analysis scripts that run section by section in RStudio, comments, and project folders.
+- **Evidence and consistency**: a source for every claim and value, the newest official data, numbers checked against their source, retrieved full texts checked against the reference list, and one story told the same way in the plan, the code, the tables and the text.
 
 ## Installation
 
-With the skills CLI (recommended; it links the skill to the agents installed on your machine):
+With the skills CLI:
 
 ```bash
-npx skills add ZurErschlo/plain-paper
+npx skills add ZurErschlo/biomed-craft
 ```
 
 As a Claude Code plugin:
 
 ```text
-/plugin marketplace add ZurErschlo/plain-paper
-/plugin install plain-paper@plain-paper
+/plugin marketplace add ZurErschlo/biomed-craft
+/plugin install biomed-craft@biomed-craft
 ```
 
 Or clone it into your agent's skills folder:
 
 ```bash
-git clone https://github.com/ZurErschlo/plain-paper.git ~/.claude/skills/plain-paper
+git clone https://github.com/ZurErschlo/biomed-craft.git ~/.claude/skills/biomed-craft
 ```
 
-For Codex use `~/.codex/skills/plain-paper`. For other agents, put the folder in their skills directory or point them to `SKILL.md` at the repository root.
+For Codex use `~/.codex/skills/biomed-craft`.
 
 ## Usage
 
-Ask for what you need; the agent loads the skill and the references it requires:
+- "Draft the Results of this cohort study from tables 1–3 for JAMA Internal Medicine."
+- "Polish this Discussion; the target journal is not decided yet."
+- "Review this meta-analysis against the systematic-review checklist and list what is missing."
+- "Check research_plan.md and the scripts in analysis/."
+- "Check that these 120 PDFs are the articles in included.ris before we screen them."
+- "Help me answer the reviewers; here are the comments and the manuscript."
 
-- Draft: "Use plain-paper to write the Results from these tables for The Lancet Infectious Diseases."
-- Optimise: "Polish this Discussion and remove the AI-style and defensive wording."
-- Review: "Review this Methods section item by item, with columns Original, Revised and Reason."
-- Check: "Check the R plotting code in figures/ and the legends for variable names, file names and other project-only labels."
-
-The checking scripts run on their own (Python 3.10 or later, standard library only; PDF input needs `pdftotext`):
+The scripts run on their own (Python 3.10 or later, standard library only; PDF input needs `pdftotext`):
 
 ```bash
 python3 scripts/scan.py manuscript.docx
-python3 scripts/scan.py --profile --journal lancet draft.md
-python3 scripts/scan.py --strict legends.md figures/*.R
+python3 scripts/scan.py --type prediction --profile draft.md
+python3 scripts/scan.py --doc code analysis/
+python3 scripts/check_numbers.py manuscript.docx
+python3 scripts/check_fulltext.py included.ris fulltexts/
 python3 scripts/check_preservation.py original.docx revised.docx
-python3 scripts/calibrate.py ~/Zotero
 ```
 
-`scan.py` reads Word, Markdown, Quarto, LaTeX, PowerPoint, PDF, SVG, and R or Python plotting code. It lists findings by rule ID and compares sentence length, hedges, connectives and contrast frames with the ranges found in flagship journals. `check_preservation.py` compares the numbers, citations, figure, table and appendix references, and links before and after an edit, so you can confirm that no fact was lost or added. `calibrate.py` rebuilds the reference rates from a folder of flagship-journal PDFs in your own field.
+`scan.py` reads Word, Markdown, Quarto, LaTeX, PowerPoint, PDF, SVG and R or Python code, guesses the study type, and reports findings by rule, with levels that follow the study type and journal. `check_numbers.py` finds percentages that do not match their counts, estimates outside their intervals and abstract numbers that appear nowhere else. `check_fulltext.py` lists retrieved PDFs that are the wrong article, a supplement or a duplicate, and records with no PDF. `check_preservation.py` confirms that an edit kept every number, citation and cross-reference.
 
-## How it works
+## How it is built
 
-- `SKILL.md` sets the workflow: identify the document, section, study design and target journal; then deal with process narration, engineering register, defensive writing, AI-style sentence shapes and vocabulary, section conventions and journal style, in that order; then check the result.
-- `references/` holds the detail, loaded when needed: sentences and paragraphs, sections, journal styles, figures and tables, the kinds of text that do not belong in a paper, AI-style patterns and word lists, other document types, numbers and format, the calibration corpus, worked examples and sources.
-- `scripts/rules.json` holds 83 rules at three levels: must (flagship journals almost never print it, or it is internal material), review (judge in context) and density (common in flagship journals; reported only as a rate). Every rule comes with examples it must match and examples it must not match.
-- Levels follow the corpus: a word or construction is must-fix only if it appears in about 3% or fewer of research articles published in flagship journals before 2023.
-
-| Category | Covers | Rules |
-|---|---|---|
-| CON | Contrast frames ("not X but Y" and relatives) | 10 |
-| DEF | Defensive hedging and disclaimers | 11 |
-| META | Process and metadata narration | 11 |
-| ENG | Engineering and software register | 9 |
-| LEX | Words flagship journals rarely print | 10 |
-| STR | Sentence shapes and punctuation | 10 |
-| HYG | Internal material (file names, variable names, placeholders) | 11 |
-| FMT | Numbers, grammar and format | 5 |
-| CAP | Figure legends and table notes | 1 |
-| FIG | Text inside figures | 5 |
-
-## Verification
-
-```bash
-python3 scripts/validate_package.py
-python3 -m unittest discover -s tests -v
-```
-
-The tests cover every rule's examples, each input format, the command-line options and exit codes, a flagship-style passage with no findings, and a guard that keeps must-level style rules rare in pre-2023 flagship articles. CI runs them on Linux, macOS and Windows with Python 3.10 and 3.13, and checks the skills CLI discovery and the Claude Code plugin manifest. `tests/fixtures/cases.json` holds rewrite cases for testing an agent with the skill; [tests/README.md](tests/README.md) explains how to score them.
-
-The corpus leans towards infectious disease, antimicrobial resistance and modelling, and the NEJM, BMJ, JAMA and Science groups are small, so their reference ranges are rough.
+- `SKILL.md`: principles, start-up checks, where to look, core writing rules and output.
+- `references/`: one topic per file, loaded when needed: working with the researcher stage by stage, evidence and data, study types, sections, sentences, journals, figures and tables, register, AI-style patterns, research plans, logs, code, folders, peer review, documents, numbers, calibration, examples and sources.
+- `scripts/rules.json`: the wording rules, each with examples it must and must not match. A word is must-fix only when research articles in leading journals almost never print it, checked separately for each journal family and study design.
+- `scripts/calibrate.py`: rebuilds the reference rates from PDFs and from open-access publisher versions in Europe PMC.
 
 ## Sources
 
-The full list is in [references/sources.md](references/sources.md). The main public sources are [blader/humanizer](https://github.com/blader/humanizer), [op7418/Humanizer-zh](https://github.com/op7418/Humanizer-zh), [hardikpandya/stop-slop](https://github.com/hardikpandya/stop-slop) and [matsuikentaro1/humanizer_academic](https://github.com/matsuikentaro1/humanizer_academic), together with research on the vocabulary of language models in scientific writing by Kobak and colleagues (Science Advances 2025) and Liang and colleagues (Nature Human Behaviour 2025). All wording in this repository is original; repositories without a licence or with a non-commercial licence contributed ideas only and are credited.
+Built from research articles in leading journals and their supplements, the current reporting guidelines (CONSORT 2025, SPIRIT 2025, PRISMA 2020, STROBE, CHEERS 2022, STARD, TRIPOD+AI and others), the author's own projects and editing decisions, and public skills including [blader/humanizer](https://github.com/blader/humanizer), [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills), [Yuan1z0825/nature-skills](https://github.com/Yuan1z0825/nature-skills) and [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills) (ideas only). The full list is in [references/sources.md](references/sources.md).
 
 ## Version history
 

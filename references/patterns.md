@@ -1,6 +1,6 @@
 # AI-style patterns
 
-Sentence shapes, words and formatting that mark text as machine-written, with how often flagship research articles use them. Rates are from 124 research articles ([calibration.md](calibration.md)); "papers" means the share of articles using the form at least once. Rule IDs refer to `scripts/rules.json`.
+Sentence shapes, words and formatting that mark text as machine-written, with how often research articles in leading journals use them ([calibration.md](calibration.md)); "papers" means the share of articles using the form at least once. Rule IDs refer to `scripts/rules.json`.
 
 A pattern counts as a tell in proportion to how rarely a careful author would choose it. One `rather than` is ordinary; ten in a discussion are not. Judge clusters and density, and always check the rewrite for new tells.
 
@@ -15,17 +15,18 @@ The family the author calls `不是…而是` in Chinese: setting up a position 
 - `This is not about incidence; it is about value.` (CON-07); `Not a cure. Not a vaccine.` (CON-08); `less about X, more about Y` (CON-09); `not X; instead Y` and sentence-initial `Rather,` (CON-10).
 - `rather than` (CON-05; 45% of papers before 2023) and `instead of` (CON-06) are normal in moderation; they count towards density.
 
-All contrast frames together occur about 0·3 times per 1000 words in flagship research (90th percentile 0·8). `scan.py` reports the density and flags anything above the 90th percentile.
+All contrast frames together occur about 0·3 times per 1000 words in leading-journal research (90th percentile 0·8). `scan.py` reports the density and flags anything above the 90th percentile.
 
 Fix: write the positive statement. Keep a contrast only when it compares two named, measured things and both numbers are given, or when it marks a method choice (`We used a Poisson model rather than a negative binomial model because…`).
 
-## Words flagship journals rarely print
+## Words leading journals rarely print
 
-Three tiers, set by how often each word appears in flagship research articles before and after 2023:
+Four tiers, set by how often each word appears in research articles in leading journals before and after 2023, and by study design:
 
-- Must fix (LEX-01, LEX-02): absent or nearly absent (at most 2% of papers before 2023 for each word). `delve`, `tapestry`, `testament`, `realm`, `garner`, `meticulous`, `plethora`, `unravel`, `cutting-edge`, `groundbreaking`, `showcase`, `unveil`, `underexplored`, `invaluable`, `myriad`, `intricate`, `transformative`, `intriguing`, `commendable`, `revolutionise`, `spearhead`, `vibrant`, `endeavour`, `bedrock`, `linchpin`; and the phrases `a growing body of`, `has attracted increasing attention`, `evolving landscape`, `in the realm of`, `bridge the gap`, `open new avenues`, `valuable insights`, `a testament to`, `navigate the complexities`, `in today's world`, `in an era of`.
+- Must fix (LEX-01, LEX-02): absent or nearly absent from research articles (at most about 3% of papers for each word). `delve`, `tapestry`, `testament`, `realm`, `garner`, `cutting-edge`, `groundbreaking`, `showcase`, `unveil`, `underexplored`, `commendable`, `revolutionise`, `spearhead`, `vibrant`, `endeavour`, `bedrock`, `linchpin`; and the phrases `a growing body of`, `has attracted increasing attention`, `evolving landscape`, `in the realm of`, `bridge the gap`, `open new avenues`, `valuable insights`, `a testament to`, `navigate the complexities`, `in today's world`, `in an era of`. Narrative reviews print the LEX-02 phrases more often, so in a review they are flagged for judgement.
+- Must fix in clinical, epidemiological and economic research; judge in context in reviews, laboratory and computational papers (LEX-11): `intriguing`, `myriad`, `plethora`, `unravel`, `intricate`, `invaluable`, `meticulous`, `transformative`. Cell, Science and the review articles of every journal print these; clinical research articles almost never do.
 - Review (LEX-03): uncommon before 2023 and rising since: `multifaceted`, `interplay`, `plays a key role`, `taken together`, `remarkable`, `underscore`, `leverage`, `holistic`, `empower`, `novel`, `nuanced`, `landscape`, `insights`, `foster`, `pivotal`, `unprecedented`, `fundamentally`, `in recent years`, `paramount`, `harness`, `streamline`, `embark`, `bolster`, `noteworthy`, `cornerstone`, `seamless`, `pave the way`, `shed light on`. Keep only when the word carries meaning (`pivotal trial`, `foster care`, `seamless phase 2–3 design`).
-- Density only (LEX-10): `potential`, `key`, `enhance`, `facilitate`, `highlight`, `various`, `diverse`, `particularly`, `additionally`, `furthermore`, `moreover`. Common in flagship text; a problem only when stacked.
+- Density only (LEX-10): `potential`, `key`, `enhance`, `facilitate`, `highlight`, `various`, `diverse`, `particularly`, `additionally`, `furthermore`, `moreover`. Common in leading-journal text; a problem only when stacked.
 
 Related checks:
 
@@ -52,7 +53,7 @@ Do not replace a flagged word with a fancier one. `Underscores` becomes `shows` 
 
 ## Punctuation and format
 
-- Em dashes (STR-01): about 0·3 per 1000 words in flagship research (60% of papers use at least one). Use a comma, parentheses or a new sentence for an aside. En dashes in numeric ranges stay (JAMA uses hyphens in ranges).
+- Em dashes (STR-01): about 0·3 per 1000 words in leading-journal research (60% of papers use at least one). Use a comma, parentheses or a new sentence for an aside. En dashes in numeric ranges stay (JAMA uses hyphens in ranges).
 - Spaced en dashes used as dashes (STR-02).
 - Markdown left in Word or slides: `**bold**`, `#` headings (STR-09); emoji (STR-10).
 - Bullet lists in manuscript prose, decorative bold, Title Case headings where the journal uses sentence case.
@@ -67,7 +68,7 @@ Do not replace a flagged word with a fancier one. `Underscores` becomes `shows` 
 
 Removing tells can create a new signature. Avoid:
 
-- Strings of 8–15-word sentences with commas and full stops everywhere. Flagship median sentence length is 23 words; check `share_under_10` with `scan.py --profile`.
+- Strings of 8–15-word sentences with commas and full stops everywhere. The median sentence length in leading journals is 23 words; check `share_under_10` with `scan.py --profile`.
 - Deleting real uncertainty, real negation, a null result or a contrast that is the finding.
 - Deleting connectives that carry logic, leaving disconnected sentences.
 - Telegraphic, jargon-dense compression that drops the actor, comparator or time frame.

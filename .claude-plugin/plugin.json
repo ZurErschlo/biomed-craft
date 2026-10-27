@@ -1,15 +1,27 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-  "name": "plain-paper",
-  "description": "Write and edit English academic papers to flagship-journal standard, without AI-style patterns, engineering jargon, defensive hedging or process narration.",
-  "version": "1.0.0",
+  "name": "biomed-craft",
+  "description": "End-to-end help with biomedical research: study design, research plans and logs, data and evidence checks, analysis code, figures and tables, manuscripts and replies to reviewers, written to the standard of leading journals.",
+  "version": "2.0.0",
   "author": {
     "name": "ZurErschlo",
     "url": "https://github.com/ZurErschlo"
   },
-  "homepage": "https://github.com/ZurErschlo/plain-paper",
-  "repository": "https://github.com/ZurErschlo/plain-paper",
+  "homepage": "https://github.com/ZurErschlo/biomed-craft",
+  "repository": "https://github.com/ZurErschlo/biomed-craft",
   "license": "MIT",
-  "keywords": ["academic-writing", "scientific-writing", "manuscript", "editing", "figures", "humanize"],
-  "skills": ["./"]
+  "keywords": [
+    "biomedical-research",
+    "academic-writing",
+    "scientific-writing",
+    "systematic-review",
+    "research-plan",
+    "reproducible-research",
+    "manuscript",
+    "figures",
+    "editing"
+  ],
+  "skills": [
+    "./"
+  ]
 }

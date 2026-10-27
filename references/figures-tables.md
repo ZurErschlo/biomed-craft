@@ -1,13 +1,13 @@
 # Figures and tables
 
-Conventions for figure legends, table titles and notes, and the text inside figures, in flagship journals and their major sub-journals. Evidence: page-by-page inspection of figures in 28 articles, a count of every legend and table title in 102 articles, legends from 15 more articles on other topics, and 18 supplements. Journal formats are in [journals.md](journals.md).
+Conventions for figure legends, table titles and notes, and the text inside figures, in leading journals and their major sub-journals, from page-by-page inspection of figures and a count of every legend and table title in the calibration articles. Journal formats are in [journals.md](journals.md).
 
 Legends, table notes and supplementary tables go into the paper as written. They contain only publication text.
 
 ## Legends
 
 - In the manuscript file, the legend is text below the figure; the figure number and title travel with the figure.
-- Title: in clinical, epidemiological and modelling journals, a noun phrase saying what is plotted: `Figure 2: Incidence of tuberculosis by WHO region, 2010–2022`. Finding-sentence titles belong to laboratory papers in Cell, Science and Nature.
+- Title: in clinical, epidemiological and modelling journals, a noun phrase saying what is plotted: `Figure 2: Incidence of tuberculosis by WHO region, 2010–2022`. Finding-sentence titles belong to laboratory papers in Cell and, less often, Nature; Science legend titles are mostly noun phrases ending in a full stop.
 - Body, in order: panel descriptions (`(A) …; (B) …` or `a, …`), then what each encoding means (points, lines, shading, error bars and the interval type, censoring marks, reference lines), then n, the statistical test and the data source, then abbreviations.
 - Present tense for what is shown, past tense for methods: `Error bars show 95% CIs. Estimates were adjusted for age and sex.`
 - Define every abbreviation used in the figure, even if the text already defined it.
@@ -17,10 +17,10 @@ Legends, table notes and supplementary tables go into the paper as written. They
 
 ## Text inside figures
 
-Allowed (seen in most flagship figures):
+Allowed (seen in most figures in leading journals):
 
 - Panel letters, bold, top left, in the journal's case (Nature family lower case; most others upper case; JAMA boxed).
-- Short panel or facet titles of a few words (14 of 25 inspected papers).
+- Short panel or facet titles of a few words (in just over half of the papers inspected).
 - Axis titles with the quantity and its unit: `Incidence (per 100 000)`; JAMA uses `Incidence, per 100 000`; NEJM uses Title Case.
 - Legend keys with short titles (`Scenario`, `WHO region`) and direct labels on lines.
 - Data annotations: an effect estimate with its interval on a Kaplan–Meier plot, numbers at risk, `Favours X | Favours Y` direction labels, labelled threshold or reference lines, period brackets.

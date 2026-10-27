@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
-"""Rebuild calibration.json and corpus.json from a folder of journal PDFs.
+"""Rebuild calibration.json and corpus.json from journal PDFs and Europe PMC full texts.
 
-Finds research articles from flagship journals and their major sub-journals by
-the DOI printed on the first two pages, cleans the text (reference lists, back
-matter, captions, running heads), and records how often each rule in
-rules.json fires in their prose, together with the style profile used by
-`scan.py --profile`. Only statistics and DOI metadata are written; no article
-text leaves the machine. Needs pdftotext (poppler).
+Finds research articles from leading journals and their major sub-journals by
+the DOI printed on the first two pages of each PDF, or reads publisher versions
+of open-access articles from Europe PMC (JATS XML, by PMCID). Cleans the text
+(reference lists, back matter, captions, running heads), labels the study
+design, and records how often each rule in rules.json fires in the prose,
+together with the style profile used by `scan.py --profile`. Only statistics
+and identifiers are written; no article text is stored. PDFs need pdftotext
+(poppler).
+
+    python3 calibrate.py ~/Zotero --pmc corpus.json
 """
 
 from __future__ import annotations
@@ -20,6 +24,9 @@ import re
 import shutil
 import subprocess
 import sys
+import urllib.error
+import urllib.request
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -98,12 +105,25 @@ HEADING_BACK = {
     "inclusion and ethics", "ethics", "consent for publication", "author information",
     "key resources table", "resource availability", "lead contact", "materials availability",
     "declaration of generative ai and ai-assisted technologies in the writing process",
+    "data and code availability", "data and materials availability", "supplementary material",
+    "associated data", "references and notes",
 }
 NOISE_LINE = re.compile(
     r"^(?:www\.|https?://|doi:|DOI|©|Copyright|Downloaded from|Vol\s+\d+|N Engl J Med|JAMA\.|BMJ \d{4}|"
     r"Nature \||Cell \d|Science \d|Articles$|Original Article$|Original Investigation$|RESEARCH$|Article$|"
     r"Published online|Accepted|Received|See Online|See Comment|For the|Correspondence to|\d+$)",
 )
+EUROPE_PMC = "https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML"
+# Abstract types written by the journal or shown as extras, not part of the authors' prose.
+SKIP_ABSTRACTS = {"teaser", "key-points", "graphical", "editor", "editor-summary", "web-summary", "toc",
+                  "precis", "short", "author-highlights", "highlights", "in-brief"}
+SKIP_ELEMENTS = {"table-wrap", "fig", "disp-formula", "inline-formula", "supplementary-material", "boxed-text",
+                 "fn", "fn-group", "table", "graphic", "media", "disp-quote", "ref-list", "caption", "label"}
+BACK_SEC_TYPES = {"supplementary-material", "supplementary-materials", "data-availability",
+                  "data-availability-statement", "coi-statement", "funding-information", "author-contributions",
+                  "ack", "ethics-statement", "display-objects", "associated-data", "history", "ref-list"}
+MANUSCRIPT_TEXT = re.compile(r"Author [Mm]anuscript|HHS Public Access|Europe PMC Funders Group")
+MIN_GROUP = 10
 LIGATURES = {"ﬁ": "fi", "ﬂ": "fl", "ﬀ": "ff", "ﬃ": "ffi", "ﬄ": "ffl", "­": ""}
 
 
@@ -229,6 +249,110 @@ def clean_article(text: str) -> tuple[list[str], set[str]]:
     return paragraphs, headings
 
 
+def fetch_jats(pmcid: str) -> str:
+    """Europe PMC full text for one PMCID; falls back to curl when Python cannot verify TLS."""
+    url = EUROPE_PMC.format(pmcid=pmcid)
+    try:
+        with urllib.request.urlopen(url, timeout=60) as response:
+            return response.read().decode("utf-8", "replace")
+    except (urllib.error.URLError, OSError, ValueError):
+        pass
+    if shutil.which("curl"):
+        try:
+            result = subprocess.run(["curl", "-sfL", "--max-time", "60", url], capture_output=True, timeout=90)
+        except (subprocess.TimeoutExpired, OSError):
+            return ""
+        if result.returncode == 0:
+            return result.stdout.decode("utf-8", "replace")
+    return ""
+
+
+def is_manuscript(front: ET.Element) -> bool:
+    """True for author manuscripts, which have not been copyedited by the journal."""
+    if front.find(".//article-id[@pub-id-type='manuscript']") is not None:
+        return True
+    for journal_id in front.iter("journal-id"):
+        if (journal_id.text or "").strip().lower() in {"nihpa", "gatesmanu", "ukpmcpa", "wtpa"}:
+            return True
+    for meta in front.iter("custom-meta"):
+        if (meta.findtext("meta-name") or "").strip() == "is-manuscript":
+            return (meta.findtext("meta-value") or "").strip().lower() == "yes"
+    return bool(MANUSCRIPT_TEXT.search(" ".join(front.itertext())))
+
+
+def _element_text(element: ET.Element) -> str:
+    parts: list[str] = []
+
+    def visit(node: ET.Element) -> None:
+        skip = node.tag in SKIP_ELEMENTS or (node.tag == "xref" and node.get("ref-type") in {"bibr", "fn"})
+        if not skip:
+            parts.append(node.text or "")
+            for child in node:
+                visit(child)
+        parts.append(node.tail or "")
+
+    parts.append(element.text or "")
+    for child in element:
+        visit(child)
+    text = re.sub(r"\s+", " ", "".join(parts)).strip()
+    text = re.sub(r"\s*[\[(]\s*(?:[,;–-]\s*)*[\])]", "", text)
+    return re.sub(r"\s+([.,;:])", r"\1", text)
+
+
+def jats_article(xml: str) -> dict | None:
+    """DOI, year, headings and prose paragraphs of a publisher-version JATS article."""
+    try:
+        root = ET.fromstring(xml)
+    except ET.ParseError:
+        return None
+    front = root.find("front")
+    if front is None or is_manuscript(front):
+        return None
+    doi = (front.findtext(".//article-meta/article-id[@pub-id-type='doi']") or "").strip().lower()
+    years = [int(y) for y in (d.findtext("year") for d in front.iter("pub-date")) if y and y.strip().isdigit()]
+    paragraphs: list[str] = []
+    headings: set[str] = set()
+    for abstract in front.iter("abstract"):
+        if abstract.get("abstract-type", "") not in SKIP_ABSTRACTS:
+            paragraphs.extend(_element_text(p) for p in abstract.iter("p"))
+
+    def walk(node: ET.Element) -> None:
+        for child in node:
+            if child.tag in SKIP_ELEMENTS:
+                continue
+            if child.tag == "sec":
+                title = normalise_heading(child.findtext("title") or "")
+                if (child.get("sec-type", "").lower() in BACK_SEC_TYPES or title in HEADING_BACK
+                        or title in HEADING_REFERENCES):
+                    continue
+                if title in HEADING_MAIN:
+                    headings.add(title)
+                walk(child)
+            elif child.tag == "p":
+                paragraphs.append(_element_text(child))
+            else:
+                walk(child)
+
+    body = root.find("body")
+    if body is not None:
+        walk(body)
+    return {"doi": doi, "year": min(years) if years else None, "headings": headings,
+            "article_type": root.get("article-type", ""), "paragraphs": [p for p in paragraphs if p]}
+
+
+def read_pmc_list(path: Path) -> list[tuple[str, str]]:
+    """PMCIDs with design labels, from corpus.json or from a text file of 'PMCID design' lines."""
+    text = path.read_text(encoding="utf-8")
+    if path.suffix == ".json":
+        return [(p["pmcid"], p.get("design", "")) for p in json.loads(text) if p.get("pmcid")]
+    items = []
+    for line in text.splitlines():
+        fields = line.split("#", 1)[0].split()
+        if fields and re.match(r"PMC\d+$", fields[0]):
+            items.append((fields[0], fields[1] if len(fields) > 1 else ""))
+    return items
+
+
 def good_sentence(sentence: str) -> bool:
     tokens = sentence.split()
     if len(tokens) < 5 or not re.match(r"^[A-Z(\[“\"]", sentence) or not re.search(r"[.!?][\"”')\]]?$", sentence):
@@ -237,9 +361,8 @@ def good_sentence(sentence: str) -> bool:
     return alpha / len(tokens) >= 0.6
 
 
-def analyse(record: dict, rules: list[ts.Rule]) -> dict | None:
-    text = pdf_text(Path(record["path"]))
-    paragraphs, headings = clean_article(text)
+def measure(paragraphs: list[str], rules: list[ts.Rule]) -> dict | None:
+    """Sentences, words, rule hits and style profile of a list of prose paragraphs."""
     sentences, prose = [], []
     for paragraph in paragraphs:
         kept = [s for s in ts.split_sentences(paragraph) if good_sentence(s)]
@@ -249,13 +372,6 @@ def analyse(record: dict, rules: list[ts.Rule]) -> dict | None:
     words = len(ts.words(" ".join(sentences)))
     if words < 800:
         return None
-    methods_headings = {"methods", "online methods", "materials and methods", "methods summary", "starmethods",
-                        "star methods", "method details", "experimental procedures"}
-    is_research = bool(headings & methods_headings) and ("results" in headings or "discussion" in headings)
-    is_review = record["journal"] == "Nature Reviews" or bool(
-        re.search(r"^\s*(?:Review|Review Article|Seminar|Series|Clinical Review|Perspective|Comment)\s*$",
-                  record["head"][:600], re.MULTILINE))
-    kind = "research" if is_research and not is_review else ("review" if is_review else "other")
     hits = {}
     for rule in rules:
         if "prose" not in rule.scopes or rule.formats:
@@ -265,11 +381,61 @@ def analyse(record: dict, rules: list[ts.Rule]) -> dict | None:
             count += len(ts.rule_matches(rule, paragraph))
         if count:
             hits[rule.id] = count
-    return {
-        "doi": record["doi"], "family": record["family"], "journal": record["journal"],
-        "year": year_of(record["doi"], record["head"] + text[:4000]), "type": kind,
-        "words": words, "sentences": len(sentences), "profile": ts.profile(sentences), "hits": hits,
-    }
+    return {"words": words, "sentences": len(sentences), "profile": ts.profile(sentences), "hits": hits,
+            "opening": " ".join(prose)[:60000]}
+
+
+METHODS_HEADINGS = {"methods", "online methods", "materials and methods", "methods summary", "starmethods",
+                    "star methods", "method details", "experimental procedures"}
+
+
+def is_research_article(headings: set[str]) -> bool:
+    return bool(headings & METHODS_HEADINGS) and ("results" in headings or "discussion" in headings)
+
+
+def finish(base: dict, measured: dict, kind: str, design: str) -> dict:
+    if kind == "research" and not design:
+        design = ts.detect_design(measured["opening"])[0]
+    elif kind == "review":
+        design = "review"
+    measured = {k: v for k, v in measured.items() if k != "opening"}
+    return {**base, "type": kind, "design": design if kind != "other" else "", **measured}
+
+
+def analyse(record: dict, rules: list[ts.Rule]) -> dict | None:
+    text = pdf_text(Path(record["path"]))
+    paragraphs, headings = clean_article(text)
+    measured = measure(paragraphs, rules)
+    if measured is None:
+        return None
+    is_review = record["journal"] == "Nature Reviews" or bool(
+        re.search(r"^\s*(?:Review|Review Article|Seminar|Series|Clinical Review|Perspective|Comment)\s*$",
+                  record["head"][:600], re.MULTILINE))
+    kind = "research" if is_research_article(headings) and not is_review else ("review" if is_review else "other")
+    base = {"doi": record["doi"], "family": record["family"], "journal": record["journal"],
+            "year": year_of(record["doi"], record["head"] + text[:4000])}
+    return finish(base, measured, kind, "")
+
+
+def analyse_pmc(item: tuple[str, str], rules: list[ts.Rule]) -> dict | None:
+    pmcid, design = item
+    article = jats_article(fetch_jats(pmcid))
+    if not article or not article["doi"]:
+        return None
+    match = next(((f, j) for pattern, f, j in JOURNAL_PATTERNS if pattern.match(article["doi"])), None)
+    if match is None:
+        return None
+    measured = measure(article["paragraphs"], rules)
+    if measured is None:
+        return None
+    if design:
+        kind = "review" if design == "review" else "research"
+    else:
+        is_review = article["article_type"] in {"review-article", "systematic-review"} and \
+            not is_research_article(article["headings"])
+        kind = "review" if is_review else ("research" if is_research_article(article["headings"]) else "other")
+    base = {"doi": article["doi"], "pmcid": pmcid, "family": match[0], "journal": match[1], "year": article["year"]}
+    return finish(base, measured, kind, design)
 
 
 def summarise(papers: list[dict], rule_ids: list[str]) -> dict:
@@ -295,16 +461,20 @@ def summarise(papers: list[dict], rule_ids: list[str]) -> dict:
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("roots", nargs="+", type=Path, help="folders to search for PDFs")
+    parser.add_argument("roots", nargs="*", type=Path, help="folders to search for PDFs")
+    parser.add_argument("--pmc", type=Path, action="append", default=[],
+                        help="Europe PMC articles to add: corpus.json, or a text file of 'PMCID design' lines")
     parser.add_argument("--out-dir", type=Path, default=Path(__file__).resolve().parent,
                         help="where to write calibration.json and corpus.json (default: this folder)")
     parser.add_argument("--workers", type=int, default=8)
     args = parser.parse_args(argv)
-    if not shutil.which("pdftotext"):
-        parser.error("pdftotext (poppler) is required")
+    if not args.roots and not args.pmc:
+        parser.error("give folders of PDFs, --pmc, or both")
+    if args.roots and not shutil.which("pdftotext"):
+        parser.error("pdftotext (poppler) is required for PDFs")
 
     _, rules = ts.load_rules()
-    prose_rules = [r for r in rules if r.kind == "regex" and "prose" in r.scopes and not r.formats]
+    prose_rules = [r for r in rules if r.kind == "regex" and "prose" in r.scopes and not r.formats and not r.docs]
     rule_ids = [r.id for r in prose_rules]
     pdfs = find_pdfs([r.expanduser() for r in args.roots])
     print(f"Scanning {len(pdfs)} PDFs for journal DOIs", file=sys.stderr)
@@ -322,11 +492,28 @@ def main(argv=None) -> int:
     print(f"{len(articles)} unique articles ({supplements} supplements or author manuscripts skipped)", file=sys.stderr)
     with futures.ThreadPoolExecutor(args.workers) as pool:
         analysed = [a for a in pool.map(lambda r: analyse(r, prose_rules), articles.values()) if a]
+    pmc_items = list(dict.fromkeys(item for path in args.pmc for item in read_pmc_list(path)))
+    if pmc_items:
+        print(f"Reading {len(pmc_items)} Europe PMC articles", file=sys.stderr)
+        known = {p["doi"] for p in analysed}
+        with futures.ThreadPoolExecutor(args.workers) as pool:
+            from_pmc = [a for a in pool.map(lambda i: analyse_pmc(i, prose_rules), pmc_items) if a]
+        skipped = len(pmc_items) - len(from_pmc)
+        for article in from_pmc:
+            if article["doi"] not in known:
+                analysed.append(article)
+                known.add(article["doi"])
+        print(f"{len(from_pmc)} Europe PMC articles kept ({skipped} author manuscripts, other journals or "
+              f"unreadable)", file=sys.stderr)
 
     research = [p for p in analysed if p["type"] == "research"]
     groups = {"core": research}
     for family in sorted({p["family"] for p in research}):
         groups[family] = [p for p in research if p["family"] == family]
+    for design in ts.DESIGNS:
+        members = [p for p in analysed if p["design"] == design]
+        if len(members) >= MIN_GROUP:
+            groups[design] = members
     groups["core_before_2023"] = [p for p in research if p["year"] and p["year"] < 2023]
     groups["core_2023_on"] = [p for p in research if p["year"] and p["year"] >= 2023]
     groups["reviews_and_other"] = [p for p in analysed if p["type"] != "research"]
@@ -334,20 +521,25 @@ def main(argv=None) -> int:
     calibration = {
         "version": 1,
         "generated": dt.date.today().isoformat(),
-        "description": "Rule rates and style profile of research articles in flagship journals and their major "
+        "description": "Rule rates and style profile of research articles in leading journals and their major "
                        "sub-journals. Built by calibrate.py; statistics only.",
         "method": {
-            "selection": "First DOI on pages 1-2 (or in the file name) matched to the journal list in calibrate.py; "
-                         "supplements, author manuscripts and duplicates removed.",
-            "cleaning": "pdftotext; reference lists, back matter, running heads, captions, panels and superscript "
-                        "citation numbers removed; only complete sentences kept.",
+            "selection": "PDFs: first DOI on pages 1-2 (or in the file name) matched to the journal list in "
+                         "calibrate.py. Europe PMC: publisher versions of open-access articles, by PMCID. "
+                         "Supplements, author manuscripts and duplicates removed.",
+            "cleaning": "PDFs through pdftotext, JATS XML through its structure; reference lists, back matter, "
+                        "running heads, captions, tables, boxes and citation markers removed; only complete "
+                        "sentences kept.",
             "research_article": "Has a Methods heading and a Results or Discussion heading; reviews excluded.",
+            "design": "Labelled when the article was selected, otherwise guessed by textstats.detect_design; "
+                      "design groups with fewer than 10 articles are not written.",
             "metrics": "Per-paper values; quantiles across papers. Rule rates are pooled per 10 000 words.",
         },
         "groups": {name: summarise(papers, rule_ids) for name, papers in groups.items() if papers},
     }
+    fields = ("doi", "pmcid", "family", "journal", "year", "type", "design", "words", "sentences")
     corpus = [
-        {k: p[k] for k in ("doi", "family", "journal", "year", "type", "words", "sentences")}
+        {k: p[k] for k in fields if k in p}
         for p in sorted(analysed, key=lambda p: (p["family"], p["year"] or 0, p["doi"]))
     ]
     args.out_dir.mkdir(parents=True, exist_ok=True)
