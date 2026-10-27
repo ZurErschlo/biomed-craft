@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .DS_Store
 .venv/
+
+# Article texts read by calibrate.py --texts. Publisher copyright: never commit.
+calibration-texts/

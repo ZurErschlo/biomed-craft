@@ -1,16 +1,28 @@
 #!/usr/bin/env python3
-"""Rebuild calibration.json and corpus.json from journal PDFs and Europe PMC full texts.
+"""Rebuild calibration.json and corpus.json from journal PDFs, saved article texts and Europe PMC.
 
 Finds research articles from leading journals and their major sub-journals by
-the DOI printed on the first two pages of each PDF, or reads publisher versions
-of open-access articles from Europe PMC (JATS XML, by PMCID). Cleans the text
-(reference lists, back matter, captions, running heads), labels the study
-design, and records how often each rule in rules.json fires in the prose,
-together with the style profile used by `scan.py --profile`. Only statistics
-and identifiers are written; no article text is stored. PDFs need pdftotext
-(poppler).
+the DOI printed on the first two pages of each PDF (or in its file name), reads
+article texts saved as Markdown with a labelled front matter (--texts), and
+reads publisher versions of open-access articles from Europe PMC (JATS XML, by
+PMCID). Cleans the text (reference lists, back matter, captions, running heads),
+labels the study design, and records how often each rule in rules.json fires in
+the prose, together with the style profile used by `scan.py --profile`. Only
+statistics and identifiers are written to the repository; saved texts stay in
+the git-ignored calibration-texts/ folder. PDFs need pdftotext (poppler).
 
-    python3 calibrate.py ~/Zotero --pmc corpus.json
+    python3 calibrate.py ~/Zotero --texts calibration-texts --pmc corpus.json
+
+A saved text starts with a front matter like this, followed by the text that
+pdftotext extracts from the publisher PDF:
+
+    ---
+    doi: 10.1056/nejmoa0000000
+    title: Title of the article
+    year: 2021
+    type: research
+    design: trial
+    ---
 """
 
 from __future__ import annotations
@@ -71,18 +83,23 @@ JOURNAL_PATTERNS = [(re.compile(p, re.IGNORECASE), f, j) for p, f, j in JOURNALS
 DOI = re.compile(r"10\.\d{4,9}/[^\s\"<>,;]+", re.IGNORECASE)
 SKIP_DIRS = ("node_modules", ".git", ".venv", "site-packages", ".app", "__pycache__")
 SUPPLEMENT_NAME = re.compile(
-    r"mmc\d|_moesm|_esm|-s00\d|suppl|supplement|appendix|supporting|_si[_.]|_sm\.|checklist|reviewer|response",
+    r"mmc\d|_moesm|_esm|-s00\d|suppl|supp\d|supplement|appendix|supporting|_si[_.]|[._]sm[._]|checklist|mdar"
+    r"|disclosure|data[-_ ]?sharing|reviewer|response",
     re.IGNORECASE,
 )
 SUPPLEMENT_START = re.compile(
-    r"^\s*(?:Supplementary\s+(?:appendix|information|materials?|methods)|Supplemental\s+(?:Online\s+Content|materials?)"
-    r"|(?:Web\s*)?appendix\b|Supporting\s+information|Peer\s+Review\s+File|Reporting\s+Summary)",
+    r"^\s*(?:Supplementary\s+(?:appendix|information|materials?|methods)|Supplement(?:ary|al)\s+Online\s+Content"
+    r"|Supplemental\s+materials?|(?:Web\s*)?appendix\b|Supporting\s+information|Peer\s+Review\s+File"
+    r"|Reporting\s+Summary|Data\s+Sharing\s+Statement|ICMJE\b|(?:MDAR\s+)?Reproducibility\s+Checklist)",
     re.IGNORECASE,
 )
+# Phrases are matched across line breaks, since pdftotext breaks lines inside them.
 SUPPLEMENT_TEXT = re.compile(
-    r"This appendix formed part of the original submission|Supplemental Online Content|Supplementary Materials for"
-    r"|Author manuscript|HHS Public Access|Europe PMC Funders Group"
-    r"|provided by the authors to give readers additional information|In the format provided by the authors and unedited",
+    r"|".join(r"\s+".join(phrase.split()) for phrase in (
+        "This appendix formed part of the original submission", "Supplementary Online Content",
+        "Supplemental Online Content", "Supplementary Materials for",
+        "provided by the authors to give readers additional information",
+        "In the format provided by the authors and unedited", "ICMJE Form for Disclosure")),
     re.IGNORECASE,
 )
 
@@ -122,7 +139,7 @@ SKIP_ELEMENTS = {"table-wrap", "fig", "disp-formula", "inline-formula", "supplem
 BACK_SEC_TYPES = {"supplementary-material", "supplementary-materials", "data-availability",
                   "data-availability-statement", "coi-statement", "funding-information", "author-contributions",
                   "ack", "ethics-statement", "display-objects", "associated-data", "history", "ref-list"}
-MANUSCRIPT_TEXT = re.compile(r"Author [Mm]anuscript|HHS Public Access|Europe PMC Funders Group")
+MANUSCRIPT_TEXT = re.compile(r"Author\s+[Mm]anuscript|HHS\s+Public\s+Access|Europe\s+PMC\s+Funders\s+Group")
 MIN_GROUP = 10
 LIGATURES = {"ﬁ": "fi", "ﬂ": "fl", "ﬀ": "ff", "ﬃ": "ffi", "ﬄ": "ffl", "­": ""}
 
@@ -160,6 +177,7 @@ def doi_from_name(name: str) -> str:
         (r"(s4\d{4}-\d{3}-\d{5}-[\dx])", "10.1038/"),
         (r"(NEJM[a-z]{1,3}\d{5,8})", "10.1056/"),
         (r"(S\d{4}-\d{3}[\dX]\(\d{2}\)\d{5}-[\dX])", "10.1016/"),
+        (r"((?:science|scitranslmed)\.[a-z]{1,4}\d{3,5})", "10.1126/"),
     ):
         match = re.search(pattern, decoded, re.IGNORECASE)
         if match:
@@ -171,15 +189,17 @@ def identify(path: Path) -> dict | None:
     head = pdf_text(path, 1, 2)
     joined = re.sub(r"(10\.\d{4,9}/(?:\S*?[-/(])?)\s*\n\s*", r"\1", head)
     candidates = [d.rstrip(".)]") for d in DOI.findall(joined)]
+    # A DOI-shaped file name names the article itself; the first DOI on the page can be a related article's
+    # (Science prints its own DOI only at the end).
     from_name = doi_from_name(path.name)
     if from_name:
-        candidates.append(from_name)
+        candidates.insert(0, from_name)
     for doi in candidates:
         doi = doi.lower()
         for pattern, family, journal in JOURNAL_PATTERNS:
             if pattern.match(doi):
                 supplement = (bool(SUPPLEMENT_NAME.search(path.name)) or bool(SUPPLEMENT_START.search(head[:400]))
-                              or bool(SUPPLEMENT_TEXT.search(head[:3000])))
+                              or bool(SUPPLEMENT_TEXT.search(head[:3000])) or bool(MANUSCRIPT_TEXT.search(head[:3000])))
                 return {"doi": doi, "family": family, "journal": journal, "path": str(path),
                         "supplement": supplement, "head": head}
     return None
@@ -197,6 +217,7 @@ def year_of(doi: str, text: str) -> int | None:
         r"Published:\s*\d{1,2}\s+\w+\s+((?:19|20)\d{2})",
         r"©\s*((?:19|20)\d{2})", r"Copyright\s*©?\s*((?:19|20)\d{2})",
         r"N Engl J Med\s+((?:19|20)\d{2})", r"JAMA\.\s*((?:19|20)\d{2})", r"BMJ\s+((?:19|20)\d{2})",
+        r"Science\s+\d+,\s*[\w–-]+\s*\(((?:19|20)\d{2})\)", r"\b\d{1,2}\s+[A-Z]{3,9}\s+((?:19|20)\d{2})\s+•\s+VOL", r"Sci\.\s*Transl\.\s*Med\.\s*\d+,\s*\w+\s*\(((?:19|20)\d{2})\)",
         r"Lancet[^\n]{0,40}?((?:19|20)\d{2})", r"Accepted[^0-9]{0,20}\d{1,2}\s+\w+\s+((?:19|20)\d{2})",
     ):
         match = re.search(pattern, text[:6000])
@@ -223,6 +244,11 @@ def clean_article(text: str) -> tuple[list[str], set[str]]:
             kept.append("")
             continue
         heading = normalise_heading(line)
+        # A heading starts with a capital and has no digits or final full stop, apart from a section number;
+        # "References (36-38)" in a list of supplementary materials and sentence ends are not headings.
+        core = re.sub(r"^\d+(?:\.\d+)*\.?\s+", "", line)
+        if not core[:1].isupper() or core.endswith(".") or re.search(r"\d", core):
+            heading = ""
         if len(line) < 70 and heading in HEADING_REFERENCES:
             skipping = True
             kept.append("")
@@ -353,6 +379,19 @@ def read_pmc_list(path: Path) -> list[tuple[str, str]]:
     return items
 
 
+def read_text(path: Path) -> tuple[dict, str] | None:
+    """Front matter and body of an article text saved as Markdown."""
+    text = path.read_text(encoding="utf-8", errors="replace")
+    found = re.match(r"---\n(.*?)\n---\n", text, re.DOTALL)
+    if not found:
+        return None
+    meta = {}
+    for line in found.group(1).splitlines():
+        key, _, value = line.partition(":")
+        meta[key.strip()] = value.strip()
+    return (meta, text[found.end():]) if meta.get("doi") else None
+
+
 def good_sentence(sentence: str) -> bool:
     tokens = sentence.split()
     if len(tokens) < 5 or not re.match(r"^[A-Z(\[“\"]", sentence) or not re.search(r"[.!?][\"”')\]]?$", sentence):
@@ -417,6 +456,25 @@ def analyse(record: dict, rules: list[ts.Rule]) -> dict | None:
     return finish(base, measured, kind, "")
 
 
+def analyse_text(item: tuple[dict, str], rules: list[ts.Rule]) -> dict | None:
+    meta, body = item
+    doi = meta["doi"].lower()
+    match = next(((f, j) for pattern, f, j in JOURNAL_PATTERNS if pattern.match(doi)), None)
+    if match is None:
+        return None
+    paragraphs, headings = clean_article(body)
+    measured = measure(paragraphs, rules)
+    if measured is None:
+        return None
+    design = meta.get("design", "")
+    kind = meta.get("type", "")
+    if not kind:
+        kind = "review" if design == "review" else ("research" if design or is_research_article(headings) else "other")
+    year = int(meta["year"]) if meta.get("year", "").isdigit() else year_of(doi, body[:6000])
+    base = {"doi": doi, "family": match[0], "journal": match[1], "year": year}
+    return finish(base, measured, kind, design)
+
+
 def analyse_pmc(item: tuple[str, str], rules: list[ts.Rule]) -> dict | None:
     pmcid, design = item
     article = jats_article(fetch_jats(pmcid))
@@ -462,20 +520,29 @@ def summarise(papers: list[dict], rule_ids: list[str]) -> dict:
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("roots", nargs="*", type=Path, help="folders to search for PDFs")
+    parser.add_argument("--texts", type=Path, action="append", default=[],
+                        help="folders of article texts saved as Markdown with a front matter (doi, year, type, design)")
     parser.add_argument("--pmc", type=Path, action="append", default=[],
                         help="Europe PMC articles to add: corpus.json, or a text file of 'PMCID design' lines")
     parser.add_argument("--out-dir", type=Path, default=Path(__file__).resolve().parent,
                         help="where to write calibration.json and corpus.json (default: this folder)")
     parser.add_argument("--workers", type=int, default=8)
     args = parser.parse_args(argv)
-    if not args.roots and not args.pmc:
-        parser.error("give folders of PDFs, --pmc, or both")
+    if not args.roots and not args.pmc and not args.texts:
+        parser.error("give folders of PDFs, --texts, --pmc, or a combination")
     if args.roots and not shutil.which("pdftotext"):
         parser.error("pdftotext (poppler) is required for PDFs")
 
     _, rules = ts.load_rules()
     prose_rules = [r for r in rules if r.kind == "regex" and "prose" in r.scopes and not r.formats and not r.docs]
     rule_ids = [r.id for r in prose_rules]
+    texts = [item for folder in args.texts for item in map(read_text, sorted(folder.expanduser().glob("*.md")))
+             if item]
+    with futures.ThreadPoolExecutor(args.workers) as pool:
+        analysed = [a for a in pool.map(lambda i: analyse_text(i, prose_rules), texts) if a]
+    if texts:
+        print(f"{len(analysed)} of {len(texts)} saved texts kept", file=sys.stderr)
+    known = {p["doi"] for p in analysed}
     pdfs = find_pdfs([r.expanduser() for r in args.roots])
     print(f"Scanning {len(pdfs)} PDFs for journal DOIs", file=sys.stderr)
     with futures.ThreadPoolExecutor(args.workers) as pool:
@@ -483,6 +550,8 @@ def main(argv=None) -> int:
     articles: dict[str, dict] = {}
     supplements = 0
     for record in identified:
+        if record["doi"] in known:
+            continue
         if record["supplement"]:
             supplements += 1
             continue
@@ -491,7 +560,7 @@ def main(argv=None) -> int:
             articles[record["doi"]] = record
     print(f"{len(articles)} unique articles ({supplements} supplements or author manuscripts skipped)", file=sys.stderr)
     with futures.ThreadPoolExecutor(args.workers) as pool:
-        analysed = [a for a in pool.map(lambda r: analyse(r, prose_rules), articles.values()) if a]
+        analysed += [a for a in pool.map(lambda r: analyse(r, prose_rules), articles.values()) if a]
     pmc_items = list(dict.fromkeys(item for path in args.pmc for item in read_pmc_list(path)))
     if pmc_items:
         print(f"Reading {len(pmc_items)} Europe PMC articles", file=sys.stderr)
@@ -525,7 +594,8 @@ def main(argv=None) -> int:
                        "sub-journals. Built by calibrate.py; statistics only.",
         "method": {
             "selection": "PDFs: first DOI on pages 1-2 (or in the file name) matched to the journal list in "
-                         "calibrate.py. Europe PMC: publisher versions of open-access articles, by PMCID. "
+                         "calibrate.py. Saved texts: publisher PDFs converted to text, labelled by hand, kept "
+                         "outside git. Europe PMC: publisher versions of open-access articles, by PMCID. "
                          "Supplements, author manuscripts and duplicates removed.",
             "cleaning": "PDFs through pdftotext, JATS XML through its structure; reference lists, back matter, "
                         "running heads, captions, tables, boxes and citation markers removed; only complete "

@@ -12,7 +12,7 @@ description: |
   logs, code and response letters, or when asked to 润色, 优化表达, 去AI味, 改写, 审校, 改图注, 写方案 or 核对文献.
 license: MIT
 metadata:
-  version: "2.1.0"
+  version: "2.2.0"
 ---
 
 # biomed-craft
@@ -106,7 +106,7 @@ python3 scripts/scan.py --doc plan research_plan.md            # also --doc log 
 python3 scripts/check_numbers.py manuscript.docx               # percentages, intervals, abstract against text
 python3 scripts/check_fulltext.py included.ris fulltexts/      # each PDF is the article it is filed as
 python3 scripts/check_preservation.py original.docx revised.docx
-python3 scripts/calibrate.py ~/Zotero --pmc scripts/corpus.json   # rebuild the reference rates
+python3 scripts/calibrate.py ~/Zotero --texts calibration-texts --pmc scripts/corpus.json   # rebuild the reference rates
 ```
 
 Findings have three levels. Must: leading journals almost never print it, or it is internal material. Review: judge in context. Density: normal in moderation and compared with leading-journal rates. Some levels depend on the study type or the journal: words that clinical papers avoid are normal in reviews and laboratory papers.

@@ -61,14 +61,14 @@ python3 scripts/check_fulltext.py included.ris fulltexts/
 python3 scripts/check_preservation.py original.docx revised.docx
 ```
 
-`scan.py` reads Word, Markdown, Quarto, LaTeX, PowerPoint, PDF, SVG and R or Python code, guesses the study type, and reports findings by rule, with levels that follow the study type and journal. `check_numbers.py` finds percentages that do not match their counts, estimates outside their intervals and abstract numbers that appear nowhere else. `check_fulltext.py` lists retrieved PDFs that are the wrong article, a supplement or a duplicate, and records with no PDF. `check_preservation.py` confirms that an edit kept every number, citation and cross-reference.
+`scan.py` reads Word, Markdown, Quarto, LaTeX, PowerPoint, PDF, SVG and R or Python code, guesses the study type, and reports findings by rule, with levels that follow the study type and journal. `check_numbers.py` finds percentages that do not match their counts, estimates outside their intervals and abstract numbers that appear nowhere else. `check_fulltext.py` lists retrieved PDFs that are the wrong article, a supplement, a page that only cites the article or a duplicate, and records with no PDF. `check_preservation.py` confirms that an edit kept every number, citation and cross-reference.
 
 ## How it is built
 
 - `SKILL.md`: principles, start-up checks, where to look, core writing rules and output.
 - `references/`: one topic per file, loaded when needed: working with the researcher stage by stage, evidence and data, study types, sections, sentences, journals, figures and tables, register, AI-style patterns, research plans, logs, code, folders, peer review, documents, numbers, calibration, examples and sources.
 - `scripts/rules.json`: the wording rules, each with examples it must and must not match. A word is must-fix only when research articles in leading journals almost never print it, checked separately for each journal family and study design.
-- `scripts/calibrate.py`: rebuilds the reference rates from PDFs and from open-access publisher versions in Europe PMC.
+- `scripts/calibrate.py`: rebuilds the reference rates from PDFs, article texts saved locally and open-access publisher versions in Europe PMC.
 
 ## Sources
 

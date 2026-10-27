@@ -10,6 +10,8 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -168,6 +170,18 @@ def check_calibration() -> None:
             break
 
 
+def check_private_texts() -> None:
+    """Article texts in calibration-texts/ are under the publishers' copyright and stay out of git."""
+    ignore = ROOT / ".gitignore"
+    if not ignore.exists() or "calibration-texts/" not in ignore.read_text(encoding="utf-8").split():
+        problem(".gitignore must list calibration-texts/")
+    if shutil.which("git") and (ROOT / ".git").exists():
+        tracked = subprocess.run(["git", "-C", str(ROOT), "ls-files", "calibration-texts"],
+                                 capture_output=True, text=True).stdout.split()
+        if tracked:
+            problem(f"calibration-texts/ must not be committed: {', '.join(tracked[:3])}")
+
+
 def main() -> int:
     version = check_skill()
     if version:
@@ -175,6 +189,7 @@ def main() -> int:
     check_links()
     check_rules()
     check_calibration()
+    check_private_texts()
     if problems:
         for message in problems:
             print(message, file=sys.stderr)

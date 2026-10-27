@@ -33,7 +33,7 @@ How research articles in leading journals build sentences and paragraphs. Rates 
 
 - Past tense for what was done and found. Present tense for established knowledge, model structure, what a figure shows, and interpretation.
 - Passives are normal, especially in Methods: about 36% of sentences in research articles in leading journals contain one (NEJM 46%, BMJ 21%).
-- `We` appears about 8 times per 1000 words (Lancet about 10; NEJM about 2·5, where the trial is usually the subject).
+- `We` appears about 8 times per 1000 words (Lancet about 10; JAMA about 5; NEJM about 3, where the trial is usually the subject).
 
 ## Sentence length
 
@@ -53,7 +53,7 @@ How research articles in leading journals build sentences and paragraphs. Rates 
 | Laboratory study | show (direct observation) | suggest, indicate (mechanism) |
 
 - Put hedges on interpretations and leave measured results unhedged: `Mortality was 12·4%` (`Mortality appeared to be 12·4%` hedges a measurement).
-- One hedge per claim (DEF-02). Hedges run at a median of 3·2 per 1000 words in leading-journal research, highest in cohort studies and economic evaluations and lowest in trials.
+- One hedge per claim (DEF-02). Hedges run at a median of 3·7 per 1000 words in leading-journal research, highest in observational studies and systematic reviews and lowest in trials.
 - Keep hedges that carry real uncertainty: association wording for observational data, scope conditions, the interval, `probably` on an explanation. Deleting them changes the claim.
 - The Lancet uses `might` (13 per 10 000 words) and almost never `may`. NEJM, JAMA and BMJ use `may`.
 
@@ -69,12 +69,12 @@ How research articles in leading journals build sentences and paragraphs. Rates 
 
 - Compare two named, measured things and give both numbers: `Treatment success was 86% with the new regimen and 79% with the standard regimen.`
 - The usual connectives are `by contrast`, `whereas` and `compared with`.
-- Contrast frames (`rather than`, `not … but`, `not only`, a clause-final `, not X`, `instead of`) occur about 0·3 times per 1000 words in leading-journal research (90th percentile 0·8). They mark technical distinctions, such as a method choice or a definition. They never open an argument (CON rules).
+- Contrast frames (`rather than`, `not … but`, `not only`, a clause-final `, not X`, `instead of`) occur about 0·3 times per 1000 words in leading-journal research (90th percentile 0·9). They mark technical distinctions, such as a method choice or a definition. They never open an argument (CON rules).
 
 ## Connectives
 
 - The common connectives are `however` (0·6 per 1000 words), `although`, `in addition` and `therefore`.
-- Sentence-initial `Notably`, `Importantly` and `Interestingly` were used by 30% of papers before 2023 and by 57% after (LEX-04). Use them rarely and never twice in one paragraph (STR-04).
+- Sentence-initial `Notably`, `Importantly` and `Interestingly` were used by 33% of papers before 2023 and by 51% from 2023 (LEX-04). Use them rarely and never twice in one paragraph (STR-04).
 - A connective that carries logic cannot simply be deleted. Repair the link instead, for example by starting the next sentence with the term the two sentences share.
 
 ## Terms and abbreviations

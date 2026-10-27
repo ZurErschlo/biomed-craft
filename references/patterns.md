@@ -9,13 +9,13 @@ A pattern counts as a tell in proportion to how rarely a careful author would ch
 The family the author calls `不是…而是` in Chinese: setting up a position nobody stated in order to knock it down.
 
 - `The central gap is not cost. It is coverage.`: negate, then assert, across two sentences (CON-01, must fix).
-- `not only X but also Y` (CON-02; 21% of papers, 0·06 per 1000 words).
+- `not only X but also Y` (CON-02; 24% of papers, 0·06 per 1000 words).
 - `The barrier is not cost but access.` (CON-03).
 - Clause-final correction: `…because of staffing, not drug prices.` (CON-04).
 - `This is not about incidence; it is about value.` (CON-07); `Not a cure. Not a vaccine.` (CON-08); `less about X, more about Y` (CON-09); `not X; instead Y` and sentence-initial `Rather,` (CON-10).
-- `rather than` (CON-05; 45% of papers before 2023) and `instead of` (CON-06) are normal in moderation; they count towards density.
+- `rather than` (CON-05; 40% of papers before 2023) and `instead of` (CON-06) are normal in moderation; they count towards density.
 
-All contrast frames together occur about 0·3 times per 1000 words in leading-journal research (90th percentile 0·8). `scan.py` reports the density and flags anything above the 90th percentile.
+All contrast frames together occur about 0·3 times per 1000 words in leading-journal research (90th percentile 0·9). `scan.py` reports the density and flags anything above the 90th percentile.
 
 Fix: write the positive statement. Keep a contrast only when it compares two named, measured things and both numbers are given, or when it marks a method choice (`We used a Poisson model rather than a negative binomial model because…`).
 
@@ -30,18 +30,18 @@ Four tiers, set by how often each word appears in research articles in leading j
 
 Related checks:
 
-- Sentence-initial signposts `Notably,`, `Importantly,`, `Interestingly,`, `Of note,` (LEX-04): 30% of papers before 2023, 57% after.
+- Sentence-initial signposts `Notably,`, `Importantly,`, `Interestingly,`, `Of note,` (LEX-04): 33% of papers before 2023, 51% from 2023.
 - Praise adjectives `robust`, `comprehensive`, `crucial`, `critical`, `valuable` (LEX-05): replace with the property that earns the word. `robust standard errors`, `robust to alternative priors`, `critically ill` and `critical care` are technical and stay.
 - Formal substitutes (LEX-06): `utilise`, `elucidate`, `underpin`, `delineate`, `commence`, `thereby`, `markedly`, `impose`, `fundamentally`. Second-opinion models tend to suggest these; prefer `use`, `explain`, `support`, `start`.
 - Size words without a number (LEX-07): `substantial`, `substantially`, `considerable`, `dramatically`.
 - `significant` without a statistical test (LEX-08). The Lancet rarely uses `significant` at all.
-- Priority claims (LEX-09): `To our knowledge, this is the first…` was used by 36% of papers before 2023 (mostly Lancet sub-journals, often in Research in context) and by 19% after; NEJM does not print it. Keep one, only if a documented search supports it and the journal prints such claims.
+- Priority claims (LEX-09): `To our knowledge, this is the first…` appears in 18% of research articles, before and after 2023 alike: about 40% in the Lancet journals (often in Research in context) and a third in the JAMA journals; NEJM does not print it. Keep one, only if a documented search supports it and the journal prints such claims.
 
 Do not replace a flagged word with a fancier one. `Underscores` becomes `shows` or a number, not `accentuates`.
 
 ## Sentence shapes
 
-- `-ing` tails that announce significance: `…, highlighting the need for scale-up` (STR-03; 9% of papers before 2023, 24% after). End the sentence on the fact; move the implication to the Discussion and make it specific.
+- `-ing` tails that announce significance: `…, highlighting the need for scale-up` (STR-03; 7% of papers before 2023, 18% from 2023). End the sentence on the fact; move the implication to the Discussion and make it specific.
 - Verdict sentences with no content: `These findings underscore the importance of early diagnosis.`, `This is a noteworthy finding.` (STR-07). Delete, or state the implication with its scope.
 - Two signposts opening sentences in one paragraph (STR-04).
 - Rhetorical questions (STR-05) and colon reveals (`The answer: coverage.`) (STR-06).
@@ -53,7 +53,7 @@ Do not replace a flagged word with a fancier one. `Underscores` becomes `shows` 
 
 ## Punctuation and format
 
-- Em dashes (STR-01): about 0·3 per 1000 words in leading-journal research (60% of papers use at least one). Use a comma, parentheses or a new sentence for an aside. En dashes in numeric ranges stay (JAMA uses hyphens in ranges).
+- Em dashes (STR-01): about 0·5 per 1000 words in leading-journal research (53% of papers use at least one). Use a comma, parentheses or a new sentence for an aside. En dashes in numeric ranges stay (JAMA uses hyphens in ranges).
 - Spaced en dashes used as dashes (STR-02).
 - Markdown left in Word or slides: `**bold**`, `#` headings (STR-09); emoji (STR-10).
 - Bullet lists in manuscript prose, decorative bold, Title Case headings where the journal uses sentence case.

@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.2.0
+
+Released 2026-10-27.
+
+- `check_fulltext.py` accepts a PDF as an article only when the record's title is printed at the top of its first page. A page that only cites the article (a patient page, a correction, a commentary) no longer counts, and the record is reported missing. Supplements, disclosure and data-sharing forms and reproducibility checklists are listed with their record instead of being counted as the article. PDFs of one or two pages are flagged, while corrected articles with an erratum banner still count. These were all found on a real set of downloads.
+- Publisher PDFs of NEJM, JAMA, Science and Science Translational Medicine articles from 2016 to 2024, outside COVID-19, are now part of the calibration. Their texts stay on the author's computer in `calibration-texts/`, which git ignores; `calibrate.py --texts` reads them with hand-checked labels; `validate_package.py` fails if one is committed.
+- `calibrate.py`: DOI-shaped file names come first (Science prints its own DOI only at the end of the article), including Science file names; NEJM protocols, disclosure forms and JAMA online supplements are skipped; and lines such as `References (36-38)` in a list of supplementary materials no longer hide the rest of the text. The year is now read from Science footers.
+- Journal formats checked against the new articles (`references/journals.md`). NEJM and JAMA close up four-digit numbers. Recent NEJM papers point to `available at NEJM.org`. JAMA trials put the protocol and the analysis plan in Supplement 1. JAMA itself prints the reporting-guideline sentence mainly in trials and reviews. The design line in JAMA names the design. Science and Science Translational Medicine figure titles often state the finding in laboratory papers.
+- Rates quoted in `references/patterns.md`, `references/craft.md` and `references/calibration.md` match the current calibration again (some dated from the first corpus).
+
 ## 2.1.0
 
 Released 2026-10-27.

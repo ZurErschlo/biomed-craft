@@ -18,7 +18,7 @@ The groundwork behind every sentence: a source for each claim and each value, da
 - Prefer the newest authoritative source: the current guideline, the latest systematic review, the latest round of a burden study.
 - Check every reference before it goes in: the DOI resolves, the paper says what the sentence claims, the version cited is the version of record, and it has not been retracted.
 - Never cite from memory and never invent a reference. In a draft, mark a missing source as missing (HYG-05 catches the placeholder) and find it before submission.
-- Before screening full texts, check that each file is the article it is filed as: DOI, title, first author, year and journal against the record. Retrieval often returns the wrong article, a supplement or a commentary. `scripts/check_fulltext.py` compares a folder of PDFs with the reference list and lists mismatches, missing articles, duplicates and supplements.
+- Before screening full texts, check that each file is the article it is filed as: DOI, title, first author, year and journal against the record. Retrieval often returns the wrong article, a supplement, a disclosure form or a page that only cites the article: a commentary, a correction, a patient page. `scripts/check_fulltext.py` compares a folder of PDFs with the reference list. It accepts a PDF as the article only when the record's title is printed at the top of the first page, and it lists missing articles, wrong files, duplicates, supplements and PDFs of one or two pages.
 
 ## Finding data
 

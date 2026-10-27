@@ -64,12 +64,52 @@ class FulltextTest(unittest.TestCase):
     def test_reports_every_kind_of_mismatch(self):
         result = cf.match(self.records, DOCUMENTS)
         self.assertEqual(result["missing"], ["R2", "R4"])
-        self.assertEqual(result["duplicates"], {"R1": ["smith2023.pdf", "10.1000_abc.2.pdf"],
-                                                "R3": ["garcia2019.pdf", "garcia2019_supp.pdf"]})
+        self.assertEqual(result["duplicates"], {"R1": ["smith2023.pdf", "10.1000_abc.2.pdf"]})
+        self.assertEqual(result["supplements"], {"R3": ["garcia2019_supp.pdf"]})
         self.assertEqual(result["unmatched_files"], ["lee2021.pdf"])
         problems = {(n["file"], n["problem"]) for n in result["notes"]}
-        self.assertIn(("garcia2019_supp.pdf", "looks like a supplement or an author manuscript"), problems)
         self.assertIn(("10.1000_abc.2.pdf", "file name points to R2 but the content is R1"), problems)
+
+    def test_a_supplement_or_a_citing_page_is_not_the_article(self):
+        title = "Household contact tracing for drug-resistant tuberculosis in urban clinics"
+        documents = {
+            "okafor_supp1.pdf": f"Supplementary Online Content\nOkafor A, et al. {title}. doi:10.1000/abc.4\neTable 1",
+            "patient_page.pdf": ("PATIENT PAGE\nFinding tuberculosis in the family\n" + "Tuberculosis spreads at home. " * 20 +
+                                 f"Source: Okafor A. {title}. 2020. doi:10.1000/abc.4"),
+        }
+        result = cf.match(self.records, documents, {"okafor_supp1.pdf": 6, "patient_page.pdf": 1})
+        self.assertIn("R4", result["missing"])
+        self.assertEqual(result["supplements"], {"R4": ["okafor_supp1.pdf"]})
+        self.assertEqual(result["unmatched_files"], ["patient_page.pdf"])
+        self.assertTrue(any(n["file"] == "patient_page.pdf" and "not the article" in n["problem"]
+                            for n in result["notes"]))
+
+    def test_corrected_article_and_short_pdf(self):
+        documents = {"garcia.pdf": "Erratum 22 April 2022. See Erratum.\nRESEARCH\n" + R3_TEXT,
+                     "smith.pdf": R1_TEXT}
+        result = cf.match(self.records, documents, {"garcia.pdf": 9, "smith.pdf": 1})
+        self.assertEqual(result["matched"], {"R1": ["smith.pdf"], "R3": ["garcia.pdf"]})
+        self.assertEqual([n["file"] for n in result["notes"]], ["smith.pdf"])
+        self.assertIn("only 1 page", result["notes"][0]["problem"])
+
+    def test_a_cited_doi_does_not_win_over_the_article(self):
+        records = [{"id": "A", "title": "Checkpoint blockade in cancer immunotherapy reviewed",
+                    "doi": "10.1000/review.a", "surname": "ribas", "year": "2018"},
+                   {"id": "B", "title": "Adverse events of checkpoint blockade in cancer immunotherapy",
+                    "doi": "10.1000/review.b", "surname": "postow", "year": "2018"}]
+        text = ("Checkpoint blockade in cancer immunotherapy reviewed\nAntoni Ribas 2018 doi:10.1000/review.a\n"
+                "Adverse events of checkpoint blockade in cancer immunotherapy were reviewed elsewhere "
+                "(doi:10.1000/review.b).")
+        self.assertEqual(cf.match(records, {"a.pdf": text})["matched"], {"A": ["a.pdf"]})
+
+    def test_title_at_the_top_breaks_a_tie(self):
+        records = [{"id": "B", "title": "Adverse events of checkpoint blockade in cancer immunotherapy",
+                    "doi": "", "surname": "postow", "year": "2018"},
+                   {"id": "A", "title": "Cancer immunotherapy using checkpoint blockade",
+                    "doi": "", "surname": "ribas", "year": "2018"}]
+        text = ("REVIEW\nCancer immunotherapy using checkpoint blockade\nAntoni Ribas\n" + "x " * 400 +
+                "Adverse events of checkpoint blockade in cancer immunotherapy are common. 2018")
+        self.assertEqual(cf.match(records, {"a.pdf": text})["matched"], {"A": ["a.pdf"]})
 
     def test_reads_csv_and_bibtex(self):
         with tempfile.TemporaryDirectory() as directory:
