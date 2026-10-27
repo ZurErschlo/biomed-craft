@@ -11,7 +11,7 @@
       "name": "biomed-craft",
       "source": "./",
       "description": "End-to-end help with biomedical research: study design, research plans and logs, data and evidence checks, analysis code, figures and tables, manuscripts and replies to reviewers, written to the standard of leading journals.",
-      "version": "2.3.0",
+      "version": "2.3.1",
       "license": "MIT",
       "keywords": [
         "biomedical-research",

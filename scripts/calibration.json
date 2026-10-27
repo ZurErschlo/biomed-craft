@@ -6624,85 +6624,85 @@
    }
   },
   "review": {
-   "papers": 39,
-   "words": 241819,
+   "papers": 40,
+   "words": 246907,
    "metrics": {
     "sentence_median": {
      "p10": 21.0,
-     "p25": 21.75,
+     "p25": 21.375,
      "p50": 24.0,
      "p75": 27.0,
      "p90": 28.0
     },
     "share_over_35": {
      "p10": 0.1,
-     "p25": 0.13,
-     "p50": 0.167,
+     "p25": 0.128,
+     "p50": 0.166,
      "p75": 0.238,
      "p90": 0.292
     },
     "share_under_10": {
-     "p10": 0.008,
-     "p25": 0.019,
-     "p50": 0.037,
-     "p75": 0.056,
-     "p90": 0.083
+     "p10": 0.009,
+     "p25": 0.02,
+     "p50": 0.038,
+     "p75": 0.057,
+     "p90": 0.102
     },
     "we_per_1000": {
-     "p10": 0.323,
-     "p25": 1.049,
-     "p50": 1.797,
-     "p75": 3.293,
-     "p90": 4.987
+     "p10": 0.333,
+     "p25": 0.981,
+     "p50": 1.793,
+     "p75": 3.218,
+     "p90": 4.928
     },
     "passive_share": {
-     "p10": 0.192,
-     "p25": 0.259,
-     "p50": 0.333,
+     "p10": 0.194,
+     "p25": 0.263,
+     "p50": 0.332,
      "p75": 0.378,
      "p90": 0.436
     },
     "hedges_per_1000": {
-     "p10": 2.758,
-     "p25": 3.782,
-     "p50": 5.205,
-     "p75": 7.031,
-     "p90": 8.686
+     "p10": 2.792,
+     "p25": 3.789,
+     "p50": 5.335,
+     "p75": 6.988,
+     "p90": 8.622
     },
     "contrast_per_1000": {
-     "p10": 0.142,
-     "p25": 0.363,
-     "p50": 0.612,
-     "p75": 0.819,
-     "p90": 1.064
+     "p10": 0.159,
+     "p25": 0.378,
+     "p50": 0.621,
+     "p75": 0.829,
+     "p90": 1.053
     },
     "ai_signposts_per_1000": {
      "p10": 0.0,
-     "p25": 0.4,
-     "p50": 0.767,
-     "p75": 1.237,
-     "p90": 1.629
+     "p25": 0.382,
+     "p50": 0.755,
+     "p75": 1.192,
+     "p90": 1.626
     },
     "however_per_1000": {
-     "p10": 0.428,
-     "p25": 0.702,
-     "p50": 1.106,
-     "p75": 1.405,
-     "p90": 2.059
+     "p10": 0.444,
+     "p25": 0.71,
+     "p50": 1.078,
+     "p75": 1.398,
+     "p90": 2.049
     },
     "dashes_per_1000": {
      "p10": 0.0,
-     "p25": 0.325,
+     "p25": 0.289,
      "p50": 0.538,
-     "p75": 1.473,
-     "p90": 2.484
+     "p75": 1.406,
+     "p90": 2.404
     },
     "semicolons_per_1000": {
-     "p10": 0.673,
-     "p25": 0.83,
-     "p50": 1.16,
-     "p75": 2.043,
-     "p90": 3.124
+     "p10": 0.679,
+     "p25": 0.832,
+     "p50": 1.173,
+     "p75": 1.907,
+     "p90": 3.12
     }
    },
    "rules": {
@@ -6711,24 +6711,24 @@
      "paper_share": 0.0
     },
     "CON-02": {
-     "per_10k_words": 1.695,
-     "paper_share": 0.615
+     "per_10k_words": 1.661,
+     "paper_share": 0.6
     },
     "CON-03": {
-     "per_10k_words": 0.165,
-     "paper_share": 0.051
+     "per_10k_words": 0.162,
+     "paper_share": 0.05
     },
     "CON-04": {
-     "per_10k_words": 0.165,
-     "paper_share": 0.051
+     "per_10k_words": 0.203,
+     "paper_share": 0.075
     },
     "CON-05": {
-     "per_10k_words": 2.109,
-     "paper_share": 0.615
+     "per_10k_words": 2.187,
+     "paper_share": 0.625
     },
     "CON-06": {
-     "per_10k_words": 0.62,
-     "paper_share": 0.282
+     "per_10k_words": 0.608,
+     "paper_share": 0.275
     },
     "CON-07": {
      "per_10k_words": 0.0,
@@ -6743,52 +6743,52 @@
      "paper_share": 0.0
     },
     "CON-10": {
-     "per_10k_words": 0.455,
-     "paper_share": 0.179
+     "per_10k_words": 0.446,
+     "paper_share": 0.175
     },
     "DEF-01": {
-     "per_10k_words": 0.414,
-     "paper_share": 0.205
+     "per_10k_words": 0.405,
+     "paper_share": 0.2
     },
     "DEF-02": {
-     "per_10k_words": 0.289,
-     "paper_share": 0.103
+     "per_10k_words": 0.284,
+     "paper_share": 0.1
     },
     "DEF-03": {
-     "per_10k_words": 1.861,
-     "paper_share": 0.513
+     "per_10k_words": 1.823,
+     "paper_share": 0.5
     },
     "DEF-04": {
-     "per_10k_words": 0.083,
-     "paper_share": 0.051
+     "per_10k_words": 0.081,
+     "paper_share": 0.05
     },
     "DEF-05": {
      "per_10k_words": 0.041,
-     "paper_share": 0.026
+     "paper_share": 0.025
     },
     "DEF-06": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "DEF-07": {
-     "per_10k_words": 0.124,
-     "paper_share": 0.051
+     "per_10k_words": 0.122,
+     "paper_share": 0.05
     },
     "DEF-08": {
-     "per_10k_words": 0.083,
-     "paper_share": 0.026
+     "per_10k_words": 0.081,
+     "paper_share": 0.025
     },
     "DEF-09": {
      "per_10k_words": 0.041,
-     "paper_share": 0.026
+     "paper_share": 0.025
     },
     "DEF-10": {
-     "per_10k_words": 0.083,
-     "paper_share": 0.051
+     "per_10k_words": 0.081,
+     "paper_share": 0.05
     },
     "DEF-11": {
-     "per_10k_words": 0.083,
-     "paper_share": 0.051
+     "per_10k_words": 0.081,
+     "paper_share": 0.05
     },
     "META-01": {
      "per_10k_words": 0.0,
@@ -6799,16 +6799,16 @@
      "paper_share": 0.0
     },
     "META-03": {
-     "per_10k_words": 0.207,
-     "paper_share": 0.103
+     "per_10k_words": 0.203,
+     "paper_share": 0.1
     },
     "META-04": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "META-06": {
-     "per_10k_words": 0.289,
-     "paper_share": 0.179
+     "per_10k_words": 0.284,
+     "paper_share": 0.175
     },
     "META-07": {
      "per_10k_words": 0.0,
@@ -6839,8 +6839,8 @@
      "paper_share": 0.0
     },
     "ENG-01": {
-     "per_10k_words": 0.827,
-     "paper_share": 0.179
+     "per_10k_words": 0.81,
+     "paper_share": 0.175
     },
     "ENG-02": {
      "per_10k_words": 0.0,
@@ -6856,79 +6856,79 @@
     },
     "ENG-05": {
      "per_10k_words": 0.041,
-     "paper_share": 0.026
+     "paper_share": 0.025
     },
     "ENG-06": {
-     "per_10k_words": 0.579,
-     "paper_share": 0.154
+     "per_10k_words": 0.567,
+     "paper_share": 0.15
     },
     "ENG-07": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "ENG-08": {
-     "per_10k_words": 0.248,
-     "paper_share": 0.154
+     "per_10k_words": 0.243,
+     "paper_share": 0.15
     },
     "ENG-09": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "LEX-01": {
-     "per_10k_words": 0.455,
-     "paper_share": 0.205
+     "per_10k_words": 0.446,
+     "paper_share": 0.2
     },
     "LEX-02": {
-     "per_10k_words": 0.414,
-     "paper_share": 0.205
+     "per_10k_words": 0.405,
+     "paper_share": 0.2
     },
     "LEX-03": {
-     "per_10k_words": 12.365,
-     "paper_share": 0.923
+     "per_10k_words": 12.15,
+     "paper_share": 0.925
     },
     "LEX-04": {
-     "per_10k_words": 3.97,
-     "paper_share": 0.538
+     "per_10k_words": 3.888,
+     "paper_share": 0.525
     },
     "LEX-05": {
-     "per_10k_words": 10.628,
-     "paper_share": 0.949
+     "per_10k_words": 10.449,
+     "paper_share": 0.95
     },
     "LEX-06": {
-     "per_10k_words": 6.203,
-     "paper_share": 0.795
+     "per_10k_words": 6.075,
+     "paper_share": 0.775
     },
     "LEX-07": {
-     "per_10k_words": 4.921,
-     "paper_share": 0.769
+     "per_10k_words": 4.82,
+     "paper_share": 0.75
     },
     "LEX-08": {
-     "per_10k_words": 4.094,
-     "paper_share": 0.615
+     "per_10k_words": 4.05,
+     "paper_share": 0.625
     },
     "LEX-09": {
-     "per_10k_words": 0.248,
-     "paper_share": 0.128
+     "per_10k_words": 0.243,
+     "paper_share": 0.125
     },
     "LEX-10": {
-     "per_10k_words": 43.628,
+     "per_10k_words": 43.417,
      "paper_share": 1.0
     },
     "LEX-11": {
-     "per_10k_words": 1.117,
-     "paper_share": 0.41
+     "per_10k_words": 1.094,
+     "paper_share": 0.4
     },
     "STR-01": {
-     "per_10k_words": 10.38,
-     "paper_share": 0.846
+     "per_10k_words": 10.166,
+     "paper_share": 0.825
     },
     "STR-02": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "STR-03": {
-     "per_10k_words": 0.331,
-     "paper_share": 0.128
+     "per_10k_words": 0.324,
+     "paper_share": 0.125
     },
     "STR-06": {
      "per_10k_words": 0.0,
@@ -6939,8 +6939,8 @@
      "paper_share": 0.0
     },
     "STR-08": {
-     "per_10k_words": 0.414,
-     "paper_share": 0.154
+     "per_10k_words": 0.405,
+     "paper_share": 0.15
     },
     "STR-10": {
      "per_10k_words": 0.0,
@@ -6999,16 +6999,16 @@
      "paper_share": 0.0
     },
     "FMT-03": {
-     "per_10k_words": 0.248,
-     "paper_share": 0.103
+     "per_10k_words": 0.243,
+     "paper_share": 0.1
     },
     "FMT-04": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "FMT-05": {
-     "per_10k_words": 0.744,
-     "paper_share": 0.128
+     "per_10k_words": 0.729,
+     "paper_share": 0.125
     }
    }
   },
@@ -7791,85 +7791,85 @@
    }
   },
   "reviews_and_other": {
-   "papers": 60,
-   "words": 353268,
+   "papers": 61,
+   "words": 358356,
    "metrics": {
     "sentence_median": {
      "p10": 20.0,
      "p25": 21.0,
-     "p50": 23.5,
+     "p50": 23.0,
      "p75": 26.0,
-     "p90": 27.55
+     "p90": 27.5
     },
     "share_over_35": {
-     "p10": 0.094,
-     "p25": 0.125,
-     "p50": 0.162,
-     "p75": 0.234,
+     "p10": 0.095,
+     "p25": 0.123,
+     "p50": 0.161,
+     "p75": 0.233,
      "p90": 0.289
     },
     "share_under_10": {
      "p10": 0.011,
      "p25": 0.022,
      "p50": 0.044,
-     "p75": 0.072,
+     "p75": 0.073,
      "p90": 0.126
     },
     "we_per_1000": {
-     "p10": 0.353,
-     "p25": 1.121,
-     "p50": 1.992,
-     "p75": 4.462,
-     "p90": 9.736
+     "p10": 0.355,
+     "p25": 1.112,
+     "p50": 1.989,
+     "p75": 4.452,
+     "p90": 9.668
     },
     "passive_share": {
-     "p10": 0.171,
-     "p25": 0.249,
-     "p50": 0.33,
-     "p75": 0.376,
+     "p10": 0.172,
+     "p25": 0.25,
+     "p50": 0.329,
+     "p75": 0.375,
      "p90": 0.427
     },
     "hedges_per_1000": {
-     "p10": 2.429,
-     "p25": 3.294,
-     "p50": 4.644,
-     "p75": 6.773,
-     "p90": 7.965
+     "p10": 2.435,
+     "p25": 3.306,
+     "p50": 4.648,
+     "p75": 6.749,
+     "p90": 7.899
     },
     "contrast_per_1000": {
      "p10": 0.0,
-     "p25": 0.318,
-     "p50": 0.565,
-     "p75": 0.815,
-     "p90": 1.095
+     "p25": 0.321,
+     "p50": 0.573,
+     "p75": 0.826,
+     "p90": 1.092
     },
     "ai_signposts_per_1000": {
      "p10": 0.0,
-     "p25": 0.169,
-     "p50": 0.667,
-     "p75": 0.928,
-     "p90": 1.545
+     "p25": 0.197,
+     "p50": 0.661,
+     "p75": 0.912,
+     "p90": 1.536
     },
     "however_per_1000": {
-     "p10": 0.22,
-     "p25": 0.479,
-     "p50": 0.821,
-     "p75": 1.282,
-     "p90": 1.91
+     "p10": 0.225,
+     "p25": 0.485,
+     "p50": 0.826,
+     "p75": 1.265,
+     "p90": 1.899
     },
     "dashes_per_1000": {
      "p10": 0.0,
-     "p25": 0.356,
-     "p50": 0.597,
-     "p75": 1.657,
-     "p90": 3.156
+     "p25": 0.355,
+     "p50": 0.581,
+     "p75": 1.641,
+     "p90": 3.15
     },
     "semicolons_per_1000": {
-     "p10": 0.622,
-     "p25": 0.832,
-     "p50": 1.364,
-     "p75": 2.865,
-     "p90": 4.609
+     "p10": 0.626,
+     "p25": 0.834,
+     "p50": 1.376,
+     "p75": 2.85,
+     "p90": 4.598
     }
    },
    "rules": {
@@ -7878,24 +7878,24 @@
      "paper_share": 0.0
     },
     "CON-02": {
-     "per_10k_words": 1.529,
-     "paper_share": 0.5
+     "per_10k_words": 1.507,
+     "paper_share": 0.492
     },
     "CON-03": {
-     "per_10k_words": 0.226,
-     "paper_share": 0.083
+     "per_10k_words": 0.223,
+     "paper_share": 0.082
     },
     "CON-04": {
-     "per_10k_words": 0.142,
-     "paper_share": 0.05
+     "per_10k_words": 0.167,
+     "paper_share": 0.066
     },
     "CON-05": {
-     "per_10k_words": 1.981,
-     "paper_share": 0.55
+     "per_10k_words": 2.037,
+     "paper_share": 0.557
     },
     "CON-06": {
-     "per_10k_words": 0.736,
-     "paper_share": 0.3
+     "per_10k_words": 0.726,
+     "paper_share": 0.295
     },
     "CON-07": {
      "per_10k_words": 0.0,
@@ -7910,51 +7910,51 @@
      "paper_share": 0.0
     },
     "CON-10": {
-     "per_10k_words": 0.368,
-     "paper_share": 0.15
+     "per_10k_words": 0.363,
+     "paper_share": 0.148
     },
     "DEF-01": {
-     "per_10k_words": 0.311,
-     "paper_share": 0.15
+     "per_10k_words": 0.307,
+     "paper_share": 0.148
     },
     "DEF-02": {
-     "per_10k_words": 0.311,
-     "paper_share": 0.133
+     "per_10k_words": 0.307,
+     "paper_share": 0.131
     },
     "DEF-03": {
-     "per_10k_words": 1.585,
-     "paper_share": 0.467
+     "per_10k_words": 1.563,
+     "paper_share": 0.459
     },
     "DEF-04": {
-     "per_10k_words": 0.085,
-     "paper_share": 0.05
+     "per_10k_words": 0.084,
+     "paper_share": 0.049
     },
     "DEF-05": {
      "per_10k_words": 0.028,
-     "paper_share": 0.017
+     "paper_share": 0.016
     },
     "DEF-06": {
-     "per_10k_words": 0.057,
+     "per_10k_words": 0.056,
      "paper_share": 0.033
     },
     "DEF-07": {
-     "per_10k_words": 0.085,
+     "per_10k_words": 0.084,
      "paper_share": 0.033
     },
     "DEF-08": {
-     "per_10k_words": 0.057,
-     "paper_share": 0.017
+     "per_10k_words": 0.056,
+     "paper_share": 0.016
     },
     "DEF-09": {
      "per_10k_words": 0.028,
-     "paper_share": 0.017
+     "paper_share": 0.016
     },
     "DEF-10": {
-     "per_10k_words": 0.057,
+     "per_10k_words": 0.056,
      "paper_share": 0.033
     },
     "DEF-11": {
-     "per_10k_words": 0.057,
+     "per_10k_words": 0.056,
      "paper_share": 0.033
     },
     "META-01": {
@@ -7966,16 +7966,16 @@
      "paper_share": 0.0
     },
     "META-03": {
-     "per_10k_words": 0.17,
-     "paper_share": 0.083
+     "per_10k_words": 0.167,
+     "paper_share": 0.082
     },
     "META-04": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "META-06": {
-     "per_10k_words": 0.51,
-     "paper_share": 0.233
+     "per_10k_words": 0.502,
+     "paper_share": 0.23
     },
     "META-07": {
      "per_10k_words": 0.0,
@@ -8006,96 +8006,96 @@
      "paper_share": 0.0
     },
     "ENG-01": {
-     "per_10k_words": 0.623,
-     "paper_share": 0.15
+     "per_10k_words": 0.614,
+     "paper_share": 0.148
     },
     "ENG-02": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "ENG-03": {
-     "per_10k_words": 0.057,
-     "paper_share": 0.017
+     "per_10k_words": 0.056,
+     "paper_share": 0.016
     },
     "ENG-04": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "ENG-05": {
-     "per_10k_words": 0.057,
+     "per_10k_words": 0.056,
      "paper_share": 0.033
     },
     "ENG-06": {
-     "per_10k_words": 0.708,
-     "paper_share": 0.183
+     "per_10k_words": 0.698,
+     "paper_share": 0.18
     },
     "ENG-07": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "ENG-08": {
-     "per_10k_words": 0.736,
-     "paper_share": 0.2
+     "per_10k_words": 0.726,
+     "paper_share": 0.197
     },
     "ENG-09": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "LEX-01": {
-     "per_10k_words": 0.679,
-     "paper_share": 0.217
+     "per_10k_words": 0.67,
+     "paper_share": 0.213
     },
     "LEX-02": {
-     "per_10k_words": 0.311,
-     "paper_share": 0.15
+     "per_10k_words": 0.307,
+     "paper_share": 0.148
     },
     "LEX-03": {
-     "per_10k_words": 11.776,
-     "paper_share": 0.867
+     "per_10k_words": 11.636,
+     "paper_share": 0.869
     },
     "LEX-04": {
-     "per_10k_words": 3.453,
-     "paper_share": 0.517
+     "per_10k_words": 3.404,
+     "paper_share": 0.508
     },
     "LEX-05": {
-     "per_10k_words": 9.313,
-     "paper_share": 0.883
+     "per_10k_words": 9.209,
+     "paper_share": 0.885
     },
     "LEX-06": {
-     "per_10k_words": 5.548,
-     "paper_share": 0.75
+     "per_10k_words": 5.469,
+     "paper_share": 0.738
     },
     "LEX-07": {
-     "per_10k_words": 5.378,
-     "paper_share": 0.717
+     "per_10k_words": 5.302,
+     "paper_share": 0.705
     },
     "LEX-08": {
-     "per_10k_words": 3.199,
-     "paper_share": 0.533
+     "per_10k_words": 3.181,
+     "paper_share": 0.541
     },
     "LEX-09": {
-     "per_10k_words": 0.226,
-     "paper_share": 0.117
+     "per_10k_words": 0.223,
+     "paper_share": 0.115
     },
     "LEX-10": {
-     "per_10k_words": 40.507,
+     "per_10k_words": 40.407,
      "paper_share": 1.0
     },
     "LEX-11": {
-     "per_10k_words": 1.047,
-     "paper_share": 0.35
+     "per_10k_words": 1.032,
+     "paper_share": 0.344
     },
     "STR-01": {
-     "per_10k_words": 13.276,
-     "paper_share": 0.833
+     "per_10k_words": 13.088,
+     "paper_share": 0.82
     },
     "STR-02": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "STR-03": {
-     "per_10k_words": 0.255,
-     "paper_share": 0.1
+     "per_10k_words": 0.251,
+     "paper_share": 0.098
     },
     "STR-06": {
      "per_10k_words": 0.0,
@@ -8103,11 +8103,11 @@
     },
     "STR-07": {
      "per_10k_words": 0.028,
-     "paper_share": 0.017
+     "paper_share": 0.016
     },
     "STR-08": {
-     "per_10k_words": 0.283,
-     "paper_share": 0.1
+     "per_10k_words": 0.279,
+     "paper_share": 0.098
     },
     "STR-10": {
      "per_10k_words": 0.0,
@@ -8126,12 +8126,12 @@
      "paper_share": 0.0
     },
     "HYG-03": {
-     "per_10k_words": 0.057,
+     "per_10k_words": 0.056,
      "paper_share": 0.033
     },
     "HYG-05": {
      "per_10k_words": 0.028,
-     "paper_share": 0.017
+     "paper_share": 0.016
     },
     "HYG-06": {
      "per_10k_words": 0.0,
@@ -8142,11 +8142,11 @@
      "paper_share": 0.0
     },
     "HYG-08": {
-     "per_10k_words": 0.057,
-     "paper_share": 0.017
+     "per_10k_words": 0.056,
+     "paper_share": 0.016
     },
     "HYG-09": {
-     "per_10k_words": 0.623,
+     "per_10k_words": 0.614,
      "paper_share": 0.033
     },
     "HYG-10": {
@@ -8154,7 +8154,7 @@
      "paper_share": 0.0
     },
     "HYG-11": {
-     "per_10k_words": 0.113,
+     "per_10k_words": 0.112,
      "paper_share": 0.033
     },
     "FMT-01": {
@@ -8166,16 +8166,16 @@
      "paper_share": 0.0
     },
     "FMT-03": {
-     "per_10k_words": 0.425,
-     "paper_share": 0.133
+     "per_10k_words": 0.419,
+     "paper_share": 0.131
     },
     "FMT-04": {
-     "per_10k_words": 0.17,
+     "per_10k_words": 0.167,
      "paper_share": 0.033
     },
     "FMT-05": {
-     "per_10k_words": 0.991,
-     "paper_share": 0.217
+     "per_10k_words": 0.977,
+     "paper_share": 0.213
     }
    }
   }

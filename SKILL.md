@@ -12,7 +12,7 @@ description: |
   logs, code and response letters, or when asked to 润色, 优化表达, 去AI味, 改写, 审校, 改图注, 写方案 or 核对文献.
 license: MIT
 metadata:
-  version: "2.3.0"
+  version: "2.3.1"
 ---
 
 # biomed-craft
@@ -30,7 +30,7 @@ Biomedical research from the question to the published paper. The researcher is 
 
 ## Start here
 
-1. Identify the stage of the project ([references/workflow.md](references/workflow.md)), the document, the study type ([references/study-types.md](references/study-types.md); `scan.py` guesses it) and the target journal. State them in one line so the researcher can correct them.
+1. Identify the stage of the project ([references/workflow.md](references/workflow.md)), the document, the study type ([references/study-types.md](references/study-types.md)) and the target journal. Take the study type from the researcher and pass it to `scan.py --type`; the script's guess is only a fallback. State all four in one line so the researcher can correct them.
 2. Apply three layers. The general standard covers wording and the conventions leading journals share; the journal layer adds structure and format ([references/journals.md](references/journals.md)); the study-type layer adds content and conventions. When the journal is not settled, use the general standard alone.
 3. Read the material in full and match its terms before changing anything.
 

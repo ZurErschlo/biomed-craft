@@ -1334,6 +1334,16 @@
   "sentences": 131
  },
  {
+  "doi": "10.1001/jama.2019.22360",
+  "family": "jama",
+  "journal": "JAMA",
+  "year": 2020,
+  "type": "review",
+  "design": "review",
+  "words": 5088,
+  "sentences": 239
+ },
+ {
   "doi": "10.1001/jamasurg.2020.3845",
   "pmcid": "PMC7512122",
   "family": "jama",

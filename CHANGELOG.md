@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.3.1
+
+Released 2026-10-27.
+
+- The JAMA narrative review that was missing from the publisher PDFs is now in the calibration. Its structure corrected the JAMA line in `references/study-types/review.md`: the Methods name the databases, search dates and selection, and the body sits under Discussion and Observations.
+- The study type comes from the researcher and goes to `scan.py --type`; the guess is a fallback (`SKILL.md`, `references/study-types.md`).
+
 ## 2.3.0
 
 Released 2026-10-27.

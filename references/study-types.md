@@ -1,6 +1,6 @@
 # Study types
 
-Identify the study type before writing or reviewing anything: the type decides the reporting guideline, the content a reader and a reviewer expect, the figures and tables, and some word choices. `scan.py` guesses the type from the text and prints its guess (`--type` overrides it).
+Identify the study type before writing or reviewing anything: the type decides the reporting guideline, the content a reader and a reviewer expect, the figures and tables, and some word choices. Use the type the researcher states and pass it with `--type`. When nobody has stated it, `scan.py` guesses from the text and prints the guess for the researcher to confirm; it most often confuses laboratory and computational work.
 
 Each file below covers one type: the content the paper must contain, what reviewers flag and the fix, and the writing conventions of leading journals for that type. General writing rules apply to every type; journal formats are in [journals.md](journals.md).
 
