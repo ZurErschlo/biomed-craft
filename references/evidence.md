@@ -31,6 +31,7 @@ The groundwork behind every sentence: a source for each claim and each value, da
 - Compare imported data with the source: totals, a random sample of rows, ranges, units, denominators and missing-value codes. Reconcile with published figures such as national totals.
 - In a systematic review, two people extract the data independently; check extracted numbers against the tables of each paper and report agreement.
 - Keep values entered by hand in a table that gives, for each value, the source and the page or table.
+- When two places disagree, correct a value only when the right one can be checked (by arithmetic, or against the analysis output or the source table). Otherwise list both locations and ask which is right; do not choose for the author.
 - After each analysis, check the main numbers against an independent calculation or the previous run. Record a discrepancy in `execution_log.md` before fixing it ([execution-log.md](execution-log.md)).
 
 ## Logical consistency

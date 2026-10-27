@@ -148,5 +148,53 @@
     "keep": ["increases hospital costs"],
     "focus": ["LEX-06"],
     "notes": "Reject the suggestion; keep the plain sentence or add a number if available."
+  },
+  {
+    "id": "plan_section",
+    "request": "Rewrite this section of research_plan.md to the plan standard.",
+    "input": "Model (v2, updated 12/05): Poisson for now, maybe NB if overdispersed (TBD, see execution_log.md). Status: in progress. Uses the 2010-2022 provincial notifications (N7). Run on 8 threads; set the environment variable MAX_ITER=500 first. We may also explore a zero-inflated model.",
+    "keep": ["Poisson regression of notifications", "provincial notifications, 2010-2022", "negative binomial model if the counts are overdispersed"],
+    "focus": ["PLAN-01", "PLAN-02", "PLAN-03", "PLAN-04", "PLAN-05", "PLAN-06", "PLAN-07"],
+    "notes": "The overdispersion rule has no threshold and N7 is unexplained: a good rewrite writes a definite rule and asks the author for the threshold and the meaning of N7 instead of inventing them. Run details move out of the plan."
+  },
+  {
+    "id": "log_entry",
+    "request": "Tidy this execution log entry.",
+    "input": "Yesterday the subagent reran everything after the user chose option B. Fixed the join (41 dup IDs). Output in data/output/model_nb.rds. Still in progress.",
+    "keep": ["41 duplicate IDs removed in the join", "output file data/output/model_nb.rds"],
+    "focus": ["LOG-02", "META-12"],
+    "notes": "The date is missing and 'option B' is never defined: a good rewrite asks for both and does not invent them. File names are allowed in a log."
+  },
+  {
+    "id": "code_comments",
+    "request": "Clean up the comments in this R script.",
+    "input": "# 修改: changed to NB on 12 May per user request (v2)\n# TODO check this later\n# see plan §3.2\nfit <- glm.nb(cases ~ year + offset(log(pop)), data = d)\n# fit <- glm(cases ~ year, family = poisson, data = d)",
+    "keep": ["fit <- glm.nb(cases ~ year + offset(log(pop)), data = d)"],
+    "focus": ["CODE-08", "CODE-10", "CODE-11", "CODE-12", "HYG-06", "META-12"],
+    "notes": "The code line stays exactly as it is. The reason for the negative binomial model is not given, so a good rewrite asks for it (or states only what the code shows) and moves the open item to the log."
+  },
+  {
+    "id": "post_hoc_exclusion",
+    "request": "Polish this Methods paragraph for a systematic review.",
+    "input": "We searched MEDLINE and Embase. After screening, we decided to exclude studies without laboratory confirmation; this was prespecified in our protocol. In the revised version, we also added a sensitivity analysis restricted to low risk of bias studies.",
+    "keep": ["MEDLINE and Embase", "exclusion of studies without laboratory confirmation", "sensitivity analysis restricted to studies at low risk of bias"],
+    "focus": ["META-01"],
+    "notes": "The exclusion was decided after screening, so it cannot be called prespecified: a good rewrite describes the criterion as applied, drops the claim, and tells the author to amend the registration and answer the PRISMA item on amendments. Search dates are missing and must not be invented."
+  },
+  {
+    "id": "prediction_review",
+    "request": "Review this prediction-model Methods paragraph against the study-type checklist.",
+    "input": "We randomly split the data 70/30 into training and external validation sets. After imputing missing values in the full dataset, we selected predictors with univariable P<0.05 and stepwise BIC, chose the best of eight machine-learning models by test-set AUC, and built a nomogram.",
+    "keep": [],
+    "focus": [],
+    "notes": "A good review flags: a random split is internal validation, imputation on the full data leaks, univariable screening with stepwise selection, choosing the model on the test set, no sample-size calculation, and no calibration or decision curve. It does not rewrite the facts."
+  },
+  {
+    "id": "numbers_check",
+    "request": "Check the numbers in this abstract and results.",
+    "input": "Abstract: Of 2104 patients, 482 (25.9%) died; the hazard ratio was 0.83 (95% CI 0.85-0.93).\n\nResults: 482 of 2104 patients died (22.9%). The hazard ratio for death was 0.83 (95% CI 0.75-0.93).",
+    "keep": ["482 of 2104 patients died", "hazard ratio 0.83"],
+    "focus": [],
+    "notes": "The abstract percentage is wrong (22.9%) and its interval does not contain 0.83: a good answer reports both discrepancies and their locations and asks which value is correct, without silently choosing one."
   }
 ]

@@ -36,13 +36,18 @@ COUNT_OF = re.compile(
 COUNT_PCT_OF = re.compile(
     rf"(?P<n>{NUMBER})\s*\(\s*(?P<p>\d+(?:[.·]\d+)?)\s*%\s*\)\s*of\s+(?:the\s+)?(?P<N>{NUMBER})\b"
 )
+OF_TOTAL = re.compile(
+    rf"\b[Oo]f\s+(?:the\s+)?(?P<N>{NUMBER})(?:\s+[A-Za-z-]+){{0,3}},\s+(?P<n>{NUMBER})(?:\s+[A-Za-z-]+){{0,2}}"
+    rf"\s*\(\s*(?P<p>\d+(?:[.·]\d+)?)\s*%\s*\)"
+)
 INTERVAL = re.compile(
     rf"(?P<label>\b(?:[AaIi]?(?:OR|HR|RR|IRR|SHR)|odds ratio|hazard ratio|risk ratio|rate ratio|ratio)\b"
     rf"(?:\s+(?:was|were|is|of))?[\s,:=]*)?"
-    rf"(?P<est>-?{NUMBER})\s*[,;]?\s*\(?\s*(?:95%\s*(?:CI|confidence interval|UI|uncertainty interval|CrI|credible interval)"
+    rf"(?P<est>-?{NUMBER})(?![\d·.])\s*[,;]?\s*\(?\s*(?:95%\s*(?:CI|confidence interval|UI|uncertainty interval|CrI|credible interval)"
     rf"\s*(?:\[\w+\])?[\s,:]*)?(?P<low>[-−–]?{NUMBER})\s*(?:to|–|-(?=\d))\s*(?P<high>[-−–]?{NUMBER})\s*\)"
 )
 ABSTRACT_HEADING = re.compile(r"^(?:abstract|summary)$", re.IGNORECASE)
+ABSTRACT_LABEL = re.compile(r"^\s*(?:abstract|summary)\s*[:.]\s*", re.IGNORECASE)
 TRIVIAL = re.compile(r"^(?:\d|1\d|95|100|19\d\d|20\d\d)$")
 
 
@@ -66,7 +71,7 @@ def decimals(text: str) -> int:
 
 def percentage_problems(text: str, line: int) -> list[Problem]:
     found = []
-    for pattern in (COUNT_OF, COUNT_PCT_OF):
+    for pattern in (COUNT_OF, COUNT_PCT_OF, OF_TOTAL):
         for match in pattern.finditer(text):
             n, total, shown = to_float(match["n"]), to_float(match["N"]), to_float(match["p"])
             if total <= 0 or n > total:
@@ -107,6 +112,10 @@ def abstract_problems(segments: list[ts.Segment]) -> list[Problem]:
         heading = segment.text.strip().strip("#").strip()
         if len(heading) < 30 and ABSTRACT_HEADING.match(heading):
             inside = True
+            continue
+        if ABSTRACT_LABEL.match(segment.text):  # an inline "Abstract:" paragraph
+            abstract.append(segment)
+            inside = False
             continue
         if inside and len(heading) < 60 and not heading.endswith(".") and len(heading.split()) <= 6:
             inside = False

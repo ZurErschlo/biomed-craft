@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "levels": {
     "must": "Fix on sight: leading journals almost never print this, or it is internal material.",
     "review": "Judge in context: often a tell, sometimes the right word.",
@@ -524,6 +524,30 @@
       }
     },
     {
+      "id": "DEF-12",
+      "category": "DEF",
+      "level": "review",
+      "scopes": [
+        "prose"
+      ],
+      "docs": [
+        "response"
+      ],
+      "pattern": "\\bwe\\s+(?:sincerely\\s+|kindly\\s+)?thank\\s+the\\s+reviewers?\\s+for\\b|\\bthank\\s+you\\s+for\\s+(?:this|the|your)\\s+(?:insightful|helpful|valuable|thoughtful|constructive|excellent|important|careful)\\b|\\bwe\\s+(?:have\\s+)?(?:carefully|thoroughly)\\s+(?:revised|checked|considered|addressed|reviewed)\\b|\\bwe\\s+ensured\\b|\\bwhile\\s+preserving\\b",
+      "flags": "i",
+      "hint": "Thank the reviewers once, at the top of the letter. In each reply, say what changed and where; procedural self-praise adds nothing.",
+      "examples": {
+        "hit": [
+          "We thank the reviewer for this insightful comment.",
+          "We have carefully revised the manuscript.",
+          "Thank you for this valuable suggestion."
+        ],
+        "miss": [
+          "We added the sensitivity analysis (lines 212–219)."
+        ]
+      }
+    },
+    {
       "id": "META-01",
       "category": "META",
       "level": "must",
@@ -827,6 +851,27 @@
           "We chose a Poisson model because counts were overdispersed.",
           "The model suggested higher transmission in winter.",
           "The agent was well tolerated."
+        ]
+      }
+    },
+    {
+      "id": "META-13",
+      "category": "META",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption"
+      ],
+      "pattern": "\\b(?:after|following)\\s+(?:screening|data\\s+extraction|extraction|unblinding|unmasking|database\\s+lock|seeing\\s+the\\s+(?:data|results))\\b[^.]{0,200}?\\bpre-?specified\\b|\\bpre-?specified\\b[^.]{0,200}?\\b(?:after|following)\\s+(?:screening|unblinding|unmasking|database\\s+lock)\\b",
+      "flags": "i",
+      "hint": "A decision made after screening, unblinding or seeing the data cannot be prespecified. Describe it as it was done, and tell the author that the registration and the reporting checklist need the amendment.",
+      "examples": {
+        "hit": [
+          "After screening, we decided to exclude studies without laboratory confirmation; this was prespecified in our protocol."
+        ],
+        "miss": [
+          "The primary analysis was prespecified in the statistical analysis plan.",
+          "After screening, two reviewers extracted data independently."
         ]
       }
     },

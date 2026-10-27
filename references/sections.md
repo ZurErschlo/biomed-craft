@@ -50,7 +50,7 @@ Introductions do not list contributions and rarely state hypotheses (laboratory 
 - Modelling: state where the model comes from, what it was fitted to, the counterfactual, how uncertainty was propagated (uncertainty intervals or credible intervals) and the scenarios. Equations and parameter tables go to the appendix with page pointers.
 - Economic evaluation: perspective, currency and price year, outcome (DALYs or QALYs), discount rate, threshold, probabilistic sensitivity analysis, and the CHEERS 2022 statement.
 - Methods describe what was done, in the order a reader needs it. Precedent goes in as a short citation; limits go in the Discussion; next steps do not appear.
-- Methods describe the methods as they were carried out and give the registration number. When the registration was amended, the amendment is answered in the reporting checklist (PRISMA 2020 item 24c) or in one line of the supplement. A decision made after the data were seen is never called prespecified, and a statement that the primary outcome or eligibility changed stays in.
+- Methods describe the methods as they were carried out and give the registration number. When the registration was amended, the amendment is answered in the reporting checklist (PRISMA 2020 item 24c) or in one line of the supplement. A decision made after the data were seen is never called prespecified (META-13 flags the contradiction), and a statement that the primary outcome or eligibility changed stays in.
 - Methods describe the analysis in scientific terms. Software steps, file names, seeds and version histories stay out ([register.md](register.md)).
 - Name the reporting guideline in one sentence: `The trial is reported according to CONSORT 2025.`
 - Ethics approval and consent sit with participants (Lancet, NEJM) or in back matter (JAMA, BMJ). The Lancet ends Methods with a fixed role-of-funder sentence.
@@ -77,6 +77,36 @@ Introductions do not list contributions and rarely state hypotheses (laboratory 
 5. Strengths and limitations: one block (Lancet), subheadings (BMJ, JAMA) or brief (NEJM). Open plainly (`Our study has several limitations.`). Each limitation names its consequence: the direction of bias, what was done about it, or why it is unlikely to change the conclusion. Use `First,… Second,…` for three or more.
 6. Future research: specific design, population or outcome, tied to a stated limitation. Bare calls for more research do not occur in the corpus (DEF-07).
 7. Final paragraph: the main finding and a proportionate implication. `In conclusion` opens it in about a third of papers; BMJ and JAMA use a Conclusions heading instead.
+
+## Checks before submission, for every study type
+
+Content:
+
+- The gap rests on a described search: sources, dates and terms, and what was found, as in the Lancet's Evidence before this study. A priority claim needs that search behind it.
+- The aim, any hypothesis, the population and the primary outcome read the same in the title, abstract, Introduction, Methods, registry and protocol.
+- Each limitation is stated as a consequence: the likely direction and size of the bias, what was done about it, and whether it could change the conclusion. Generalisability and multiplicity are among the limitations.
+- Future research, when mentioned, follows from a stated limitation. The conclusion matches the primary result and goes no further.
+
+The abstract against the text:
+
+- Every number in the abstract appears with the same value in the Results or tables. Audits of major journals have found abstracts with data that were inconsistent with, or absent from, the main text.
+- The abstract leads with the primary result, null or not, and concludes no more than the main text. Secondary or subgroup results do not stand in for a null primary result.
+
+Numbers that reconcile (`scripts/check_numbers.py` covers part of this):
+
+- Flow-diagram counts equal the Table 1 totals, which equal the n analysed in each analysis; every drop is explained.
+- Every percentage has a stated denominator and recomputes; subgroups sum to the total; events and person-time reproduce the stated rates.
+- An estimate has the same value, rounding and interval level in the abstract, text, tables, figures and supplement. Numbers at risk under survival curves and the values in forest plots match the tables.
+- Page references in the reporting checklist point to the final version.
+
+Statements most leading journals now expect:
+
+- Sex and gender: how each was determined, analysis by sex where possible, and the reason for a single-sex design (SAGER).
+- Race and ethnicity: who assigned it, the categories, and why it was collected; representativeness discussed.
+- Patient and public involvement, described or stated as absent.
+- The funder's role, conflicts of interest and who had access to the data; The Lancet asks that at least two authors accessed and verified the data.
+- Data, code and materials availability: what is shared, where, when, for whom and on what conditions. The Lancet and Nature journals do not accept `undecided`, and `available on request` is weak.
+- AI used in the research is described in the Methods (tool and version). Disclosure of writing assistance is written by the authors, in the form the journal asks for.
 
 ## Declarations
 

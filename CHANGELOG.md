@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.0
+
+Released 2026-10-27.
+
+- Formal protocols and statistical analysis plans: SPIRIT 2025 content, the separate analysis plan, and what ethics committees and reviewers flag (`references/documents.md`).
+- Checks before submission for every study type: the gap behind the aim, the abstract against the text, numbers that reconcile, and the statements leading journals expect (`references/sections.md`).
+- Rewrite cases for research plans, execution logs, code comments, a post hoc exclusion, a prediction-model review and a number check (`tests/fixtures/cases.json`).
+- After a blind test on ten cases: `check_numbers.py` now reads `Of N, n (p%)`, compares an inline `Abstract:` paragraph with the text, and no longer misreads a bare interval; DEF-12 flags repeated thanks and self-praise in replies to reviewers; META-13 flags a decision made after screening or unblinding that is called prespecified; values that disagree are corrected only when the right one can be checked.
+
 ## 2.0.0
 
 Released 2026-10-27. The skill is now biomed-craft (formerly plain-paper): end-to-end help with biomedical research, starting from writing.

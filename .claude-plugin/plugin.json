@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "biomed-craft",
   "description": "End-to-end help with biomedical research: study design, research plans and logs, data and evidence checks, analysis code, figures and tables, manuscripts and replies to reviewers, written to the standard of leading journals.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": {
     "name": "ZurErschlo",
     "url": "https://github.com/ZurErschlo"

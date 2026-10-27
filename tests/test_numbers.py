@@ -28,6 +28,15 @@ class NumbersTest(unittest.TestCase):
         self.assertEqual(messages, ["the estimate lies outside its interval", "the lower bound is above the upper bound",
                                     "a ratio interval cannot reach zero"])
 
+    def test_of_total_counts_and_bare_intervals(self):
+        self.assertEqual([p.match for p in cn.percentage_problems("Of 2104 patients, 482 (25.9%) died.", 1)],
+                         ["Of 2104 patients, 482 (25.9%)"])
+        self.assertEqual(cn.interval_problems("The range was (0.75-0.93) in the cohort.", 1), [])
+
+    def test_inline_abstract_label(self):
+        segments = cn.ts.read_markdown("Abstract: Mortality fell by 41%.\n\nResults: Mortality fell by 37%.")
+        self.assertEqual([p.match for p in cn.abstract_problems(segments)], ["41"])
+
     def test_abstract_numbers_must_appear_elsewhere(self):
         result = cn.check_file(FIXTURE)
         self.assertEqual([p["match"] for p in result["problems"] if p["kind"] == "abstract"], ["37"])

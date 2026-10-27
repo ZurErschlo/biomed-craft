@@ -13,7 +13,7 @@ They check every rule against its examples, reading of each file format, the com
 
 ## Rewrite cases
 
-[fixtures/cases.json](fixtures/cases.json) holds synthetic passages, each with the request to give an agent. `keep` lists facts the rewrite must preserve and `focus` lists the rule IDs a good rewrite should address. Do not show `keep` or `focus` to the agent.
+[fixtures/cases.json](fixtures/cases.json) holds synthetic passages, each with the request to give an agent: manuscript text, figure code, research plans, execution logs, code comments, reviews and number checks. `keep` lists facts the rewrite must preserve and `focus` lists the rule IDs a good rewrite should address. Do not show `keep` or `focus` to the agent.
 
 1. Give an agent the skill (or only `SKILL.md` and `references/`) and run each `request` on its `input`. Save each output to its own file.
 2. Run the scripts on each output:
