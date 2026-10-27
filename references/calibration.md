@@ -16,7 +16,7 @@ The rule levels and the reference ranges in `scan.py` come from research article
 1. PDFs: take the DOI from the file name when it has one, otherwise the first DOI on pages 1–2, and match it to the journal list in `calibrate.py`. Saved texts: read the DOI and labels from the front matter. Europe PMC: fetch the JATS XML by PMCID and keep only publisher versions.
 2. Drop supplements, disclosure and data-sharing forms, author manuscripts and duplicates.
 3. Keep the abstract and body prose; remove reference lists, back matter, running heads, captions, tables, boxes and citation markers; keep complete sentences only (five or more words, starting with a capital and ending with a full stop, question mark or exclamation mark).
-4. Label the study design: by hand for Europe PMC articles and saved texts, and with `textstats.detect_design` for other PDFs. An unlabelled item is a research article if it has a Methods heading and a Results or Discussion heading. The automatic guess is a starting point: on the hand-labelled publisher PDFs it was wrong for about one article in four, mostly reviews and translational laboratory papers, so state the type with `--type` when it is known.
+4. Label the study design: by hand for Europe PMC articles and saved texts, and with `textstats.detect_design` for other PDFs. An unlabelled item is a research article if it has a Methods heading and a Results or Discussion heading. The automatic guess is a starting point: on hand-labelled articles it is right for about seven in eight. Most misses are laboratory work read as computational or the reverse, and modelling or laboratory studies with many cohort terms read as observational, so state the type with `--type` when it is known.
 5. For each article, compute the style profile (`textstats.profile`) and count every rule that applies to prose.
 6. Report per-article quantiles for the profile and pooled rates per 10 000 words for the rules: for all research articles, each journal family, each study design, and articles published before 2023 and from 2023 onwards.
 
@@ -35,7 +35,7 @@ The rule levels and the reference ranges in `scan.py` come from research article
 | Contrast frames per 1000 words | 0 | 0·30 | 0·90 |
 | `Moreover`-type openers per 1000 words | 0 | 0·54 | 1·63 |
 | `However,` openers per 1000 words | 0 | 0·59 | 1·45 |
-| Em dashes per 1000 words | 0 | 0·16 | 1·44 |
+| Dashes (em, spaced en) per 1000 words | 0 | 0·18 | 1·44 |
 | Semicolons outside brackets per 1000 words | 0·3 | 1·7 | 5·5 |
 
 Differences worth knowing: NEJM uses `we` about three times per 1000 words and JAMA about five, against eight or nine in the BMJ and ten to twelve in the Lancet, Cell and modelling and computational studies; reviews use `we` least and hedge most; modelling studies run the longest sentences; laboratory papers and Cell use the fewest semicolons. Semicolons inside brackets are left out because JAMA and NEJM use them to separate statistics.

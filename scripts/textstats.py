@@ -582,7 +582,8 @@ SIGNPOST_AI = re.compile(
     r"^(?:Moreover|Furthermore|Additionally|Notably|Importantly|Interestingly|Crucially|Critically|Collectively|Taken together),",
 )
 HOWEVER = re.compile(r"^However,")
-EM_DASH = re.compile("\u2014")
+# Dashes used as punctuation: em dashes, spaced en dashes between words, and double hyphens. Not ranges.
+DASH = re.compile(r"—|(?<=[A-Za-z)\]])\s–\s(?=[A-Za-z(])|(?<=\w)--(?=\w)|\s--\s")
 SEMICOLON = re.compile(";")
 # Semicolons inside brackets belong to statistics or citations ("HR, 0.83; 95% CI, \u2026"), not to sentence style.
 BRACKETED = re.compile(r"\([^()]*\)|\[[^\[\]]*\]")
@@ -617,7 +618,7 @@ def sentence_stats(sentences: list[str]) -> dict:
 PROFILE_METRICS = (
     "sentence_median", "share_over_35", "share_under_10", "we_per_1000", "passive_share",
     "hedges_per_1000", "contrast_per_1000", "ai_signposts_per_1000", "however_per_1000",
-    "em_dash_per_1000", "semicolons_per_1000",
+    "dashes_per_1000", "semicolons_per_1000",
 )
 
 
@@ -637,7 +638,7 @@ def profile(sentences: list[str]) -> dict:
         "contrast_per_1000": sum(bool(CONTRAST.search(s)) for s in sentences) * per_1000,
         "ai_signposts_per_1000": sum(bool(SIGNPOST_AI.match(s)) for s in sentences) * per_1000,
         "however_per_1000": sum(bool(HOWEVER.match(s)) for s in sentences) * per_1000,
-        "em_dash_per_1000": len(EM_DASH.findall(text)) * per_1000,
+        "dashes_per_1000": len(DASH.findall(text)) * per_1000,
         "semicolons_per_1000": len(SEMICOLON.findall(BRACKETED.sub("", BRACKETED.sub("", text)))) * per_1000,
     })
     return result
@@ -661,25 +662,27 @@ DESIGN_SIGNS = {
                   r"|negative predictive value|\bSTARD\b|index test|reference standard",
     "mendelian-randomisation": r"Mendelian randomi[sz]ation|\bMR[- ]Egger\b|instrumental variables?|genetic instruments?"
                                r"|\bpleiotrop|\bcis-[pe]QTL|genetically (?:predicted|proxied|determined)|STROBE-MR",
-    "prediction": r"prediction model|predictive model|risk score|nomogram|\bTRIPOD\b|\bPROBAST\b|calibration (?:slope|plot)"
+    "prediction": r"prediction model|predictive model|(?<!polygenic )(?<!genetic )risk score|nomogram|\bTRIPOD\b|\bPROBAST\b|calibration (?:slope|plot)"
                   r"|decision curve|\bC[- ]statistic|discrimination|external validation|LASSO",
     "trial": r"randomly assigned|(?<!Mendelian )randomi[sz]ed|(?<!Mendelian )randomi[sz]ation|placebo|double[- ]blind|\bCONSORT\b"
-             r"|intention[- ]to[- ]treat|primary (?:end ?point|efficacy outcome)",
+             r"|intention[- ]to[- ]treat|primary (?:end ?point|efficacy outcome)|first[- ]in[- ]human|dose[- ]escalation"
+             r"|dose[- ]limiting|open[- ]label|\bphase (?:I{1,3}|[123])[ab]?(?:/(?:I{1,3}|[123]))? (?:trial|study|clinical)",
     "modelling": r"transmission model|compartmental|mathematical model|dynamic model|agent[- ]based"
                  r"|simulat(?:ed|ions?)\b|\bscenarios?\b|we projected|projections?\b|calibrated to"
-                 r"|reproduction number|\bR0\b|Global Burden of Disease|\bGATHER\b",
+                 r"|reproduction number|\bR0\b|Global Burden of Disease|\bGATHER\b|\bavert(?:ed|ing)\b|\bforecast"
+                 r"|\bnowcast|microsimulation|uncertainty intervals?|\b95% UIs?\b|credible intervals?|\bmodell?ed\b",
     "observational": r"\bcohorts?\b|case[- ]control|cross[- ]sectional|registry|registries|retrospective"
                      r"|hazard ratio|odds ratio|\bSTROBE\b|propensity score|electronic health records?"
-                     r"|population[- ]based|participants were followed",
+                     r"|population[- ]based|participants were followed|target trial|emulat(?:e|ed|es|ing|ion)",
     "laboratory": r"\bmice\b|\bmouse\b|knock(?:out|down)|western blot|immunoblot|flow cytometry|cell lines?\b"
                   r"|in vitro|in vivo|\bCRISPR\b|transfect|microscopy|cryo-EM|crystal structure|plasmid"
                   r"|organoids?|\bARRIVE\b",
     "computational": r"single[- ]cell|scRNA-seq|RNA-seq|transcriptom|genome[- ]wide association|\bGWAS\b"
                      r"|sequencing data|machine learning|deep learning|neural network|phylogen|bioinformatic"
                      r"|variant calling|polygenic|reads were (?:aligned|mapped)|\bpipeline\b|genomes?\b",
-    "review": r"\bIn this Review\b|\bthis [Rr]eview (?:summari[sz]es|discusses|describes|examines|considers|focuses)"
-              r"|\bwe review\b|\bhere,? we review\b|search strategy and selection criteria"
-              r"|sources and selection criteria",
+    "review": r"\b(?:in )?this (?:review|seminar)\b|\bthis article (?:will )?reviews?\b"
+              r"|\bhere,? we (?:review|discuss|summari[sz]e|highlight|focus on|outline)\b|\bwe review\b"
+              r"|case vignette|search strategy and selection criteria|sources and selection criteria",
 }
 _DESIGN_PATTERNS = {d: re.compile(p, re.IGNORECASE) for d, p in DESIGN_SIGNS.items()}
 # Weaker signs of clinical or population research, used when no design stands out.
@@ -689,6 +692,13 @@ CLINICAL_SIGNS = re.compile(
     r"|\bvaccine effectiveness\b|\badjusted\b|\brisk of\b|\bdata from\b",
     re.IGNORECASE,
 )
+# A Mendelian randomisation study names itself; eQTL and pleiotropy terms alone are genomics.
+MR_TERMS = re.compile(r"Mendelian randomi[sz]ation|\bMR[- ]Egger\b|STROBE-MR", re.IGNORECASE)
+# An emulated target trial is an observational study, however much trial language it uses.
+EMULATION = re.compile(r"target trial|emulat(?:e|ed|es|ing|ion)", re.IGNORECASE)
+# Methods that only a systematic review reports; narrative reviews discuss meta-analyses but do not run them.
+SR_METHODS = re.compile(r"\bPRISMA\b|\bPROSPERO\b|risk[- ]of[- ]bias|random[- ]effects|\bI2\b|I²|forest plot|funnel plot"
+                        r"|searched (?:MEDLINE|Embase|PubMed|Web of Science|the Cochrane)", re.IGNORECASE)
 METHODS_HEADING = re.compile(r"^\s*(?:methods|materials and methods|patients and methods|study design)\s*$",
                              re.IGNORECASE | re.MULTILINE)
 # These designs win when their signs are clear and not swamped by signs of another design, checked in order.
@@ -696,22 +706,37 @@ DESIGN_PRIORITY = (("mendelian-randomisation", 5), ("economic", 4), ("systematic
                    ("diagnostic", 3), ("trial", 8))
 
 
-def detect_design(text: str) -> tuple[str, dict[str, int]]:
+def detect_design(text: str, allow_review: bool = True) -> tuple[str, dict[str, int]]:
     """Guess the study design from the first 4000 words. Returns ("", scores) when unsure.
 
-    Tuned on labelled research articles from leading journals; about nine in ten are placed correctly,
-    and most misses are laboratory work read as computational or the reverse.
+    Pass allow_review=False for a text already known to be a research article.
+
+    Tuned on hand-labelled research articles and reviews from leading journals; it places about seven in eight
+    correctly. Most misses are laboratory work read as computational or the reverse, and modelling or laboratory
+    studies with many cohort terms read as observational.
     """
-    head = " ".join(text.split()[:4000])
+    words = text.split()
+    head = " ".join(words[:4000])
     scores = {d: len(p.findall(head)) for d, p in _DESIGN_PATTERNS.items()}
+    # Reviews say so early; a systematic review also names its methods.
+    if (allow_review and _DESIGN_PATTERNS["review"].search(" ".join(words[:1000]))
+            and len(SR_METHODS.findall(head)) <= 1 and not METHODS_HEADING.search(text)):
+        return "review", scores
     strongest_other = max(scores["observational"], scores["modelling"], scores["laboratory"],
                           scores["computational"])
     for design, threshold in DESIGN_PRIORITY:
-        if scores[design] >= threshold and scores[design] >= 0.35 * strongest_other:
+        if design == "mendelian-randomisation" and not MR_TERMS.search(head):
+            continue
+        if design == "trial" and len(EMULATION.findall(head)) >= 2:
+            continue
+        rival = strongest_other
+        if design == "economic":
+            # Most economic evaluations are model-based, so modelling terms do not count against them.
+            rival = max(scores["observational"], scores["laboratory"], scores["computational"])
+        elif design in ("prediction", "diagnostic"):
+            rival = max(rival, scores["trial"])
+        if scores[design] >= threshold and scores[design] >= 0.35 * rival:
             return design, scores
-    if (scores["review"] >= 1 and not METHODS_HEADING.search(text)
-            and scores["review"] * 6 >= max(scores["trial"], scores["observational"])):
-        return "review", scores
     rest = ("modelling", "laboratory", "computational", "observational")
     best = max(rest, key=lambda d: scores[d])
     if scores[best] >= 2:

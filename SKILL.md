@@ -12,7 +12,7 @@ description: |
   logs, code and response letters, or when asked to 润色, 优化表达, 去AI味, 改写, 审校, 改图注, 写方案 or 核对文献.
 license: MIT
 metadata:
-  version: "2.2.0"
+  version: "2.3.0"
 ---
 
 # biomed-craft
@@ -66,6 +66,7 @@ Sentences:
 - Compare named, measured things and give both numbers. Use contrast frames only for a technical distinction.
 - Keep implications within the population, setting and design studied. When the input claims more, narrow it and say so.
 - Aim for 20–30 words per sentence on average and avoid runs of short sentences.
+- No dash to explain or rename what came before; leading journals print about one dash per 2000 words. Use a colon before an explanation that ends the sentence, parentheses or commas for an aside, or a new sentence.
 - One term per concept; abbreviations and symbols defined before use.
 
 Never in a manuscript:

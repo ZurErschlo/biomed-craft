@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.3.0
+
+Released 2026-10-27.
+
+- Study-type detection is right for about seven in eight hand-labelled articles from leading journals, up from four in five. Reviews are recognised from what they say about themselves in their first 1000 words, unless systematic-review methods appear. A Mendelian randomisation study has to name itself. Early-phase trials count as trials (phase 1 and 2, first-in-human, dose escalation, open-label). Emulated target trials are observational. Polygenic risk scores are not prediction models. Trial terms can no longer be outweighed by a few diagnostic or prediction terms. Modelling terms now include averted outcomes, forecasts, microsimulation and uncertainty intervals, and modelling terms no longer outweigh an economic evaluation. `calibrate.py` never types a research article as a review.
+- Dashes. `SKILL.md` tells the agent not to use a dash to explain or rename what came before. Spaced en dashes used as dashes are must-fix outside laboratory methods (STR-02). A dash before a one- or two-word reveal at the end of a sentence is must-fix (STR-11, new). The em dash hint names the habit (STR-01), and the style profile now counts spaced en dashes with em dashes. Measured in leading-journal research: about 0·5 dashes per 1000 words; a third of papers use a pair around an aside, and one in ten ends a sentence with a dash and a short explanation.
+- Journal formats checked on the PDFs themselves (`references/journals.md`). Science Research Articles open with unheaded introductory paragraphs. In 2026 issues they print Materials and methods after the Discussion and label data availability `Data, code, and materials availability:`. NEJM writes `P=0.03`, and its print edition adds thin spaces around the sign.
+- A rewrite case for explanatory dashes (`tests/fixtures/cases.json`).
+
 ## 2.2.0
 
 Released 2026-10-27.

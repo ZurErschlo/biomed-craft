@@ -53,8 +53,10 @@ Do not replace a flagged word with a fancier one. `Underscores` becomes `shows` 
 
 ## Punctuation and format
 
-- Em dashes (STR-01): about 0·5 per 1000 words in leading-journal research (53% of papers use at least one). Use a comma, parentheses or a new sentence for an aside. En dashes in numeric ranges stay (JAMA uses hyphens in ranges).
-- Spaced en dashes used as dashes (STR-02).
+- Dashes that explain or rename the word, phrase or sentence before them are a common AI habit: `The main barrier—cost—was not addressed.`, `Adherence fell for one reason—cost of travel.` Leading-journal research prints about 0·5 dashes per 1000 words. About a third of papers use a pair around an aside, about one in ten ends a sentence with a dash and a short explanation, and JAMA almost never does either. Say it directly: a colon before an explanation that ends the sentence, parentheses or commas for an aside, a new sentence for a separate point. `scan.py` lists every em dash for judgement (STR-01) and compares the number of dashes per 1000 words with the reference group.
+- Spaced en dashes used as dashes (STR-02) are must-fix, except in laboratory methods, where they appear in product names.
+- A dash before a one- or two-word reveal at the end of a sentence (`Uptake depended on one thing — cost.`) is must-fix (STR-11), like the colon reveal (STR-06).
+- En dashes in numeric ranges stay (JAMA uses hyphens in ranges).
 - Markdown left in Word or slides: `**bold**`, `#` headings (STR-09); emoji (STR-10).
 - Bullet lists in manuscript prose, decorative bold, Title Case headings where the journal uses sentence case.
 - Contractions (FMT-04), `data is` (FMT-03), sentences starting with a numeral (FMT-05), `p=0.000` (FMT-01), fractional people (FMT-02).

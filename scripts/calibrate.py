@@ -434,7 +434,7 @@ def is_research_article(headings: set[str]) -> bool:
 
 def finish(base: dict, measured: dict, kind: str, design: str) -> dict:
     if kind == "research" and not design:
-        design = ts.detect_design(measured["opening"])[0]
+        design = ts.detect_design(measured["opening"], allow_review=False)[0]
     elif kind == "review":
         design = "review"
     measured = {k: v for k, v in measured.items() if k != "opening"}

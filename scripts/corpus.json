@@ -1206,7 +1206,7 @@
   "journal": "JAMA",
   "year": 2014,
   "type": "research",
-  "design": "diagnostic",
+  "design": "trial",
   "words": 3486,
   "sentences": 149
  },
@@ -1978,7 +1978,7 @@
   "journal": "Lancet HIV",
   "year": 2018,
   "type": "research",
-  "design": "observational",
+  "design": "trial",
   "words": 3971,
   "sentences": 160
  },
@@ -2040,7 +2040,7 @@
   "journal": "Lancet Glob Health",
   "year": 2019,
   "type": "research",
-  "design": "modelling",
+  "design": "economic",
   "words": 3950,
   "sentences": 177
  },
@@ -2176,7 +2176,7 @@
   "journal": "Lancet Glob Health",
   "year": 2020,
   "type": "research",
-  "design": "observational",
+  "design": "modelling",
   "words": 5124,
   "sentences": 193
  },
@@ -2395,7 +2395,7 @@
   "journal": "Lancet Public Health",
   "year": 2021,
   "type": "research",
-  "design": "observational",
+  "design": "modelling",
   "words": 3408,
   "sentences": 119
  },
@@ -2684,7 +2684,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2024,
   "type": "research",
-  "design": "trial",
+  "design": "observational",
   "words": 3499,
   "sentences": 138
  },
@@ -2694,7 +2694,7 @@
   "journal": "Lancet Respir Med",
   "year": 2024,
   "type": "research",
-  "design": "observational",
+  "design": "modelling",
   "words": 3679,
   "sentences": 155
  },
@@ -2864,7 +2864,7 @@
   "journal": "Lancet Public Health",
   "year": 2025,
   "type": "research",
-  "design": "observational",
+  "design": "modelling",
   "words": 3504,
   "sentences": 147
  },

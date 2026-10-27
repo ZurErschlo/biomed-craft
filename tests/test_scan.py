@@ -316,6 +316,25 @@ class StudyDesignTest(unittest.TestCase):
         for design, text in self.TEXTS.items():
             self.assertEqual(ts.detect_design(text)[0], design, design)
 
+    def test_design_edge_cases(self):
+        review = ("This review summarises the evidence from randomised trials of anticoagulation after venous "
+                  "thromboembolism. " + "Patients were randomly assigned to drug or placebo in double-blind trials "
+                  "with intention-to-treat analyses. " * 3)
+        self.assertEqual(ts.detect_design(review)[0], "review")
+        eqtl = "We mapped cis-eQTL and cis-pQTL across tissues; pleiotropy was common and instrumental variables were scarce. " * 3
+        self.assertNotEqual(ts.detect_design(eqtl)[0], "mendelian-randomisation")
+        early = ("In this first-in-human, open-label, dose-escalation phase 1 trial, patients received the antibody. "
+                 "Dose-limiting toxicities were recorded during the phase 1 study. " * 2 +
+                 "We also studied the antibody in mice and in cell lines.")
+        self.assertEqual(ts.detect_design(early)[0], "trial")
+        emulation = ("The emulated target trial compared randomly assigned initiation with placebo in an "
+                     "intention-to-treat analysis of registry data. " * 3)
+        self.assertEqual(ts.detect_design(emulation)[0], "observational")
+
+    def test_dashes_exclude_ranges(self):
+        text = "The effect—small but real—persisted, and one factor – cost – dominated from 2010–2020 in ages 18 – 65."
+        self.assertEqual(len(ts.DASH.findall(text)), 4)
+
     def test_review_needs_no_methods_heading(self):
         text = "In this Review, we summarise treatment of latent tuberculosis.\n\nThis Review discusses new regimens."
         self.assertEqual(ts.detect_design(text)[0], "review")

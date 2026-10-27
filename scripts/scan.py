@@ -52,7 +52,7 @@ SEED = re.compile(r"\bset\.seed\s*\(|\bnp\.random\.seed\s*\(|\brandom\.seed\s*\(
 DENSITY_LABELS = {
     "contrast_per_1000": "Contrast frames (rather than, not … but, instead of)",
     "ai_signposts_per_1000": "Openers such as Moreover, Notably, Importantly",
-    "em_dash_per_1000": "Em dashes",
+    "dashes_per_1000": "Dashes",
     "hedges_per_1000": "Hedges (may, might, could, likely, suggest)",
 }
 PROFILE_LABELS = {
@@ -65,7 +65,7 @@ PROFILE_LABELS = {
     "contrast_per_1000": "Contrast frames per 1000 words",
     "ai_signposts_per_1000": "Moreover/Notably-type openers per 1000 words",
     "however_per_1000": "'However,' openers per 1000 words",
-    "em_dash_per_1000": "Em dashes per 1000 words",
+    "dashes_per_1000": "Dashes (em, spaced en) per 1000 words",
     "semicolons_per_1000": "Semicolons per 1000 words",
 }
 

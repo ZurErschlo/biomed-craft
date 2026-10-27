@@ -1,5 +1,5 @@
 {
-  "version": "2.2.0",
+  "version": "2.3.0",
   "levels": {
     "must": "Fix on sight: leading journals almost never print this, or it is internal material.",
     "review": "Judge in context: often a tell, sometimes the right word.",
@@ -1394,10 +1394,11 @@
       ],
       "pattern": "—|(?<=\\w)--(?=\\w)|\\s--\\s",
       "flags": "",
-      "hint": "Em dash. Leading-journal articles use about one per 1700 words. Use a comma, parentheses or a new sentence.",
+      "hint": "Em dash. Leading journals print about one per 2000 words, mostly a pair around an aside; AI drafts use it to explain or rename what came before. Use a colon before an explanation that ends the sentence, parentheses or commas for an aside, or a new sentence.",
       "examples": {
         "hit": [
-          "The effect—small but real—persisted."
+          "The effect—small but real—persisted.",
+          "Adherence fell for one reason—cost of travel to the clinic."
         ],
         "miss": [
           "Incidence fell between 2010–2020."
@@ -1407,22 +1408,29 @@
     {
       "id": "STR-02",
       "category": "STR",
-      "level": "review",
+      "level": "must",
       "scopes": [
         "prose",
         "caption",
         "slide"
       ],
-      "pattern": "(?<=[A-Za-z])\\s–\\s(?=[A-Za-z])",
+      "pattern": "(?<=[A-Za-z)\\]])\\s–\\s(?=[A-Za-z(])",
       "flags": "",
-      "hint": "Spaced en dash used as a dash. Use a comma, parentheses or a new sentence; keep en dashes for ranges.",
+      "hint": "Spaced en dash used as a dash, rare in leading journals outside product names in laboratory methods. Use a colon, parentheses, commas or a new sentence; keep en dashes for ranges.",
       "examples": {
         "hit": [
-          "The effect – small but real – persisted."
+          "The effect – small but real – persisted.",
+          "Uptake rose in two districts (Kibera and Mathare) – both with mobile clinics."
         ],
         "miss": [
-          "2010–2020"
+          "2010–2020",
+          "Ages ranged from 18 – 65 years."
         ]
+      },
+      "levels": {
+        "laboratory": "review",
+        "computational": "review",
+        "cell": "review"
       }
     },
     {
@@ -1597,6 +1605,29 @@
         ],
         "miss": [
           "Results improved"
+        ]
+      }
+    },
+    {
+      "id": "STR-11",
+      "category": "STR",
+      "level": "must",
+      "scopes": [
+        "prose"
+      ],
+      "pattern": "(?:^|(?<=[.!?]\\s))[^—–.!?\\n]*?(?:—|(?<=[A-Za-z)\\]])\\s–\\s|(?<=\\w)--(?=\\w)|\\s--\\s)\\s*[A-Za-z][\\w'’-]*(?:\\s+[A-Za-z][\\w'’-]*)?[.!?](?=\\s|$)",
+      "flags": "",
+      "hint": "Dash before a one- or two-word reveal at the end of a sentence. State the point in the sentence: 'Cost was the main barrier.'",
+      "examples": {
+        "hit": [
+          "Uptake depended on one thing — cost.",
+          "Uptake depended on one thing—cost.",
+          "One factor explained most of the gap – distance."
+        ],
+        "miss": [
+          "The effect—small but real—persisted.",
+          "Incidence fell between 2010–2020.",
+          "Costs were driven by drugs—specifically by the newer regimens introduced after 2018."
         ]
       }
     },

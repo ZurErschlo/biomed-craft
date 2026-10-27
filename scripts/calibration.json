@@ -77,12 +77,12 @@
      "p75": 0.976,
      "p90": 1.452
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
-     "p50": 0.155,
+     "p50": 0.178,
      "p75": 0.695,
-     "p90": 1.443
+     "p90": 1.444
     },
     "semicolons_per_1000": {
      "p10": 0.295,
@@ -310,8 +310,8 @@
      "paper_share": 0.529
     },
     "STR-02": {
-     "per_10k_words": 0.129,
-     "paper_share": 0.038
+     "per_10k_words": 0.161,
+     "paper_share": 0.043
     },
     "STR-03": {
      "per_10k_words": 0.25,
@@ -332,6 +332,10 @@
     "STR-10": {
      "per_10k_words": 0.009,
      "paper_share": 0.005
+    },
+    "STR-11": {
+     "per_10k_words": 0.027,
+     "paper_share": 0.007
     },
     "HYG-01": {
      "per_10k_words": 0.116,
@@ -462,7 +466,7 @@
      "p75": 0.0,
      "p90": 0.0
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
      "p50": 0.0,
@@ -718,6 +722,10 @@
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
+    "STR-11": {
+     "per_10k_words": 0.0,
+     "paper_share": 0.0
+    },
     "HYG-01": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
@@ -847,11 +855,11 @@
      "p75": 1.014,
      "p90": 1.841
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
      "p50": 0.33,
-     "p75": 0.924,
+     "p75": 0.996,
      "p90": 1.688
     },
     "semicolons_per_1000": {
@@ -1103,6 +1111,10 @@
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
+    "STR-11": {
+     "per_10k_words": 0.083,
+     "paper_share": 0.02
+    },
     "HYG-01": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
@@ -1232,12 +1244,12 @@
      "p75": 0.743,
      "p90": 0.99
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
-     "p50": 0.111,
-     "p75": 0.33,
-     "p90": 1.143
+     "p50": 0.137,
+     "p75": 0.337,
+     "p90": 1.213
     },
     "semicolons_per_1000": {
      "p10": 0.083,
@@ -1465,8 +1477,8 @@
      "paper_share": 0.587
     },
     "STR-02": {
-     "per_10k_words": 0.326,
-     "paper_share": 0.174
+     "per_10k_words": 0.348,
+     "paper_share": 0.196
     },
     "STR-03": {
      "per_10k_words": 0.109,
@@ -1485,6 +1497,10 @@
      "paper_share": 0.326
     },
     "STR-10": {
+     "per_10k_words": 0.0,
+     "paper_share": 0.0
+    },
+    "STR-11": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
@@ -1617,7 +1633,7 @@
      "p75": 0.905,
      "p90": 1.239
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
      "p50": 0.0,
@@ -1873,6 +1889,10 @@
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
+    "STR-11": {
+     "per_10k_words": 0.0,
+     "paper_share": 0.0
+    },
     "HYG-01": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
@@ -2002,12 +2022,12 @@
      "p75": 1.169,
      "p90": 1.631
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
-     "p50": 0.272,
+     "p50": 0.285,
      "p75": 0.73,
-     "p90": 1.29
+     "p90": 1.452
     },
     "semicolons_per_1000": {
      "p10": 0.376,
@@ -2235,8 +2255,8 @@
      "paper_share": 0.612
     },
     "STR-02": {
-     "per_10k_words": 0.022,
-     "paper_share": 0.01
+     "per_10k_words": 0.045,
+     "paper_share": 0.02
     },
     "STR-03": {
      "per_10k_words": 0.335,
@@ -2255,6 +2275,10 @@
      "paper_share": 0.255
     },
     "STR-10": {
+     "per_10k_words": 0.0,
+     "paper_share": 0.0
+    },
+    "STR-11": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
@@ -2387,12 +2411,12 @@
      "p75": 0.918,
      "p90": 1.225
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
      "p50": 0.216,
-     "p75": 0.909,
-     "p90": 1.597
+     "p75": 0.959,
+     "p90": 2.323
     },
     "semicolons_per_1000": {
      "p10": 0.902,
@@ -2620,7 +2644,7 @@
      "paper_share": 0.628
     },
     "STR-02": {
-     "per_10k_words": 0.182,
+     "per_10k_words": 0.243,
      "paper_share": 0.07
     },
     "STR-03": {
@@ -2642,6 +2666,10 @@
     "STR-10": {
      "per_10k_words": 0.061,
      "paper_share": 0.047
+    },
+    "STR-11": {
+     "per_10k_words": 0.03,
+     "paper_share": 0.023
     },
     "HYG-01": {
      "per_10k_words": 0.243,
@@ -2772,7 +2800,7 @@
      "p75": 0.664,
      "p90": 1.134
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
      "p50": 0.635,
@@ -3028,6 +3056,10 @@
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
+    "STR-11": {
+     "per_10k_words": 0.2,
+     "paper_share": 0.026
+    },
     "HYG-01": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
@@ -3157,7 +3189,7 @@
      "p75": 1.03,
      "p90": 1.532
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
      "p50": 0.0,
@@ -3390,7 +3422,7 @@
      "paper_share": 0.44
     },
     "STR-02": {
-     "per_10k_words": 0.169,
+     "per_10k_words": 0.241,
      "paper_share": 0.048
     },
     "STR-03": {
@@ -3410,6 +3442,10 @@
      "paper_share": 0.119
     },
     "STR-10": {
+     "per_10k_words": 0.0,
+     "paper_share": 0.0
+    },
+    "STR-11": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
@@ -3476,84 +3512,84 @@
    }
   },
   "trial": {
-   "papers": 61,
-   "words": 268886,
+   "papers": 62,
+   "words": 272844,
    "metrics": {
     "sentence_median": {
      "p10": 20.0,
      "p25": 21.0,
      "p50": 23.0,
      "p75": 24.0,
-     "p90": 26.5
+     "p90": 26.45
     },
     "share_over_35": {
-     "p10": 0.117,
-     "p25": 0.155,
+     "p10": 0.111,
+     "p25": 0.156,
      "p50": 0.191,
-     "p75": 0.231,
-     "p90": 0.25
+     "p75": 0.23,
+     "p90": 0.249
     },
     "share_under_10": {
      "p10": 0.041,
      "p25": 0.057,
      "p50": 0.075,
-     "p75": 0.097,
+     "p75": 0.099,
      "p90": 0.137
     },
     "we_per_1000": {
-     "p10": 0.832,
-     "p25": 1.348,
-     "p50": 2.865,
-     "p75": 5.418,
-     "p90": 8.341
+     "p10": 0.84,
+     "p25": 1.366,
+     "p50": 2.913,
+     "p75": 6.207,
+     "p90": 9.025
     },
     "passive_share": {
      "p10": 0.304,
-     "p25": 0.363,
-     "p50": 0.421,
-     "p75": 0.467,
+     "p25": 0.343,
+     "p50": 0.416,
+     "p75": 0.466,
      "p90": 0.515
     },
     "hedges_per_1000": {
-     "p10": 1.275,
-     "p25": 1.73,
-     "p50": 2.638,
-     "p75": 3.707,
-     "p90": 4.749
+     "p10": 1.294,
+     "p25": 1.888,
+     "p50": 2.688,
+     "p75": 3.738,
+     "p90": 5.276
     },
     "contrast_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
-     "p50": 0.195,
-     "p75": 0.292,
-     "p90": 0.608
+     "p50": 0.2,
+     "p75": 0.427,
+     "p90": 0.604
     },
     "ai_signposts_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
-     "p50": 0.292,
-     "p75": 0.821,
-     "p90": 1.519
+     "p50": 0.285,
+     "p75": 0.798,
+     "p90": 1.512
     },
     "however_per_1000": {
      "p10": 0.0,
-     "p25": 0.266,
-     "p50": 0.503,
-     "p75": 0.844,
+     "p25": 0.265,
+     "p50": 0.504,
+     "p75": 0.817,
      "p90": 1.254
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
-     "p50": 0.194,
-     "p75": 0.672,
-     "p90": 1.248
+     "p50": 0.212,
+     "p75": 0.663,
+     "p90": 1.237
     },
     "semicolons_per_1000": {
-     "p10": 0.483,
-     "p25": 1.688,
-     "p50": 3.831,
-     "p75": 6.012,
+     "p10": 0.496,
+     "p25": 1.611,
+     "p50": 3.84,
+     "p75": 5.965,
      "p90": 9.473
     }
    },
@@ -3563,24 +3599,24 @@
      "paper_share": 0.0
     },
     "CON-02": {
-     "per_10k_words": 0.26,
-     "paper_share": 0.115
+     "per_10k_words": 0.257,
+     "paper_share": 0.113
     },
     "CON-03": {
-     "per_10k_words": 0.074,
-     "paper_share": 0.033
+     "per_10k_words": 0.073,
+     "paper_share": 0.032
     },
     "CON-04": {
-     "per_10k_words": 0.223,
-     "paper_share": 0.049
+     "per_10k_words": 0.22,
+     "paper_share": 0.048
     },
     "CON-05": {
-     "per_10k_words": 0.781,
-     "paper_share": 0.295
+     "per_10k_words": 0.88,
+     "paper_share": 0.323
     },
     "CON-06": {
-     "per_10k_words": 0.335,
-     "paper_share": 0.148
+     "per_10k_words": 0.33,
+     "paper_share": 0.145
     },
     "CON-07": {
      "per_10k_words": 0.0,
@@ -3595,24 +3631,24 @@
      "paper_share": 0.0
     },
     "CON-10": {
-     "per_10k_words": 0.074,
-     "paper_share": 0.033
+     "per_10k_words": 0.073,
+     "paper_share": 0.032
     },
     "DEF-01": {
-     "per_10k_words": 0.409,
-     "paper_share": 0.131
+     "per_10k_words": 0.403,
+     "paper_share": 0.129
     },
     "DEF-02": {
-     "per_10k_words": 0.372,
-     "paper_share": 0.148
+     "per_10k_words": 0.476,
+     "paper_share": 0.161
     },
     "DEF-03": {
-     "per_10k_words": 0.446,
-     "paper_share": 0.148
+     "per_10k_words": 0.44,
+     "paper_share": 0.145
     },
     "DEF-04": {
-     "per_10k_words": 0.223,
-     "paper_share": 0.082
+     "per_10k_words": 0.22,
+     "paper_share": 0.081
     },
     "DEF-05": {
      "per_10k_words": 0.0,
@@ -3639,8 +3675,8 @@
      "paper_share": 0.016
     },
     "DEF-11": {
-     "per_10k_words": 0.149,
-     "paper_share": 0.066
+     "per_10k_words": 0.147,
+     "paper_share": 0.065
     },
     "META-01": {
      "per_10k_words": 0.0,
@@ -3659,8 +3695,8 @@
      "paper_share": 0.016
     },
     "META-06": {
-     "per_10k_words": 0.112,
-     "paper_share": 0.049
+     "per_10k_words": 0.147,
+     "paper_share": 0.065
     },
     "META-07": {
      "per_10k_words": 0.0,
@@ -3691,16 +3727,16 @@
      "paper_share": 0.0
     },
     "ENG-01": {
-     "per_10k_words": 0.074,
-     "paper_share": 0.033
+     "per_10k_words": 0.073,
+     "paper_share": 0.032
     },
     "ENG-02": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "ENG-03": {
-     "per_10k_words": 0.074,
-     "paper_share": 0.033
+     "per_10k_words": 0.073,
+     "paper_share": 0.032
     },
     "ENG-04": {
      "per_10k_words": 0.0,
@@ -3711,16 +3747,16 @@
      "paper_share": 0.0
     },
     "ENG-06": {
-     "per_10k_words": 0.26,
-     "paper_share": 0.066
+     "per_10k_words": 0.257,
+     "paper_share": 0.065
     },
     "ENG-07": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "ENG-08": {
-     "per_10k_words": 0.298,
-     "paper_share": 0.098
+     "per_10k_words": 0.293,
+     "paper_share": 0.097
     },
     "ENG-09": {
      "per_10k_words": 0.0,
@@ -3735,35 +3771,35 @@
      "paper_share": 0.016
     },
     "LEX-03": {
-     "per_10k_words": 3.161,
-     "paper_share": 0.623
+     "per_10k_words": 3.152,
+     "paper_share": 0.629
     },
     "LEX-04": {
-     "per_10k_words": 1.45,
-     "paper_share": 0.328
+     "per_10k_words": 1.429,
+     "paper_share": 0.323
     },
     "LEX-05": {
-     "per_10k_words": 3.124,
-     "paper_share": 0.705
+     "per_10k_words": 3.115,
+     "paper_share": 0.694
     },
     "LEX-06": {
-     "per_10k_words": 1.19,
-     "paper_share": 0.393
+     "per_10k_words": 1.429,
+     "paper_share": 0.403
     },
     "LEX-07": {
-     "per_10k_words": 1.636,
-     "paper_share": 0.393
+     "per_10k_words": 1.686,
+     "paper_share": 0.403
     },
     "LEX-08": {
-     "per_10k_words": 8.814,
-     "paper_share": 0.754
+     "per_10k_words": 8.796,
+     "paper_share": 0.758
     },
     "LEX-09": {
-     "per_10k_words": 0.223,
-     "paper_share": 0.049
+     "per_10k_words": 0.257,
+     "paper_share": 0.065
     },
     "LEX-10": {
-     "per_10k_words": 18.261,
+     "per_10k_words": 18.216,
      "paper_share": 1.0
     },
     "LEX-11": {
@@ -3771,32 +3807,36 @@
      "paper_share": 0.016
     },
     "STR-01": {
-     "per_10k_words": 4.649,
-     "paper_share": 0.541
+     "per_10k_words": 4.655,
+     "paper_share": 0.548
     },
     "STR-02": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "STR-03": {
-     "per_10k_words": 0.112,
-     "paper_share": 0.049
+     "per_10k_words": 0.11,
+     "paper_share": 0.048
     },
     "STR-06": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "STR-07": {
-     "per_10k_words": 0.112,
-     "paper_share": 0.049
+     "per_10k_words": 0.11,
+     "paper_share": 0.048
     },
     "STR-08": {
-     "per_10k_words": 0.372,
-     "paper_share": 0.115
+     "per_10k_words": 0.403,
+     "paper_share": 0.129
     },
     "STR-10": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
+    },
+    "STR-11": {
+     "per_10k_words": 0.11,
+     "paper_share": 0.016
     },
     "HYG-01": {
      "per_10k_words": 0.0,
@@ -3807,7 +3847,7 @@
      "paper_share": 0.0
     },
     "HYG-03": {
-     "per_10k_words": 0.074,
+     "per_10k_words": 0.073,
      "paper_share": 0.016
     },
     "HYG-05": {
@@ -3823,7 +3863,7 @@
      "paper_share": 0.0
     },
     "HYG-08": {
-     "per_10k_words": 0.074,
+     "per_10k_words": 0.073,
      "paper_share": 0.016
     },
     "HYG-09": {
@@ -3847,22 +3887,22 @@
      "paper_share": 0.0
     },
     "FMT-03": {
-     "per_10k_words": 0.149,
-     "paper_share": 0.066
+     "per_10k_words": 0.183,
+     "paper_share": 0.081
     },
     "FMT-04": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "FMT-05": {
-     "per_10k_words": 1.302,
-     "paper_share": 0.279
+     "per_10k_words": 1.283,
+     "paper_share": 0.274
     }
    }
   },
   "observational": {
-   "papers": 67,
-   "words": 303814,
+   "papers": 63,
+   "words": 287627,
    "metrics": {
     "sentence_median": {
      "p10": 20.0,
@@ -3872,74 +3912,74 @@
      "p90": 27.0
     },
     "share_over_35": {
-     "p10": 0.107,
-     "p25": 0.139,
+     "p10": 0.106,
+     "p25": 0.141,
      "p50": 0.18,
      "p75": 0.235,
-     "p90": 0.308
+     "p90": 0.306
     },
     "share_under_10": {
      "p10": 0.02,
      "p25": 0.037,
      "p50": 0.058,
-     "p75": 0.081,
-     "p90": 0.112
+     "p75": 0.079,
+     "p90": 0.107
     },
     "we_per_1000": {
-     "p10": 3.368,
+     "p10": 3.105,
      "p25": 5.75,
-     "p50": 8.791,
-     "p75": 11.028,
-     "p90": 14.941
+     "p50": 8.401,
+     "p75": 10.937,
+     "p90": 14.613
     },
     "passive_share": {
-     "p10": 0.235,
+     "p10": 0.233,
      "p25": 0.31,
-     "p50": 0.357,
-     "p75": 0.444,
-     "p90": 0.515
+     "p50": 0.36,
+     "p75": 0.453,
+     "p90": 0.521
     },
     "hedges_per_1000": {
-     "p10": 2.395,
-     "p25": 3.244,
-     "p50": 4.608,
-     "p75": 6.006,
-     "p90": 7.999
+     "p10": 2.334,
+     "p25": 3.131,
+     "p50": 4.561,
+     "p75": 5.882,
+     "p90": 7.689
     },
     "contrast_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
-     "p50": 0.341,
+     "p50": 0.328,
      "p75": 0.71,
-     "p90": 1.026
+     "p90": 1.029
     },
     "ai_signposts_per_1000": {
      "p10": 0.0,
      "p25": 0.164,
-     "p50": 0.311,
-     "p75": 0.596,
-     "p90": 1.381
+     "p50": 0.316,
+     "p75": 0.652,
+     "p90": 1.388
     },
     "however_per_1000": {
      "p10": 0.0,
      "p25": 0.242,
-     "p50": 0.587,
-     "p75": 0.916,
-     "p90": 1.553
+     "p50": 0.58,
+     "p75": 0.957,
+     "p90": 1.592
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
      "p50": 0.0,
-     "p75": 0.583,
-     "p90": 1.489
+     "p75": 0.551,
+     "p90": 1.534
     },
     "semicolons_per_1000": {
-     "p10": 0.544,
-     "p25": 1.23,
-     "p50": 1.966,
-     "p75": 3.472,
-     "p90": 5.263
+     "p10": 0.595,
+     "p25": 1.321,
+     "p50": 2.352,
+     "p75": 3.533,
+     "p90": 5.286
     }
    },
    "rules": {
@@ -3948,24 +3988,24 @@
      "paper_share": 0.0
     },
     "CON-02": {
-     "per_10k_words": 0.592,
-     "paper_share": 0.149
+     "per_10k_words": 0.591,
+     "paper_share": 0.143
     },
     "CON-03": {
-     "per_10k_words": 0.165,
-     "paper_share": 0.075
+     "per_10k_words": 0.139,
+     "paper_share": 0.063
     },
     "CON-04": {
-     "per_10k_words": 0.197,
-     "paper_share": 0.075
+     "per_10k_words": 0.209,
+     "paper_share": 0.079
     },
     "CON-05": {
-     "per_10k_words": 1.942,
-     "paper_share": 0.448
+     "per_10k_words": 1.912,
+     "paper_share": 0.429
     },
     "CON-06": {
-     "per_10k_words": 0.592,
-     "paper_share": 0.179
+     "per_10k_words": 0.626,
+     "paper_share": 0.19
     },
     "CON-07": {
      "per_10k_words": 0.0,
@@ -3980,48 +4020,48 @@
      "paper_share": 0.0
     },
     "CON-10": {
-     "per_10k_words": 0.132,
-     "paper_share": 0.03
+     "per_10k_words": 0.139,
+     "paper_share": 0.032
     },
     "DEF-01": {
-     "per_10k_words": 0.263,
-     "paper_share": 0.119
+     "per_10k_words": 0.278,
+     "paper_share": 0.127
     },
     "DEF-02": {
-     "per_10k_words": 0.625,
-     "paper_share": 0.194
+     "per_10k_words": 0.522,
+     "paper_share": 0.175
     },
     "DEF-03": {
-     "per_10k_words": 0.56,
+     "per_10k_words": 0.556,
      "paper_share": 0.254
     },
     "DEF-04": {
-     "per_10k_words": 0.263,
-     "paper_share": 0.119
+     "per_10k_words": 0.278,
+     "paper_share": 0.127
     },
     "DEF-05": {
-     "per_10k_words": 0.033,
-     "paper_share": 0.015
+     "per_10k_words": 0.035,
+     "paper_share": 0.016
     },
     "DEF-06": {
-     "per_10k_words": 0.033,
-     "paper_share": 0.015
+     "per_10k_words": 0.035,
+     "paper_share": 0.016
     },
     "DEF-07": {
-     "per_10k_words": 0.033,
-     "paper_share": 0.015
+     "per_10k_words": 0.035,
+     "paper_share": 0.016
     },
     "DEF-08": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "DEF-09": {
-     "per_10k_words": 0.033,
-     "paper_share": 0.015
+     "per_10k_words": 0.035,
+     "paper_share": 0.016
     },
     "DEF-10": {
-     "per_10k_words": 0.099,
-     "paper_share": 0.045
+     "per_10k_words": 0.104,
+     "paper_share": 0.048
     },
     "DEF-11": {
      "per_10k_words": 0.0,
@@ -4036,16 +4076,16 @@
      "paper_share": 0.0
     },
     "META-03": {
-     "per_10k_words": 0.066,
-     "paper_share": 0.03
+     "per_10k_words": 0.07,
+     "paper_share": 0.032
     },
     "META-04": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "META-06": {
-     "per_10k_words": 1.777,
-     "paper_share": 0.358
+     "per_10k_words": 1.808,
+     "paper_share": 0.365
     },
     "META-07": {
      "per_10k_words": 0.0,
@@ -4064,136 +4104,140 @@
      "paper_share": 0.0
     },
     "META-11": {
-     "per_10k_words": 0.033,
-     "paper_share": 0.015
+     "per_10k_words": 0.035,
+     "paper_share": 0.016
     },
     "META-12": {
-     "per_10k_words": 0.033,
-     "paper_share": 0.015
+     "per_10k_words": 0.035,
+     "paper_share": 0.016
     },
     "META-13": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "ENG-01": {
-     "per_10k_words": 0.856,
-     "paper_share": 0.075
+     "per_10k_words": 0.904,
+     "paper_share": 0.079
     },
     "ENG-02": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "ENG-03": {
-     "per_10k_words": 0.066,
-     "paper_share": 0.03
+     "per_10k_words": 0.07,
+     "paper_share": 0.032
     },
     "ENG-04": {
-     "per_10k_words": 0.033,
-     "paper_share": 0.015
+     "per_10k_words": 0.035,
+     "paper_share": 0.016
     },
     "ENG-05": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "ENG-06": {
-     "per_10k_words": 1.415,
-     "paper_share": 0.09
+     "per_10k_words": 1.495,
+     "paper_share": 0.095
     },
     "ENG-07": {
-     "per_10k_words": 0.099,
-     "paper_share": 0.03
+     "per_10k_words": 0.104,
+     "paper_share": 0.032
     },
     "ENG-08": {
-     "per_10k_words": 0.494,
-     "paper_share": 0.075
+     "per_10k_words": 0.522,
+     "paper_share": 0.079
     },
     "ENG-09": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "LEX-01": {
-     "per_10k_words": 0.066,
-     "paper_share": 0.03
+     "per_10k_words": 0.07,
+     "paper_share": 0.032
     },
     "LEX-02": {
-     "per_10k_words": 0.066,
-     "paper_share": 0.03
+     "per_10k_words": 0.07,
+     "paper_share": 0.032
     },
     "LEX-03": {
-     "per_10k_words": 4.937,
-     "paper_share": 0.746
+     "per_10k_words": 4.728,
+     "paper_share": 0.73
     },
     "LEX-04": {
-     "per_10k_words": 1.086,
+     "per_10k_words": 1.078,
      "paper_share": 0.254
     },
     "LEX-05": {
-     "per_10k_words": 7.011,
-     "paper_share": 0.821
+     "per_10k_words": 6.78,
+     "paper_share": 0.825
     },
     "LEX-06": {
-     "per_10k_words": 3.555,
-     "paper_share": 0.612
+     "per_10k_words": 3.338,
+     "paper_share": 0.587
     },
     "LEX-07": {
-     "per_10k_words": 3.752,
-     "paper_share": 0.672
+     "per_10k_words": 3.199,
+     "paper_share": 0.651
     },
     "LEX-08": {
-     "per_10k_words": 4.674,
-     "paper_share": 0.567
+     "per_10k_words": 4.902,
+     "paper_share": 0.587
     },
     "LEX-09": {
-     "per_10k_words": 0.856,
-     "paper_share": 0.254
+     "per_10k_words": 0.765,
+     "paper_share": 0.222
     },
     "LEX-10": {
-     "per_10k_words": 28.965,
+     "per_10k_words": 28.787,
      "paper_share": 1.0
     },
     "LEX-11": {
-     "per_10k_words": 0.197,
-     "paper_share": 0.09
+     "per_10k_words": 0.209,
+     "paper_share": 0.095
     },
     "STR-01": {
-     "per_10k_words": 4.444,
-     "paper_share": 0.403
+     "per_10k_words": 4.381,
+     "paper_share": 0.365
     },
     "STR-02": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "STR-03": {
-     "per_10k_words": 0.296,
-     "paper_share": 0.119
+     "per_10k_words": 0.243,
+     "paper_share": 0.095
     },
     "STR-06": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "STR-07": {
-     "per_10k_words": 0.23,
-     "paper_share": 0.09
+     "per_10k_words": 0.243,
+     "paper_share": 0.095
     },
     "STR-08": {
-     "per_10k_words": 0.362,
-     "paper_share": 0.164
+     "per_10k_words": 0.313,
+     "paper_share": 0.143
     },
     "STR-10": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
+    "STR-11": {
+     "per_10k_words": 0.0,
+     "paper_share": 0.0
+    },
     "HYG-01": {
-     "per_10k_words": 0.066,
-     "paper_share": 0.015
+     "per_10k_words": 0.07,
+     "paper_share": 0.016
     },
     "HYG-02": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "HYG-03": {
-     "per_10k_words": 0.658,
-     "paper_share": 0.03
+     "per_10k_words": 0.695,
+     "paper_share": 0.032
     },
     "HYG-05": {
      "per_10k_words": 0.0,
@@ -4208,20 +4252,20 @@
      "paper_share": 0.0
     },
     "HYG-08": {
-     "per_10k_words": 1.646,
-     "paper_share": 0.104
+     "per_10k_words": 1.738,
+     "paper_share": 0.111
     },
     "HYG-09": {
-     "per_10k_words": 0.625,
-     "paper_share": 0.045
+     "per_10k_words": 0.661,
+     "paper_share": 0.048
     },
     "HYG-10": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "HYG-11": {
-     "per_10k_words": 0.197,
-     "paper_share": 0.045
+     "per_10k_words": 0.209,
+     "paper_share": 0.048
     },
     "FMT-01": {
      "per_10k_words": 0.0,
@@ -4232,99 +4276,99 @@
      "paper_share": 0.0
     },
     "FMT-03": {
-     "per_10k_words": 0.461,
-     "paper_share": 0.134
+     "per_10k_words": 0.452,
+     "paper_share": 0.127
     },
     "FMT-04": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "FMT-05": {
-     "per_10k_words": 1.58,
-     "paper_share": 0.299
+     "per_10k_words": 1.634,
+     "paper_share": 0.302
     }
    }
   },
   "economic": {
-   "papers": 49,
-   "words": 211901,
+   "papers": 50,
+   "words": 215851,
    "metrics": {
     "sentence_median": {
-     "p10": 22.0,
+     "p10": 21.95,
      "p25": 23.0,
      "p50": 25.0,
-     "p75": 27.0,
+     "p75": 26.875,
      "p90": 27.5
     },
     "share_over_35": {
-     "p10": 0.145,
-     "p25": 0.172,
-     "p50": 0.212,
+     "p10": 0.141,
+     "p25": 0.168,
+     "p50": 0.21,
      "p75": 0.252,
-     "p90": 0.292
+     "p90": 0.291
     },
     "share_under_10": {
-     "p10": 0.027,
-     "p25": 0.038,
-     "p50": 0.047,
-     "p75": 0.067,
+     "p10": 0.028,
+     "p25": 0.039,
+     "p50": 0.048,
+     "p75": 0.066,
      "p90": 0.072
     },
     "we_per_1000": {
-     "p10": 3.568,
-     "p25": 5.519,
-     "p50": 9.633,
-     "p75": 13.828,
-     "p90": 15.126
+     "p10": 3.57,
+     "p25": 5.61,
+     "p50": 9.873,
+     "p75": 13.82,
+     "p90": 15.044
     },
     "passive_share": {
      "p10": 0.217,
-     "p25": 0.311,
-     "p50": 0.385,
-     "p75": 0.442,
+     "p25": 0.299,
+     "p50": 0.383,
+     "p75": 0.439,
      "p90": 0.487
     },
     "hedges_per_1000": {
-     "p10": 2.072,
-     "p25": 2.937,
-     "p50": 3.345,
-     "p75": 5.171,
-     "p90": 6.12
+     "p10": 2.101,
+     "p25": 2.939,
+     "p50": 3.458,
+     "p75": 5.099,
+     "p90": 6.062
     },
     "contrast_per_1000": {
      "p10": 0.0,
-     "p25": 0.176,
-     "p50": 0.294,
-     "p75": 0.689,
-     "p90": 0.954
+     "p25": 0.183,
+     "p50": 0.306,
+     "p75": 0.671,
+     "p90": 0.94
     },
     "ai_signposts_per_1000": {
      "p10": 0.0,
-     "p25": 0.232,
-     "p50": 0.427,
+     "p25": 0.233,
+     "p50": 0.416,
      "p75": 0.588,
-     "p90": 1.248
+     "p90": 1.241
     },
     "however_per_1000": {
-     "p10": 0.285,
-     "p25": 0.585,
-     "p50": 0.803,
-     "p75": 1.108,
-     "p90": 1.501
+     "p10": 0.294,
+     "p25": 0.591,
+     "p50": 0.84,
+     "p75": 1.17,
+     "p90": 1.67
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
-     "p50": 0.245,
-     "p75": 0.635,
-     "p90": 1.081
+     "p50": 0.246,
+     "p75": 0.633,
+     "p90": 1.039
     },
     "semicolons_per_1000": {
-     "p10": 0.816,
-     "p25": 1.19,
-     "p50": 2.3,
-     "p75": 3.182,
-     "p90": 4.424
+     "p10": 0.815,
+     "p25": 1.179,
+     "p50": 2.21,
+     "p75": 3.154,
+     "p90": 4.415
     }
    },
    "rules": {
@@ -4333,24 +4377,24 @@
      "paper_share": 0.0
     },
     "CON-02": {
-     "per_10k_words": 0.378,
-     "paper_share": 0.163
+     "per_10k_words": 0.371,
+     "paper_share": 0.16
     },
     "CON-03": {
-     "per_10k_words": 0.047,
+     "per_10k_words": 0.046,
      "paper_share": 0.02
     },
     "CON-04": {
-     "per_10k_words": 0.094,
-     "paper_share": 0.041
+     "per_10k_words": 0.093,
+     "paper_share": 0.04
     },
     "CON-05": {
-     "per_10k_words": 1.793,
-     "paper_share": 0.449
+     "per_10k_words": 1.76,
+     "paper_share": 0.44
     },
     "CON-06": {
-     "per_10k_words": 1.085,
-     "paper_share": 0.184
+     "per_10k_words": 1.158,
+     "paper_share": 0.2
     },
     "CON-07": {
      "per_10k_words": 0.0,
@@ -4365,24 +4409,24 @@
      "paper_share": 0.0
     },
     "CON-10": {
-     "per_10k_words": 0.094,
-     "paper_share": 0.041
+     "per_10k_words": 0.093,
+     "paper_share": 0.04
     },
     "DEF-01": {
-     "per_10k_words": 0.189,
-     "paper_share": 0.082
+     "per_10k_words": 0.185,
+     "paper_share": 0.08
     },
     "DEF-02": {
-     "per_10k_words": 0.425,
-     "paper_share": 0.163
+     "per_10k_words": 0.417,
+     "paper_share": 0.16
     },
     "DEF-03": {
-     "per_10k_words": 0.189,
-     "paper_share": 0.082
+     "per_10k_words": 0.185,
+     "paper_share": 0.08
     },
     "DEF-04": {
-     "per_10k_words": 0.094,
-     "paper_share": 0.041
+     "per_10k_words": 0.093,
+     "paper_share": 0.04
     },
     "DEF-05": {
      "per_10k_words": 0.0,
@@ -4397,11 +4441,11 @@
      "paper_share": 0.0
     },
     "DEF-08": {
-     "per_10k_words": 0.047,
+     "per_10k_words": 0.046,
      "paper_share": 0.02
     },
     "DEF-09": {
-     "per_10k_words": 0.047,
+     "per_10k_words": 0.046,
      "paper_share": 0.02
     },
     "DEF-10": {
@@ -4429,8 +4473,8 @@
      "paper_share": 0.0
     },
     "META-06": {
-     "per_10k_words": 1.463,
-     "paper_share": 0.367
+     "per_10k_words": 1.436,
+     "paper_share": 0.36
     },
     "META-07": {
      "per_10k_words": 0.0,
@@ -4461,16 +4505,16 @@
      "paper_share": 0.0
     },
     "ENG-01": {
-     "per_10k_words": 0.142,
-     "paper_share": 0.041
+     "per_10k_words": 0.139,
+     "paper_share": 0.04
     },
     "ENG-02": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "ENG-03": {
-     "per_10k_words": 0.566,
-     "paper_share": 0.184
+     "per_10k_words": 0.556,
+     "paper_share": 0.18
     },
     "ENG-04": {
      "per_10k_words": 0.0,
@@ -4481,8 +4525,8 @@
      "paper_share": 0.0
     },
     "ENG-06": {
-     "per_10k_words": 0.236,
-     "paper_share": 0.082
+     "per_10k_words": 0.232,
+     "paper_share": 0.08
     },
     "ENG-07": {
      "per_10k_words": 0.0,
@@ -4497,74 +4541,78 @@
      "paper_share": 0.0
     },
     "LEX-01": {
-     "per_10k_words": 0.047,
+     "per_10k_words": 0.046,
      "paper_share": 0.02
     },
     "LEX-02": {
-     "per_10k_words": 0.094,
+     "per_10k_words": 0.093,
      "paper_share": 0.02
     },
     "LEX-03": {
-     "per_10k_words": 1.51,
-     "paper_share": 0.327
+     "per_10k_words": 1.483,
+     "paper_share": 0.32
     },
     "LEX-04": {
-     "per_10k_words": 0.944,
-     "paper_share": 0.327
+     "per_10k_words": 0.927,
+     "paper_share": 0.32
     },
     "LEX-05": {
-     "per_10k_words": 5.333,
-     "paper_share": 0.837
+     "per_10k_words": 5.281,
+     "paper_share": 0.84
     },
     "LEX-06": {
-     "per_10k_words": 3.681,
-     "paper_share": 0.653
+     "per_10k_words": 3.614,
+     "paper_share": 0.64
     },
     "LEX-07": {
-     "per_10k_words": 4.672,
-     "paper_share": 0.796
+     "per_10k_words": 4.586,
+     "paper_share": 0.78
     },
     "LEX-08": {
-     "per_10k_words": 2.784,
-     "paper_share": 0.429
+     "per_10k_words": 2.733,
+     "paper_share": 0.42
     },
     "LEX-09": {
-     "per_10k_words": 0.897,
-     "paper_share": 0.327
+     "per_10k_words": 0.88,
+     "paper_share": 0.32
     },
     "LEX-10": {
-     "per_10k_words": 24.823,
+     "per_10k_words": 24.832,
      "paper_share": 1.0
     },
     "LEX-11": {
-     "per_10k_words": 0.047,
+     "per_10k_words": 0.046,
      "paper_share": 0.02
     },
     "STR-01": {
-     "per_10k_words": 4.389,
-     "paper_share": 0.531
+     "per_10k_words": 4.401,
+     "paper_share": 0.54
     },
     "STR-02": {
-     "per_10k_words": 0.189,
+     "per_10k_words": 0.278,
      "paper_share": 0.02
     },
     "STR-03": {
-     "per_10k_words": 0.283,
-     "paper_share": 0.102
+     "per_10k_words": 0.278,
+     "paper_share": 0.1
     },
     "STR-06": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "STR-07": {
-     "per_10k_words": 0.142,
-     "paper_share": 0.061
+     "per_10k_words": 0.139,
+     "paper_share": 0.06
     },
     "STR-08": {
-     "per_10k_words": 0.613,
-     "paper_share": 0.245
+     "per_10k_words": 0.602,
+     "paper_share": 0.24
     },
     "STR-10": {
+     "per_10k_words": 0.0,
+     "paper_share": 0.0
+    },
+    "STR-11": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
@@ -4581,7 +4629,7 @@
      "paper_share": 0.0
     },
     "HYG-05": {
-     "per_10k_words": 0.047,
+     "per_10k_words": 0.046,
      "paper_share": 0.02
     },
     "HYG-06": {
@@ -4593,7 +4641,7 @@
      "paper_share": 0.0
     },
     "HYG-08": {
-     "per_10k_words": 0.142,
+     "per_10k_words": 0.139,
      "paper_share": 0.02
     },
     "HYG-09": {
@@ -4605,8 +4653,8 @@
      "paper_share": 0.0
     },
     "HYG-11": {
-     "per_10k_words": 1.18,
-     "paper_share": 0.082
+     "per_10k_words": 1.158,
+     "paper_share": 0.08
     },
     "FMT-01": {
      "per_10k_words": 0.0,
@@ -4617,16 +4665,16 @@
      "paper_share": 0.0
     },
     "FMT-03": {
-     "per_10k_words": 0.849,
-     "paper_share": 0.286
+     "per_10k_words": 0.834,
+     "paper_share": 0.28
     },
     "FMT-04": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "FMT-05": {
-     "per_10k_words": 0.897,
-     "paper_share": 0.224
+     "per_10k_words": 0.88,
+     "paper_share": 0.22
     }
    }
   },
@@ -4697,7 +4745,7 @@
      "p75": 1.06,
      "p90": 1.426
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
      "p50": 0.498,
@@ -4953,6 +5001,10 @@
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
+    "STR-11": {
+     "per_10k_words": 0.0,
+     "paper_share": 0.0
+    },
     "HYG-01": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
@@ -5016,85 +5068,85 @@
    }
   },
   "diagnostic": {
-   "papers": 23,
-   "words": 107132,
+   "papers": 22,
+   "words": 103646,
    "metrics": {
     "sentence_median": {
      "p10": 20.0,
      "p25": 21.0,
      "p50": 22.0,
-     "p75": 23.75,
+     "p75": 23.875,
      "p90": 24.0
     },
     "share_over_35": {
      "p10": 0.096,
-     "p25": 0.119,
-     "p50": 0.157,
-     "p75": 0.189,
-     "p90": 0.213
+     "p25": 0.124,
+     "p50": 0.159,
+     "p75": 0.191,
+     "p90": 0.214
     },
     "share_under_10": {
      "p10": 0.03,
-     "p25": 0.043,
-     "p50": 0.055,
+     "p25": 0.042,
+     "p50": 0.056,
      "p75": 0.073,
      "p90": 0.078
     },
     "we_per_1000": {
-     "p10": 1.178,
-     "p25": 2.845,
-     "p50": 6.414,
-     "p75": 10.279,
-     "p90": 13.498
+     "p10": 1.125,
+     "p25": 2.761,
+     "p50": 6.1,
+     "p75": 9.88,
+     "p90": 11.678
     },
     "passive_share": {
-     "p10": 0.302,
-     "p25": 0.343,
-     "p50": 0.367,
-     "p75": 0.462,
-     "p90": 0.488
+     "p10": 0.3,
+     "p25": 0.346,
+     "p50": 0.379,
+     "p75": 0.465,
+     "p90": 0.489
     },
     "hedges_per_1000": {
-     "p10": 1.186,
-     "p25": 2.181,
-     "p50": 3.37,
-     "p75": 4.099,
-     "p90": 5.267
+     "p10": 1.133,
+     "p25": 2.123,
+     "p50": 3.336,
+     "p75": 3.882,
+     "p90": 5.241
     },
     "contrast_per_1000": {
      "p10": 0.0,
-     "p25": 0.073,
-     "p50": 0.487,
-     "p75": 0.632,
-     "p90": 0.838
+     "p25": 0.037,
+     "p50": 0.446,
+     "p75": 0.637,
+     "p90": 0.853
     },
     "ai_signposts_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
-     "p50": 0.269,
-     "p75": 0.598,
-     "p90": 1.337
+     "p50": 0.256,
+     "p75": 0.591,
+     "p90": 1.344
     },
     "however_per_1000": {
-     "p10": 0.028,
-     "p25": 0.231,
-     "p50": 0.321,
-     "p75": 0.975,
-     "p90": 1.229
+     "p10": 0.143,
+     "p25": 0.234,
+     "p50": 0.362,
+     "p75": 0.99,
+     "p90": 1.237
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
      "p50": 0.0,
-     "p75": 0.481,
-     "p90": 0.989
+     "p75": 0.398,
+     "p90": 0.992
     },
     "semicolons_per_1000": {
-     "p10": 0.279,
-     "p25": 0.624,
-     "p50": 1.301,
-     "p75": 3.186,
-     "p90": 4.173
+     "p10": 0.264,
+     "p25": 0.555,
+     "p50": 1.219,
+     "p75": 2.69,
+     "p90": 3.645
     }
    },
    "rules": {
@@ -5103,24 +5155,24 @@
      "paper_share": 0.0
     },
     "CON-02": {
-     "per_10k_words": 0.187,
-     "paper_share": 0.087
+     "per_10k_words": 0.193,
+     "paper_share": 0.091
     },
     "CON-03": {
-     "per_10k_words": 0.28,
-     "paper_share": 0.13
+     "per_10k_words": 0.289,
+     "paper_share": 0.136
     },
     "CON-04": {
-     "per_10k_words": 0.28,
-     "paper_share": 0.087
+     "per_10k_words": 0.289,
+     "paper_share": 0.091
     },
     "CON-05": {
-     "per_10k_words": 1.68,
-     "paper_share": 0.478
+     "per_10k_words": 1.544,
+     "paper_share": 0.455
     },
     "CON-06": {
-     "per_10k_words": 0.56,
-     "paper_share": 0.174
+     "per_10k_words": 0.579,
+     "paper_share": 0.182
     },
     "CON-07": {
      "per_10k_words": 0.0,
@@ -5135,24 +5187,24 @@
      "paper_share": 0.0
     },
     "CON-10": {
-     "per_10k_words": 0.28,
-     "paper_share": 0.13
+     "per_10k_words": 0.289,
+     "paper_share": 0.136
     },
     "DEF-01": {
-     "per_10k_words": 0.28,
-     "paper_share": 0.087
+     "per_10k_words": 0.289,
+     "paper_share": 0.091
     },
     "DEF-02": {
-     "per_10k_words": 0.653,
-     "paper_share": 0.217
+     "per_10k_words": 0.675,
+     "paper_share": 0.227
     },
     "DEF-03": {
-     "per_10k_words": 0.373,
-     "paper_share": 0.13
+     "per_10k_words": 0.386,
+     "paper_share": 0.136
     },
     "DEF-04": {
-     "per_10k_words": 0.093,
-     "paper_share": 0.043
+     "per_10k_words": 0.096,
+     "paper_share": 0.045
     },
     "DEF-05": {
      "per_10k_words": 0.0,
@@ -5163,8 +5215,8 @@
      "paper_share": 0.0
     },
     "DEF-07": {
-     "per_10k_words": 0.093,
-     "paper_share": 0.043
+     "per_10k_words": 0.096,
+     "paper_share": 0.045
     },
     "DEF-08": {
      "per_10k_words": 0.0,
@@ -5175,12 +5227,12 @@
      "paper_share": 0.0
     },
     "DEF-10": {
-     "per_10k_words": 0.093,
-     "paper_share": 0.043
+     "per_10k_words": 0.096,
+     "paper_share": 0.045
     },
     "DEF-11": {
-     "per_10k_words": 0.093,
-     "paper_share": 0.043
+     "per_10k_words": 0.096,
+     "paper_share": 0.045
     },
     "META-01": {
      "per_10k_words": 0.0,
@@ -5199,8 +5251,8 @@
      "paper_share": 0.0
     },
     "META-06": {
-     "per_10k_words": 1.307,
-     "paper_share": 0.478
+     "per_10k_words": 1.254,
+     "paper_share": 0.455
     },
     "META-07": {
      "per_10k_words": 0.0,
@@ -5231,16 +5283,16 @@
      "paper_share": 0.0
     },
     "ENG-01": {
-     "per_10k_words": 0.933,
-     "paper_share": 0.174
+     "per_10k_words": 0.965,
+     "paper_share": 0.182
     },
     "ENG-02": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "ENG-03": {
-     "per_10k_words": 0.467,
-     "paper_share": 0.087
+     "per_10k_words": 0.482,
+     "paper_share": 0.091
     },
     "ENG-04": {
      "per_10k_words": 0.0,
@@ -5251,90 +5303,94 @@
      "paper_share": 0.0
     },
     "ENG-06": {
-     "per_10k_words": 1.213,
-     "paper_share": 0.13
+     "per_10k_words": 1.254,
+     "paper_share": 0.136
     },
     "ENG-07": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "ENG-08": {
-     "per_10k_words": 1.12,
-     "paper_share": 0.174
+     "per_10k_words": 1.158,
+     "paper_share": 0.182
     },
     "ENG-09": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "LEX-01": {
-     "per_10k_words": 0.093,
-     "paper_share": 0.043
+     "per_10k_words": 0.096,
+     "paper_share": 0.045
     },
     "LEX-02": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "LEX-03": {
-     "per_10k_words": 3.734,
-     "paper_share": 0.609
+     "per_10k_words": 3.763,
+     "paper_share": 0.591
     },
     "LEX-04": {
-     "per_10k_words": 1.867,
-     "paper_share": 0.348
+     "per_10k_words": 1.833,
+     "paper_share": 0.318
     },
     "LEX-05": {
-     "per_10k_words": 6.534,
-     "paper_share": 0.783
+     "per_10k_words": 6.754,
+     "paper_share": 0.818
     },
     "LEX-06": {
-     "per_10k_words": 2.8,
-     "paper_share": 0.522
+     "per_10k_words": 2.894,
+     "paper_share": 0.545
     },
     "LEX-07": {
-     "per_10k_words": 2.147,
-     "paper_share": 0.609
+     "per_10k_words": 2.123,
+     "paper_share": 0.591
     },
     "LEX-08": {
-     "per_10k_words": 6.254,
-     "paper_share": 0.522
+     "per_10k_words": 6.175,
+     "paper_share": 0.5
     },
     "LEX-09": {
-     "per_10k_words": 0.373,
-     "paper_share": 0.13
+     "per_10k_words": 0.289,
+     "paper_share": 0.091
     },
     "LEX-10": {
-     "per_10k_words": 26.976,
+     "per_10k_words": 27.208,
      "paper_share": 1.0
     },
     "LEX-11": {
-     "per_10k_words": 0.093,
-     "paper_share": 0.043
+     "per_10k_words": 0.096,
+     "paper_share": 0.045
     },
     "STR-01": {
-     "per_10k_words": 2.894,
-     "paper_share": 0.435
+     "per_10k_words": 2.798,
+     "paper_share": 0.409
     },
     "STR-02": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "STR-03": {
-     "per_10k_words": 0.373,
-     "paper_share": 0.174
+     "per_10k_words": 0.386,
+     "paper_share": 0.182
     },
     "STR-06": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "STR-07": {
-     "per_10k_words": 0.187,
-     "paper_share": 0.087
+     "per_10k_words": 0.193,
+     "paper_share": 0.091
     },
     "STR-08": {
-     "per_10k_words": 0.373,
-     "paper_share": 0.13
+     "per_10k_words": 0.386,
+     "paper_share": 0.136
     },
     "STR-10": {
+     "per_10k_words": 0.0,
+     "paper_share": 0.0
+    },
+    "STR-11": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
@@ -5355,20 +5411,20 @@
      "paper_share": 0.0
     },
     "HYG-06": {
-     "per_10k_words": 0.187,
-     "paper_share": 0.043
+     "per_10k_words": 0.193,
+     "paper_share": 0.045
     },
     "HYG-07": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "HYG-08": {
-     "per_10k_words": 0.093,
-     "paper_share": 0.043
+     "per_10k_words": 0.096,
+     "paper_share": 0.045
     },
     "HYG-09": {
-     "per_10k_words": 0.467,
-     "paper_share": 0.087
+     "per_10k_words": 0.482,
+     "paper_share": 0.091
     },
     "HYG-10": {
      "per_10k_words": 0.0,
@@ -5387,99 +5443,99 @@
      "paper_share": 0.0
     },
     "FMT-03": {
-     "per_10k_words": 0.56,
-     "paper_share": 0.13
+     "per_10k_words": 0.579,
+     "paper_share": 0.136
     },
     "FMT-04": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "FMT-05": {
-     "per_10k_words": 0.933,
-     "paper_share": 0.217
+     "per_10k_words": 0.965,
+     "paper_share": 0.227
     }
    }
   },
   "modelling": {
-   "papers": 65,
-   "words": 331959,
+   "papers": 68,
+   "words": 343724,
    "metrics": {
     "sentence_median": {
-     "p10": 21.4,
-     "p25": 23.5,
+     "p10": 21.7,
+     "p25": 23.375,
      "p50": 26.0,
-     "p75": 28.0,
-     "p90": 29.3
+     "p75": 27.625,
+     "p90": 29.15
     },
     "share_over_35": {
-     "p10": 0.117,
-     "p25": 0.172,
-     "p50": 0.238,
+     "p10": 0.118,
+     "p25": 0.166,
+     "p50": 0.234,
      "p75": 0.294,
-     "p90": 0.344
+     "p90": 0.343
     },
     "share_under_10": {
      "p10": 0.011,
-     "p25": 0.017,
-     "p50": 0.031,
-     "p75": 0.049,
-     "p90": 0.065
+     "p25": 0.018,
+     "p50": 0.033,
+     "p75": 0.05,
+     "p90": 0.066
     },
     "we_per_1000": {
-     "p10": 5.629,
-     "p25": 7.396,
-     "p50": 11.545,
-     "p75": 15.72,
-     "p90": 18.929
+     "p10": 5.339,
+     "p25": 7.301,
+     "p50": 11.271,
+     "p75": 15.814,
+     "p90": 18.85
     },
     "passive_share": {
-     "p10": 0.209,
-     "p25": 0.261,
-     "p50": 0.333,
-     "p75": 0.376,
-     "p90": 0.425
+     "p10": 0.214,
+     "p25": 0.263,
+     "p50": 0.334,
+     "p75": 0.379,
+     "p90": 0.424
     },
     "hedges_per_1000": {
-     "p10": 2.162,
-     "p25": 2.94,
-     "p50": 4.051,
-     "p75": 6.209,
-     "p90": 7.839
+     "p10": 2.194,
+     "p25": 2.955,
+     "p50": 4.255,
+     "p75": 6.251,
+     "p90": 7.88
     },
     "contrast_per_1000": {
      "p10": 0.0,
-     "p25": 0.205,
-     "p50": 0.388,
-     "p75": 0.693,
-     "p90": 0.967
+     "p25": 0.198,
+     "p50": 0.385,
+     "p75": 0.694,
+     "p90": 0.951
     },
     "ai_signposts_per_1000": {
      "p10": 0.0,
-     "p25": 0.381,
-     "p50": 0.667,
-     "p75": 1.097,
-     "p90": 1.41
+     "p25": 0.341,
+     "p50": 0.659,
+     "p75": 1.077,
+     "p90": 1.394
     },
     "however_per_1000": {
-     "p10": 0.17,
+     "p10": 0.144,
      "p25": 0.275,
-     "p50": 0.653,
-     "p75": 1.11,
-     "p90": 1.83
+     "p50": 0.65,
+     "p75": 1.097,
+     "p90": 1.746
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
-     "p50": 0.384,
-     "p75": 0.99,
-     "p90": 1.811
+     "p50": 0.432,
+     "p75": 1.018,
+     "p90": 1.724
     },
     "semicolons_per_1000": {
-     "p10": 0.356,
-     "p25": 0.952,
-     "p50": 1.644,
-     "p75": 2.915,
-     "p90": 4.604
+     "p10": 0.316,
+     "p25": 0.945,
+     "p50": 1.643,
+     "p75": 2.639,
+     "p90": 4.504
     }
    },
    "rules": {
@@ -5488,24 +5544,24 @@
      "paper_share": 0.0
     },
     "CON-02": {
-     "per_10k_words": 0.663,
-     "paper_share": 0.292
+     "per_10k_words": 0.669,
+     "paper_share": 0.294
     },
     "CON-03": {
-     "per_10k_words": 0.211,
-     "paper_share": 0.092
+     "per_10k_words": 0.233,
+     "paper_share": 0.103
     },
     "CON-04": {
-     "per_10k_words": 0.09,
-     "paper_share": 0.046
+     "per_10k_words": 0.087,
+     "paper_share": 0.044
     },
     "CON-05": {
-     "per_10k_words": 2.169,
-     "paper_share": 0.523
+     "per_10k_words": 2.182,
+     "paper_share": 0.529
     },
     "CON-06": {
-     "per_10k_words": 0.693,
-     "paper_share": 0.292
+     "per_10k_words": 0.611,
+     "paper_share": 0.265
     },
     "CON-07": {
      "per_10k_words": 0.0,
@@ -5520,24 +5576,24 @@
      "paper_share": 0.0
     },
     "CON-10": {
-     "per_10k_words": 0.06,
-     "paper_share": 0.031
+     "per_10k_words": 0.058,
+     "paper_share": 0.029
     },
     "DEF-01": {
-     "per_10k_words": 0.452,
-     "paper_share": 0.138
+     "per_10k_words": 0.436,
+     "paper_share": 0.132
     },
     "DEF-02": {
-     "per_10k_words": 0.392,
-     "paper_share": 0.138
+     "per_10k_words": 0.407,
+     "paper_share": 0.147
     },
     "DEF-03": {
-     "per_10k_words": 0.783,
-     "paper_share": 0.323
+     "per_10k_words": 0.786,
+     "paper_share": 0.324
     },
     "DEF-04": {
-     "per_10k_words": 0.181,
-     "paper_share": 0.077
+     "per_10k_words": 0.175,
+     "paper_share": 0.074
     },
     "DEF-05": {
      "per_10k_words": 0.0,
@@ -5556,15 +5612,15 @@
      "paper_share": 0.0
     },
     "DEF-09": {
-     "per_10k_words": 0.03,
+     "per_10k_words": 0.029,
      "paper_share": 0.015
     },
     "DEF-10": {
-     "per_10k_words": 0.241,
-     "paper_share": 0.108
+     "per_10k_words": 0.233,
+     "paper_share": 0.103
     },
     "DEF-11": {
-     "per_10k_words": 0.03,
+     "per_10k_words": 0.029,
      "paper_share": 0.015
     },
     "META-01": {
@@ -5576,7 +5632,7 @@
      "paper_share": 0.0
     },
     "META-03": {
-     "per_10k_words": 0.03,
+     "per_10k_words": 0.029,
      "paper_share": 0.015
     },
     "META-04": {
@@ -5584,8 +5640,8 @@
      "paper_share": 0.0
     },
     "META-06": {
-     "per_10k_words": 1.506,
-     "paper_share": 0.323
+     "per_10k_words": 1.513,
+     "paper_share": 0.324
     },
     "META-07": {
      "per_10k_words": 0.0,
@@ -5616,16 +5672,16 @@
      "paper_share": 0.0
     },
     "ENG-01": {
-     "per_10k_words": 0.181,
-     "paper_share": 0.062
+     "per_10k_words": 0.175,
+     "paper_share": 0.059
     },
     "ENG-02": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "ENG-03": {
-     "per_10k_words": 0.151,
-     "paper_share": 0.077
+     "per_10k_words": 0.145,
+     "paper_share": 0.074
     },
     "ENG-04": {
      "per_10k_words": 0.0,
@@ -5636,7 +5692,7 @@
      "paper_share": 0.0
     },
     "ENG-06": {
-     "per_10k_words": 0.994,
+     "per_10k_words": 0.96,
      "paper_share": 0.015
     },
     "ENG-07": {
@@ -5644,7 +5700,7 @@
      "paper_share": 0.0
     },
     "ENG-08": {
-     "per_10k_words": 0.06,
+     "per_10k_words": 0.058,
      "paper_share": 0.015
     },
     "ENG-09": {
@@ -5652,79 +5708,83 @@
      "paper_share": 0.0
     },
     "LEX-01": {
-     "per_10k_words": 0.271,
-     "paper_share": 0.092
+     "per_10k_words": 0.262,
+     "paper_share": 0.088
     },
     "LEX-02": {
-     "per_10k_words": 0.181,
-     "paper_share": 0.092
+     "per_10k_words": 0.175,
+     "paper_share": 0.088
     },
     "LEX-03": {
-     "per_10k_words": 5.392,
-     "paper_share": 0.785
+     "per_10k_words": 5.615,
+     "paper_share": 0.809
     },
     "LEX-04": {
-     "per_10k_words": 1.054,
-     "paper_share": 0.323
+     "per_10k_words": 1.106,
+     "paper_share": 0.338
     },
     "LEX-05": {
-     "per_10k_words": 8.525,
-     "paper_share": 0.892
+     "per_10k_words": 8.699,
+     "paper_share": 0.882
     },
     "LEX-06": {
-     "per_10k_words": 3.133,
-     "paper_share": 0.646
+     "per_10k_words": 3.171,
+     "paper_share": 0.662
     },
     "LEX-07": {
-     "per_10k_words": 6.025,
-     "paper_share": 0.862
+     "per_10k_words": 6.43,
+     "paper_share": 0.882
     },
     "LEX-08": {
-     "per_10k_words": 2.38,
-     "paper_share": 0.385
+     "per_10k_words": 2.327,
+     "paper_share": 0.382
     },
     "LEX-09": {
-     "per_10k_words": 1.115,
-     "paper_share": 0.277
+     "per_10k_words": 1.193,
+     "paper_share": 0.309
     },
     "LEX-10": {
-     "per_10k_words": 31.962,
+     "per_10k_words": 32.119,
      "paper_share": 1.0
     },
     "LEX-11": {
-     "per_10k_words": 0.181,
-     "paper_share": 0.092
+     "per_10k_words": 0.175,
+     "paper_share": 0.088
     },
     "STR-01": {
-     "per_10k_words": 7.35,
-     "paper_share": 0.6
+     "per_10k_words": 7.302,
+     "paper_share": 0.618
     },
     "STR-02": {
-     "per_10k_words": 0.151,
-     "paper_share": 0.046
+     "per_10k_words": 0.145,
+     "paper_share": 0.044
     },
     "STR-03": {
-     "per_10k_words": 0.271,
-     "paper_share": 0.108
+     "per_10k_words": 0.32,
+     "paper_share": 0.132
     },
     "STR-06": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "STR-07": {
-     "per_10k_words": 0.301,
-     "paper_share": 0.108
+     "per_10k_words": 0.291,
+     "paper_share": 0.103
     },
     "STR-08": {
-     "per_10k_words": 0.602,
-     "paper_share": 0.262
+     "per_10k_words": 0.611,
+     "paper_share": 0.265
     },
     "STR-10": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
+    "STR-11": {
+     "per_10k_words": 0.058,
+     "paper_share": 0.015
+    },
     "HYG-01": {
-     "per_10k_words": 0.06,
+     "per_10k_words": 0.058,
      "paper_share": 0.015
     },
     "HYG-02": {
@@ -5732,8 +5792,8 @@
      "paper_share": 0.0
     },
     "HYG-03": {
-     "per_10k_words": 0.09,
-     "paper_share": 0.031
+     "per_10k_words": 0.087,
+     "paper_share": 0.029
     },
     "HYG-05": {
      "per_10k_words": 0.0,
@@ -5760,8 +5820,8 @@
      "paper_share": 0.0
     },
     "HYG-11": {
-     "per_10k_words": 0.633,
-     "paper_share": 0.046
+     "per_10k_words": 0.611,
+     "paper_share": 0.044
     },
     "FMT-01": {
      "per_10k_words": 0.0,
@@ -5772,16 +5832,16 @@
      "paper_share": 0.0
     },
     "FMT-03": {
-     "per_10k_words": 0.331,
-     "paper_share": 0.154
+     "per_10k_words": 0.32,
+     "paper_share": 0.147
     },
     "FMT-04": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
     "FMT-05": {
-     "per_10k_words": 1.838,
-     "paper_share": 0.323
+     "per_10k_words": 1.804,
+     "paper_share": 0.324
     }
    }
   },
@@ -5852,12 +5912,12 @@
      "p75": 0.912,
      "p90": 1.379
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
-     "p50": 0.108,
-     "p75": 0.516,
-     "p90": 0.951
+     "p50": 0.158,
+     "p75": 0.585,
+     "p90": 1.005
     },
     "semicolons_per_1000": {
      "p10": 0.0,
@@ -6085,8 +6145,8 @@
      "paper_share": 0.526
     },
     "STR-02": {
-     "per_10k_words": 0.19,
-     "paper_share": 0.09
+     "per_10k_words": 0.266,
+     "paper_share": 0.103
     },
     "STR-03": {
      "per_10k_words": 0.19,
@@ -6105,6 +6165,10 @@
      "paper_share": 0.231
     },
     "STR-10": {
+     "per_10k_words": 0.019,
+     "paper_share": 0.013
+    },
+    "STR-11": {
      "per_10k_words": 0.019,
      "paper_share": 0.013
     },
@@ -6237,12 +6301,12 @@
      "p75": 0.78,
      "p90": 0.99
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
-     "p50": 0.094,
+     "p50": 0.129,
      "p75": 0.491,
-     "p90": 1.16
+     "p90": 1.267
     },
     "semicolons_per_1000": {
      "p10": 0.292,
@@ -6493,6 +6557,10 @@
      "per_10k_words": 0.029,
      "paper_share": 0.024
     },
+    "STR-11": {
+     "per_10k_words": 0.0,
+     "paper_share": 0.0
+    },
     "HYG-01": {
      "per_10k_words": 0.462,
      "paper_share": 0.122
@@ -6622,7 +6690,7 @@
      "p75": 1.405,
      "p90": 2.059
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.325,
      "p50": 0.538,
@@ -6878,6 +6946,10 @@
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },
+    "STR-11": {
+     "per_10k_words": 0.0,
+     "paper_share": 0.0
+    },
     "HYG-01": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
@@ -7007,10 +7079,10 @@
      "p75": 0.975,
      "p90": 1.533
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
-     "p50": 0.121,
+     "p50": 0.178,
      "p75": 0.719,
      "p90": 1.496
     },
@@ -7240,8 +7312,8 @@
      "paper_share": 0.516
     },
     "STR-02": {
-     "per_10k_words": 0.149,
-     "paper_share": 0.039
+     "per_10k_words": 0.186,
+     "paper_share": 0.047
     },
     "STR-03": {
      "per_10k_words": 0.149,
@@ -7261,6 +7333,10 @@
     },
     "STR-10": {
      "per_10k_words": 0.007,
+     "paper_share": 0.004
+    },
+    "STR-11": {
+     "per_10k_words": 0.022,
      "paper_share": 0.004
     },
     "HYG-01": {
@@ -7392,12 +7468,12 @@
      "p75": 1.009,
      "p90": 1.254
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.0,
      "p50": 0.176,
-     "p75": 0.61,
-     "p90": 1.17
+     "p75": 0.621,
+     "p90": 1.292
     },
     "semicolons_per_1000": {
      "p10": 0.289,
@@ -7625,7 +7701,7 @@
      "paper_share": 0.539
     },
     "STR-02": {
-     "per_10k_words": 0.105,
+     "per_10k_words": 0.129,
      "paper_share": 0.039
     },
     "STR-03": {
@@ -7647,6 +7723,10 @@
     "STR-10": {
      "per_10k_words": 0.012,
      "paper_share": 0.007
+    },
+    "STR-11": {
+     "per_10k_words": 0.035,
+     "paper_share": 0.013
     },
     "HYG-01": {
      "per_10k_words": 0.059,
@@ -7777,7 +7857,7 @@
      "p75": 1.282,
      "p90": 1.91
     },
-    "em_dash_per_1000": {
+    "dashes_per_1000": {
      "p10": 0.0,
      "p25": 0.356,
      "p50": 0.597,
@@ -8030,6 +8110,10 @@
      "paper_share": 0.1
     },
     "STR-10": {
+     "per_10k_words": 0.0,
+     "paper_share": 0.0
+    },
+    "STR-11": {
      "per_10k_words": 0.0,
      "paper_share": 0.0
     },

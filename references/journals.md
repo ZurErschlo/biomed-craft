@@ -37,7 +37,7 @@ Journals differ mostly in structure and format; good wording is much the same in
 - Body: two to four unheaded introductory paragraphs, then Methods, Results and Discussion. Trials use Methods subheadings such as Trial Design and Oversight, Patients, Randomization, Procedures, End Points, Statistical Analysis. The Discussion has no subheadings and no Conclusions heading.
 - Trial oversight paragraphs state that the authors vouch for the completeness and accuracy of the data and for fidelity to the protocol. The protocol and statistical analysis plan are published as a supplementary file.
 - American spelling. Few `we` (about three per 1000 words): the trial or the patients are the subject. No priority claims (`To our knowledge`, `the first study`).
-- Statistics: first use `95% confidence interval [CI], 0.65 to 0.94`, then `95% CI, 0.65 to 0.94`; `(hazard ratio, 0.83; 95% CI, 0.75 to 0.93)`; P values `P=0.03`, `P<0.001`. Commas from five digits (`12,345`); four-digit numbers closed up (`4716`). `±` for means; interquartile range spelled out.
+- Statistics: first use `95% confidence interval [CI], 0.65 to 0.94`, then `95% CI, 0.65 to 0.94`; `(hazard ratio, 0.83; 95% CI, 0.75 to 0.93)`; P values `P=0.03`, `P<0.001` (the print edition adds thin spaces around the sign). Commas from five digits (`12,345`); four-digit numbers closed up (`4716`). `±` for means; interquartile range spelled out.
 - Proportions: `482 of 2104 patients (22.9%)`.
 - Pointers: `(Fig. 1)`, `(Table 2)`, `(Table S1 in the Supplementary Appendix, available with the full text of this article at NEJM.org)` at first mention, shortened to `available at NEJM.org` in recent papers, then `(Table S2)`.
 - Figures: `Figure 1.` and a Title Case title ending in a full stop; legends often open `Shown are…` and define abbreviations as `CI denotes confidence interval.` Panel letters bold upper case.
@@ -78,11 +78,11 @@ Journals differ mostly in structure and format; good wording is much the same in
 ## Science
 
 - Research Articles carry a structured summary written by the authors (INTRODUCTION, RATIONALE, RESULTS, CONCLUSION) as well as the abstract; the editor's summary and the one-line teaser are written by the journal. Reviews use BACKGROUND, ADVANCES, OUTLOOK.
-- Reports often have no headings in the body. Research Articles open directly with the first results subheading and close with a Discussion. The full methods usually sit in the supplementary materials.
+- Reports have no headings in the body. Research Articles open with unheaded introductory paragraphs that end with what the study did and found (`In this study, we…`), continue under topic subheadings (some add a Results heading) and close with a Discussion. Until 2025 the methods sat in the supplementary materials (`Materials and methods are available in the supplementary materials.`); Research Articles in 2026 issues print a Materials and methods section after the Discussion.
 - Results subheadings are mostly topic phrases (`Characteristics of the new variant`), without a full stop; a finding sentence is kept for the main claim.
 - Figures: `Fig. 1.` and a title ending in a full stop: a noun phrase, or in laboratory papers often the finding (`Loss of X impairs Y in mice.`); panels `(A)`, `(B)`; statistics stated in the panel text.
 - Pointers in lower case: `fig. S1`, `table S1`, `movie S1`, `data file S1`.
-- Data and materials availability sits with the acknowledgements: accession numbers, then materials, then code.
+- Data availability is a run-in paragraph in the acknowledgements, `Data and materials availability:` until 2025 and `Data, code, and materials availability:` in 2026: where the data are, then materials, accession numbers and code.
 
 ## Science Translational Medicine
 

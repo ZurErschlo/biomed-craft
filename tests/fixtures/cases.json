@@ -196,5 +196,13 @@
     "keep": ["482 of 2104 patients died", "hazard ratio 0.83"],
     "focus": [],
     "notes": "The abstract percentage is wrong (22.9%) and its interval does not contain 0.83: a good answer reports both discrepancies and their locations and asks which value is correct, without silently choosing one."
+  },
+  {
+    "id": "explanatory_dashes",
+    "request": "Polish this discussion paragraph for The BMJ.",
+    "input": "Uptake of the text-message reminder was high—78% of participants opened at least one message. The main barrier to attendance was not motivation – it was the cost of travel. Clinics that offered transport vouchers—a simple and cheap intervention—had higher attendance (62% vs 48%). Adherence ultimately depended on one thing — distance.",
+    "keep": ["78%", "62%", "48%", "transport vouchers", "cost of travel"],
+    "focus": ["STR-01", "STR-02", "STR-11"],
+    "notes": "Every dash explains or renames what came before. A good rewrite uses a colon, parentheses or a new sentence, keeps every number and does not claim that distance drove adherence unless the input measured it."
   }
 ]
