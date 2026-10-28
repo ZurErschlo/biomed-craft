@@ -118,6 +118,7 @@ Statements most leading journals now expect:
 ## Supplementary material
 
 - A contents list with page numbers comes first. Number items in the journal's style (journals.md).
+- Every supplementary item is cited in the main text, in the order of first citation, and adds something the main text does not ([figures-tables.md](figures-tables.md)).
 - Supplements hold full search strings for each database, equations, parameter tables with a source column, calibration targets, scenario and sensitivity analyses, additional results and reporting checklists.
 - Same register as the main text, but more procedural and list-like; protocol wording (`will be`) may survive in appended protocols.
 - Journals post supplements as supplied, without copyediting. Published supplements show code variable names, arm codes, stale cross-references and placeholders. Bring supplements to main-text standard: same legend structure, abbreviations defined again, public labels, no placeholders, checklist locations updated to the final version.

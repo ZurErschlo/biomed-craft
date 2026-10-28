@@ -7,7 +7,9 @@ Analysis scripts are written for the researcher to run and read. Each script ope
 - Few scripts, numbered in the order a person does the analysis: `01_clean.R`, `02_describe.R`, `03_model.R`.
 - Each script runs on its own once the scripts before it have run. It reads `data/input` and the files earlier scripts wrote to `data/output`.
 - The data-preparation script only cleans: deduplication, imputation and derived variables.
-- Figure and table code follows the analysis it shows, in the same script. Each script writes its own figures to `figures/` and tables to `tables/`, one xlsx file per table. Data files are CSV.
+- Figure and table code follows the analysis it shows, in the same script. Each script writes its own figures to `figures/`, the values each figure plots to `data/output/` and tables to `tables/`, one xlsx file per table. Data files are CSV.
+- For a model that takes hours, the drawing section reads the saved results, so a figure can be redrawn without refitting.
+- Change a figure or table only through its script; never edit the output by hand.
 - No setup, folder-creation, run-all, test or smoke scripts, no JSON manifests, and no shared helper or function file (CODE-06). The exception is a model that takes hours: give it a short trial run first and record that run in `execution_log.md`.
 - Watch memory use with large data.
 

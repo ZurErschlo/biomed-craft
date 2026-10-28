@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.4.0
+
+Released 2026-10-28. From the author's recent work on figures and tables across five papers, chiefly their checks for figures and tables that show the same information.
+
+- Choosing the display items (`references/figures-tables.md`). Each result appears once, in a figure or a table, in the main text or the supplement (ICMJE, EASE). The section lists what does not count as duplication: source data behind plotted points, reference rows, a GRADE profile behind its summary table, study lists, forest-plot diamonds and reporting forms; a systematic review keeps its PRISMA diagram. A figure shows a shape and a table gives exact values (Gelman et al.). An overlap is resolved by planning the set along the Results, never by deleting one item of the pair. One message per figure; named strata in every main result; figures benchmarked against real figures in leading journals.
+- Layout and type. All text in figures and tables uses the manuscript's font (Times New Roman unless the journal asks for another; check with `pdffonts`). Equal margins, even spacing and aligned panels; a crowded figure is redesigned, not shrunk. Horizontal keys with the unit on the title line; no table inside a panel; stack only parts of a whole. In model diagrams, one parameter symbol per arrow, rates in a transition table, no junction dots and no background deaths, and the diagram is redrawn when the model changes.
+- Making, changing and checking. Outputs change only through their scripts, and values are confirmed unchanged after a cosmetic edit. One file per figure, with the plotted values in `data/output/`; Word files of main figures and main tables. After any change, renumber and update every pointer. Figures are briefed one at a time and changes shown rendered, and someone other than the maker checks the set. Rendered pages are checked; legends match the current data; figure and text use the same statistic, with totals summed draw by draw.
+- Supplements: every item is cited in the main text in order of first citation and adds something; very long tables go in a separate spreadsheet; `figures/` and `tables/` are flat. `references/study-types/systematic-review.md` says when the credibility table may repeat a forest-plot estimate, and keeps screening counts out of the extraction workbook.
+
 ## 2.3.1
 
 Released 2026-10-27.

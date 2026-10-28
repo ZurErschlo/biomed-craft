@@ -16,7 +16,7 @@ Intervention reviews, meta-analyses of proportions and prevalence, reviews of co
 - Before screening full texts, check that each retrieved file is the article it is filed as (`scripts/check_fulltext.py`). Count articles that could not be obtained, and files that turned out to be the wrong article, as not retrieved.
 - Keep records, reports and studies apart: map reports to studies, merge reports that share participants, and remove secondary compilations that repeat primary studies.
 - Extract with a piloted form, in duplicate. Retrieve the supplement of every included study. The second extractor checks against the source without seeing the first values.
-- Keep values taken from papers in a hand-maintained workbook, with the page or table for each value. Log every edit (old value, new value, reason, page). Analysis scripts read the workbook and never write to it.
+- Keep values taken from papers in a hand-maintained workbook, with the page or table for each value. Log every edit (old value, new value, reason, page). Analysis scripts read the workbook and never write to it. The workbook holds only values taken from the included studies; screening counts for the flow diagram are kept elsewhere.
 - Freeze the included set before analysis. Reconcile every count in the abstract, flow diagram, text, tables and appendix from the lists of identifiers, overlapping subsets included.
 
 ## Synthesis
@@ -37,7 +37,7 @@ Intervention reviews, meta-analyses of proportions and prevalence, reviews of co
 ## Appraisal and certainty
 
 - Match the tool to the design: RoB 2 for each result of a trial; ROBINS-I, with its version stated; QUADAS-2 for diagnostic accuracy; QUIPS for prognostic factors; PROBAST for prediction models; JBI checklists for prevalence studies. Report item-level judgements; give no total score or band unless the tool defines one.
-- Grade the certainty of each pooled outcome with GRADE, or say why GRADE is not used and give a credibility summary instead: number of studies and participants, estimate, prediction interval, I², weight from studies with critical flaws, small-study test and the range across sensitivity analyses.
+- Grade the certainty of each pooled outcome with GRADE, or say why GRADE is not used and give a credibility summary instead: number of studies and participants, estimate, prediction interval, I², weight from studies with critical flaws, small-study test and the range across sensitivity analyses. A pooled estimate that a forest plot shows may appear again in this table, beside what the plot cannot hold; otherwise each number appears in one place ([figures-tables.md](../figures-tables.md)).
 - Scoping reviews: appraisal is optional and is never called risk of bias. GRADE-CERQual rates confidence in review findings, not in individual studies.
 
 ## Reporting

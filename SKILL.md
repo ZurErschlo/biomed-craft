@@ -12,7 +12,7 @@ description: |
   logs, code and response letters, or when asked to 润色, 优化表达, 去AI味, 改写, 审校, 改图注, 写方案 or 核对文献.
 license: MIT
 metadata:
-  version: "2.3.1"
+  version: "2.4.0"
 ---
 
 # biomed-craft
@@ -79,8 +79,9 @@ Never in a manuscript:
 
 Figures and tables:
 
+- Each result appears once, in the figure or table that suits it. Plan the set by the order of the Results; never fix an overlap by deleting one item of the pair ([references/figures-tables.md](references/figures-tables.md)).
 - Legends sit below the figure: what is plotted, then panels, encodings, n and tests, then abbreviations. Legends describe; the text interprets.
-- Inside the image: panel letters, short panel titles, axis titles with units, keys and direct labels. No figure titles, sentences, caveats or project labels.
+- Inside the image: panel letters, short panel titles, axis titles with units, keys and direct labels, in the manuscript's font (Times New Roman unless the journal asks for another). No figure titles, sentences, caveats or project labels.
 - Tables: group sizes in headers, the statistic format declared once, footnotes in the journal's order.
 - Supplements meet the same standard as the main text.
 

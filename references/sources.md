@@ -44,6 +44,8 @@ Rules from these sources that do not suit research articles were left out: banni
 - Gopen GD, Swan JA. The science of scientific writing. Am Sci 1990; 78: 550–58. https://www.americanscientist.org/blog/the-long-view/the-science-of-scientific-writing
 - International Committee of Medical Journal Editors. Recommendations for the conduct, reporting, editing, and publication of scholarly work in medical journals. https://www.icmje.org/recommendations/
 - EQUATOR Network reporting guidelines. https://www.equator-network.org/
+- European Association of Science Editors. Author toolkit: figures and tables. https://ease.org.uk/learning-hub/author-toolkit-1/revising-your-draft-and-adding-details/figures-and-tables/
+- Gelman A, Pasarica C, Dodhia R. Let's practice what we preach: turning tables into graphs. Am Stat 2002; 56: 121–30. https://doi.org/10.1198/000313002317572790
 - Hopewell S, Chan AW, Collins GS, et al. CONSORT 2025 statement. BMJ 2025. https://doi.org/10.1136/bmj-2024-081123
 - Chan AW, Boutron I, Hopewell S, et al. SPIRIT 2025 statement. BMJ 2025. https://doi.org/10.1136/bmj-2024-081477
 - Page MJ, McKenzie JE, Bossuyt PM, et al. The PRISMA 2020 statement. BMJ 2021; 372: n71. https://doi.org/10.1136/bmj.n71
