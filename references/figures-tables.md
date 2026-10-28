@@ -21,7 +21,9 @@ Legends, table notes and supplementary tables go into the paper as written. They
 - Body, in order: panel descriptions (`(A) …; (B) …` or `a, …`), then what each encoding means (points, lines, shading, error bars and the interval type, censoring marks, reference lines), then n, the statistical test and the data source, then abbreviations.
 - Present tense for what is shown, past tense for methods: `Error bars show 95% CIs. Estimates were adjusted for age and sex.`
 - Define every abbreviation used in the figure, even if the text already defined it.
-- Length: Lancet and BMJ legends are short (often under 70 words); NEJM 20–60 words; Nature, Cell and Science 100–250 words.
+- What a legend holds: the title, what each panel plots, what markers, lines, shading and intervals mean, n and the test where the journal prints them, and the abbreviations. How a value was computed and the full definitions of categories belong in the Methods. Fewer than one legend in five in Lancet and BMJ papers describes a computation, against two in five in laboratory papers, which also give n and the test in the legend.
+- Length follows the journal and the study type. Median words in the library's research articles (interquartile range): BMJ 51 (33–73), Lancet 62 (28–96), JAMA journals 75 (37–112), NEJM about 100 to 130, Nature 106, Science 148, Cell 202. By design: economic evaluations 44, systematic reviews 58, trials, cohorts and models about 90, computational papers 162, laboratory papers 211. In clinical and population research, keep a main-text legend under about 120 words plus its abbreviations.
+- A legend does not repeat numbers the figure prints or a table gives.
 - Legends describe; the text interprets. No `This figure shows` (META-05) and no conclusions such as `suggesting a decline` (CAP-01). NEJM's `Shown are…` is house style and acceptable.
 - Caveats and status notes about a result (for example that a model did not pass validation) go in the legend, never inside the image.
 
@@ -58,13 +60,22 @@ Labels:
 - In reviews, summary figures group studies by theme; study-level rows belong in forest plots and tables.
 - English figures contain no Chinese characters or full-width punctuation (HYG-06).
 
-## Common figure types
+## Common result figures
 
-- Study flow (CONSORT, PRISMA): boxes start with the count (`355 were assigned…`); exclusions in side boxes with reasons; symbols resolved in the legend. Exclusion reasons use standard wording (`ineligible`, `declined`, `lost to follow-up`); labels such as `post hoc` do not appear. No internal or unfinished labels, no text over arrows, and no boxes repeating counts that a results table gives (studies per analysis belong with the results).
 - Kaplan–Meier curves: numbers at risk aligned under the axis; groups labelled directly or with a small key; effect estimate with interval (and P value where the journal prints one) inside the plot.
 - Forest plots: numeric columns, a line of no effect, direction labels, log scale for ratios.
 - Maps: binned keys with titles, and explicit `No data` and `Not applicable` classes.
-- Model structure diagrams: compartments named in words, with subscripts as notation. Each arrow carries one parameter symbol from the plan, and the full rate expressions go to a transition table. Direction is unambiguous: merged lines keep an arrow on each branch, and there are no junction dots. Flows that leave every compartment, such as background deaths, are not drawn, and the legend says so. The diagram matches the plan and the code and is redrawn when the model changes.
+
+## Diagrams drawn by hand
+
+Model structures, intervention pathways, conceptual frameworks and study flow diagrams are drawn in a diagram tool such as draw.io. They are not made by the analysis code, and they have their own requirements.
+
+- The drawing file is the original: edit it, and keep it with its exported images.
+- The diagram matches the plan and the code: the same states, flows, symbols and line styles. Redraw it whenever the model or the study design changes.
+- Model structures: compartments named in words, with subscripts as notation. Each arrow carries one parameter symbol from the plan, and the full rate expressions go to a transition table. Direction is unambiguous: merged lines keep an arrow on each branch, and there are no junction dots. Flows that leave every compartment, such as background deaths, are not drawn, and the legend says so.
+- Study flow (CONSORT, PRISMA): boxes start with the count (`355 were assigned…`); exclusions in side boxes with reasons; symbols resolved in the legend. Exclusion reasons use standard wording (`ineligible`, `declined`, `lost to follow-up`); labels such as `post hoc` do not appear. No internal or unfinished labels, and no boxes repeating counts that a results table gives (studies per analysis belong with the results).
+- Layout: boxes aligned and evenly spaced, equal margins, nothing touching the edge, and no text over arrows.
+- Legends are short (median 48 words in clinical journals): what the diagram shows, notes on its counts, and the abbreviations. A model structure's legend defines its symbols and points to the transition table.
 
 ## Tables
 
@@ -72,6 +83,7 @@ Labels:
 - Column headers give group sizes: `Intervention (n=1478)`.
 - Declare the statistic format once: `Data are n (%), mean (SD) or median (IQR).` Put units in row labels (`Age, years`).
 - Footnotes in this order: general note, abbreviations, then specific notes keyed by *, †, ‡, §, ¶, ||, **, †† or by letters (JAMA, Nature).
+- Notes give what a reader needs to read the table: the statistic format, abbreviations, symbols, the meaning of `..`, and definitions of scales or categories in keyed notes. How estimates were computed belongs in the Methods. Length follows the journal: Science and Cell tables carry almost no notes; Lancet and BMJ about 60 words; JAMA about 140, mostly abbreviations; NEJM about 260, with definitions keyed to symbols.
 - Caveats go in the notes; headers and cells hold only labels and values.
 - Distinguish missing from zero; say what `..` or `–` means.
 - Keep decimals consistent within a column, and give the same quantity the same decimals in every table. An interval stays on one line; set column widths so it does not wrap.
@@ -90,10 +102,12 @@ Labels:
 - Checklists (CONSORT, PRISMA, STROBE, CHEERS, GATHER): Section, Item number, Item, Location; update locations to the final version.
 - Published supplements often contain code names, arm codes and stale cross-references because journals post them unedited. Do not copy that.
 
-## Making and changing figures and tables
+## Result figures and tables made by code
 
 - Change a figure or table only through the script that makes it, never by editing the output. After a change that should not touch values (labels, fonts, layout), confirm that the computed results are unchanged.
-- One file per figure, in the format the journal takes; no PDF and TIFF copies of the same figure. The values each figure plots go to `data/output/`, not `figures/` ([analysis-code.md](analysis-code.md)).
+- The scripts write each figure to `figures/` as PDF and TIFF. The manuscript package carries one format of each, since `figures/` keeps the originals. The values each figure plots go to `data/output/`, not `figures/` ([analysis-code.md](analysis-code.md)).
+## Assembling and changing the set
+
 - For submission, one Word file of main figures and one of main tables, each item followed by its title and its legend or notes; the supplement carries its own figures and tables.
 - After any change to the set: renumber; update the citations in the text, the legends, the supplement's cross-references, the reporting checklist (locations and page numbers), the scripts, the README and the plan; search the whole package for old numbers (`Figure 6`, `Figures 1–6`); rebuild the package; and show the researcher any new design before calling the change done.
 

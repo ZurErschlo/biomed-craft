@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.4.1
+
+Released 2026-10-28.
+
+- Figure files, corrected: the scripts write each figure as PDF and TIFF to `figures/`, and the manuscript package carries one format, because `figures/` keeps the originals.
+- Diagrams drawn by hand are separated from result figures made by code (`references/figures-tables.md`). A diagram's drawing file is the original. The diagram matches the plan and the code and is redrawn when the model changes. It follows model-structure and flow-diagram conventions and has a short legend.
+- Legends and table notes, measured in the library's open-access research articles. Medians run from about 50 words (BMJ, Lancet) to 200 (Cell), and from 44 (economic evaluations) to 211 (laboratory papers). Method details appear in fewer than one legend in five in Lancet and BMJ papers. A legend holds what a reader needs to read the figure, and computation and definitions go to the Methods; main-text legends in clinical and population research stay under about 120 words plus abbreviations, and legends do not repeat numbers the figure or a table gives. Table notes hold the statistic format, abbreviations, symbols and keyed definitions, with lengths by journal. The NEJM legend length was wrong (20–60 words) and is now about 100 to 130.
+- Briefing a supervisor (`references/workflow.md`): what to cover for each figure and each table.
+
 ## 2.4.0
 
 Released 2026-10-28. From the author's recent work on figures and tables across five papers, chiefly their checks for figures and tables that show the same information.

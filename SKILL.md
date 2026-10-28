@@ -12,7 +12,7 @@ description: |
   logs, code and response letters, or when asked to 润色, 优化表达, 去AI味, 改写, 审校, 改图注, 写方案 or 核对文献.
 license: MIT
 metadata:
-  version: "2.4.0"
+  version: "2.4.1"
 ---
 
 # biomed-craft

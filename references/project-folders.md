@@ -9,14 +9,14 @@ project/
   data/input/      collected and hand-entered data, read-only, with a dictionary for each table
   data/output/     everything the scripts rebuild
   analysis/        numbered scripts
-  figures/         one file per figure, in the journal's format
+  figures/         each figure as PDF and TIFF, written by the scripts
   tables/
   manuscript/      main text, supplement, main figures and main tables as Word files, dated YYYYMMDD
 ```
 
 - `figures/` and `tables/` are flat and in number order, with no main or supplement subfolders.
 - No nested projects, no `results/` folder and no archive of old material. Delete files that are no longer used.
-- Data files are CSV. Result tables are xlsx, one file per table. No table is kept in two formats, and no figure in two (a PDF and a TIFF of the same figure).
+- Data files are CSV. Result tables are xlsx, one file per table. No table is kept in two formats. Figures are kept as PDF and TIFF in `figures/`; the manuscript folder holds one format of each.
 - Dates in file names (YYYYMMDD) instead of version labels such as `v2` or `final`. The data extraction workbook carries its date.
 - Each clean table has a data dictionary: variable name, meaning, unit, allowed values or range, missing-value code and source.
 - No stray README, AGENTS.md or notes files. A single README at the root only when the code is shared or deposited, giving the script order, the inputs and outputs of each script, software versions and data sources.
