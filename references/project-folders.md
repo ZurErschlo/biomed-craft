@@ -8,7 +8,7 @@ project/
   protocol/        registered protocol, research_plan.md, execution_log.md
   data/input/      collected and hand-entered data, read-only, with a dictionary for each table
   data/output/     everything the scripts rebuild
-  analysis/        numbered scripts
+  analysis/        numbered scripts, and style.R for fonts and table format
   figures/         each figure as PDF and TIFF, written by the scripts
   tables/
   manuscript/      main text, supplement, main figures and main tables as Word files, dated YYYYMMDD

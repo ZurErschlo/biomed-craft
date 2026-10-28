@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.2
+
+Released 2026-10-28.
+
+- Each project may have one shared file, `analysis/style.R`, with the fonts and the table format only; analysis, data and plotting code stay in the scripts (`references/analysis-code.md`, CODE-06).
+
 ## 2.4.1
 
 Released 2026-10-28.

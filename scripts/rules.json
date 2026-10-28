@@ -1,5 +1,5 @@
 {
-  "version": "2.4.1",
+  "version": "2.4.2",
   "levels": {
     "must": "Fix on sight: leading journals almost never print this, or it is internal material.",
     "review": "Judge in context: often a tell, sometimes the right word.",
@@ -2509,14 +2509,15 @@
         "code"
       ],
       "pattern": "\\bsource\\s*\\(\\s*(?:here::here\\s*\\(\\s*)?[\\\"'][^\\\"']*(?:function|helper|util|common|setup|config|init)[^\\\"']*[\\\"']",
-      "hint": "A shared helper or setup file hides what this script does. Define the functions the script uses at its top.",
+      "hint": "A shared helper or setup file hides what this script does. Define the functions the script uses at its top; the one shared file allowed is analysis/style.R, with the fonts and table format only.",
       "examples": {
         "hit": [
           "source(\"functions.R\")",
           "source(here::here(\"R/helpers.R\"))"
         ],
         "miss": [
-          "source_table <- read.csv(here::here(\"data\", \"input\", \"sources.csv\"))"
+          "source_table <- read.csv(here::here(\"data\", \"input\", \"sources.csv\"))",
+          "source(here::here(\"analysis\", \"style.R\"))"
         ]
       }
     },

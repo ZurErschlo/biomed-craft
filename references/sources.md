@@ -74,7 +74,7 @@ Rules from these sources that do not suit research articles were left out: banni
 - Keep a Changelog. https://keepachangelog.com/en/1.1.0/
 - Social Science Data Editors. Template README for replication packages. https://social-science-data-editors.github.io/template_README/
 
-The plan, log and code references follow the author's own decisions where these sources disagree with them: no run-all script, no shared function file, no unit-test scripts, the local R installation instead of a lockfile, and the history of a plan kept in the execution log instead of an amendment table.
+The plan, log and code references follow the author's own decisions where these sources disagree with them: no run-all script, no shared function file apart from one style file for fonts and table format, no unit-test scripts, the local R installation instead of a lockfile, and the history of a plan kept in the execution log instead of an amendment table.
 
 ## Journal instructions
 

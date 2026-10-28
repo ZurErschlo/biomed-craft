@@ -46,7 +46,7 @@ Not allowed (no author-drawn figure in the core journals had them):
 
 Layout and type:
 
-- One font for all text in figures and tables, the manuscript's font: Times New Roman unless the journal asks for another. Check the embedded fonts with `pdffonts`.
+- One font for all text in figures and tables, the manuscript's font: Times New Roman unless the journal asks for another. Set it once, with the table format, in the project's style file ([analysis-code.md](analysis-code.md)), and check the embedded fonts with `pdffonts`.
 - Equal margins, nothing touching the edge, even spacing between panels and aligned panel edges. A crowded figure is redesigned (fewer panels, or two figures), not shrunk.
 - Short keys run horizontally above or below the plot. A legend or facet title keeps its unit on the same line: `Deaths (per 100 000)`.
 - Stack only the parts of a whole. Quantities that do not add up to a total are not stacked.
