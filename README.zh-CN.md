@@ -10,6 +10,10 @@
 
 skill 采用 [Agent Skills](https://agentskills.io) 格式，可用于 Claude Code、Codex 以及其他读取 `SKILL.md` 的 agent。
 
+## 为什么叫 craft
+
+craft 取的是匠人精神：每一处细节都经得起推敲，不将就，作品又带着做的人自己的印记。研究和写作也一样：每个数字追到出处，每张图按最终尺寸检查，完成的东西交回前再过一遍，发现的问题改掉而不是解释过去。skill 提供标准，风格属于每个研究者自己。你修改 AI 起草的内容时，它会把你反复出现的习惯整理成候选条目，经你确认后写进个人风格文件（`~/.biomed-craft/style.md`），通用的习惯和只适用于某类文件、某类研究或某本期刊的习惯分开记录。这个文件只在你自己的电脑上，不会上传到 GitHub（[references/personal-style.md](references/personal-style.md)）。
+
 ## 覆盖内容
 
 - **按高水平期刊的标准写作**（Lancet、NEJM、JAMA、BMJ、Nature、Science、Cell 及其主要子刊）：论文各部分、补充材料、图注、表注和图中文字；去掉 AI 腔、工程化表达、防御性表达和过程性叙述。
@@ -59,6 +63,7 @@ python3 scripts/scan.py --doc code analysis/
 python3 scripts/check_numbers.py manuscript.docx
 python3 scripts/check_fulltext.py included.ris fulltexts/
 python3 scripts/check_preservation.py original.docx revised.docx
+python3 scripts/style_diff.py draft.docx revised.docx
 ```
 
 `scan.py` 读取 Word、Markdown、Quarto、LaTeX、PowerPoint、PDF、SVG 以及 R 和 Python 代码，自动判断研究类型，按规则列出问题，规则级别随研究类型和期刊调整。`check_numbers.py` 找出与人数对不上的百分比、落在置信区间外的点估计，以及摘要里有、正文里找不到的数字。`check_fulltext.py` 列出下错的文章、补充材料、只是引用了该文的页面（评论、更正、患者须知等）、重复文件，以及没有对应 PDF 的记录。`check_preservation.py` 确认修改前后数字、引用和交叉引用没有丢失或增加。

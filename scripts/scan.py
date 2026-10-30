@@ -16,6 +16,11 @@ Examples:
   python3 scan.py --doc plan research_plan.md
   python3 scan.py --doc log execution_log.md
   python3 scan.py --doc code analysis/
+  python3 scan.py --style ~/.biomed-craft/style.md draft.md
+
+The researcher's personal style file (~/.biomed-craft/style.md, or the folder in
+BIOMED_CRAFT_HOME) is read when it exists: rules its 'Allow [ID]' entries permit
+in the matching scope are listed apart instead of reported as problems.
 """
 
 from __future__ import annotations
@@ -262,6 +267,9 @@ def print_report(result: dict, show_levels: set[str], show_profile: bool, out) -
             times = f" (x{f['count']})" if f.get("count", 1) > 1 else ""
             print(f"  {where}  [{f['rule']}]{times} \"{f['context']}\"", file=out)
             print(f"      {f['hint']}", file=out)
+    if result.get("allowed"):
+        listed = ", ".join(f"{rule} (x{n})" for rule, n in sorted(result["allowed"].items()))
+        print(f"\nALLOWED BY YOUR STYLE FILE: {listed}", file=out)
     if result["density"]:
         print("\nDENSITY per 1000 words (leading-journal median / 90th percentile)", file=out)
         for row in result["density"]:
@@ -287,7 +295,7 @@ def choose_group(groups: dict, journal: str, design: str) -> tuple[str, dict | N
 
 def scan_file(path: Path, rules: list[ts.Rule], doc_type: str, scope: str | None, groups: dict | None,
               label: str | None = None, text: str | None = None, design: str = "auto",
-              journal: str = "core") -> dict:
+              journal: str = "core", style: list[tuple[str, str]] | None = None) -> dict:
     if text is not None:
         segments = ts.read_markdown(text)
         if scope:
@@ -306,6 +314,15 @@ def scan_file(path: Path, rules: list[ts.Rule], doc_type: str, scope: str | None
     group_name, group = choose_group(groups or {}, journal, design)
     family = "" if journal == "core" else journal
     findings, prose_sentences = scan_segments(segments, rules, label, file_format, doc_type, design, family)
+    allowed: dict[str, int] = {}
+    if style:
+        kept = []
+        for finding in findings:
+            if finding.rule in ts.style_allowed_rules(style, doc_type, design, journal, finding.scope):
+                allowed[finding.rule] = allowed.get(finding.rule, 0) + finding.count
+            else:
+                kept.append(finding)
+        findings = kept
     profile = ts.profile(prose_sentences)
     words = profile.get("words", 0)
     compared = words >= 200 and doc_type in JOURNAL_PROSE
@@ -319,6 +336,7 @@ def scan_file(path: Path, rules: list[ts.Rule], doc_type: str, scope: str | None
         "reference_group": group_name,
         "design": design,
         "design_detected": detected,
+        "allowed": allowed,
     }
 
 
@@ -338,7 +356,13 @@ def main(argv=None) -> int:
     parser.add_argument("--profile", action="store_true", help="compare the style profile with leading journals")
     parser.add_argument("--json", action="store_true", help="print JSON")
     parser.add_argument("--strict", action="store_true", help="exit with status 1 if any must-fix finding is present")
+    parser.add_argument("--style", type=Path, help="personal style file (default: ~/.biomed-craft/style.md if it exists)")
+    parser.add_argument("--no-style", action="store_true", help="ignore the personal style file")
     args = parser.parse_args(argv)
+    style_file = None if args.no_style else (args.style or ts.style_path())
+    if args.style and not args.style.exists():
+        parser.error(f"no such style file: {args.style}")
+    style = ts.read_style(style_file) if style_file and style_file.exists() else None
 
     _, rules = ts.load_rules()
     groups = None
@@ -353,14 +377,14 @@ def main(argv=None) -> int:
     for item in args.paths:
         if item == "-":
             results.append(scan_file(Path("stdin"), rules, args.doc, args.scope, groups, "stdin", sys.stdin.read(),
-                                     args.design, args.journal))
+                                     args.design, args.journal, style))
             continue
         for path in collect_paths([item]):
             if not path.exists():
                 parser.error(f"no such file: {path}")
             try:
                 result = scan_file(path, rules, args.doc, args.scope, groups, design=args.design,
-                                   journal=args.journal)
+                                   journal=args.journal, style=style)
             except (OSError, RuntimeError, KeyError, ValueError) as error:
                 print(f"{path}: cannot read ({error})", file=sys.stderr)
                 continue
@@ -377,6 +401,8 @@ def main(argv=None) -> int:
         json.dump(payload, sys.stdout, ensure_ascii=False, indent=1)
         print()
     else:
+        if style:
+            print(f"Personal style file: {style_file}")
         for result in results:
             print_report(result, show, args.profile, sys.stdout)
         print(f"\n{must_total} must-fix, {review_total} to review across {len(results)} file(s).")

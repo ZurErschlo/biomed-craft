@@ -7,17 +7,17 @@ description: |
   leading journals (Lancet, NEJM, JAMA, BMJ, Nature, Science, Cell) and their major sub-journals, with the content
   each study type needs: trials, observational and database studies, systematic reviews and meta-analyses,
   prediction models, economic evaluations, disease models, Mendelian randomisation, diagnostic, laboratory, omics
-  and qualitative studies. The researcher decides; the agent does the groundwork, verifies every source and
-  number, and reports what it could not do. Use for drafting, polishing, reviewing or checking papers, plans,
+  and qualitative studies. The researcher decides; the agent does the groundwork with a craftsman's care,
+  verifies every source and number, learns the researcher's own style, and reports what it could not do. Use for drafting, polishing, reviewing or checking papers, plans,
   logs, code and response letters, or when asked to 润色, 优化表达, 去AI味, 改写, 审校, 改图注, 写方案 or 核对文献.
 license: MIT
 metadata:
-  version: "2.4.2"
+  version: "2.5.0"
 ---
 
 # biomed-craft
 
-Biomedical research from the question to the published paper. The researcher is the author and answers for every claim; the agent prepares the evidence, does the groundwork completely, writes to the standard of leading journals, and reports everything it could not do.
+Biomedical research from the question to the published paper, made with a craftsman's care and in the researcher's own style. The researcher is the author and answers for every claim; the agent prepares the evidence, does the groundwork completely, writes to the standard of leading journals, and reports everything it could not do.
 
 ## Principles
 
@@ -27,12 +27,14 @@ Biomedical research from the question to the published paper. The researcher is 
 4. End every task with four lists: done; not done, with the reason; wrong or found wrong; decisions needed. Never report "no problems" without saying what was checked.
 5. Answer a question before acting on it. A question is not an instruction to change anything.
 6. Write as leading journals print: plain, specific and checkable, without AI-style patterns, engineering register, defensive hedging or narration about the process.
+7. Work as a craftsman. Care shows in details nobody asked about: every number traced, every label read at its final size, every sentence a careful reviewer could fault rewritten. Go over finished work again in its final form before handing it back, fix a flaw instead of calling it minor, and stop refining when a change no longer helps the reader. The work carries the researcher's own style ([references/personal-style.md](references/personal-style.md)).
 
 ## Start here
 
 1. Identify the stage of the project ([references/workflow.md](references/workflow.md)), the document, the study type ([references/study-types.md](references/study-types.md)) and the target journal. Take the study type from the researcher and pass it to `scan.py --type`; the script's guess is only a fallback. State all four in one line so the researcher can correct them.
 2. Apply three layers. The general standard covers wording and the conventions leading journals share; the journal layer adds structure and format ([references/journals.md](references/journals.md)); the study-type layer adds content and conventions. When the journal is not settled, use the general standard alone.
-3. Read the material in full and match its terms before changing anything.
+3. Read the researcher's style file if it exists (`~/.biomed-craft/style.md`) and apply the entries whose scope matches the task.
+4. Read the material in full and match its terms before changing anything.
 
 ## Where to look
 
@@ -108,6 +110,7 @@ python3 scripts/scan.py --doc plan research_plan.md            # also --doc log 
 python3 scripts/check_numbers.py manuscript.docx               # percentages, intervals, abstract against text
 python3 scripts/check_fulltext.py included.ris fulltexts/      # each PDF is the article it is filed as
 python3 scripts/check_preservation.py original.docx revised.docx
+python3 scripts/style_diff.py draft.docx revised.docx           # the researcher's style habits, for the style file
 python3 scripts/calibrate.py ~/Zotero --texts calibration-texts --pmc scripts/corpus.json   # rebuild the reference rates
 ```
 

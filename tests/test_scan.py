@@ -1,6 +1,7 @@
 """Tests for scan.py and the shared text helpers. Offline; standard library only."""
 
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -12,6 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
 sys.path.insert(0, str(SCRIPTS))
+# Keep the researcher's own style file out of the tests.
+os.environ["BIOMED_CRAFT_HOME"] = tempfile.mkdtemp()
 
 import scan  # noqa: E402
 import textstats as ts  # noqa: E402

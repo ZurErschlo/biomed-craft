@@ -1,4 +1,4 @@
 interface:
   display_name: "Biomed Craft"
-  short_description: "End-to-end biomedical research, written to leading-journal standard"
+  short_description: "End-to-end biomedical research, crafted to leading-journal standard in your own style"
   default_prompt: "Use $biomed-craft to help with this research document: check the evidence, keep the facts, and write it to the standard of leading journals."

@@ -9,6 +9,7 @@ Standard library only.
 from __future__ import annotations
 
 import json
+import os
 import re
 import shutil
 import statistics
@@ -556,6 +557,62 @@ def rule_matches(rule: Rule, text: str, spans: list[tuple[int, int]] | None = No
     spans = spans if spans is not None else sentence_spans(text)
     condition = UNLESS[rule.unless]
     return [m for m in matches if not condition.search(sentence_at(text, spans, m.start()))]
+
+
+# ---------------------------------------------------------------------------
+# Personal style file
+# ---------------------------------------------------------------------------
+
+STYLE_HEADING = re.compile(r"^##\s+(.+?)\s*$")
+ALLOW_ENTRY = re.compile(r"^[-*]\s*Allow\b", re.IGNORECASE)
+RULE_ID = re.compile(r"\[([A-Z]{2,5}-\d{2})\]")
+# Internal material is never a matter of style.
+NEVER_ALLOWED = ("HYG",)
+LEGEND_DOCUMENTS = ("legends", "legends and table notes", "table notes", "captions")
+
+
+def style_path() -> Path:
+    """The researcher's personal style file: $BIOMED_CRAFT_HOME/style.md, otherwise ~/.biomed-craft/style.md."""
+    home = os.environ.get("BIOMED_CRAFT_HOME")
+    return (Path(home) if home else Path.home() / ".biomed-craft") / "style.md"
+
+
+def read_style(path: Path) -> list[tuple[str, str]]:
+    """(section, entry) pairs from a personal style file; entries are list items under '## Section' headings."""
+    entries, section = [], "general"
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        heading = STYLE_HEADING.match(line)
+        if heading:
+            section = heading.group(1).strip().lower()
+        elif line.lstrip().startswith(("-", "*")):
+            entries.append((section, line.strip()))
+    return entries
+
+
+def style_section_applies(section: str, doc: str, design: str, journal: str, scope: str) -> bool:
+    """Whether a section of the style file covers a finding in this document, study type, journal and scope."""
+    kind, _, name = section.partition(":")
+    name = name.strip()
+    if section == "general":
+        return True
+    if section == "figures and tables":
+        return scope in ("figure", "caption", "table")
+    if kind == "document":
+        return scope in ("figure", "caption", "table") if name in LEGEND_DOCUMENTS else name == doc
+    if kind == "study type":
+        return name == design
+    if kind == "journal":
+        return name == journal
+    return False
+
+
+def style_allowed_rules(entries: list[tuple[str, str]], doc: str, design: str, journal: str, scope: str) -> set[str]:
+    """Rule IDs that 'Allow [ID]' entries permit here. Internal-material rules (HYG) are never allowed."""
+    allowed = set()
+    for section, entry in entries:
+        if ALLOW_ENTRY.match(entry) and style_section_applies(section, doc, design, journal, scope):
+            allowed.update(r for r in RULE_ID.findall(entry) if not r.startswith(NEVER_ALLOWED))
+    return allowed
 
 
 # ---------------------------------------------------------------------------

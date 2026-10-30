@@ -10,6 +10,10 @@ The researcher stays the author. The researcher decides the question, the design
 
 The skill uses the [Agent Skills](https://agentskills.io) format and works with Claude Code, Codex and other agents that read `SKILL.md`.
 
+## Why craft
+
+A master craftsman is exacting in every detail, is never satisfied with almost right, and leaves a mark that is unmistakably their own. biomed-craft asks the same of research and writing: every number traced to its source, every figure checked at its final size, finished work gone over again, flaws fixed rather than explained away. It brings the standard; each researcher brings the style. As you revise what the agent drafts, it proposes entries for a personal style file (`~/.biomed-craft/style.md`), kept apart for general habits and for particular documents, study types and journals. The file stays on your computer and is never part of this repository ([references/personal-style.md](references/personal-style.md)).
+
 ## What it covers
 
 - **Writing to the standard of leading journals** (Lancet, NEJM, JAMA, BMJ, Nature, Science, Cell and their major sub-journals): every section, supplements, figure legends, table notes and text inside figures, without AI-style patterns, engineering register, defensive hedging or narration about the process.
@@ -59,6 +63,7 @@ python3 scripts/scan.py --doc code analysis/
 python3 scripts/check_numbers.py manuscript.docx
 python3 scripts/check_fulltext.py included.ris fulltexts/
 python3 scripts/check_preservation.py original.docx revised.docx
+python3 scripts/style_diff.py draft.docx revised.docx
 ```
 
 `scan.py` reads Word, Markdown, Quarto, LaTeX, PowerPoint, PDF, SVG and R or Python code, guesses the study type, and reports findings by rule, with levels that follow the study type and journal. `check_numbers.py` finds percentages that do not match their counts, estimates outside their intervals and abstract numbers that appear nowhere else. `check_fulltext.py` lists retrieved PDFs that are the wrong article, a supplement, a page that only cites the article or a duplicate, and records with no PDF. `check_preservation.py` confirms that an edit kept every number, citation and cross-reference.

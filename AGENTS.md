@@ -14,8 +14,9 @@ Keep the skill portable: no instructions that only one agent product can follow.
 - `references/`: the detailed guidance, one topic per file. `SKILL.md` links every top-level file; `references/study-types.md` links every file in `references/study-types/`.
 - `scripts/rules.json`: every rule with ID, category, level, per-design levels, scopes, document types, pattern, hint and examples.
 - `scripts/textstats.py`: shared reading (documents and code), sentence splitting, rule matching, style profile and study-design detection.
-- `scripts/scan.py`, `scripts/check_numbers.py`, `scripts/check_fulltext.py`, `scripts/check_preservation.py`, `scripts/calibrate.py`: command-line tools.
+- `scripts/scan.py`, `scripts/check_numbers.py`, `scripts/check_fulltext.py`, `scripts/check_preservation.py`, `scripts/style_diff.py`, `scripts/calibrate.py`: command-line tools.
 - `scripts/calibration.json`, `scripts/corpus.json`: statistics and identifiers (DOI, PMCID) from the calibration corpus. Never add article text.
+- Personal style files (`~/.biomed-craft/style.md`) belong to each researcher and live outside this repository. Ship only the template and rules in `references/personal-style.md`; never commit anyone's style file.
 - `calibration-texts/`: local only and ignored by git. Texts of publisher PDFs, read by `calibrate.py --texts`. They are under the publishers' copyright: never commit them, and `validate_package.py` fails if one is tracked.
 - `scripts/validate_package.py`: package checks run in CI.
 - `tests/`: unit tests, fixtures and `fixtures/cases.json` for rewrite evaluation.

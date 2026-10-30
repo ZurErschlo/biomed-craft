@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.5.0
+
+Released 2026-10-30.
+
+- Why craft: the name stands for a craftsman's care, exacting in every detail, never satisfied with almost right, and carrying the maker's own hand. It is now principle 7 in `SKILL.md` and a section of both READMEs.
+- Personal style file (`references/personal-style.md`): each researcher keeps `~/.biomed-craft/style.md` on their own computer. It is read before every task, with general entries kept apart from entries for particular documents, study types, journals, and figures and tables. Explicit instructions are saved at once. Habits seen in revisions wait in Pending until they recur three times across two documents and the researcher confirms them.
+- `scripts/style_diff.py`: compares a draft with the researcher's revision, or reads one Word file with tracked changes. It lists replaced words, deletions, rule findings removed or introduced and profile shifts, sets aside edits to numbers and citations, and proposes scoped candidate entries.
+- `scan.py` reads the style file (`--style`, `--no-style`). Rules permitted by `Allow [ID]` entries in the matching scope are listed apart; internal-material rules are never allowed.
+
 ## 2.4.2
 
 Released 2026-10-28.
