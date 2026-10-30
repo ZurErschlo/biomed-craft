@@ -1,5 +1,5 @@
 {
-  "version": "2.5.1",
+  "version": "2.5.2",
   "levels": {
     "must": "Fix on sight: leading journals almost never print this, or it is internal material.",
     "review": "Judge in context: often a tell, sometimes the right word.",

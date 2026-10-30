@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.5.2
+
+Released 2026-10-30.
+
+- The three wording files and the examples are a third shorter (4716 to 3162 words), with every rule ID and corpus figure kept. Each point now sits in one file: formal substitutes, contrast-frame rates and sentence-initial signposts in `references/patterns.md`, abbreviations in `references/format.md`, legend and figure rules in `references/figures-tables.md`, and what to keep in the Keep list of `SKILL.md`. General writing advice the model already follows is gone.
+- `references/examples.md` keeps the eight examples no other file shows, and a short list of sentences to leave alone.
+
 ## 2.5.1
 
 Released 2026-10-30.
