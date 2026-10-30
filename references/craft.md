@@ -74,7 +74,7 @@ How research articles in leading journals build sentences and paragraphs. Rates 
 ## Connectives
 
 - The common connectives are `however` (0·6 per 1000 words), `although`, `in addition` and `therefore`.
-- Sentence-initial `Notably`, `Importantly` and `Interestingly` were used by 33% of papers before 2023 and by 51% from 2023 (LEX-04). Use them rarely and never twice in one paragraph (STR-04).
+- Sentence-initial `Notably`, `Importantly` and `Interestingly`: rarely, and never twice in one paragraph (LEX-04, STR-04).
 - A connective that carries logic cannot simply be deleted. Repair the link instead, for example by starting the next sentence with the term the two sentences share.
 
 ## Terms and abbreviations

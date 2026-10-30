@@ -4,6 +4,9 @@ How to choose the figures and tables of a paper, and the conventions for legends
 
 Legends, table notes and supplementary tables go into the paper as written. They contain only publication text: no plan section numbers, record identifiers, screening rounds, change logs, tool names or file paths.
 
+
+Contents: Choosing the display items; Legends; Text inside figures; Common result figures; Diagrams drawn by hand; Tables; Supplementary figures and tables; Result figures and tables made by code; Assembling and changing the set; Working through figures with the researcher; Checks before submission.
+
 ## Choosing the display items
 
 - Each result appears once: in a figure or a table, in the main text or the supplement. ICMJE asks authors not to duplicate data in graphs and tables, and the EASE guidance says the same. Duplicates include a panel that redraws numbers a table already gives, a supplementary figure that redraws a main figure, a supplementary table that copies the numbers printed on a figure, and columns that restate the same values (a log ratio and its variance next to the ratio and its interval).
@@ -74,7 +77,7 @@ Model structures, intervention pathways, conceptual frameworks and study flow di
 - The diagram matches the plan and the code: the same states, flows, symbols and line styles. Redraw it whenever the model or the study design changes.
 - Model structures: compartments named in words, with subscripts as notation. Each arrow carries one parameter symbol from the plan, and the full rate expressions go to a transition table. Direction is unambiguous: merged lines keep an arrow on each branch, and there are no junction dots. Flows that leave every compartment, such as background deaths, are not drawn, and the legend says so.
 - Study flow (CONSORT, PRISMA): boxes start with the count (`355 were assigned…`); exclusions in side boxes with reasons; symbols resolved in the legend. Exclusion reasons use standard wording (`ineligible`, `declined`, `lost to follow-up`); labels such as `post hoc` do not appear. No internal or unfinished labels, and no boxes repeating counts that a results table gives (studies per analysis belong with the results).
-- Layout: boxes aligned and evenly spaced, equal margins, nothing touching the edge, and no text over arrows.
+- Layout as for any figure, with boxes aligned and no text over arrows.
 - Legends are short (median 48 words in clinical journals): what the diagram shows, notes on its counts, and the abbreviations. A model structure's legend defines its symbols and points to the transition table.
 
 ## Tables

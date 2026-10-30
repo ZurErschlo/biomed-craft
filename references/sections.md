@@ -2,6 +2,9 @@
 
 What each part of a research article does in leading journals and their major sub-journals, with templates, from close reading of research articles, reviews and supplements across study designs. Journal-specific formats are in [journals.md](journals.md).
 
+
+Contents: Title; Abstract or Summary; Panels; Introduction; Methods; Results; Discussion; Checks before submission, for every study type; Declarations; Supplementary material; Review articles.
+
 ## Title
 
 - Name the topic, population and setting. Add place, period or scale where it matters: `in 120 countries`, `1990–2021`.

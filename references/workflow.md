@@ -63,7 +63,7 @@ The researcher is the author and answers for every claim. The researcher decides
 
 ## Other reviews and other models
 
-When the researcher asks for another model's review, send the material read-only, check every comment against the material and the evidence, and give each a verdict: holds, with the fix; or does not hold, with the reason. Leave no comment unchecked.
+When the researcher asks for another model's review, send the material read-only, check every comment against the material and the evidence, and give each a verdict: holds, with the fix; or does not hold, with the reason. Leave no comment unchecked, write the fixes yourself, and reject suggestions that swap plain words for formal ones (`markedly`, `thereby`, `fundamentally`).
 
 ## Briefing a supervisor
 

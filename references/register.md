@@ -4,6 +4,9 @@ Four kinds of text that do not belong in a research paper. Each section lists th
 
 The test for every sentence: does it report the research (what was studied, how, what was found, what it means), or does it report the writing, the software, or the authors' worries? Only the first kind stays.
 
+
+Contents: Process and metadata narration; Engineering register; Defensive writing; Internal material.
+
 ## Process and metadata narration
 
 Text about the document, its history or its production.

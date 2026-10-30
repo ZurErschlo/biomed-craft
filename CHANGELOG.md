@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.5.1
+
+Released 2026-10-30.
+
+- Leaner `SKILL.md`, checked against Anthropic's skill authoring guidance: each rule stated once (the four lists, second opinions now only in `references/workflow.md`), study-type files linked directly so every reference is one level from `SKILL.md`, and maintainer-only files marked as such.
+- Contents lines at the top of the reference files longer than 100 lines; the figure-diagram layout and the LEX-04 rates stated in one place each.
+
 ## 2.5.0
 
 Released 2026-10-30.

@@ -2,6 +2,9 @@
 
 Synthetic before-and-after pairs. None is taken from a real manuscript; numbers are invented. Rule IDs show what changed. The rewrites are written as quotations so that `scan.py` checks them along with the rest of the skill.
 
+
+Contents: 1. Introduction opening; 2. Contrast frames in a Discussion; 3. Methods written as engineering; 4. Results with interpretation; 5. Defensive tails; 6. Limitations; 7. Signposts and verdicts; 8. Abstract Interpretation (Lancet style); 9. Figure legend; 10. Text inside a figure (ggplot2); 11. Table note; 12. Protocol; 13. Response to reviewers; 14. Slide; 15. Supplementary parameter table row; Leave these alone.
+
 ## 1. Introduction opening
 
 ```text

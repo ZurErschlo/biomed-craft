@@ -4,6 +4,9 @@ Three layers apply to every manuscript. The general standard below covers wordin
 
 Journals differ mostly in structure and format; good wording is much the same in all of them. When the target journal is not settled, use the general standard alone. Follow the journal's instructions for authors first; this file summarises what its published research articles do. Rules are set per journal, not per publisher: eClinicalMedicine and Lancet Regional Health, for example, do not follow The Lancet's number style.
 
+
+Contents: General standard (no journal named); Lancet family (The Lancet and its specialty journals); NEJM; JAMA and the JAMA specialty journals; BMJ; Nature family (Nature, Nature Medicine and the Nature research journals); Science; Science Translational Medicine; Cell; Annals of Internal Medicine.
+
 ## General standard (no journal named)
 
 - Structure: title, structured abstract (Background, Methods, Results, Conclusions), Introduction, Methods, Results, Discussion. Results open with the flow of participants or the derivation of the sample, with numbers. The Discussion opens with the principal finding, then compares it with other evidence, gives strengths and limitations, and draws implications within the population and setting studied.
