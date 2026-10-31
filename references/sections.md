@@ -10,7 +10,7 @@ Contents: Title; Abstract or Summary; Panels; Introduction; Methods; Results; Di
 - Name the topic, population and setting. Add place, period or scale where it matters: `in 120 countries`, `1990–2021`.
 - Lancet family: topic, colon, design label with an article: `…: a randomised, placebo-controlled trial`, `…: a modelling study`. BMJ: the same without the article: `…: prospective cohort study`. NEJM: a short noun phrase with no design label. JAMA: often `Association of X With Y Among Z`.
 - Clinical titles in Lancet, NEJM, BMJ and JAMA do not state the result. NEJM rewrote one author's result-stating title into a neutral one before publication.
-- Titles avoid questions, puns, `novel`, `first`, `insights` and abbreviations other than trial acronyms.
+- Titles avoid questions, puns, `novel`, `first`, `insights` and abbreviations; a trial acronym only where the journal's title style puts one.
 
 ## Abstract or Summary
 

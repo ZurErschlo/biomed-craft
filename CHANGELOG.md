@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.6.0
+
+Released 2026-11-01.
+
+- New check FMT-06 in `scan.py`: an abbreviation used before its full term or never defined. The running text keeps one list of definitions and every legend and table note its own; reference lists, back matter, registry numbers and terms readers know (CI, SD, HIV, WHO and the like) are skipped. Review level, density level in laboratory and computational papers, where gene and cell-line names fill the text.
+- Core rules in `SKILL.md`: professional and direct wording (the field's standard term or the plain word, no shorthand coined during the work), and no abbreviation before its full term in each part and each separate document. `references/craft.md` shows how; `references/format.md` covers trial acronyms in titles and published names of instruments and databases.
+- `references/study-types/trial.md`: a sample size fixes power and α and solves for the minimum number, takes the standard deviation of the analysed outcome from its source (never a standard error), matches the design, and states α the same way everywhere.
+- `references/workflow.md`: a finished plan, analysis or document gets an independent review by another model or agent where one is available; co-authors' current copy, wording and comments are respected; the abstract, text, tables, supplement, registration and letters are checked against each other before submission.
+- Saved Word files must open without repair or field-update prompts.
+
 ## 2.5.2
 
 Released 2026-10-30.

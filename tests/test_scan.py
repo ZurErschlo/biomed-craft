@@ -85,6 +85,24 @@ class BuiltinChecksTest(unittest.TestCase):
         self.assertIn("STR-05", self.scan_text("Why does uptake vary so much? Access is the main reason."))
         self.assertNotIn("STR-05", self.scan_text("Uptake varied by district."))
 
+    def test_abbreviations_need_their_full_term_first(self):
+        for text in EXAMPLES["FMT-06"]["hit"]:
+            self.assertIn("FMT-06", self.scan_text(text), text)
+        for text in EXAMPLES["FMT-06"]["miss"]:
+            self.assertNotIn("FMT-06", self.scan_text(text), text)
+        defined_in_text = "Forced expiratory volume in 1 s (FEV1) fell.\n\nFigure 1: FEV1 by group."
+        self.assertIn("FMT-06", self.scan_text(defined_in_text))  # each legend defines its own
+        with_references = "Use of ivacaftor rose.\n\n# References\n\n1. Smith AB, Jones CD. CFTR modulators. 2020."
+        self.assertNotIn("FMT-06", self.scan_text(with_references))
+        self.assertNotIn("FMT-06", self.scan_text("Use of ETI rose.", doc="response"))
+        named = "Tocilizumab in adults with COVID-19 (RECOVERY): a randomised trial. We searched PubMed and Embase."
+        self.assertNotIn("FMT-06", self.scan_text(named))
+        early_back_matter = "## Data sharing\n\nData will be shared.\n\n## Methods\n\nUse of ETI rose."
+        self.assertIn("FMT-06", self.scan_text(early_back_matter))  # back matter ends at the next heading
+        self.assertIn("FMT-06", self.scan_text("Rates rose. CKD, which affects 10% of adults, is common."))
+        self.assertNotIn("FMT-06", self.scan_text("*Pseudomonas aeruginosa* (PsA) was common. PsA was rare in 2019."))
+        self.assertNotIn("FMT-06", self.scan_text("Stage IIIA disease. Two reviewers (AB and CD) used REDCap."))
+
     def test_response_letters_may_describe_revisions(self):
         text = "As requested by the reviewer, we added a sensitivity analysis."
         self.assertIn("META-02", self.scan_text(text))

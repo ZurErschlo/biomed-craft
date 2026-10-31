@@ -29,9 +29,11 @@ Journal-specific forms are in [journals.md](journals.md). Whatever the journal, 
 
 ## Abbreviations
 
-- Define at first use in the abstract and again in the main text, and in each legend and table note.
-- Abbreviate only terms used at least three times; never in the title except trial acronyms.
+- No abbreviation before its full term. Define it at first use in the abstract, again in the main text, and in each legend, table note and supplement. A protocol, consent form, cover letter or slide deck (speaker notes included) is read on its own and defines its own.
+- Abbreviate only terms used at least three times. Titles spell terms out; a trial acronym goes in a title only where the journal's title style puts one (`… (ACRONYM): a randomised controlled trial`).
+- Terms readers of the journal know need no definition (CI, SD, IQR, DNA, HIV, WHO and the like; the journal's own list wins). Instruments, trials, databases and software keep their published names, introduced at first use with the full name where one exists (`the EuroQol five-dimension five-level questionnaire (EQ-5D-5L)`) or with what they are.
 - Do not abbreviate everyday words to save space.
+- `scan.py` flags an abbreviation used before its definition or never defined (FMT-06). The abstract and the main text share one list of definitions in the script, so check the definitions in the main text by eye.
 
 ## Spelling and grammar
 

@@ -1,5 +1,5 @@
 {
-  "version": "2.5.2",
+  "version": "2.6.0",
   "levels": {
     "must": "Fix on sight: leading journals almost never print this, or it is internal material.",
     "review": "Judge in context: often a tell, sometimes the right word.",
@@ -2044,6 +2044,40 @@
         ],
         "miss": [
           "Twelve patients died."
+        ]
+      }
+    },
+    {
+      "id": "FMT-06",
+      "category": "FMT",
+      "level": "review",
+      "levels": {
+        "laboratory": "density",
+        "computational": "density"
+      },
+      "scopes": [
+        "prose",
+        "caption",
+        "slide"
+      ],
+      "docs": [
+        "manuscript",
+        "protocol",
+        "plan",
+        "slides"
+      ],
+      "kind": "builtin",
+      "hint": "Abbreviation used before its full term. Write the term in full at first use with the abbreviation in parentheses, in the abstract, the main text and each legend, table note or separate document; introduce named instruments, trials and databases with their full name or what they are.",
+      "examples": {
+        "hit": [
+          "Infection with PsA was common.",
+          "Infection with PsA was common. Pseudomonas aeruginosa (PsA) was found in 40% of samples.",
+          "Figure 2: Change in FEV1 by group."
+        ],
+        "miss": [
+          "Pseudomonas aeruginosa (PsA) was common. PsA was found in 40% of samples.",
+          "Figure 2: Change in FEV1 by group. FEV1=forced expiratory volume in 1 s.",
+          "The risk ratio was 1·08 (95% CI 1·03–1·14) in people with HIV."
         ]
       }
     },

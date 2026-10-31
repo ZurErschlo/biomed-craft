@@ -17,6 +17,14 @@ How research articles in leading journals build sentences and paragraphs. Rates 
 - Write `is`, `are` and `has`; `serves as`, `stands as` and `represents` usually stand in for them (LEX-03).
 - The Lancet prefers `We did a…` and `was done` (3·6 per 10 000 words) to `performed` (1·2); other journals use performed and conducted freely.
 
+## Direct, not obscure
+
+- Use the standard term of the field where one exists (intervention, comparator, primary endpoint, allocation concealment, loss to follow-up) instead of paraphrasing it.
+- Name every thing so that a reader outside the project understands it on first reading. Shorthand coined during the work (`the week-4 drop`, `the anchor study`, `the fast arm`) becomes the full description: `the change in body weight from baseline to week 4`, `the 2019 cohort study in Malawi`, `the group given the 4-month regimen`.
+- Verbs over nouns made from verbs: `Mortality fell by 12%`, not `A reduction in mortality of 12% was observed`.
+- Plain words over rare synonyms and metaphors (`the treatment gap` only when it is defined and measured).
+- Precision is not obscurity: a technical term the readers' field uses is direct. Test a sentence by asking whether a reviewer from a neighbouring field could restate it after one reading.
+
 ## Tense, voice and length
 
 - Past tense for what was done and found; present tense for established knowledge, model structure, what a figure shows and interpretation.
@@ -48,7 +56,7 @@ How research articles in leading journals build sentences and paragraphs. Rates 
 
 ## Terms and citations
 
-- One term per concept; no rotating synonyms (patients, participants, subjects). Abbreviate only terms used at least three times; spell terms out in titles. Notation is identical in text, tables and figures.
+- One term per concept; no rotating synonyms (patients, participants, subjects). Notation is identical in text, tables and figures; abbreviations follow [format.md](format.md).
 - Labels used inside an analysis (actual, should, gap, scenario codes) get public names before they reach the manuscript.
 - Name earlier work by design and size or trial name (`two trials`, `CRASH-2`); `X et al` is rare in Lancet and NEJM text. Each claim cites the study that supports it.
 - Pointers to your own figures and tables go in parentheses at the end of the clause (`(figure 2; table 3)`); opening with `Table 2 shows` is uncommon (META-06).

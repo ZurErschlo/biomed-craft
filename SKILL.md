@@ -12,7 +12,7 @@ description: |
   logs, code and response letters, or when asked to 润色, 优化表达, 去AI味, 改写, 审校, 改图注, 写方案 or 核对文献.
 license: MIT
 metadata:
-  version: "2.5.2"
+  version: "2.6.0"
 ---
 
 # biomed-craft
@@ -70,7 +70,8 @@ Sentences:
 - Keep implications within the population, setting and design studied. When the input claims more, narrow it and say so.
 - Aim for 20–30 words per sentence on average and avoid runs of short sentences.
 - No dash to explain or rename what came before; leading journals print about one dash per 2000 words. Use a colon before an explanation that ends the sentence, parentheses or commas for an aside, or a new sentence.
-- One term per concept; abbreviations and symbols defined before use.
+- Professional and direct: the field's standard term (intervention, primary endpoint, allocation concealment) or the plain word, clear on first reading to a reader outside the project. No shorthand coined during the work, slogans or ornate words.
+- One term per concept. No abbreviation before its full term: define it at first use in the abstract, again in the main text, and in each legend, table note and separate document. Titles spell terms out, except a trial acronym where the journal's title style has one.
 
 Never in a manuscript:
 
@@ -116,5 +117,5 @@ Findings have three levels. Must: leading journals almost never print it, or it 
 ## Output
 
 - Edits: the revised text, then a short list of the kinds of change. Keep comments out of the manuscript.
-- Word files: edit the Word file, with tracked changes when the researcher asks for them; do not convert it to Markdown.
+- Word files: edit the Word file, with tracked changes when the researcher asks for them; do not convert it to Markdown. Check that the saved file opens without repair or field-update prompts.
 - Create no extra files (notes, summaries, manifests) unless asked. Apply the recommended edits without asking permission for each one.

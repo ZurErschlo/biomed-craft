@@ -125,6 +125,158 @@ def figure_findings(segment: ts.Segment, rules_by_id: dict[str, ts.Rule], label:
     return found
 
 
+# FMT-06: abbreviations used before their full term. The running text keeps one table of
+# definitions; every legend and table note keeps its own, in any order. Reference lists and
+# back matter are skipped, and so are terms readers know without a definition.
+ABBR_TOKEN = r"[A-Za-z][A-Za-z0-9]*(?:-[A-Za-z0-9]+)*"
+ABBR_WORD = re.compile(r"(?<![\w$-])" + ABBR_TOKEN + r"(?![\w$])")
+ABBR_DEFINITIONS = (
+    re.compile(r"(?<=[\w,’”'\"])\s*[(\[](" + ABBR_TOKEN + r")(?=[)\]]|[;,](?!\s*\d))"),  # Term (ABBR)
+    re.compile(r"(?<![\w-])(" + ABBR_TOKEN + r")\s*=\s*[A-Za-z][a-z]"),  # CI=confidence interval
+    re.compile(r"(?<![\w-])(" + ABBR_TOKEN + r")\s+(?:indicates|denotes|stands for|refers to)\b"),
+    re.compile(r"^(" + ABBR_TOKEN + r")\s*(?::|\t|\s[–—-]\s)\s*[A-Za-z]"),  # a list of abbreviations
+)
+# The first letters must agree: PsA (Pseudomonas aeruginosa); CI, confidence interval.
+ABBR_SPELLED_AFTER = (
+    re.compile(r"(?<![\w-])(" + ABBR_TOKEN + r")\s+\(([A-Za-z])[A-Za-z]"),
+    re.compile(r"(?:^|[;.]\s+)(" + ABBR_TOKEN + r"),\s+([A-Za-z])[a-z]"),
+)
+ABBR_LIST = re.compile(r"\bAbbreviations?\s*:", re.IGNORECASE)
+ABBR_KNOWN = frozenset("""
+    CI SD SE SEM IQR ANOVA DNA RNA mRNA cDNA PCR ATP HIV AIDS COVID-19 SARS-CoV-2 MRI CT ICU BMI
+    US USA UK EU UN WHO NIH NHS FDA EMA CDC SI MEDLINE Embase PubMed CINAHL PsycINFO MeSH SAS SPSS IU
+    CO2 H2O NaCl HCl NaOH KCl IgG IgM IgA IgE MHz GHz MBq GBq MPa GPa
+    CONSORT SPIRIT PRISMA STROBE TRIPOD STARD CHEERS GRADE MOOSE ARRIVE COREQ SRQR TIDieR AMSTAR ROBINS-I RoB
+    PROSPERO ISRCTN EudraCT ANZCTR ACTRN ChiCTR CTRI UMIN DRKS DOI ORCID ICMJE ISSN JAMA NEJM BMJ BMC PLOS PNAS
+    ImageJ REDCap RStudio NVivo FlowJo MATLAB WinBUGS OpenBUGS JAGS
+    PhD MD MPH MSc BSc MBBS MBChB DPhil DrPH ScD FRCP FRCPC FRACP MRCP FACP
+""".split())
+ABBR_SECTION_WORDS = frozenset("""
+    ABSTRACT SUMMARY BACKGROUND IMPORTANCE OBJECTIVE OBJECTIVES DESIGN SETTING PARTICIPANTS EXPOSURES
+    EXPOSURE INTERVENTIONS INTERVENTION MAIN OUTCOMES OUTCOME MEASURES METHODS RESULTS FINDINGS
+    INTERPRETATION FUNDING CONCLUSIONS CONCLUSION RELEVANCE INTRODUCTION DISCUSSION TRIAL DATA STUDY
+    REVIEW SOURCE AND THE OF
+""".split())
+EMPHASIS = re.compile(r"(?<!\w)[*_]+|[*_]+(?!\w)")
+INITIALS = re.compile(r"\([A-Z]{2,3}(?:\s*(?:,|and|&)\s*[A-Z]{2,3})+\)")  # two reviewers (AB and CD)
+REFERENCE_ENTRY = re.compile(r"^(?:\[?\d+[.\]]?\s*)?(?:[A-Z][a-z’'-]+ [A-Z]{1,3}[,.]\s*){2}.*\b(?:19|20)\d{2}\b")
+US_STATE = re.compile(r"[A-Z]{2}(?=,?\s*(?:USA\b|\d{5}))")  # Boston, MA, USA
+ABBR_NAME_LIKE = re.compile(r"^(?:Mc|Mac|De|Di|Du|La|Le)?(?:[A-Z][a-z]{2,})+$")  # PubMed, McCarthy
+BACK_MATTER = re.compile(
+    r"^(?:\d+\.?\s*)?(?:References|Bibliography|Literature cited|Works cited|Acknowledge?ments?|Contributors"
+    r"|Author contributions|Declaration of interests|Declarations? of competing interests?|Competing interests"
+    r"|Conflicts? of interest|Data sharing(?: statement)?|Data availability(?: statement)?|References and notes)"
+    r"(?:[*_]{2})?(?:\s*:|\s*$|\s+(?=[A-Z0-9\[]))",  # a heading, or a label followed by its text
+    re.IGNORECASE,
+)
+
+
+def _is_heading(text: str) -> bool:
+    """A short line without punctuation or digits, as headings are once Markdown or Word styles are gone."""
+    text = re.sub(r"^\d+(?:\.\d+)*\.?\s+", "", text.strip(" *_#"))
+    return 0 < len(ts.words(text)) <= 8 and not re.search(r"[.,;:\d]", text)
+
+
+def _abbreviation_core(token: str) -> str:
+    """Drop lowercase words joined by hyphens (anti-TNF, HIV-positive) and return what is left."""
+    parts = token.split("-")
+    while len(parts) > 1 and parts[0].isalpha() and parts[0].islower():
+        parts.pop(0)
+    while len(parts) > 1 and parts[-1].isalpha() and parts[-1].islower() and len(parts[-1]) >= 3:
+        parts.pop()
+    return "-".join(parts)
+
+
+def _is_abbreviation(core: str) -> bool:
+    if sum(c.isupper() for c in core) < 2 or sum(c.isdigit() for c in core) >= 4:  # registry and grant numbers
+        return False
+    if core in ABBR_SECTION_WORDS or re.fullmatch(r"[IVX]+[A-Ca-c]?|[A-Z]{7,}", core) or ABBR_NAME_LIKE.match(core):
+        return False  # section labels, stages and classes, capitalised words and names such as PubMed
+    return not re.fullmatch(r"CD\d+[a-z]?", core)
+
+
+def _abbreviation_known(core: str, defined: set[str]) -> bool:
+    forms = [core, core[:-1]] if core.endswith("s") else [core]
+    if any(form in defined or form in ABBR_KNOWN for form in forms):
+        return True
+    parts = core.split("-")
+    return len(parts) > 1 and all(not _is_abbreviation(p) or _abbreviation_known(p, defined) for p in parts)
+
+
+def _abbreviation_definitions(text: str) -> list[tuple[int, str]]:
+    found = []
+    for pattern in ABBR_DEFINITIONS:
+        for match in pattern.finditer(text):
+            found.append((match.start(1), _abbreviation_core(match.group(1))))
+    for pattern in ABBR_SPELLED_AFTER:
+        for match in pattern.finditer(text):
+            if match.group(1)[0].lower() == match.group(2).lower():
+                found.append((match.start(1), _abbreviation_core(match.group(1))))
+    listed = ABBR_LIST.search(text)
+    if listed:
+        found.extend((m.start(), _abbreviation_core(m.group(0))) for m in ABBR_WORD.finditer(text, listed.end()))
+    defined = []
+    for offset, core in found:
+        defined.append((offset, core))
+        if core.endswith("s"):
+            defined.append((offset, core[:-1]))
+    return sorted(defined)
+
+
+def abbreviation_findings(segments: list[ts.Segment], rule: ts.Rule, label: str,
+                          design: str = "", journal: str = "") -> list[Finding]:
+    units, later, in_back = [], {}, False
+    for segment in segments:
+        if segment.scope not in ("prose", "caption", "slide"):
+            continue
+        raw = segment.text.strip()
+        if segment.scope == "prose":  # back matter runs from its heading to the next heading
+            if BACK_MATTER.match(raw.lstrip("*_")):
+                in_back = True
+            elif in_back and _is_heading(raw):
+                in_back = False
+        text = EMPHASIS.sub(lambda m: " " * len(m.group(0)), ts.URL.sub(lambda m: " " * len(m.group(0)), segment.text))
+        if (in_back and segment.scope == "prose") or (text.isupper() and len(ts.words(text)) <= 8) \
+                or REFERENCE_ENTRY.match(text.strip()):
+            continue
+        text = INITIALS.sub(lambda m: " " * len(m.group(0)), text)
+        definitions = _abbreviation_definitions(text)
+        uses = [(m.start(), _abbreviation_core(m.group(0))) for m in ABBR_WORD.finditer(text)
+                if not US_STATE.match(text, m.start())]
+        units.append((segment, text, definitions, [u for u in uses if _is_abbreviation(u[1])]))
+        if segment.scope != "caption":
+            for _, core in definitions:
+                later.setdefault(core, segment.line)
+    findings: list[Finding] = []
+    defined: set[str] = set()
+    reported: set[str] = set()
+    for segment, text, definitions, uses in units:
+        caption = segment.scope == "caption"  # legends list their abbreviations at the end
+        table, seen = ({core for _, core in definitions}, set()) if caption else (defined, reported)
+        spans = ts.sentence_spans(text)
+        pending = iter(definitions + [(len(text) + 1, "")])
+        next_definition = next(pending)
+        for offset, core in uses:
+            while next_definition[0] <= offset:
+                table.add(next_definition[1])
+                next_definition = next(pending)
+            if _abbreviation_known(core, table) or core in seen:
+                continue
+            seen.add(core)
+            if caption:
+                where = "not defined in this legend or note. "
+            elif core in later:
+                where = f"defined only later, at line {later[core]}. "
+            else:
+                where = "never defined. "
+            findings.append(Finding(rule.id, rule.level_for(design, journal), rule.category, label, segment.line,
+                                    segment.scope, segment.source, core,
+                                    _excerpt(ts.sentence_at(text, spans, offset)), f"{core}: {where}{rule.hint}"))
+        for _, core in [next_definition, *pending]:
+            table.add(core)
+    return findings
+
+
 def scan_segments(segments: list[ts.Segment], rules: list[ts.Rule], label: str, file_format: str,
                   doc_type: str, design: str = "", journal: str = "") -> tuple[list[Finding], list[str]]:
     rules_by_id = {r.id: r for r in rules}
@@ -180,6 +332,9 @@ def scan_segments(segments: list[ts.Segment], rules: list[ts.Rule], label: str, 
                 findings.append(Finding("CODE-07", rule.level_for(design, journal), rule.category, label, first.line, "code",
                                         first.source, RANDOM_CALL.search(first.text).group(0),
                                         _excerpt(first.text), rule.hint))
+    abbreviations = rules_by_id.get("FMT-06")
+    if abbreviations is not None and doc_type in abbreviations.docs:
+        findings.extend(abbreviation_findings(segments, abbreviations, label, design, journal))
     return findings, prose_sentences
 
 

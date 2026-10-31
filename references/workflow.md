@@ -11,11 +11,11 @@ The researcher is the author and answers for every claim. The researcher decides
 | Design or structure | A comparison with published designs or model structures, the data that support each element, the complexity it adds, a draft diagram in published style. Reviews: eligibility, outcome hierarchy, synthesis plan | Strata, states, what is left out, definitions, counterfactuals | Finish the diagram and write the rationale into the plan |
 | Inputs and data | The list of parameters the design implies, each marked as taken from the literature, from country data, calibrated or assumed; a source register with page or table; conflicts between sources; the papers that need the researcher's library access | Contested values and the rules for choosing data (newest, official, the same source for every unit, real prices) | Extract and verify values, maintain the input tables, write the data script |
 | Plan freeze | The complete plan with one option for each item, a check that every step can be computed, and a statement of what was checked and what was not | Freeze the plan | Write the code, build in checks, run trial runs, fix bugs, settle minor gaps by precedent and say how each was settled |
-| Before an expensive run | Reviews of the code and plan (other models when asked), with a verdict on every finding; a decision table for design-level items; the cost and time of the run | Design-level items; permission to run | Run, monitor and record problems; fix pure bugs and rerun only when that was delegated |
+| Before an expensive run | Reviews of the code and plan, one of them by another model or agent, with a verdict on every finding; a decision table for design-level items; the cost and time of the run | Design-level items; permission to run | Run, monitor and record problems; fix pure bugs and rerun only when that was delegated |
 | Results check | Convergence, fit, validation and parameters at their bounds, failed results included, the likely causes ranked with tests of each | Accept with stated limitations, or revise by rules fixed in advance and never tuned unit by unit to fit | Carry out the approved revision; trial run before the formal run |
 | Presentation | How leading journals present the same kind of result; a proposed set in the order of the Results, each result in one figure or table, with short names | What goes in the main text and the supplement, what is highlighted, the names | Produce figures, tables and the Word files |
 | Interpretation and writing | Methods and Results drafted from the tables; the literature for the Introduction and Discussion; a language review | Claims, emphasis, limitations, target journal | Polish the language to the researcher's rules |
-| Reporting and submission | The reporting checklist, declarations, and a list of where the work departs from the registration | How to amend the registration and what to report; submission itself | Fill in the checklist and format the files |
+| Reporting and submission | The reporting checklist, declarations, a list of where the work departs from the registration, and a check that the abstract, text, tables, supplement, registration and letters give the same numbers, names and design | How to amend the registration and what to report; submission itself | Fill in the checklist and format the files |
 | Peer review and revision | Every comment verified, with a proposed action ([review-response.md](review-response.md)) | Which comments to accept, and how to answer the rest | Revise, then check that no number or claim changed unintentionally |
 
 ## Always stop for
@@ -63,7 +63,13 @@ The researcher is the author and answers for every claim. The researcher decides
 
 ## Other reviews and other models
 
-When the researcher asks for another model's review, send the material read-only, check every comment against the material and the evidence, and give each a verdict: holds, with the fix; or does not hold, with the reason. Leave no comment unchecked, write the fixes yourself, and reject suggestions that swap plain words for formal ones (`markedly`, `thereby`, `fundamentally`).
+An agent reviewing its own work misses what it got wrong. Before a finished plan, analysis or document goes back to the researcher, have another model or a separate agent review it, where one is available, and say so when none is. Send the material read-only and keep working on the problem while the review runs. Check every comment against the material and the evidence, and give each a verdict: holds, with the fix; or does not hold, with the reason. Leave no comment unchecked, write the fixes yourself, and reject suggestions that swap plain words for formal ones (`markedly`, `thereby`, `fundamentally`).
+
+## Documents shared with co-authors
+
+- Confirm which copy is current before editing, and never overwrite co-authors' text from an older or parallel copy.
+- Change only what was asked. Keep co-authors' wording, structure and sections; propose changes to their parts as a list or as comments.
+- Read their comments and tracked changes for content problems before revising. At submission, no comments or tracked changes remain unless the journal asks for a marked copy.
 
 ## Briefing a supervisor
 

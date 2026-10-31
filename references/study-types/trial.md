@@ -30,6 +30,7 @@ Changes made after the trial started go where CONSORT 2025 asks for them: in the
 - A composite outcome driven by its softest component: report every component.
 - Early stopping for benefit: give the stopping rule and say that the effect is likely overestimated.
 - Results generalised beyond a narrow population: report the screening funnel and how representative the participants are.
+- A sample size that cannot be reproduced or was worked backwards: fix the power (usually 80% or 90%) and α, and solve for the minimum number; never report the power that an available sample would reach. Give the difference to detect, the standard deviation or the control event rate, α with its sidedness, the power, the allocation ratio and the allowance for dropout, each with its source. Take the standard deviation of the outcome as it will be analysed (for a change from baseline, the standard deviation of the change) from the cited table, never a standard error. Use a method that matches the design: the number of arms and comparisons with any multiplicity adjustment, clusters, repeated measures and stages. State α the same way in the registration, protocol, analysis plan and paper.
 
 ## Journal requirements beyond CONSORT
 
