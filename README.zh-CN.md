@@ -8,7 +8,7 @@
 
 研究者始终是作者。研究问题、设计、决定结果的关键数值、结果解读和投稿内容由研究者决定；AI 为每个决定准备依据，完成底层工作（查找并核实文献和数据、检查数字前后一致、起草和润色），在约定的确认点停下来，并在每项任务结束时说明：做了什么，什么没做及原因，哪里做错了，哪些需要研究者决定。任何内容都不建立在猜测或凭记忆的数字上。
 
-skill 采用 [Agent Skills](https://agentskills.io) 格式，可用于 Claude Code、Codex 以及其他读取 `SKILL.md` 的 agent。
+skill 采用 [Agent Skills](https://agentskills.io) 格式，可用于任何读取 `SKILL.md` 的 agent；各 agent 从哪个文件夹读取，见[安装](#安装)。
 
 ## 为什么叫 craft
 
@@ -37,13 +37,31 @@ npx skills add ZurErschlo/biomed-craft
 /plugin install biomed-craft@biomed-craft
 ```
 
-或直接克隆到 agent 的 skills 文件夹：
+或者克隆一次，放进共享的 skills 文件夹：
 
 ```bash
-git clone https://github.com/ZurErschlo/biomed-craft.git ~/.claude/skills/biomed-craft
+git clone https://github.com/ZurErschlo/biomed-craft.git ~/.agents/skills/biomed-craft
 ```
 
-Codex 用 `~/.codex/skills/biomed-craft`。
+| Agent | 读取 skill 的文件夹 | 点名调用 |
+|---|---|---|
+| Codex | `~/.agents/skills` | `$biomed-craft` |
+| OpenCode | `~/.agents/skills` | 说“用 biomed-craft skill” |
+| DeepSeek Harness（`dsh`） | `~/.agents/skills` | 说“用 biomed-craft skill” |
+| Kimi Code | `~/.agents/skills` | 说“用 biomed-craft skill” |
+| Claude Code | `~/.claude/skills` | `/biomed-craft` |
+| Antigravity CLI（`agy`） | `~/.gemini/config/skills` | `/biomed-craft` |
+| Hermes | `~/.hermes/skills` | 说“用 biomed-craft skill” |
+
+后三个要链接到共享的那一份；Hermes 也可以在 `config.yaml` 的 `skills.external_dirs` 里加上 `~/.agents/skills`。
+
+```bash
+mkdir -p ~/.claude/skills && ln -s ~/.agents/skills/biomed-craft ~/.claude/skills/                 # Claude Code
+mkdir -p ~/.gemini/config/skills && ln -s ~/.agents/skills/biomed-craft ~/.gemini/config/skills/   # Antigravity CLI
+mkdir -p ~/.hermes/skills && ln -s ~/.agents/skills/biomed-craft ~/.hermes/skills/                 # Hermes
+```
+
+之后运行 `git -C ~/.agents/skills/biomed-craft pull`，所有 agent 用的 skill 一起更新。
 
 ## 使用
 
@@ -53,6 +71,8 @@ Codex 用 `~/.codex/skills/biomed-craft`。
 - “检查 research_plan.md 和 analysis/ 里的脚本。”
 - “筛选之前，核对这 120 个 PDF 是不是 included.ris 里对应的文章。”
 - “帮我回复审稿意见，这是意见和稿件。”
+
+装的 skill 多时，按上表点名调用 biomed-craft，免得 agent 选了别的通用写作 skill。
 
 脚本可以单独运行（Python 3.10 及以上，只用标准库；读 PDF 需要 `pdftotext`）：
 

@@ -1,6 +1,7 @@
 """Package-level checks: metadata, the skill's own prose and the rewrite cases. Offline."""
 
 import json
+import re
 import subprocess
 import sys
 import unittest
@@ -21,6 +22,24 @@ class PackageTest(unittest.TestCase):
         result = subprocess.run([sys.executable, str(SCRIPTS / "validate_package.py")], capture_output=True, text=True,
                                 encoding="utf-8")
         self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_validate_package_rejects_metadata_that_some_agents_misread(self):
+        import shutil
+        import tempfile
+        with tempfile.TemporaryDirectory() as directory:
+            copy = Path(directory) / "biomed-craft"
+            shutil.copytree(ROOT, copy, ignore=shutil.ignore_patterns(".git", "__pycache__", "calibration-texts"))
+            skill = copy / "SKILL.md"
+            skill.write_text(re.sub(r'(?m)^description: "(.*)"$', r"description: |\n  \1",
+                                    skill.read_text(encoding="utf-8")), encoding="utf-8")
+            labels = copy / "agents" / "openai.yaml"
+            labels.write_text(labels.read_text(encoding="utf-8").replace('short_description: "', 'short_description: "'
+                                                                         + "Longer label " * 5), encoding="utf-8")
+            result = subprocess.run([sys.executable, str(copy / "scripts" / "validate_package.py")],
+                                    capture_output=True, text=True, encoding="utf-8")
+            self.assertEqual(result.returncode, 1)
+            self.assertIn("SKILL.md description on one line", result.stderr)
+            self.assertIn("short_description must have 25-64 characters", result.stderr)
 
     def test_skill_prose_passes_its_own_scanner(self):
         documents = [ROOT / "SKILL.md"] + sorted(p for p in (ROOT / "references").rglob("*.md") if p.name != "sources.md")

@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.7.0
+
+Released 2026-11-01.
+
+- `SKILL.md` ends every draft, polish and review with a closing check, so that results depend less on the agent and model: `scan.py` on the result and `check_preservation.py` against the original, must-level findings fixed and the rest reported, and a check that cannot run listed under not done.
+- Script commands in `SKILL.md` start with `<skill>/`, the folder that holds `SKILL.md`, and the text says where to find that folder when the agent does not give its path, so agents that run commands from the project folder still reach the scripts.
+- Word files: when no available tool writes tracked changes that Word opens cleanly, the agent delivers the edited file with a table of changes and lists the tracked changes under not done.
+- Shorter labels: the `SKILL.md` description is one quoted line of 912 characters, and the Codex `short_description` in `agents/openai.yaml` has 62. `validate_package.py` checks both, and a test covers the check.
+- The READMEs install one copy in the shared skills folder, which Codex, OpenCode, DeepSeek Harness and Kimi Code read, link it for Claude Code, Antigravity CLI and Hermes, and show how to call the skill by name in each agent. `~/.codex/skills`, which Codex marks as deprecated, is dropped.
+
 ## 2.6.0
 
 Released 2026-11-01.

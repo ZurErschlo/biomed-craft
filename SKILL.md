@@ -1,18 +1,9 @@
 ---
 name: biomed-craft
-description: |
-  End-to-end help with biomedical research, from the research question to the published paper and the reply
-  to reviewers: study design, research plans and execution logs, data and evidence, analysis code, figures and
-  tables, manuscripts, reporting checklists and submission. Writes and polishes English to the standard of
-  leading journals (Lancet, NEJM, JAMA, BMJ, Nature, Science, Cell) and their major sub-journals, with the content
-  each study type needs: trials, observational and database studies, systematic reviews and meta-analyses,
-  prediction models, economic evaluations, disease models, Mendelian randomisation, diagnostic, laboratory, omics
-  and qualitative studies. The researcher decides; the agent does the groundwork with a craftsman's care,
-  verifies every source and number, learns the researcher's own style, and reports what it could not do. Use for drafting, polishing, reviewing or checking papers, plans,
-  logs, code and response letters, or when asked to 润色, 优化表达, 去AI味, 改写, 审校, 改图注, 写方案 or 核对文献.
+description: "Biomedical research from the question to the published paper: study design, research plans, execution logs, data and evidence, analysis code, figures and tables, manuscripts, reporting checklists, submission and peer review. Writes English to the standard of leading journals (Lancet, NEJM, JAMA, BMJ, Nature, Science, Cell and sub-journals), with the content each study type needs: trials, observational and database studies, systematic reviews and meta-analyses, prediction models, economic evaluations, disease models, Mendelian randomisation, diagnostic, laboratory, omics and qualitative studies. The researcher decides; the agent works with a craftsman's care in the researcher's own style, verifies every source and number and reports what it could not do. Use to draft, polish, review or check papers, plans, logs, code and replies to reviewers, or when asked to 润色, 优化表达, 去AI味, 改写, 审校, 改图注, 写方案 or 核对文献."
 license: MIT
 metadata:
-  version: "2.6.0"
+  version: "2.7.0"
 ---
 
 # biomed-craft
@@ -99,17 +90,17 @@ Figures and tables:
 
 ## Scripts
 
-Python 3.10 or later, standard library only; PDF input needs `pdftotext`. Paths are relative to this skill's folder.
+Python 3.10 or later, standard library only; PDF input needs `pdftotext`. `<skill>` is the folder that holds this `SKILL.md`. When the agent does not give its path, find `biomed-craft/SKILL.md` in `~/.agents/skills`, the agent's own skills folder or the project's `.agents/skills`, and quote the path if it contains spaces. Run the commands from the project folder; paths such as `scripts/scan.py` in the references are relative to `<skill>` as well.
 
 ```bash
-python3 scripts/scan.py manuscript.docx                        # wording findings; guesses the study type
-python3 scripts/scan.py --type economic --profile draft.md     # set the study type; compare with its reference group
-python3 scripts/scan.py --doc plan research_plan.md            # also --doc log and --doc code
-python3 scripts/check_numbers.py manuscript.docx               # percentages, intervals, abstract against text
-python3 scripts/check_fulltext.py included.ris fulltexts/      # each PDF is the article it is filed as
-python3 scripts/check_preservation.py original.docx revised.docx
-python3 scripts/style_diff.py draft.docx revised.docx           # the researcher's style habits, for the style file
-python3 scripts/calibrate.py ~/Zotero --texts calibration-texts --pmc scripts/corpus.json   # rebuild the reference rates
+python3 <skill>/scripts/scan.py manuscript.docx                           # wording findings; guesses the study type
+python3 <skill>/scripts/scan.py --type economic --profile draft.md        # set the study type; compare with its reference group
+python3 <skill>/scripts/scan.py --doc plan research_plan.md               # also --doc log and --doc code
+python3 <skill>/scripts/check_numbers.py manuscript.docx                  # percentages, intervals, abstract against text
+python3 <skill>/scripts/check_fulltext.py included.ris fulltexts/         # each PDF is the article it is filed as
+python3 <skill>/scripts/check_preservation.py original.docx revised.docx  # numbers, citations and cross-references kept
+python3 <skill>/scripts/style_diff.py draft.docx revised.docx             # the researcher's style habits, for the style file
+python3 <skill>/scripts/calibrate.py ~/Zotero --texts <skill>/calibration-texts --pmc <skill>/scripts/corpus.json   # rebuild the reference rates
 ```
 
 Findings have three levels. Must: leading journals almost never print it, or it is internal material. Review: judge in context. Density: normal in moderation and compared with leading-journal rates. Some levels depend on the study type or the journal: words that clinical papers avoid are normal in reviews and laboratory papers.
@@ -117,5 +108,6 @@ Findings have three levels. Must: leading journals almost never print it, or it 
 ## Output
 
 - Edits: the revised text, then a short list of the kinds of change. Keep comments out of the manuscript.
-- Word files: edit the Word file, with tracked changes when the researcher asks for them; do not convert it to Markdown. Check that the saved file opens without repair or field-update prompts.
+- Closing check: before handing back a draft, polish or review, run `scan.py` on the result with the matching `--doc` and `--type`, and `check_preservation.py` against the original when there is one. Fix every must-level finding, judge each review-level one and report what remains in the closing lists. To check text from the conversation, save it to a temporary file outside the project and delete the file afterwards. When the scripts cannot run, list the check under not done.
+- Word files: edit the Word file, with tracked changes when the researcher asks for them; do not convert it to Markdown. When no available tool writes tracked changes that Word opens cleanly, deliver the edited file with a table of changes (location, original, revised) and list the tracked changes under not done. Check that the saved file opens without repair or field-update prompts.
 - Create no extra files (notes, summaries, manifests) unless asked. Apply the recommended edits without asking permission for each one.

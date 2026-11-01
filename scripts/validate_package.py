@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Check biomed-craft's package files without external dependencies.
 
-Checks the skill metadata, version numbers, plugin manifests, local links,
-rule definitions and their documentation, and the calibration files.
+Checks the skill metadata, version numbers, plugin manifests, the labels in
+agents/openai.yaml, local links, rule definitions and their documentation,
+and the calibration files.
 Exit status 0 when everything passes, 1 otherwise.
 """
 
@@ -51,8 +52,12 @@ def check_skill() -> str:
     name = re.search(r"(?m)^name:\s*(\S+)\s*$", front)
     if not name or name.group(1) != "biomed-craft":
         problem("SKILL.md name must be biomed-craft")
-    description = re.search(r"(?ms)^description:\s*\|?\n?(.*?)(?=^\w[\w-]*:|\Z)", front)
-    text = " ".join(line.strip() for line in description.group(1).splitlines()) if description else ""
+    description = re.search(r"(?m)^description:[ \t]*(.*)$", front)
+    value = description.group(1).strip() if description else ""
+    if not re.fullmatch(r'"[^"\\]*"', value):
+        problem('Write the SKILL.md description on one line in double quotes, with no " or \\ inside: '
+                "simple front-matter parsers read neither block scalars nor escapes")
+    text = value.strip('"')
     if not text or len(text) > 1024:
         problem(f"SKILL.md description must have 1-1024 characters (has {len(text)})")
     for field in ("version:", "compatibility:", "allowed-tools:"):
@@ -70,6 +75,18 @@ def check_skill() -> str:
     if skill_files != [Path("SKILL.md")]:
         problem(f"Keep one SKILL.md at the repository root (found {skill_files})")
     return version.group(1)
+
+
+def check_agent_labels() -> None:
+    """Codex shows these labels in its skill list; its skill creator keeps short_description to 25-64 characters."""
+    fields = dict(re.findall(r'(?m)^\s+(\w+):\s*"([^"]*)"\s*$', read(ROOT / "agents" / "openai.yaml")))
+    if not fields.get("display_name"):
+        problem("agents/openai.yaml needs a display_name")
+    short = fields.get("short_description", "")
+    if not 25 <= len(short) <= 64:
+        problem(f"agents/openai.yaml short_description must have 25-64 characters (has {len(short)})")
+    if "$biomed-craft" not in fields.get("default_prompt", ""):
+        problem("agents/openai.yaml default_prompt must call $biomed-craft")
 
 
 def check_versions(skill_version: str) -> None:
@@ -186,6 +203,7 @@ def main() -> int:
     version = check_skill()
     if version:
         check_versions(version)
+    check_agent_labels()
     check_links()
     check_rules()
     check_calibration()

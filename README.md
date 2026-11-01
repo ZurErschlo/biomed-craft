@@ -8,7 +8,7 @@ An agent skill for biomedical research, from the research question to the publis
 
 The researcher stays the author. The researcher decides the question, the design, the values that drive the result, the interpretation and what is submitted; the agent prepares the evidence for each decision, does the groundwork (finding and verifying literature and data, checking that numbers agree, drafting and polishing), stops at defined confirmation points, and ends every task by reporting what was done, what was not done and why, what went wrong, and what the researcher needs to decide. Nothing rests on guesses or numbers recalled from memory.
 
-The skill uses the [Agent Skills](https://agentskills.io) format and works with Claude Code, Codex and other agents that read `SKILL.md`.
+The skill uses the [Agent Skills](https://agentskills.io) format and works with any agent that reads `SKILL.md`; [Installation](#installation) lists where each agent looks for it.
 
 ## Why craft
 
@@ -37,13 +37,31 @@ As a Claude Code plugin:
 /plugin install biomed-craft@biomed-craft
 ```
 
-Or clone it into your agent's skills folder:
+Or clone it once into the shared skills folder:
 
 ```bash
-git clone https://github.com/ZurErschlo/biomed-craft.git ~/.claude/skills/biomed-craft
+git clone https://github.com/ZurErschlo/biomed-craft.git ~/.agents/skills/biomed-craft
 ```
 
-For Codex use `~/.codex/skills/biomed-craft`.
+| Agent | Reads skills from | Call it with |
+|---|---|---|
+| Codex | `~/.agents/skills` | `$biomed-craft` |
+| OpenCode | `~/.agents/skills` | ask for the biomed-craft skill |
+| DeepSeek Harness (`dsh`) | `~/.agents/skills` | ask for the biomed-craft skill |
+| Kimi Code | `~/.agents/skills` | ask for the biomed-craft skill |
+| Claude Code | `~/.claude/skills` | `/biomed-craft` |
+| Antigravity CLI (`agy`) | `~/.gemini/config/skills` | `/biomed-craft` |
+| Hermes | `~/.hermes/skills` | ask for the biomed-craft skill |
+
+The last three need a link to the shared copy; Hermes can instead list `~/.agents/skills` under `skills.external_dirs` in its `config.yaml`.
+
+```bash
+mkdir -p ~/.claude/skills && ln -s ~/.agents/skills/biomed-craft ~/.claude/skills/                 # Claude Code
+mkdir -p ~/.gemini/config/skills && ln -s ~/.agents/skills/biomed-craft ~/.gemini/config/skills/   # Antigravity CLI
+mkdir -p ~/.hermes/skills && ln -s ~/.agents/skills/biomed-craft ~/.hermes/skills/                 # Hermes
+```
+
+`git -C ~/.agents/skills/biomed-craft pull` then updates the skill for every agent at once.
 
 ## Usage
 
@@ -53,6 +71,8 @@ For Codex use `~/.codex/skills/biomed-craft`.
 - "Check research_plan.md and the scripts in analysis/."
 - "Check that these 120 PDFs are the articles in included.ris before we screen them."
 - "Help me answer the reviewers; here are the comments and the manuscript."
+
+When many skills are installed, call biomed-craft by name as the table above shows, so that the agent does not pick a general writing skill instead.
 
 The scripts run on their own (Python 3.10 or later, standard library only; PDF input needs `pdftotext`):
 
