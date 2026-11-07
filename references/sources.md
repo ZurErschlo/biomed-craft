@@ -54,6 +54,17 @@ Rules from these sources that do not suit research articles were left out: banni
 - Bossuyt PM, Reitsma JB, Bruns DE, et al. STARD 2015. BMJ 2015; 351: h5527. https://doi.org/10.1136/bmj.h5527
 - Stevens GA, Alkema L, Black RE, et al. GATHER statement. Lancet 2016; 388: e19–23. https://doi.org/10.1016/S0140-6736(16)30388-9
 
+## Methods guidance
+
+- Deeks JJ, Higgins JPT, Altman DG, et al. Chapter 10: analysing data and undertaking meta-analyses. In: Higgins JPT, Thomas J, Chandler J, et al, eds. Cochrane Handbook for Systematic Reviews of Interventions, version 6.5.1. Cochrane, 2026. https://www.cochrane.org/handbook
+- Bender R, Friede T, Koch A, et al. Methods for evidence synthesis in the case of very few studies. Res Synth Methods 2018; 9: 382–92. https://doi.org/10.1002/jrsm.1297
+- Röver C, Bender R, Dias S, et al. On weakly informative prior distributions for the heterogeneity parameter in Bayesian random-effects meta-analysis. Res Synth Methods 2021; 12: 448–74. https://doi.org/10.1002/jrsm.1475
+- Röver C. Bayesian random-effects meta-analysis using the bayesmeta R package. J Stat Softw 2020; 93 (6). https://doi.org/10.18637/jss.v093.i06
+- Gomersall JS, Jadotte YT, Xue Y, et al. Conducting systematic reviews of economic evaluations. Int J Evid Based Healthc 2015; 13: 170–78. https://doi.org/10.1097/XEB.0000000000000063
+- Schnitzler L, Roberts TE, Jackson LJ, et al. A consensus-based checklist for the critical appraisal of cost-of-illness (COI) studies. Int J Technol Assess Health Care 2023; 39: e34. https://doi.org/10.1017/S0266462323000193
+- Turner HC, Lauer JA, Tran BX, et al. Adjusting for inflation and currency changes within health economic studies. Value Health 2019; 22: 1026–32. https://doi.org/10.1016/j.jval.2019.03.021
+- Robinson LA, Hammitt JK, O'Keeffe L. Valuing mortality risk reductions in global benefit-cost analysis. J Benefit Cost Anal 2019; 10 (suppl 1): 15–50. https://doi.org/10.1017/bca.2018.26
+
 ## Research plans, logs and code
 
 - Wilson G, Bryan J, Cranston K, et al. Good enough practices in scientific computing. PLoS Comput Biol 2017; 13: e1005510. https://doi.org/10.1371/journal.pcbi.1005510

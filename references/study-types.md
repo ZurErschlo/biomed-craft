@@ -6,7 +6,7 @@ Each file below covers one type: the content the paper must contain, what review
 
 | Type | `--type` | Guideline | File |
 |---|---|---|---|
-| Health economic evaluation | `economic` | CHEERS 2022 | [study-types/economic.md](study-types/economic.md) |
+| Health economic evaluation or cost of illness | `economic` | CHEERS 2022 (evaluations); none agreed (cost of illness) | [study-types/economic.md](study-types/economic.md) |
 | Disease and epidemiological modelling | `modelling` | GATHER, EPIFORGE 2020 | [study-types/modelling.md](study-types/modelling.md) |
 | Systematic review and meta-analysis | `systematic-review` | PRISMA 2020, PRISMA-S, SWiM, PRISMA-ScR | [study-types/systematic-review.md](study-types/systematic-review.md) |
 | Clinical prediction model | `prediction` | TRIPOD+AI, PROBAST | [study-types/prediction.md](study-types/prediction.md) |

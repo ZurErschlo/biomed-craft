@@ -1,6 +1,6 @@
 # Systematic reviews and meta-analyses
 
-Intervention reviews, meta-analyses of proportions and prevalence, reviews of costs and economic evaluations, and scoping and bibliometric reviews. Report to PRISMA 2020, with PRISMA-S for the searches, PRISMA-P for the protocol, SWiM for synthesis without meta-analysis and PRISMA-ScR for scoping reviews.
+Intervention reviews, meta-analyses of proportions and prevalence, reviews of costs and economic evaluations, and scoping and bibliometric reviews. Report to PRISMA 2020, with PRISMA-S for the searches, PRISMA-P for the protocol, SWiM for synthesis without meta-analysis and PRISMA-ScR for scoping reviews. The guideline follows the review's own design: a review of economic evaluations or burden studies reports to PRISMA, while CHEERS and GATHER cover the studies it includes.
 
 ## Before the search
 
@@ -16,16 +16,19 @@ Intervention reviews, meta-analyses of proportions and prevalence, reviews of co
 - Before screening full texts, check that each retrieved file is the article it is filed as (`scripts/check_fulltext.py`). Count articles that could not be obtained, and files that turned out to be the wrong article, as not retrieved.
 - Keep records, reports and studies apart: map reports to studies, merge reports that share participants, and remove secondary compilations that repeat primary studies.
 - Extract with a piloted form, in duplicate. Retrieve the supplement of every included study. The second extractor checks against the source without seeing the first values.
+- Code study features (cost components, methods, model types, settings) into the broad classes of an established framework or guideline, cited in the Methods. Merge classes that stay empty or sparse unless the gap is itself a finding, and check that the scheme as a whole has a precedent, as well as each class.
 - Keep values taken from papers in a hand-maintained workbook, with the page or table for each value. Log every edit (old value, new value, reason, page). Analysis scripts read the workbook and never write to it. The workbook holds only values taken from the included studies; screening counts for the flow diagram are kept elsewhere.
 - Freeze the included set before analysis. Reconcile every count in the abstract, flow diagram, text, tables and appendix from the lists of identifiers, overlapping subsets included.
 
 ## Synthesis
 
-- Decide for each outcome, after extraction, whether pooling makes sense.
-- Random effects: name the estimator (REML), use Hartung–Knapp intervals, report τ² and I², and give a 95% prediction interval with every pooled estimate from three or more studies, noting that it is imprecise below five. When heterogeneity is high, phrase the conclusion around the prediction interval.
+- Decide for each outcome, after extraction, whether pooling makes sense. State the pooling rule in the Methods (comparable measures, a minimum number of estimates), apply it to every group, and show which estimates were pooled and why the others were not.
+- Random effects: name the estimator (REML), use Hartung–Knapp intervals, report τ² and I², and give a 95% prediction interval with every pooled estimate from three or more studies, noting that it is imprecise below five. Define the prediction interval at first use as the range expected to contain the true effect in a new study like those included, which shows how much the true effects vary; readers otherwise take it for a confidence interval. When heterogeneity is high, phrase the conclusion around the prediction interval.
+- With two to four studies, the heterogeneity is poorly estimated and Hartung–Knapp intervals become very wide; a Bayesian random-effects model with a weakly informative prior on the heterogeneity (`bayesmeta` in R) is a recognised alternative. Name the prior, justify its scale from published guidance or empirical distributions, and test another, since with so few studies the prior can change the result.
 - Proportions: a generalised linear mixed model on the logit scale as the main analysis, with exact or Wilson intervals; the Freeman–Tukey transformation only as a sensitivity analysis, because its back-transformation can mislead. If the main model can fall back to another, say which model produced each estimate.
 - Zero events: the mixed model needs no continuity correction. Do not drop studies with no events in either arm by default, and do not use a fixed 0·5 correction as the main analysis.
 - Several estimates from one sample: choose one by a stated rule and show the rule in a selection table, or model the dependence (multilevel models with t-based inference).
+- Estimates for non-overlapping countries or groups in one study come from different samples that share methods: keep them all and add a random effect for the study (a multilevel model). An overall estimate and its subgroups share participants and follow the rule above.
 - Take the point estimate and its variance from the same quantity on the same scale. Never build an interval from medians of interval ends, and never combine fields from different rows of the source into one summary row.
 - Convert medians to means with an established method and state its assumption; do not convert zero-inflated distributions.
 - Costs: back-convert to local currency, inflate with a named index, convert with a stated method (for example Turner and colleagues, 2019), and keep one currency unit within each range or figure.
@@ -36,8 +39,8 @@ Intervention reviews, meta-analyses of proportions and prevalence, reviews of co
 
 ## Appraisal and certainty
 
-- Match the tool to the design: RoB 2 for each result of a trial; ROBINS-I, with its version stated; QUADAS-2 for diagnostic accuracy; QUIPS for prognostic factors; PROBAST for prediction models; JBI checklists for prevalence studies. Report item-level judgements; give no total score or band unless the tool defines one.
-- Grade the certainty of each pooled outcome with GRADE, or say why GRADE is not used and give a credibility summary instead: number of studies and participants, estimate, prediction interval, I², weight from studies with critical flaws, small-study test and the range across sensitivity analyses. A pooled estimate that a forest plot shows may appear again in this table, beside what the plot cannot hold; otherwise each number appears in one place ([figures-tables.md](../figures-tables.md)).
+- Match the tool to the design: RoB 2 for each result of a trial; ROBINS-I, with its version stated; QUADAS-2 for diagnostic accuracy; QUIPS for prognostic factors; PROBAST for prediction models; JBI checklists for prevalence studies; for economic evaluations, a checklist that comparable reviews use, such as the JBI checklist for economic evaluations (CHEERS covers reporting only); for cost-of-illness studies, the consensus checklist of Schnitzler and colleagues (2023). Report item-level judgements; give no total score or band unless the tool defines one, and no summary figure of quality that comparable reviews do not show.
+- Grade the certainty of each pooled effect estimate with GRADE, or say why GRADE is not used and give a credibility summary instead: number of studies and participants, estimate, prediction interval, I², weight from studies with critical flaws, small-study test and the range across sensitivity analyses. A pooled estimate that a forest plot shows may appear again in this table, beside what the plot cannot hold; otherwise each number appears in one place ([figures-tables.md](../figures-tables.md)). For pooled costs and burden, follow comparable reviews: when those grade nothing, leave grading out of the text and mark PRISMA items 15 and 22 as they do.
 - Scoping reviews: appraisal is optional and is never called risk of bias. GRADE-CERQual rates confidence in review findings, not in individual studies.
 
 ## Reporting
@@ -47,7 +50,7 @@ Intervention reviews, meta-analyses of proportions and prevalence, reviews of co
 - Risk of bias and small-study results go in the Results, as well as the appendix.
 - Pooled single-arm rates are descriptive and never stand in for a treatment effect. Say why single arms were taken from trials.
 - Limitations state the language limits, grey literature, the search date and the definition of scope, and the scope reads the same in every section.
-- Methods describe what was done. A claim to be the first review is checked against a fresh search before it goes in.
+- Methods describe what was done; a method that was not used is mentioned only where a reporting item asks for it, or as a change from the registered protocol. A claim to be the first review is checked against a fresh search before it goes in.
 - A search more than about twelve months old at submission is updated; journals reject reviews for stale searches.
 - Comments raised by co-authors are tracked and closed before submission. Declarations match the submission history, and any AI help with screening, extraction or appraisal is disclosed.
 

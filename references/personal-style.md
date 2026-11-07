@@ -6,7 +6,7 @@ The skill brings the standard; the researcher brings the style. Each researcher 
 
 - `~/.biomed-craft/style.md`, or `style.md` in the folder named by `BIOMED_CRAFT_HOME`. Plain Markdown that any agent can read and the researcher can edit.
 - Create it from the template below the first time a style entry is confirmed. If the agent cannot write outside the project, ask once for permission; if writing stays blocked, show the exact lines and ask the researcher to paste them in.
-- Style only: no numbers, data, project names, people or content. About 150 lines at most.
+- Style only: no numbers, data, project names, other people's names or content. About 150 lines at most.
 
 ## Reading it
 
@@ -55,6 +55,7 @@ Read by biomed-craft before writing. One entry per line: the rule, then
 ## Document: code
 ## Document: response
 ## Document: slides
+## Document: talk script
 
 ## Study type: systematic-review
 

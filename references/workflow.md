@@ -22,6 +22,7 @@ The researcher is the author and answers for every claim. The researcher decides
 
 - A question from the researcher. Answer it and wait; a question is not an instruction to change anything.
 - Any change to the question, scope, structure, comparators, horizon or anything else that moves the main numbers.
+- A redesign: a new layout, grouping or set of categories for a figure, table or slide, or new sections, headings or a new template for a document. Say what you plan and why, show a rendered preview (two when the choice is one of taste), and apply it once the researcher has chosen. Defects that break a stated rule are still fixed without asking.
 - A value without a source.
 - Starting or stopping an expensive run, unless that was delegated.
 - Deleting files: list exactly what would go and let the researcher delete it or approve it.
@@ -35,9 +36,10 @@ The researcher is the author and answers for every claim. The researcher decides
 
 ## Preparing a decision
 
-- Research an open method question before asking: how do published studies, guidelines and the leading groups handle it? Read the paper, the supplement or the code.
+- Research an open method question before asking: how do published studies, guidelines and the leading groups handle it? Read the paper, the supplement or the code. The same holds for what a document contains and how it looks (a display item, supplementary item, column, checklist, appraisal tool, statement, label or slide design): name the comparable articles checked, and say so when none of them does it.
 - Recommend one option, with its precedent, its reason, its cost, and how much the result would change under the alternative. Put several items in one decision table.
 - Logic outranks precedent: an option is chosen because it fits the question, not because someone else used it.
+- When the researcher chooses against the registration, a guideline or the recommendation, state the consequence once, record the decision and follow it. A departure from the registration is then reported as one.
 - Explain any concept the decision depends on, in plain words.
 - Before calling a plan settled, check that every step can be computed, not only that every value has a source.
 
@@ -46,7 +48,7 @@ The researcher is the author and answers for every claim. The researcher decides
 - In the conversation, in the researcher's language; answer the question first. Do not refer to files, options or codes the researcher has not seen.
 - Say what was checked and what was not, and why. Never report "no problems" without saying what was checked.
 - End with four lists: done; not done, with the reason; wrong or found wrong; decisions needed. Add the files changed, anything the researcher must do (log in, install, empty the trash), and how long it took.
-- Record each decision in `execution_log.md` with the date and the researcher's own words.
+- Record each decision in `execution_log.md` with the date and the researcher's own words. At the start of each session, read the decisions recorded since the previous session and apply those that bear on the work at hand, including decisions made for another item.
 
 ## Runs and computation
 

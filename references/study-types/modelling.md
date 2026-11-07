@@ -25,7 +25,7 @@ Transmission models (compartmental, individual-based, metapopulation), microsimu
 - Calibration that is opaque or overfitted: name targets and method, show the fit with the data points, and check a feature the model was not fitted to.
 - No validation: hold out recent data, cross-validate, freeze projections before trial results are known, or compare with an independent trial, registry or published estimate.
 - Uncertainty understated: propagate parameter and stochastic uncertainty, report ranges across models, and never give scenario results as point estimates alone.
-- Scenarios chosen arbitrarily: anchor them to real targets or to the best-performing programmes, always include the status quo, and tabulate coverage and timing.
+- Scenarios chosen arbitrarily: anchor them to real targets or to the best-performing programmes, always include the status quo, tabulate coverage and timing, and say why each scenario or combination was chosen. A figure shows the strategies that answer the question; a cost-effectiveness plane keeps the dominated ones.
 - Counterfactuals over-read: call them illustrative, list their assumptions (no behaviour change, for example), and hedge in the interpretation.
 - Sparse data in some settings: show data coverage and quality, validate by leaving one setting out, and flag the settings with little data.
 - A result that rests on one assumption: test that assumption explicitly, report the test in the Results, and say which way conservative choices push the estimate.
@@ -63,6 +63,7 @@ Transmission models (compartmental, individual-based, metapopulation), microsimu
 
 - Usual order: schematic or input coverage; fit to data; projections by scenario with uncertainty ribbons; averted outcomes or scenario comparisons; maps; decomposition of forecasts. Sensitivity results go to the appendix.
 - Lancet legends: a title phrase, then what lines, points and shading show, panel letters, and abbreviations (`UI=uncertainty interval.`). Lancet table notes: `Data are n (95% UI).`, then the rounding rule (counts to three significant figures, rates to one decimal place), then symbols. Real-time analyses date their estimates in the legend.
+- A balancing term (a calibration residual, an unexplained remainder) is never plotted as a cause or category. Report its size in the supplement, or in the main text when it is large.
 
 ## Discussion
 

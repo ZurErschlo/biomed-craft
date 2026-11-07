@@ -1,6 +1,6 @@
 # Health economic evaluations
 
-Cost-effectiveness, cost-utility, cost-benefit and budget impact analyses, built on a model or alongside a trial. Report to CHEERS 2022 and put the completed checklist in the supplement. For a trial-based analysis, write a health economic analysis plan (HEAP) before the data are unblinded and cite it.
+Cost-effectiveness, cost-utility, cost-benefit and budget impact analyses, built on a model or alongside a trial. Report to CHEERS 2022 and put the completed checklist in the supplement. For a trial-based analysis, write a health economic analysis plan (HEAP) before the data are unblinded and cite it. Cost-of-illness and economic burden studies follow the costing rules here (perspective, cost categories, currency, price year) and have their own section below.
 
 ## Content the paper must contain
 
@@ -86,9 +86,17 @@ Template for a Lancet Findings section: `[X] would avert [N] DALYs (95% UI a–b
 ## Numbers and wording
 
 - Round ICERs to whole currency units or about three significant figures (£45 200); keep thresholds round; give QALY differences to two to four decimals.
-- First use `US$`, then `$`; international dollars as `I$`.
+- First use `US$`, then `$`; international dollars as `I$` or `Int$`, one form throughout.
 - Economic evaluations run longer sentences than other research articles, because a result carries an estimate, its interval and a threshold. Split a sentence only when it holds two results.
 - `utilisation` is a costing term and `robust to` describes a sensitivity result; both stay.
+
+## Cost-of-illness and economic burden studies
+
+- No reporting guideline is agreed for these studies; cover the items of the consensus checklist for appraising them (Schnitzler and colleagues, 2023).
+- Report the health burden first (cases, deaths or disability-adjusted life-years), then the economic burden, and say why the health metric fits the question.
+- Give the total cost and its components for the stated perspective: direct medical costs, direct non-medical costs (transport, food, accommodation) and productivity losses. A total never replaces its components.
+- Welfare losses, from the value of a statistical life or a full-income approach, sit beside the cost total and are not added to it: willingness to pay for a lower risk of death is assumed to include lost earnings and out-of-pocket medical costs (Robinson and colleagues, 2019).
+- One currency in each figure, international dollars when countries are compared; a table may give a second currency in its own column.
 
 ## Supplement
 
