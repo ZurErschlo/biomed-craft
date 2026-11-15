@@ -1,6 +1,6 @@
 # Analysis code and comments
 
-Analysis scripts are written for the researcher to run and read. Each script opens in RStudio and runs section by section, so the results can be checked as they appear.
+Analysis scripts are written for the researcher to run and read. Each script opens in RStudio and runs section by section, so the results can be checked as they appear. The agent still reruns a script itself after every change ([workflow.md](workflow.md)).
 
 ## Layout
 
@@ -11,7 +11,7 @@ Analysis scripts are written for the researcher to run and read. Each script ope
 - For a model that takes hours, the drawing section reads the saved results, so a figure can be redrawn without refitting.
 - Change a figure or table only through its script; never edit the output by hand.
 - No setup, folder-creation, run-all, test or smoke scripts, no JSON manifests, and no shared helper or function file (CODE-06). The exception is a model that takes hours: give it a short trial run first and record that run in `execution_log.md`.
-- One shared file is allowed: `analysis/style.R`, holding only the fonts and the table format (Times New Roman, the three-line table style). Each script sources it at its top; analysis, data and plotting code stay in the scripts.
+- One shared file is allowed: `analysis/style.R`, holding only the fonts and the table format (Times New Roman, the three-line table style). Each script sources it at its top; analysis, data and plotting code stay in the scripts. A project that also draws in Python has one `analysis/style.py` with the same settings.
 - Watch memory use with large data.
 
 ## Reproducibility

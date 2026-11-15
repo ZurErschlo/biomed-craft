@@ -5,7 +5,7 @@ Journal-specific forms are in [journals.md](journals.md). Whatever the journal, 
 ## Numbers
 
 - Report estimates with their interval: `1·60 (95% CI 1·40–1·83)`; for pooled estimates add the prediction interval and heterogeneity where relevant: `(95% PI 0·80–3·20; I²=94%; k=33)`.
-- Give proportions with denominators: `144 (71%) of 204` (Lancet), `144 of 204 patients (70.6%)` (NEJM).
+- Give proportions with denominators: `144 (71%) of 204` (Lancet), `144 of 204 patients (70.6%)` (NEJM). In a table, a denominator shared by a row or a block is given once, in its label.
 - Use the journal's decimal mark (Lancet mid-line point `0·5`; others `0.5`) and thousands separator (Lancet thin space for five or more digits, `10 000`; NEJM and Nature comma, `10,000`; JAMA thin space).
 - Ranges: en dash (`2010–2020`, `1·2–3·4`) in most journals; hyphen in JAMA intervals; `to` when a range includes a negative number, and in NEJM and BMJ intervals.
 - Write `from 2010 to 2020` or `2010–2020`, never `from 2010–2020`.
@@ -46,6 +46,7 @@ Journal-specific forms are in [journals.md](journals.md). Whatever the journal, 
 ## Files
 
 - Word manuscripts: edit in Word, keep the document's styles, and use tracked changes when the user asks to see edits. Do not convert a Word manuscript to Markdown for delivery.
+- A section that holds only a placeholder is deleted before the file goes to co-authors or a journal, heading included (HYG-05). After any change of layout, update the page numbers in the contents and in the reporting checklist.
 - LaTeX: keep `\cite{}`, `\ref{}`, `\label{}`, maths and comments intact; escape `%`, `_` and `&` in text; do not add formatting commands such as `\textbf{}` for emphasis.
 - Markdown or Quarto: keep citation keys (`[@smith2020]`), cross-reference labels and code chunks intact.
 - After editing, run `scripts/check_preservation.py original revised` to confirm that numbers, citations, cross-references and links survived.

@@ -28,6 +28,7 @@ Contents: Choosing the display items; Legends; Text inside figures; Common resul
 - What a legend holds: the title, what each panel plots, what markers, lines, shading and intervals mean, n and the test where the journal prints them, and the abbreviations. How a value was computed and the full definitions of categories belong in the Methods. Fewer than one legend in five in Lancet and BMJ papers describes a computation, against two in five in laboratory papers, which also give n and the test in the legend.
 - Length follows the journal and the study type. Median words in the library's research articles (interquartile range): BMJ 51 (33–73), Lancet 62 (28–96), JAMA journals 75 (37–112), NEJM about 100 to 130, Nature 106, Science 148, Cell 202. By design: economic evaluations 44, systematic reviews 58, trials, cohorts and models about 90, computational papers 162, laboratory papers 211. In clinical and population research, keep a main-text legend under about 120 words plus its abbreviations.
 - A legend does not repeat numbers the figure prints or a table gives.
+- A legend or table note holds only what a reader needs to read that item. Leave out caveats that hold for any analysis of the kind (that an interval from few studies is imprecise), pointers the text already gives (CAP-02), what the title, a row label, a block heading or an axis title already says, values printed on the panels, and abbreviations the item does not use. An example given in a note is the most common case.
 - Legends describe; the text interprets. No `This figure shows` (META-05) and no conclusions such as `suggesting a decline` (CAP-01). NEJM's `Shown are…` is house style and acceptable.
 - Caveats and status notes about a result (for example that a model did not pass validation) go in the legend, never inside the image.
 
@@ -57,11 +58,23 @@ Layout and type:
 - Overlapping markers are dodged or made transparent, or become tiles or a heatmap when they still crowd. An inset is used only when the main panel cannot show the detail.
 - Short keys run horizontally above or below the plot, centred on the panel they explain or given once for the whole figure, and placed and styled the same way in every panel. A legend or facet title keeps its unit on the same line: `Deaths (per 100 000)`.
 - Stack only the parts of a whole. Quantities that do not add up to a total are not stacked.
+- Panel heights follow what each panel holds. A figure with little content is made narrower, never stretched to the full width.
+
+Marks, scales and reference lines:
+
+- A reference line is drawn only where it is defined: a cost-effectiveness threshold starts at the origin and has no part at negative effects. Its label says exactly what it marks, panel by panel when the meaning differs, and it never lies on the edge of the plot, where the axis hides it. Thresholds added as guides are told apart by line type and explained in a key; they change nothing in the analysis.
+- One encoding for one variable: when shape already separates two groups, filled and hollow markers for the same groups go. A colour keeps one meaning in every figure of the paper.
+- Translucent bands that overlap blend into what reads as another series. Show the intervals at the estimated points, or give each series its own panel.
+- Panels the reader compares share one scale, and the figure shows that they do: one axis title, aligned panels, and row labels given once for blocks of rows that line up.
+- Marks fit the data. A few dozen observations are drawn as points, never as a step or cumulative curve. No `All` series that only averages the series shown, no key entry for a single point, and no category dropped without saying so.
+- A figure has one population and one set of denominators; counts with different denominators are not printed side by side. The conclusions of the original authors and the review's own reassessment do not share an encoding: the authors' conclusions go to a table.
+- Panels of sensitivity analyses belong in the supplement unless they change the reading of the main result. The figure's title covers every panel.
+- No gridlines along a categorical axis; keep only the lines that carry information. A row without data in a bar or dot panel stays empty and the legend says why; maps keep an explicit class (below).
 
 Labels:
 
 - One to four words; the same short label, with the same definition, for the same category in every figure and table; full names and definitions in the legend (FIG-04).
-- Short does not mean cryptic: a single letter for a category confuses readers (FIG-05).
+- Short does not mean cryptic: a single letter for a category confuses readers (FIG-05). An abbreviation in an axis title is spelled out when there is room; the legend defines the rest.
 - Labels use the manuscript's own terms and spelling, and the field's established term where one exists.
 - Labels in one key or along one axis are parallel: the same kind of thing in the same grammatical form, one word for one idea (`cost` throughout, or `loss` throughout), and no filler words (`studies`, `several`). A comparison is named the same way everywhere (`Drug A vs placebo`).
 - Check legibility at final size (5–7 pt is the usual minimum), and check that legend titles, tick labels and facet strips do not collide.
@@ -88,12 +101,20 @@ Model structures, intervention pathways, conceptual frameworks and study flow di
 ## Tables
 
 - Title: a noun phrase (`Table 1: Baseline characteristics`). Placement follows the journal in print (journals.md); in the submission file put it above the table.
-- Column headers are short (one to four words) and give group sizes: `Intervention (n=1478)`. Detail goes to keyed notes.
+- Column headers are short (one to four words, two lines at most) and give group sizes: `Intervention (n=1478)`. Detail goes to keyed notes. Under a spanning header, a count column is headed `n`.
+- Characteristics tables use one stub column: group rows in bold across the full width, categories indented beneath them, and the overall row first. Group sizes sit in the column headers, so no row repeats them (`Studies, n`), and the top-left cell stays empty.
+- A denominator shared by a row or a block is given once, in its label: `Economic evaluations (n=6)`. A column that differs from its neighbour in one or two rows is dropped, and the exceptions go to a keyed note.
+- Row labels use the field's short term without a bracketed explanation; the definition goes to a keyed note or the Methods. A heading with a single row beneath it becomes one row (`Catastrophic costs reported`). Each label reads correctly under its heading, and every word of a heading matches a row below it.
+- The categories of a block sum to the total. Where they do not, a note says that the categories are not mutually exclusive, and only there. Sparse categories are merged.
 - Declare the statistic format once: `Data are n (%), mean (SD) or median (IQR).` Put units in row labels (`Age, years`).
 - Footnotes in this order: general note, abbreviations, then specific notes keyed by *, †, ‡, §, ¶, ||, **, †† or by letters (JAMA, Nature).
-- Notes give what a reader needs to read the table: the statistic format, abbreviations, symbols, the meaning of `..`, and definitions of scales or categories in keyed notes. How estimates were computed belongs in the Methods. Length follows the journal: Science and Cell tables carry almost no notes; Lancet and BMJ about 60 words; JAMA about 140, mostly abbreviations; NEJM about 260, with definitions keyed to symbols.
+- Notes give what a reader needs to read the table: the statistic format, abbreviations, symbols, the meaning of `..`, and definitions of scales or categories in keyed notes. How estimates were computed belongs in the Methods, and the limits on legends above apply to notes too. Length follows the journal: Science and Cell tables carry almost no notes; Lancet and BMJ about 60 words; JAMA about 140, mostly abbreviations; NEJM about 260, with definitions keyed to symbols.
 - Caveats go in the notes; headers and cells hold only labels and values.
-- Distinguish missing from zero; say what `..` or `–` means.
+- Distinguish missing from zero. Mark an empty cell with the journal's symbol (`..` in the Lancet), never with a hyphen that reads as a minus sign or part of a range, and say what the symbol means in each table that uses it.
+- A column that is mostly empty usually mixes rows of different kinds. Move a test statistic to its plot or to the text, and merge columns that only a few rows use.
+- No single rule prunes a table or the text. The text still states the main numbers of a table it cites, and a characteristics table keeps the basic descriptors comparable articles give (publication period, region, type of evidence), even when the text cites none of them singly.
+- Tables of pooled estimates keep their subgroup rows. Comparable reviews mostly put small-study tests in the text or the appendix and sensitivity results in the supplement.
+- Fit the table to the text width: measure it, set column widths by content, and left-align narrow cells instead of justifying them. Turn the page to landscape only when the first column cannot fit. A group of rows stays on one page. A supplementary table of more than about 20 columns becomes a spreadsheet, with a pointer in the Word file.
 - Keep decimals consistent within a column, and give the same quantity the same decimals in every table. An interval stays on one line; set column widths so it does not wrap.
 - No arrows, operators or `(+)/(−)` shorthand in headers; write `lower is better` in a note if needed.
 - Three-line layout: rules above and below the header and at the bottom; no vertical rules; no coloured fills.
@@ -125,6 +146,8 @@ Model structures, intervention pathways, conceptual frameworks and study flow di
 ## Working through figures with the researcher
 
 - Brief one figure at a time: where it sits in the paper's argument, its one message, each panel and how to read it. Keep the briefing short unless the researcher asks for more.
+- When the researcher asks what an element means, explain it with one worked example from the data (one country, one study, one row). Then treat the question as a sign that readers will stumble at the same place: name the element and propose a change to the figure or its legend, or say why none is needed.
+- Open the rendered figure before answering a question or an objection about it. A design is not defended from memory.
 - Show each proposed change as a rendered figure before applying it, with two versions when the choice is one of taste. An idea that sounds better can look worse once drawn (offset error bars, for example); keep the earlier version when it reads better.
 - Have someone other than the maker check the final set: another agent or a co-author.
 
@@ -135,4 +158,5 @@ Model structures, intervention pathways, conceptual frameworks and study flow di
 - A figure plots the statistic the text and tables use: a frontier chosen on means is drawn at means. Totals and differences are computed draw by draw and then summarised, never summed from medians.
 - A share names its base when two are possible, such as all costs or attributable costs.
 - Labels say what was done: a fit to the whole period is not labelled held-out.
+- A point lying on an axis is checked against its source before it is plotted: a value printed as 0·00 may be a small number rounded, and the ratio the paper reports shows which.
 - Axis limits clip no interval or point; facet labels do not reuse the panel letters; a figure uses one currency and price year; a table uses one price year, and each column one unit.

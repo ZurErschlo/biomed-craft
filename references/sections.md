@@ -66,7 +66,7 @@ Introductions do not list contributions and rarely state hypotheses (laboratory 
   - Modelling and burden studies: the headline estimate (`In 2021, we estimated [N] (95% UI …) deaths…`).
   - Laboratory studies: a purpose clause is acceptable (`To test whether…, we…`).
 - Each paragraph opens with its result and a number. Give denominators and intervals.
-- Pointers go in parentheses after the number they support. About 1% of Results sections open with `Table 1 shows`.
+- Pointers go in parentheses after the number they support. About 1% of Results sections open with `Table 1 shows`. Cite an item once in a passage, at the first number it supports, with the pointer last inside the parentheses: `(I²=85%; figure 4A)`. No sentence restates a table's title.
 - Clinical journals keep interpretation out of Results. Laboratory papers interpret briefly (`suggesting that…`).
 - Results in reviews are organised by outcome or theme, never study by study.
 - Subheadings: NEJM uses Patients, Primary Outcome, Secondary Outcomes, Safety; Nature uses descriptive or declarative subheadings; Lancet trials often use none.

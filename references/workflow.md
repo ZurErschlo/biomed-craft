@@ -26,6 +26,7 @@ The researcher is the author and answers for every claim. The researcher decides
 - A value without a source.
 - Starting or stopping an expensive run, unless that was delegated.
 - Deleting files: list exactly what would go and let the researcher delete it or approve it.
+- Dropping records: apparent duplicates, outliers or implausible values. List them with the reason and let the researcher decide.
 - Anything that leaves the project: registration, submission, messages to other people.
 
 ## Never stop for
@@ -43,6 +44,14 @@ The researcher is the author and answers for every claim. The researcher decides
 - Explain any concept the decision depends on, in plain words.
 - Before calling a plan settled, check that every step can be computed, not only that every value has a source.
 
+## Explaining a method to the researcher
+
+- Give four things in order: what the method is, how this project applies it, why it was chosen over the obvious alternative, and one worked example with the project's own numbers.
+- Define each term where it first appears, the names of algorithms, estimators and scales included. A list of method names explains nothing.
+- To teach a whole analysis, give the overall logic first and then one block at a time, each tied to its script and its section of the plan, at the level the researcher asks for.
+- Take every number in an explanation from the current outputs, never from a code comment or from memory. Say whether an account of why two results differ was tested or is a guess.
+- When the researcher asks whether a step is standard or has a basis, search first and answer with the sources. Say also whether the Methods state the step and cite its basis, and propose the sentence when they do not.
+
 ## Reporting back
 
 - In the conversation, in the researcher's language; answer the question first. Do not refer to files, options or codes the researcher has not seen.
@@ -55,11 +64,13 @@ The researcher is the author and answers for every claim. The researcher decides
 - Measure memory and time before choosing resources; run a trial before the formal run; keep heavy runs off a shared laptop; save checkpoints so runs can resume.
 - Never bypass a check to finish a run: a result produced that way cannot be used.
 - Record problems found after a run before rerunning anything.
+- After changing a script, rerun it and everything built from its output (later scripts, tables, figures, the Word files), compare the results with the previous run and record the rerun in the log. The rerun is left to the researcher only when it is expensive.
 - Say at the start who starts and stops runs; when instructions conflict, ask.
 
 ## What not to add
 
-- Files nobody asked for: JSON manifests, README files, Markdown copies of Word documents, archives, process sheets inside data workbooks, helper scripts in analysis folders, material from other projects.
+- Files nobody asked for: JSON manifests, README files, Markdown copies of Word documents, zip archives, process sheets inside data workbooks, helper scripts in analysis folders, material from other projects.
+- Remains of a method that was dropped. When an analysis, an appraisal tool or a display item leaves the paper, its sheets, codebook rows, plan sections, scripts and supplementary items leave too. First keep a copy of any version that holds values found nowhere else ([project-folders.md](project-folders.md)).
 - A manuscript before there are results.
 - Formalities before there are results: citation permissions, DOI completion, journal formatting.
 

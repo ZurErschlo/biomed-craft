@@ -16,6 +16,8 @@ Development, validation and updating of diagnostic and prognostic prediction mod
 ## Building the model
 
 - Split before any processing. Every step (imputation, scaling, univariable screening, variable selection, tuning, resampling, nomogram fitting) is fitted on the training data only and then applied unchanged.
+- Save the split once as a file of participant identifiers. Every script, in every language and for every outcome, reads that file; none draws its own. When several outcomes are modelled in the same participants, one split serves them all, and the Methods state how it was stratified (on the outcomes jointly when each must stay balanced).
+- Nominal predictors enter as indicator variables and are selected or dropped as one variable; a nominal code is never fitted as a number. One coding of each variable serves the data dictionary, every model, the tables and the text.
 - Prefer prespecified predictors or penalised regression to univariable p-value screening followed by stepwise selection.
 - Multiple imputation for missing predictors, fitted within the training data; report the amount of missing data for each variable and the handling. Complete-case analysis is a weakness to state.
 - Machine learning: tune with cross-validation inside the training data; apply SMOTE or other resampling only inside training folds, and recalibrate afterwards, because resampling distorts predicted probabilities.
@@ -32,8 +34,9 @@ Development, validation and updating of diagnostic and prognostic prediction mod
 - External validation with the published model unchanged: no proxy predictors, no outcome set to zero when missing, and the missing-data handling reported.
 - Classification metrics at the fixed threshold with 95% CIs; likelihood ratios computed from sensitivity and specificity; totals that agree across rows and categories.
 - Performance in subgroups (sex, age, ethnicity, site) to show where the model may fail.
+- Data from several sites: leaving each site out in turn shows how the model performs in a site it has not seen, which a random split cannot show. It needs a site identifier for every participant, so ask for one at intake; when none exists, state the limitation.
 - Incremental value of a new marker: a likelihood-ratio test between nested models fitted to the same data, and the change in C statistic with its CI as a size. The DeLong test is not used for nested models on the same data; continuous net reclassification is avoided.
-- SHAP and other importance measures describe the model; they carry no inferential intervals and do not show cause.
+- SHAP and other importance measures describe the model; they carry no inferential intervals and do not show cause. Compute them for the model chosen by cross-validation, state the scale (log-odds or probability) and keep it the same in every panel.
 
 ## What reviewers flag, and the fix
 

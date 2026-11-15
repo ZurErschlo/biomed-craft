@@ -4,7 +4,8 @@ The log (`execution_log.md`) records what was done, what came out and what was d
 
 ## Layout
 
-- A short status block at the top: aim, done, not done, next. Update it in place.
+- A short status block at the top: aim, done, not done, next. Update it in place. It is what the researcher gets when asking where the work stopped.
+- The status block also lists what the next full rerun must cover: the scripts changed since their last full run, the outputs to compare afterwards, and the checks that would stop the run. Remove a to-do item once it no longer applies.
 - Below it, one entry per working session, appended at the end and headed by the date as YYYY-MM-DD. Do not rewrite old entries; close an open item in a later entry.
 
 ## Each entry

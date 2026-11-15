@@ -1,5 +1,5 @@
 {
-  "version": "2.8.0",
+  "version": "2.9.0",
   "levels": {
     "must": "Fix on sight: leading journals almost never print this, or it is internal material.",
     "review": "Judge in context: often a tell, sometimes the right word.",
@@ -2097,6 +2097,27 @@
         ],
         "miss": [
           "Figure 2: Incidence by year. Error bars indicate 95% CIs."
+        ]
+      }
+    },
+    {
+      "id": "CAP-02",
+      "category": "CAP",
+      "level": "review",
+      "scopes": [
+        "caption"
+      ],
+      "pattern": "\\b(?:described|detailed|defined|explained|given|set\\s+out)\\s+in\\s+(?:the\\s+)?(?:Methods|main\\s+text)\\b|\\bsee\\s+(?:the\\s+)?Methods\\b",
+      "flags": "i",
+      "hint": "Pointer to the Methods in a legend or table note. Give what the reader needs to read the item and leave the method to the Methods.",
+      "examples": {
+        "hit": [
+          "Table 2: Pooled cost ratios by perspective. The pooling rule is described in the Methods.",
+          "Figure 3: Cost per case by country. Thresholds are defined in the main text."
+        ],
+        "miss": [
+          "Table 2: Pooled cost ratios by perspective. Data are ratio (95% CI).",
+          "Figure 3: Model fit by country. Details of the calibration are provided in the Supplementary Appendix."
         ]
       }
     },
