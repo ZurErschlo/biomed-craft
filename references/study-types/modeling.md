@@ -1,6 +1,6 @@
-# Disease and epidemiological modelling
+# Disease and epidemiological modeling
 
-Transmission models (compartmental, individual-based, metapopulation), microsimulation and state-transition models of disease, burden estimation and projection, forecasting and nowcasting, and models that estimate what an intervention averted. Report burden estimates to GATHER and forecasts to EPIFORGE 2020; add CHEERS 2022 when costs are modelled. Put the checklist in the appendix.
+Transmission models (compartmental, individual-based, metapopulation), microsimulation and state-transition models of disease, burden estimation and projection, forecasting and nowcasting, and models that estimate what an intervention averted. Report burden estimates to GATHER and forecasts to EPIFORGE 2020; add CHEERS 2022 when costs are modeled. Put the checklist in the appendix.
 
 ## Content the paper must contain
 
@@ -16,7 +16,20 @@ Transmission models (compartmental, individual-based, metapopulation), microsimu
 10. Sensitivity analyses of the assumptions that drive the result, including alternative structures, and whether the conclusions change.
 11. Comparison with other models and published estimates, with the reasons for differences.
 12. Software and versions; code and processed inputs deposited with a DOI; the access route for restricted data.
-13. Limitations that name the structural simplifications, where the data are thin, the limits of generalisability and the likely direction of bias. Counterfactual results are described as depending on the model's assumptions.
+13. Limitations that name the structural simplifications, where the data are thin, the limits of generalizability and the likely direction of bias. Counterfactual results are described as depending on the model's assumptions.
+
+## Calibration diagnostics
+
+- When the fit fails, find out whether the sampler, the likelihood or the model structure is at fault: recover known parameters from simulated data, start from several points, and check whether the likelihood itself pulls toward a boundary.
+- A parameter stuck at its boundary is a symptom, not a result. Say in advance what happens when an estimate reaches a boundary.
+- Overdispersed counts take an observation model such as the negative binomial; hierarchical or strongly correlated parameters are reparameterized (Vehtari and colleagues 2021).
+- Markov chain Monte Carlo: at least four chains, rank-normalized R̂ below 1·01, and bulk and tail effective sample sizes above 400. When these fail, look at rank plots, run longer or reparameterize; discard only warm-up draws, never whole chains. R̂ does not apply to calibration by approximate Bayesian computation or maximum likelihood.
+- Bayesian analyses: check prior predictions before fitting, report the priors, test the sensitivity of the result to them and recover parameters from synthetic data (BARG).
+- A likelihood-ratio test of a variance component on its boundary uses a mixture distribution (Self and Liang 1987), provided every parameter not under test lies inside its space. Testing one variance: an equal mixture of χ²₀ and χ²₁. Testing a random slope while keeping the random intercept and fitting their covariance (one tested parameter on the boundary, one inside): an equal mixture of χ²₁ and χ²₂. Testing two uncorrelated variances together: a mixture of χ²₀, χ²₁ and χ²₂ with weights computed from the information matrix. When a parameter not under test also sits on its boundary, the limit need not be a χ² mixture: simulate the reference distribution (a parametric bootstrap).
+- State whether forecasts are prospective, real-time or retrospective, and how their accuracy was assessed (EPIFORGE items 4 and 11).
+- Validation targets held out from fitting use only data before the cut-off, and the conclusions hold `under the observed inputs`. The same data never serve calibration and validation at once.
+- Name the types of validation done: face validity, verification of the code, comparison with other models, external validation and predictive validation. Face validity alone is not called validated.
+- When a threshold changes after an audit, report the results under the original threshold beside the new ones as a sensitivity analysis.
 
 ## What reviewers flag, and the fix
 
@@ -25,19 +38,19 @@ Transmission models (compartmental, individual-based, metapopulation), microsimu
 - Calibration that is opaque or overfitted: name targets and method, show the fit with the data points, and check a feature the model was not fitted to.
 - No validation: hold out recent data, cross-validate, freeze projections before trial results are known, or compare with an independent trial, registry or published estimate.
 - Uncertainty understated: propagate parameter and stochastic uncertainty, report ranges across models, and never give scenario results as point estimates alone.
-- Scenarios chosen arbitrarily: anchor them to real targets or to the best-performing programmes, always include the status quo, tabulate coverage and timing, and say why each scenario or combination was chosen. A figure shows the strategies that answer the question; a cost-effectiveness plane keeps the dominated ones.
-- Counterfactuals over-read: call them illustrative, list their assumptions (no behaviour change, for example), and hedge in the interpretation.
+- Scenarios chosen arbitrarily: anchor them to real targets or to the best-performing programs, always include the status quo, tabulate coverage and timing, and say why each scenario or combination was chosen. A figure shows the strategies that answer the question; a cost-effectiveness plane keeps the dominated ones.
+- Counterfactuals over-read: call them illustrative, list their assumptions (no behavior change, for example), and hedge in the interpretation.
 - Sparse data in some settings: show data coverage and quality, validate by leaving one setting out, and flag the settings with little data.
 - A result that rests on one assumption: test that assumption explicitly, report the test in the Results, and say which way conservative choices push the estimate.
 - Disagreement with other estimates left unexplained: compare and explain the gap by data or structure.
 - Results that cannot be reproduced: share versioned code and inputs, and posterior draws where possible.
-- Spurious precision: round modelled counts to three significant figures, give rates per capita, and state the rounding rule in table notes.
+- Spurious precision: round modeled counts to three significant figures, give rates per capita, and state the rounding rule in table notes.
 - Stale real-time estimates: give the data cut-off date and say which new data would change the result.
 
 ## Title and abstract
 
-- Lancet family: topic, scope and period, then the design, with no result: `…, 1990–2021, with forecasts to 2050: a systematic analysis for the Global Burden of Disease Study 2021`, `…: a mathematical modelling study`, `…: a combined analysis of eleven mathematical models`.
-- BMJ: `…: modelling study`, `…: microsimulation modelling study`, without an article. JAMA: Title Case and no design label in JAMA itself. Nature journals and Science: a short phrase (`Estimated deaths averted by …`). American spelling `modeling` outside the Lancet family and the BMJ.
+- Lancet family: topic, scope and period, then the design, with no result: `…, 1990–2021, with forecasts to 2050: a systematic analysis for the Global Burden of Disease Study 2021`, `…: a mathematical modeling study`, `…: a combined analysis of eleven mathematical models`.
+- BMJ: `…: modeling study`, `…: microsimulation modeling study`, without an article. JAMA: Title Case and no design label in JAMA itself. Nature journals and Science: a short phrase (`Estimated deaths averted by …`). The manuscript spells `modeling`; journals with British house style change it in copy editing ([format.md](../format.md)).
 - Lancet Methods name the model type, setting, data, calibration, scenarios and horizon. Findings open with the headline estimate: `We estimated that [X] averted [N] million (95% uncertainty interval [UI] a–b) deaths in [place, period].` Then the scenario contrast: `Under [scenario], [outcome] would fall by x% (a–b) compared with the status quo.` Interpretation gives one hedged sentence of meaning and one of action.
 - BMJ intervals read `95% uncertainty interval a to b`; conclusions are conditional on the assumptions.
 - JAMA: Key Points; the first interval `(95% uncertainty interval [UI], a to b)`, later `(95% UI, a-b)`; comparative models give the mean across models and the range.
@@ -74,8 +87,8 @@ Transmission models (compartmental, individual-based, metapopulation), microsimu
 ## Numbers
 
 - Lancet: `12·3 million (95% UI 10·1–14·6)`, thin-space thousands from five digits, `per 100 000`, `to` when a bound is negative. BMJ: point decimals and `a to b`. JAMA: hyphenated ranges. Nature: comma thousands and en-dash ranges.
-- Modelling papers run longer sentences and more `we` than other research articles; that is the genre, and it stays.
+- Modeling papers run longer sentences and more `we` than other research articles; that is the genre, and it stays.
 
 ## Supplement and availability
 
-The full model description and equations, parameter tables with sources and priors, calibration targets, diagnostics and fits by setting, validation, further scenarios and sensitivity analyses, results by setting, the GATHER or CHEERS checklist, and data sources. State availability in this order of preference: data and code in a repository with a DOI; sources listed in the appendix and in a public data catalogue; restricted data with the custodian named; on request.
+The full model description and equations, parameter tables with sources and priors, calibration targets, diagnostics and fits by setting, validation, further scenarios and sensitivity analyses, results by setting, the GATHER or CHEERS checklist, and data sources. State availability in this order of preference: data and code in a repository with a DOI; sources listed in the appendix and in a public data catalog; restricted data with the custodian named; on request.

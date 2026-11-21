@@ -4,7 +4,7 @@ Research articles are the main target. These documents share most of the rules, 
 
 ## Research protocols and statistical analysis plans
 
-Formal protocols go to ethics committees, registries and journals; the internal working plan of a project is covered in [research-plan.md](research-plan.md). Follow SPIRIT 2025 for trials (with the schedule of enrolment, interventions and assessments, and extensions such as SPIRIT-PRO, SPIRIT-AI and SPIRIT-C for participants up to 19 years), PRISMA-P for systematic-review protocols, the Gamble guideline for statistical analysis plans (the DEBATE extension for observational studies), and a health economic analysis plan for trial-based economic evaluations.
+Formal protocols go to ethics committees, registries and journals; the internal working plan of a project is covered in [research-plan.md](research-plan.md). Follow SPIRIT 2025 for trials (with the schedule of enrollment, interventions and assessments, and extensions such as SPIRIT-PRO, SPIRIT-AI and SPIRIT-C for participants up to 19 years), PRISMA-P for systematic-review protocols, the Gamble guideline for statistical analysis plans (the DEBATE extension for observational studies), and a health economic analysis plan for trial-based economic evaluations.
 
 Content:
 
@@ -15,14 +15,14 @@ Content:
 5. Each outcome defined by its measurement, metric, aggregation and time point; harms defined, with how they will be collected.
 6. The estimand for the primary outcome and key secondary outcomes (population, treatments, end point, summary measure, intercurrent-event strategies), with the main estimator and its sensitivity analyses (ICH E9(R1)).
 7. Sample size with sourced assumptions, power, alpha and the allowance for attrition, and the recruitment plan.
-8. Randomisation (sequence generation, restriction, stratification), concealment and implementation; masking and the procedure for unmasking.
+8. Randomization (sequence generation, restriction, stratification), concealment and implementation; masking and the procedure for unmasking.
 9. Data collection, management and retention.
-10. Statistical analysis: analysis populations, prespecified models and covariates, missing-data assumptions with methods and sensitivity analyses, the multiplicity strategy, a few subgroups each with a hypothesised direction, and interim analyses with stopping rules.
+10. Statistical analysis: analysis populations, prespecified models and covariates, missing-data assumptions with methods and sensitivity analyses, the multiplicity strategy, a few subgroups each with a hypothesized direction, and interim analyses with stopping rules.
 11. Monitoring (data monitoring committee and trial monitoring), ethics, consent (including consent for later use of data and specimens), confidentiality and post-trial care.
 
-The statistical analysis plan is a separate document, finalised before unmasking. It gives outcome derivations, CI levels and sidedness, handling of protocol deviations, methods detailed enough to replicate, shell tables and software.
+The statistical analysis plan is a separate document, finalized before unmasking. It gives outcome derivations, CI levels and sidedness, handling of protocol deviations, methods detailed enough to replicate, shell tables and software.
 
-What reviewers and ethics committees flag: a vague primary outcome; several primary outcomes with no multiplicity plan; no estimand and no plan for intercurrent events; missing-data assumptions not stated; sample-size assumptions with no evidence behind them; an unjustified non-inferiority margin; too many subgroups; `appropriate statistical methods will be used`; a protocol and an analysis plan that disagree; registration after enrolment began or an analysis plan finalised after unmasking; no plan for harms; data sharing left undecided; pilot and feasibility protocols that test efficacy.
+What reviewers and ethics committees flag: a vague primary outcome; several primary outcomes with no multiplicity plan; no estimand and no plan for intercurrent events; missing-data assumptions not stated; sample-size assumptions with no evidence behind them; an unjustified non-inferiority margin; too many subgroups; `appropriate statistical methods will be used`; a protocol and an analysis plan that disagree; registration after enrollment began or an analysis plan finalized after unmasking; no plan for harms; data sharing left undecided; pilot and feasibility protocols that test efficacy.
 
 Writing: definite future tense (`Participants will be randomly assigned…`); no options left open (`we could also…`, `if feasible`); no status labels (`implemented`, `to do`, `checked`); and no pointers to the project's own working record (META-08, META-09). Known limitations go in a limitations section, stated once with their consequences. Main figures and tables: the SPIRIT schedule, a trial-flow schematic, an estimand table, outcome definitions, the sample-size table, and for systematic-review protocols the draft search strategy.
 
@@ -30,7 +30,7 @@ Templates: a synopsis or protocol written on a sponsor's, committee's or course'
 
 ## Responses to reviewers
 
-- One block per comment: the comment (quoted or summarised), the answer, the change and its location (`Methods, paragraph 3; lines 120–128`).
+- One block per comment: the comment (quoted or summarized), the answer, the change and its location (`Methods, paragraph 3; lines 120–128`).
 - Thank the reviewers once at the start. Repeating `We thank the reviewer for this insightful comment` before every answer is boilerplate.
 - Answer directly. If you disagree, say so and give the evidence.
 - Describing what was changed is the content of this document, so revision narration is fine here (`scan.py --doc response` turns those rules off).
@@ -50,13 +50,15 @@ Templates: a synopsis or protocol written on a sponsor's, committee's or course'
 
 ## Slides and pitch decks
 
+- Before drafting a deck or a talk script, ask how long the talk is and who will hear it.
 - One message per slide, about 25–40 words of text; prefer a chart or table to text where possible.
+- Result figures are the paper's own, embedded or redrawn from the same data. A generated image redraws axes and values, and never stands in for a result.
 - The title states the slide's message as a short sentence (`Most relapses occur in the first year`).
 - Each slide keeps what the audience must take away; reasons and detail go to the speaker notes or the questions.
 - Sources in the speaker notes, citing external sources only (not the team's own report or synopsis); no backup or source slides unless asked.
 - State each caveat once, on the slide where it matters; repeating the same caveat across slides reads as defensive.
 - State risks as plans with milestones (`supply agreement by month 6`).
-- Avoid layouts that look generated: large text cards, pill badges, numbered tags such as `01` and `02`, the same line-label-title block on every slide, coloured table fills.
+- Avoid layouts that look generated: large text cards, pill badges, numbered tags such as `01` and `02`, the same line-label-title block on every slide, colored table fills.
 - The same rules for internal material apply (no file names, codes, simulation counts or versions on slides).
 
 ## Talk scripts
@@ -71,6 +73,12 @@ Templates: a synopsis or protocol written on a sponsor's, committee's or course'
 - A figure of software is the software's own output or a screenshot of it, never a redrawn copy.
 - Follow the conventions of the surrounding chapters or documents, such as whether figures carry legends.
 - `scan.py` reads English only; check Chinese text by hand.
+
+## Proofs
+
+- Late proofs: report only definite errors, by printed page number and with the kind of error. List old annotations that cannot be read on their own, for the researcher to confirm.
+- Check formulas against the statistical principle and against the software's source code, and recompute worked examples and P values.
+- Make no change that would reflow the pages, and follow the document's own conventions.
 
 ## Grant proposals
 

@@ -8,7 +8,7 @@ Contents: Title; Abstract or Summary; Panels; Introduction; Methods; Results; Di
 ## Title
 
 - Name the topic, population and setting. Add place, period or scale where it matters: `in 120 countries`, `1990–2021`.
-- Lancet family: topic, colon, design label with an article: `…: a randomised, placebo-controlled trial`, `…: a modelling study`. BMJ: the same without the article: `…: prospective cohort study`. NEJM: a short noun phrase with no design label. JAMA: often `Association of X With Y Among Z`.
+- Lancet family: topic, colon, design label with an article: `…: a randomized, placebo-controlled trial`, `…: a modeling study`. BMJ: the same without the article: `…: prospective cohort study`. NEJM: a short noun phrase with no design label. JAMA: often `Association of X With Y Among Z`.
 - Clinical titles in Lancet, NEJM, BMJ and JAMA do not state the result. NEJM rewrote one author's result-stating title into a neutral one before publication.
 - Titles avoid questions, puns, `novel`, `first`, `insights` and abbreviations; a trial acronym only where the journal's title style puts one.
 
@@ -37,20 +37,20 @@ Two to five paragraphs. The order is almost universal:
 4. Why now: a guideline, a target or a decision that depends on the answer.
 5. The aim, in one sentence: `We aimed to…` (Lancet), `Here, we report…` (NEJM), `To address this gap, we…` (JAMA), `Here we show…` (Nature, Cell).
 
-Introductions do not list contributions and rarely state hypotheses (laboratory and behavioural studies are the exception). Opening with a general statement of importance (`In recent years, X has attracted increasing attention`) is absent from the corpus (LEX-02).
+Introductions do not list contributions and rarely state hypotheses (laboratory and behavioral studies are the exception). Opening with a general statement of importance (`In recent years, X has attracted increasing attention`) is absent from the corpus (LEX-02).
 
 ## Methods
 
 - Open with one sentence giving design, setting and period. Then follow the journal's subheadings for the design:
-  - Lancet trials: Study design and participants; Randomisation and masking; Procedures; Outcomes; Statistical analysis; Role of the funding source.
+  - Lancet trials: Study design and participants; Randomization and masking; Procedures; Outcomes; Statistical analysis; Role of the funding source.
   - NEJM trials: Trial Design and Oversight; Randomization; Procedures; Outcome Measures; Statistical Analysis.
   - Lancet systematic reviews: Search strategy and selection criteria; Data analysis; Role of the funding source.
-  - Modelling studies: model structure; data and parameters; fitting; scenarios; uncertainty analysis.
+  - Modeling studies: model structure; data and parameters; fitting; scenarios; uncertainty analysis.
   - Diagnostic accuracy: Index test; Comparator tests; Reference standard.
   - BMJ adds Patient and public involvement. Nature journals put Methods after the Discussion; Cell uses STAR Methods.
 - Define the primary outcome in one sentence (`The primary outcome was…`) and list secondary outcomes in the next.
 - Statistical analysis follows this order: sample size and power; analysis population; model; prespecified subgroup and sensitivity analyses; multiplicity and sidedness; statistical analysis plan; software with version (`Analyses were done with R, version 4.4.1`).
-- Modelling: state where the model comes from, what it was fitted to, the counterfactual, how uncertainty was propagated (uncertainty intervals or credible intervals) and the scenarios. Equations and parameter tables go to the appendix with page pointers.
+- Modeling: state where the model comes from, what it was fitted to, the counterfactual, how uncertainty was propagated (uncertainty intervals or credible intervals) and the scenarios. Equations and parameter tables go to the appendix with page pointers.
 - Economic evaluation: perspective, currency and price year, outcome (DALYs or QALYs), discount rate, threshold, probabilistic sensitivity analysis, and the CHEERS 2022 statement.
 - Methods describe what was done, in the order a reader needs it. Precedent goes in as a short citation; limits go in the Discussion; next steps do not appear.
 - Methods describe the methods as they were carried out and give the registration number. When the registration was amended, the amendment is answered in the reporting checklist (PRISMA 2020 item 24c) or in one line of the supplement. A decision made after the data were seen is never called prespecified (META-13 flags the contradiction), and a statement that the primary outcome or eligibility changed stays in.
@@ -63,15 +63,17 @@ Introductions do not list contributions and rarely state hypotheses (laboratory 
 - First sentence by design:
   - Trials: `Between [date] and [date], [N] patients were screened, of whom [N] were enrolled (figure 1).`
   - Systematic reviews: `We identified [N] records, of which [N] studies were included.`
-  - Modelling and burden studies: the headline estimate (`In 2021, we estimated [N] (95% UI …) deaths…`).
+  - Modeling and burden studies: the headline estimate (`In 2021, we estimated [N] (95% UI …) deaths…`).
   - Laboratory studies: a purpose clause is acceptable (`To test whether…, we…`).
 - Each paragraph opens with its result and a number. Give denominators and intervals.
 - Pointers go in parentheses after the number they support. About 1% of Results sections open with `Table 1 shows`. Cite an item once in a passage, at the first number it supports, with the pointer last inside the parentheses: `(I²=85%; figure 4A)`. No sentence restates a table's title.
 - Clinical journals keep interpretation out of Results. Laboratory papers interpret briefly (`suggesting that…`).
-- Results in reviews are organised by outcome or theme, never study by study.
+- Results in reviews are organized by outcome or theme, never study by study.
 - Subheadings: NEJM uses Patients, Primary Outcome, Secondary Outcomes, Safety; Nature uses descriptive or declarative subheadings; Lancet trials often use none.
 
 ## Discussion
+
+Before writing it, list each main result on one line with the strongest reading the design supports and the over-reading it slides into most easily (an association read as a cause, a subgroup difference as effect modification). List any number that carries no claim, and any claim with no result behind it.
 
 1. First paragraph: the principal finding with design, population and key estimate (87% of papers): `In this [design] of [population], [finding with number].`
 2. Comparison with earlier work: one to five named studies, each with its estimate, and one reason for any difference (design, population, period).
@@ -87,7 +89,7 @@ Content:
 
 - The gap rests on a described search: sources, dates and terms, and what was found, as in the Lancet's Evidence before this study. A priority claim needs that search behind it.
 - The aim, any hypothesis, the population and the primary outcome read the same in the title, abstract, Introduction, Methods, registry and protocol.
-- Each limitation is stated as a consequence: the likely direction and size of the bias, what was done about it, and whether it could change the conclusion. Generalisability and multiplicity are among the limitations.
+- Each limitation is stated as a consequence: the likely direction and size of the bias, what was done about it, and whether it could change the conclusion. Generalizability and multiplicity are among the limitations.
 - Future research, when mentioned, follows from a stated limitation. The conclusion matches the primary result and goes no further.
 
 The abstract against the text:
@@ -97,8 +99,9 @@ The abstract against the text:
 
 Numbers that reconcile (`scripts/check_numbers.py` covers part of this):
 
-- Flow-diagram counts equal the Table 1 totals, which equal the n analysed in each analysis; every drop is explained.
-- Every percentage has a stated denominator and recomputes; subgroups sum to the total; events and person-time reproduce the stated rates.
+- Flow-diagram counts equal the Table 1 totals, which equal the n analyzed in each analysis; every drop is explained.
+- Every percentage has a stated denominator and recomputes; subgroups sum to the total; events and person-time reproduce the stated rates. Two equal percentages side by side each name their denominator, so that readers do not take them for one proportion.
+- A nested category (`other drug-resistant tuberculosis` within drug-resistant tuberculosis) says what it includes and excludes, so that the categories neither overlap nor leave a gap.
 - An estimate has the same value, rounding and interval level in the abstract, text, tables, figures and supplement. Numbers at risk under survival curves and the values in forest plots match the tables.
 - Page references in the reporting checklist point to the final version.
 
@@ -109,13 +112,14 @@ Statements most leading journals now expect:
 - Patient and public involvement, described or stated as absent.
 - The funder's role, conflicts of interest and who had access to the data; The Lancet asks that at least two authors accessed and verified the data.
 - Data, code and materials availability: what is shared, where, when, for whom and on what conditions. The Lancet and Nature journals do not accept `undecided`, and `available on request` is weak.
-- AI used in the research is described in the Methods (tool and version). Disclosure of writing assistance is written by the authors, in the form the journal asks for.
+- AI is disclosed in the cover letter and in the manuscript (ICMJE): its use in data collection, analysis or figures in the Methods, with the tool and version; writing assistance in the acknowledgments. AI is never an author and is not cited as one. A journal with its own rule is followed; check its current page before submission. The authors write the disclosure of writing assistance in the form the journal asks for.
 
 ## Declarations
 
 - Contributors (CRediT roles where required), declaration of interests, data sharing, funding and role of the funder, acknowledgments, ethics.
+- Each declaration (contributions, interests, funding, ethics, data and code availability, AI use) is in one of three states: supplied by the authors; not applicable, with the reason; or still missing. The agent supplies no facts for them, and a placeholder does not count as done.
 - Write them as public statements. Data and code availability names the repository or the access route; internal file names, script names and folder paths do not appear.
-- Data availability says which data, where (repository and accession number, or the access route and its conditions) and from when. Code availability names a repository that issues a DOI (Zenodo, for example) and the licence. Formats: a Code availability section after Data availability (Nature journals); bullets under Data and code availability (Cell); Data and materials availability with the acknowledgements (Science); a data sharing statement for trials (ICMJE, required by NEJM, JAMA, BMJ and The Lancet).
+- Data availability says which data, where (repository and accession number, or the access route and its conditions) and from when. Code availability names a repository that issues a DOI (Zenodo, for example) and the license. Formats: a Code availability section after Data availability (Nature journals); bullets under Data and code availability (Cell); Data and materials availability with the acknowledgments (Science); a data sharing statement for trials (ICMJE, required by NEJM, JAMA, BMJ and The Lancet).
 - Do not draft an AI-use statement for the authors. Keep one the authors wrote if the journal requires it.
 
 ## Supplementary material
@@ -132,4 +136,4 @@ Statements most leading journals now expect:
 
 - Abstract ends on scope (`In this Review, we describe…`). Nature Reviews adds five Key points.
 - A one-sentence roadmap may close the introduction of a review; research articles do not have one.
-- Synthesise by theme. Rhetoric, if any, belongs only in the final section on future directions.
+- Synthesize by theme. Rhetoric, if any, belongs only in the final section on future directions.

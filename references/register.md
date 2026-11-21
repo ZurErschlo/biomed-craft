@@ -33,7 +33,7 @@ Rewrite: name the scientific operation (linkage, imputation, calibration, inclus
 Cues:
 
 - Throat-clearing: `It should be noted that` (DEF-01). Stacked hedges: `could potentially`, `may possibly` (DEF-02). Uncheckable qualifiers: `to some extent`, `arguably` (DEF-03).
-- Disclaimer tails: `should be interpreted with caution`, `does not establish causality` (DEF-04). Narrated candour: `We are upfront about…`, `Admittedly…` (DEF-05). Status hedges: `indicative only`, `for illustrative purposes` (DEF-06).
+- Disclaimer tails: `should be interpreted with caution`, `does not establish causality` (DEF-04). Narrated candor: `We are upfront about…`, `Admittedly…` (DEF-05). Status hedges: `indicative only`, `for illustrative purposes` (DEF-06).
 - Generic calls for research (DEF-07). Pre-empting misreadings: `We do not claim that…` (DEF-08). An absent opponent: `One might argue that…` (DEF-09). Softening formulas: `Despite these limitations, our findings provide…` (DEF-10).
 - The same caveat repeated across sections or slides.
 

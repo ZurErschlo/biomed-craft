@@ -168,9 +168,19 @@ W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 A = "{http://schemas.openxmlformats.org/drawingml/2006/main}"
 
 
+def docx_accepted(element: ET.Element):
+    """The element's descendants as Word shows them with every change accepted. Deleted text sits in
+    w:delText, which readers skip; text moved elsewhere sits in w:moveFrom, which is left out here."""
+    for child in element:
+        if child.tag == W + "moveFrom":
+            continue
+        yield child
+        yield from docx_accepted(child)
+
+
 def _docx_paragraph_text(paragraph: ET.Element) -> str:
     parts = []
-    for node in paragraph.iter():
+    for node in docx_accepted(paragraph):
         if node.tag == W + "t" and node.text:
             parts.append(node.text)
         elif node.tag in (W + "tab", W + "br"):
@@ -578,13 +588,14 @@ def style_path() -> Path:
 
 
 def read_style(path: Path) -> list[tuple[str, str]]:
-    """(section, entry) pairs from a personal style file; entries are list items under '## Section' headings."""
+    """(section, entry) pairs from a personal style file: list items, and the 'Spelling:' line, under
+    '## Section' headings."""
     entries, section = [], "general"
     for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
         heading = STYLE_HEADING.match(line)
         if heading:
             section = heading.group(1).strip().lower()
-        elif line.lstrip().startswith(("-", "*")):
+        elif line.lstrip().startswith(("-", "*")) or SPELLING_ENTRY.match(line):
             entries.append((section, line.strip()))
     return entries
 
@@ -613,6 +624,193 @@ def style_allowed_rules(entries: list[tuple[str, str]], doc: str, design: str, j
         if ALLOW_ENTRY.match(entry) and style_section_applies(section, doc, design, journal, scope):
             allowed.update(r for r in RULE_ID.findall(entry) if not r.startswith(NEVER_ALLOWED))
     return allowed
+
+
+# ---------------------------------------------------------------------------
+# Spelling (FMT-07)
+# ---------------------------------------------------------------------------
+
+SPELLING_TARGETS = ("american", "british", "oxford")
+SPELLING_ENTRY = re.compile(r"^\s*(?:[-*]\s*)?Spelling\s*:\s*(American|British|Oxford)\b", re.IGNORECASE)
+
+# Stems written -ise in British and -ize in American spelling. Words that take -ise in both (size, rise,
+# exercise, advise, comprise, revise, expertise, supervise, promise) are not built from this list.
+IZE_STEMS = """
+    aerosol agon anonym antagon apolog atom author binar capital categor catheter cauter central character civil
+    colon commercial computer conceptual contextual criminal critic crystall custom decentral decolon demobil
+    destabil dichotom digit discret dramat economi emphas epithelial epitom external factor familiar fantas fertil
+    final formal fossil general global harmon homogen hospital hybrid hypnot hypothes ideal immobil immun
+    incentiv individual industrial initial institutional internal international ion isomer item jeopard keratin
+    lateral legal linear local lyophil magnet marginal maxim medical memor metabol mineral minim mobil modern
+    monet national nebul neovascular neutral normal operational optim organ oxid parameter pasteur patron penal
+    personal polar politic polymer popular pressur priorit privat public random rational real recogn regional
+    regular rehospital reorgan revolution sanit scrutin sensit desensit serial special stabil standard steril
+    stigmat subsid summar symbol sympath synthes theor token traumat trivial urban util vapor vascular vector
+    victim visual western
+""".split()
+IZE_SUFFIXES = {"ise": "ize", "ises": "izes", "ised": "ized", "ising": "izing", "isation": "ization",
+                "isations": "izations", "iser": "izer", "isers": "izers"}
+# 'analyses' is also the plural of 'analysis', so only the unambiguous forms are paired.
+YSE_STEMS = ("analy", "paraly", "cataly", "dialy", "hydroly", "electroly")
+YSE_SUFFIXES = {"se": "ze", "sed": "zed", "sing": "zing", "ser": "zer", "sers": "zers"}
+OUR_WORDS = """
+    colour colours coloured colouring colourful colourless discoloured behaviour behaviours behavioural
+    behaviourally favour favours favoured favouring favourable favourably unfavourable unfavourably favourite
+    favourites honour honours honoured honourable labour labours laboured labouring labourer labourers
+    neighbour neighbours neighbouring neighbourhood neighbourhoods tumour tumours humour humoured odour odours
+    odourless vigour harbour harbours harboured harbouring rumour rumours flavour flavours flavoured endeavour
+    endeavours endeavoured vapour vapours armour candour demeanour savour savoury
+""".split()
+RE_PAIRS = [("centre", "center"), ("centres", "centers"), ("centred", "centered"), ("centring", "centering"),
+            ("epicentre", "epicenter"), ("litre", "liter"), ("litres", "liters"), ("fibre", "fiber"),
+            ("fibres", "fibers"), ("theatre", "theater"), ("theatres", "theaters"), ("calibre", "caliber"),
+            ("lustre", "luster"), ("meagre", "meager"), ("sombre", "somber"), ("spectre", "specter"),
+            ("manoeuvre", "maneuver"), ("manoeuvres", "maneuvers"), ("manoeuvring", "maneuvering"),
+            ("titre", "titer"), ("titres", "titers")]
+RE_PAIRS += [(f"{prefix}metre{s}", f"{prefix}meter{s}") for prefix in ("milli", "centi", "kilo", "micro", "nano")
+             for s in ("", "s")]
+RE_PAIRS += [(f"{prefix}litre{s}", f"{prefix}liter{s}") for prefix in ("milli", "micro", "deci", "nano")
+             for s in ("", "s")]
+LL_PAIRS = [(b, b.replace("ll", "l", 1)) for b in """
+    labelled labelling unlabelled relabelled modelled modelling modeller modellers remodelled remodelling
+    travelled travelling traveller travellers cancelled cancelling signalled signalling channelled channelling
+    fuelled fuelling totalled totalling counselled counselling counsellor counsellors levelled levelling
+    tunnelled tunnelling dialled dialling
+""".split()]
+LL_PAIRS += [("enrol", "enroll"), ("enrols", "enrolls"), ("enrolment", "enrollment"), ("enrolments", "enrollments"),
+             ("fulfil", "fulfill"), ("fulfils", "fulfills"), ("fulfilment", "fulfillment"), ("skilful", "skillful"),
+             ("skilfully", "skillfully"), ("wilful", "willful"), ("instalment", "installment"),
+             ("instalments", "installments"), ("distil", "distill")]
+# American forms of the ae and oe words, for the British and Oxford targets; British forms are found by pattern.
+AE_AMERICAN = """
+    hemoglobin hemorrhage hemorrhages hemorrhagic hematology hematological hematologist hematoma hematomas
+    hematuria hemodialysis hemodynamic hemodynamics hemolysis hemolytic hemostasis hemostatic hemophilia
+    hematocrit hematopoietic hematopoiesis hemoptysis anemia anemic leukemia leukemias leukemic septicemia
+    bacteremia viremia ischemia ischemic hypoglycemia hypoglycemic hyperglycemia hyperglycemic glycemic glycemia
+    hyperlipidemia dyslipidemia hypercholesterolemia hyperkalemia hypokalemia hyponatremia hypernatremia
+    hypocalcemia hypercalcemia uremia uremic esophagus esophageal esophagitis esophagectomy estrogen estrogens
+    estradiol edema edematous diarrhea diarrheal gonorrhea amenorrhea apnea dyspnea tachypnea hypopnea celiac
+    homeopathy homeopathic pediatric pediatrics pediatrician pediatricians orthopedic orthopedics gynecology
+    gynecological gynecologist anesthesia anesthetic anesthetics anesthetist etiology etiological etiologies
+    cesarean fecal feces
+""".split()
+AE_TO_BRITISH = ((r"^esophag", "oesophag"), (r"^estr", "oestr"), (r"^edem", "oedem"), (r"rrhea", "rrhoea"),
+                 (r"pnea$", "pnoea"), (r"^celiac", "coeliac"), (r"^homeopath", "homoeopath"),
+                 (r"^orthoped", "orthopaed"), (r"^ped", "paed"), (r"^gynec", "gynaec"), (r"^anesth", "anaesth"),
+                 (r"^etiolog", "aetiolog"), (r"^cesarean", "caesarean"), (r"^fec", "faec"), (r"^hem", "haem"),
+                 (r"em(?=ia|ias|ic)", "aem"))
+AE_TO_AMERICAN = ((re.compile(r"haem"), "hem"), (re.compile(r"aem(?=ias?$|ic)"), "em"),
+                  (re.compile(r"^oesophag"), "esophag"), (re.compile(r"^oestr"), "estr"),
+                  (re.compile(r"^oedem"), "edem"), (re.compile(r"rrhoea"), "rrhea"), (re.compile(r"pnoe(?=a|ic)"), "pne"),
+                  (re.compile(r"^foet"), "fet"), (re.compile(r"^coeliac"), "celiac"),
+                  (re.compile(r"^homoeopath"), "homeopath"), (re.compile(r"paed"), "ped"),
+                  (re.compile(r"^gynaec"), "gynec"), (re.compile(r"^anaesth"), "anesth"),
+                  (re.compile(r"^aetiolog"), "etiolog"), (re.compile(r"^caesar(?=ean|ian)"), "cesar"),
+                  (re.compile(r"^faec"), "fec"), (re.compile(r"^palaeo"), "paleo"))
+AE_GENERA = frozenset({"haemophilus", "haemonchus", "haemaphysalis", "haemoproteus"})
+# British forms with no single British reverse: flagged for the American target only. Never the other way:
+# gray is also the SI unit, and program, license, meter, fetus, judgment and specialty are British usage too.
+AMERICAN_ONLY = {
+    "grey": "gray", "greys": "grays", "greyscale": "grayscale", "programme": "program", "programmes": "programs",
+    "licence": "license", "licences": "licenses", "defence": "defense", "offence": "offense",
+    "offences": "offenses", "pretence": "pretense", "judgement": "judgment", "judgements": "judgments",
+    "ageing": "aging", "acknowledgement": "acknowledgment", "acknowledgements": "acknowledgments",
+    "sceptic": "skeptic", "sceptical": "skeptical", "scepticism": "skepticism", "mould": "mold", "moulds": "molds",
+    "mouldy": "moldy", "aluminium": "aluminum", "catalogue": "catalog", "catalogues": "catalogs",
+    "catalogued": "cataloged", "artefact": "artifact", "artefacts": "artifacts", "wellbeing": "well-being",
+    "whilst": "while", "amongst": "among", "practise": "practice", "practised": "practiced",
+    "practises": "practices", "practising": "practicing", "speciality": "specialty", "specialities": "specialties",
+    "orientated": "oriented", "focussed": "focused", "focussing": "focusing", "focusses": "focuses",
+    "benefitted": "benefited", "benefitting": "benefiting", "metre": "meter", "metres": "meters",
+    "rigour": "rigor", "colouration": "coloration", "discolouration": "discoloration",
+    "tumoural": "tumoral", "vapourise": "vaporize", "vapourised": "vaporized",
+}
+# American forms whose British spelling is not their reverse pair: flagged for the British and Oxford targets.
+BRITISH_ONLY = {"analyzes": "analyses", "paralyzes": "paralyses", "catalyzes": "catalyses",
+                "hydrolyzes": "hydrolyses", "dialyzes": "dialyses"}
+
+
+def _spelling_families() -> dict[str, list[tuple[str, str]]]:
+    """(British, American) pairs by family."""
+    ize = [(stem + b, stem + a) for stem in IZE_STEMS for b, a in IZE_SUFFIXES.items()]
+    yse = [(stem + b, stem + a) for stem in YSE_STEMS for b, a in YSE_SUFFIXES.items()]
+    our = [(word, word.replace("our", "or")) for word in OUR_WORDS]
+    ae = []
+    for american in AE_AMERICAN:
+        british = american
+        for pattern, replacement in AE_TO_BRITISH:
+            british = re.sub(pattern, replacement, british, count=1)
+        ae.append((british, american))
+    return {"ize": ize, "yse": yse, "our": our, "re": RE_PAIRS, "ll": LL_PAIRS, "ae": ae}
+
+
+SPELLING_FAMILIES = _spelling_families()
+
+
+def _spelling_table(target: str) -> dict[str, str]:
+    """Lower-case word to the form the target spelling prefers."""
+    families = SPELLING_FAMILIES
+    if target == "american":
+        table = {b: a for pairs in families.values() for b, a in pairs}
+        table.update(AMERICAN_ONLY)
+        return table
+    table = {a: b for name, pairs in families.items() if name != "ize" or target == "british" for b, a in pairs}
+    table.update(BRITISH_ONLY)
+    if target == "oxford":
+        table.update({b: a for b, a in families["ize"]})
+    return table
+
+
+SPELLING_TABLES = {target: _spelling_table(target) for target in SPELLING_TARGETS}
+SPELLING_WORD = re.compile(r"[A-Za-z]+")
+LIST_MARK = re.compile(r"\s*(?:[-*•]|\d+[.)])")
+
+
+def _starts_sentence(text: str, start: int) -> bool:
+    before = text[:start].rstrip(" \t\n([*_“\"‘'")
+    return not before or before[-1] in ".!?:;" or bool(LIST_MARK.fullmatch(before))
+
+
+def american_form(word: str) -> str | None:
+    """The American spelling of a British ae or oe word (haemoglobin, oesophageal, paediatric), or None."""
+    if word in AE_GENERA:
+        return None
+    american = word
+    for pattern, replacement in AE_TO_AMERICAN:
+        american = pattern.sub(replacement, american, count=1)
+    return american if american != word else None
+
+
+def spelling_issues(text: str, target: str = "american") -> list[tuple[int, str, str]]:
+    """(offset, word, preferred form) for each word spelled otherwise than the target asks.
+
+    Capitalized words inside a sentence are taken for names (Centre for Global Health, Haemophilus) and
+    all-capital words for acronyms; both are left alone."""
+    table = SPELLING_TABLES[target]
+    issues = []
+    for match in SPELLING_WORD.finditer(text):
+        word = match.group(0)
+        if len(word) < 4 or (word.isupper() and len(word) > 1):
+            continue
+        lower = word.lower()
+        preferred = table.get(lower) or (american_form(lower) if target == "american" else None)
+        if not preferred:
+            continue
+        if word[0].isupper():
+            if not _starts_sentence(text, match.start()):
+                continue
+            preferred = preferred[0].upper() + preferred[1:]
+        issues.append((match.start(), word, preferred))
+    return issues
+
+
+def style_spelling(entries: list[tuple[str, str]] | None) -> str:
+    """The spelling set by a 'Spelling:' line under General in the style file; American otherwise."""
+    for section, entry in entries or []:
+        match = SPELLING_ENTRY.match(entry)
+        if match and section == "general":
+            return match.group(1).lower()
+    return "american"
 
 
 # ---------------------------------------------------------------------------
@@ -705,8 +903,8 @@ def profile(sentences: list[str]) -> dict:
 # Study design
 # ---------------------------------------------------------------------------
 
-DESIGNS = ("trial", "observational", "economic", "systematic-review", "diagnostic", "prediction", "modelling",
-           "mendelian-randomisation", "laboratory", "computational", "review")
+DESIGNS = ("trial", "observational", "economic", "systematic-review", "diagnostic", "prediction", "modeling",
+           "mendelian-randomization", "laboratory", "computational", "review")
 DESIGN_SIGNS = {
     "economic": r"quality[- ]adjusted life[- ]years?|\bQALYs?\b|\bICERs?\b|incremental cost[- ]effectiveness"
                 r"|cost[- ]effective(?:ness)?|cost[- ]utility|willingness[- ]to[- ]pay|budget impact"
@@ -717,14 +915,14 @@ DESIGN_SIGNS = {
     "diagnostic": r"diagnostic accuracy|sensitivity and specificity|\bspecificity\b|area under the (?:receiver"
                   r" operating characteristic )?curve|\bAUC\b|\bAUROC\b|positive predictive value"
                   r"|negative predictive value|\bSTARD\b|index test|reference standard",
-    "mendelian-randomisation": r"Mendelian randomi[sz]ation|\bMR[- ]Egger\b|instrumental variables?|genetic instruments?"
+    "mendelian-randomization": r"Mendelian randomi[sz]ation|\bMR[- ]Egger\b|instrumental variables?|genetic instruments?"
                                r"|\bpleiotrop|\bcis-[pe]QTL|genetically (?:predicted|proxied|determined)|STROBE-MR",
     "prediction": r"prediction model|predictive model|(?<!polygenic )(?<!genetic )risk score|nomogram|\bTRIPOD\b|\bPROBAST\b|calibration (?:slope|plot)"
                   r"|decision curve|\bC[- ]statistic|discrimination|external validation|LASSO",
     "trial": r"randomly assigned|(?<!Mendelian )randomi[sz]ed|(?<!Mendelian )randomi[sz]ation|placebo|double[- ]blind|\bCONSORT\b"
              r"|intention[- ]to[- ]treat|primary (?:end ?point|efficacy outcome)|first[- ]in[- ]human|dose[- ]escalation"
              r"|dose[- ]limiting|open[- ]label|\bphase (?:I{1,3}|[123])[ab]?(?:/(?:I{1,3}|[123]))? (?:trial|study|clinical)",
-    "modelling": r"transmission model|compartmental|mathematical model|dynamic model|agent[- ]based"
+    "modeling": r"transmission model|compartmental|mathematical model|dynamic model|agent[- ]based"
                  r"|simulat(?:ed|ions?)\b|\bscenarios?\b|we projected|projections?\b|calibrated to"
                  r"|reproduction number|\bR0\b|Global Burden of Disease|\bGATHER\b|\bavert(?:ed|ing)\b|\bforecast"
                  r"|\bnowcast|microsimulation|uncertainty intervals?|\b95% UIs?\b|credible intervals?|\bmodell?ed\b",
@@ -749,7 +947,7 @@ CLINICAL_SIGNS = re.compile(
     r"|\bvaccine effectiveness\b|\badjusted\b|\brisk of\b|\bdata from\b",
     re.IGNORECASE,
 )
-# A Mendelian randomisation study names itself; eQTL and pleiotropy terms alone are genomics.
+# A Mendelian randomization study names itself; eQTL and pleiotropy terms alone are genomics.
 MR_TERMS = re.compile(r"Mendelian randomi[sz]ation|\bMR[- ]Egger\b|STROBE-MR", re.IGNORECASE)
 # An emulated target trial is an observational study, however much trial language it uses.
 EMULATION = re.compile(r"target trial|emulat(?:e|ed|es|ing|ion)", re.IGNORECASE)
@@ -759,7 +957,7 @@ SR_METHODS = re.compile(r"\bPRISMA\b|\bPROSPERO\b|risk[- ]of[- ]bias|random[- ]e
 METHODS_HEADING = re.compile(r"^\s*(?:methods|materials and methods|patients and methods|study design)\s*$",
                              re.IGNORECASE | re.MULTILINE)
 # These designs win when their signs are clear and not swamped by signs of another design, checked in order.
-DESIGN_PRIORITY = (("mendelian-randomisation", 5), ("economic", 4), ("systematic-review", 6), ("prediction", 6),
+DESIGN_PRIORITY = (("mendelian-randomization", 5), ("economic", 4), ("systematic-review", 6), ("prediction", 6),
                    ("diagnostic", 3), ("trial", 8))
 
 
@@ -768,8 +966,8 @@ def detect_design(text: str, allow_review: bool = True) -> tuple[str, dict[str, 
 
     Pass allow_review=False for a text already known to be a research article.
 
-    Tuned on hand-labelled research articles and reviews from leading journals; it places about seven in eight
-    correctly. Most misses are laboratory work read as computational or the reverse, and modelling or laboratory
+    Tuned on hand-labeled research articles and reviews from leading journals; it places about seven in eight
+    correctly. Most misses are laboratory work read as computational or the reverse, and modeling or laboratory
     studies with many cohort terms read as observational.
     """
     words = text.split()
@@ -779,22 +977,22 @@ def detect_design(text: str, allow_review: bool = True) -> tuple[str, dict[str, 
     if (allow_review and _DESIGN_PATTERNS["review"].search(" ".join(words[:1000]))
             and len(SR_METHODS.findall(head)) <= 1 and not METHODS_HEADING.search(text)):
         return "review", scores
-    strongest_other = max(scores["observational"], scores["modelling"], scores["laboratory"],
+    strongest_other = max(scores["observational"], scores["modeling"], scores["laboratory"],
                           scores["computational"])
     for design, threshold in DESIGN_PRIORITY:
-        if design == "mendelian-randomisation" and not MR_TERMS.search(head):
+        if design == "mendelian-randomization" and not MR_TERMS.search(head):
             continue
         if design == "trial" and len(EMULATION.findall(head)) >= 2:
             continue
         rival = strongest_other
         if design == "economic":
-            # Most economic evaluations are model-based, so modelling terms do not count against them.
+            # Most economic evaluations are model-based, so modeling terms do not count against them.
             rival = max(scores["observational"], scores["laboratory"], scores["computational"])
         elif design in ("prediction", "diagnostic"):
             rival = max(rival, scores["trial"])
         if scores[design] >= threshold and scores[design] >= 0.35 * rival:
             return design, scores
-    rest = ("modelling", "laboratory", "computational", "observational")
+    rest = ("modeling", "laboratory", "computational", "observational")
     best = max(rest, key=lambda d: scores[d])
     if scores[best] >= 2:
         return best, scores

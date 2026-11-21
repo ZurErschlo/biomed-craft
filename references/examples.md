@@ -57,7 +57,7 @@ It is important to note that these estimates should be interpreted with caution.
 limitations, our study provides valuable insights. Further research is needed.
 ```
 
-> Our study has several limitations. First, outcomes came from routine registers, which might miss deaths after transfer; this would bias the estimate towards the null. Second, 18% of districts had no cost data, and we imputed them from neighbouring districts with similar incidence. A cohort study that follows patients after transfer would resolve the first limitation.
+> Our study has several limitations. First, outcomes came from routine registers, which might miss deaths after transfer; this would bias the estimate towards the null. Second, 18% of districts had no cost data, and we imputed them from neighboring districts with similar incidence. A cohort study that follows patients after transfer would resolve the first limitation.
 
 DEF-01, DEF-04, DEF-10, LEX-02 and DEF-07 replaced by problem, consequence and a specific study.
 
@@ -82,7 +82,7 @@ scale_colour_discrete(labels = c("R", "P"))
 The title and the caveat move to the legend (FIG-01, FIG-02, FIG-03); the single letters become short names (FIG-05):
 
 ```text
-labs(x = "Year", y = "Incidence (per 100 000)", colour = NULL) +
+labs(x = "Year", y = "Incidence (per 100 000)", color = NULL) +
 scale_colour_discrete(labels = c("RR-TB", "Pre-XDR-TB"))
 ```
 

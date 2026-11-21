@@ -21,8 +21,9 @@ Contents: Choosing the display items; Legends; Text inside figures; Common resul
 ## Legends
 
 - Legends are text, never part of the image: below each figure in the figures file, and also listed after the main text when the journal asks for that; no separate file of legends. The figure number and title travel with the figure.
-- Title: in clinical, epidemiological and modelling journals, a noun phrase saying what is plotted: `Figure 2: Incidence of tuberculosis by WHO region, 2010–2022`. Finding-sentence titles belong to laboratory papers in Cell and, less often, Nature; Science legend titles are mostly noun phrases ending in a full stop.
-- Body, in order: panel descriptions (`(A) …; (B) …` or `a, …`), then what each encoding means (every symbol, colour and line style that no key explains, shading, error bars and the interval type, censoring marks, reference lines), which rows or units are shown and how they are ordered, then n, the statistical test and the data source, then abbreviations.
+- Title: in clinical, epidemiological and modeling journals, a noun phrase saying what is plotted: `Figure 2: Incidence of tuberculosis by WHO region, 2010–2022`. Finding-sentence titles belong to laboratory papers in Cell and, less often, Nature; Science legend titles are mostly noun phrases ending in a full stop.
+- Body, in order: panel descriptions (`(A) …; (B) …` or `a, …`), then what each encoding means (every symbol and line style that no key explains, shading, error bars and the interval type, censoring marks, reference lines), which rows or units are shown and how they are ordered, then n, the statistical test and the data source, then abbreviations.
+- A key explains the colors. The legend does not describe marks by color (`the red line`), which a gray print or a reader with a color-vision deficiency cannot follow.
 - Present tense for what is shown, past tense for methods: `Error bars show 95% CIs. Estimates were adjusted for age and sex.`
 - Define every abbreviation used in the figure, even if the text already defined it.
 - What a legend holds: the title, what each panel plots, what markers, lines, shading and intervals mean, n and the test where the journal prints them, and the abbreviations. How a value was computed and the full definitions of categories belong in the Methods. Fewer than one legend in five in Lancet and BMJ papers describes a computation, against two in five in laboratory papers, which also give n and the test in the legend.
@@ -31,6 +32,8 @@ Contents: Choosing the display items; Legends; Text inside figures; Common resul
 - A legend or table note holds only what a reader needs to read that item. Leave out caveats that hold for any analysis of the kind (that an interval from few studies is imprecise), pointers the text already gives (CAP-02), what the title, a row label, a block heading or an axis title already says, values printed on the panels, and abbreviations the item does not use. An example given in a note is the most common case.
 - Legends describe; the text interprets. No `This figure shows` (META-05) and no conclusions such as `suggesting a decline` (CAP-01). NEJM's `Shown are…` is house style and acceptable.
 - Caveats and status notes about a result (for example that a model did not pass validation) go in the legend, never inside the image.
+- When method details come out of a legend, list where each one goes (the Methods or the response letter) and hand the list to whoever writes the text, so that nothing is lost.
+- Alt text, when the publisher asks for it, says what the figure shows and what it means; it does not copy the legend.
 
 ## Text inside figures
 
@@ -41,7 +44,7 @@ Allowed (seen in most figures in leading journals):
 - Axis titles with the quantity and its unit: `Incidence (per 100 000)`; JAMA uses `Incidence, per 100 000`; NEJM uses Title Case.
 - The axis title names exactly what is plotted: a ratio names its denominator (`Deaths averted per 1000 treated`), a change its period and whether it is absolute or relative (`Relative change in incidence, 2020–2030 (%)`), and a transformed axis its scale (`log scale`). The legend explains an unusual scale, such as a symmetric log.
 - Legend keys with short titles (`Scenario`, `WHO region`) and direct labels on lines.
-- Data annotations: an effect estimate with its interval on a Kaplan–Meier plot, numbers at risk, `Favours X | Favours Y` direction labels, labelled threshold or reference lines, period brackets.
+- Data annotations: an effect estimate with its interval on a Kaplan–Meier plot, numbers at risk, `Favors X | Favors Y` direction labels, labeled threshold or reference lines, period brackets.
 
 Not allowed (no author-drawn figure in the core journals had them):
 
@@ -52,20 +55,24 @@ Not allowed (no author-drawn figure in the core journals had them):
 
 Layout and type:
 
-- One font for all text in figures and tables, the manuscript's font: Times New Roman unless the journal asks for another. Set it once, with the table format, in the project's style file ([analysis-code.md](analysis-code.md)), and check the embedded fonts with `pdffonts`.
+- One font for all text in figures and tables, the manuscript's font: Times New Roman unless the journal asks for another. Set it once, with the table format, at the top of the plotting and table scripts ([analysis-code.md](analysis-code.md)), and check the embedded fonts with `pdffonts`.
 - Equal margins, nothing touching the edge, even spacing between panels and aligned panel edges. A crowded figure is redesigned (fewer panels, or two figures), not shrunk.
 - Panel titles in one row sit at the same height, aligned at the top when one runs to two lines, and panels in one row have balanced widths. Tick labels run horizontally; shorten them or swap the axes to make room.
 - Overlapping markers are dodged or made transparent, or become tiles or a heatmap when they still crowd. An inset is used only when the main panel cannot show the detail.
-- Short keys run horizontally above or below the plot, centred on the panel they explain or given once for the whole figure, and placed and styled the same way in every panel. A legend or facet title keeps its unit on the same line: `Deaths (per 100 000)`.
+- Short keys run horizontally above or below the plot, centered on the panel they explain or given once for the whole figure, and placed and styled the same way in every panel. A legend or facet title keeps its unit on the same line: `Deaths (per 100 000)`.
 - Stack only the parts of a whole. Quantities that do not add up to a total are not stacked.
 - Panel heights follow what each panel holds. A figure with little content is made narrower, never stretched to the full width.
+- Contrast: text against its background at least 4.5:1, as Nature and Communications Biology ask, and lines, markers and other graphic elements at least 3:1, the WCAG 2.2 threshold, used here as a working limit. Avoid red against green, and check the figure in a simulation of color-vision deficiency.
 
 Marks, scales and reference lines:
 
 - A reference line is drawn only where it is defined: a cost-effectiveness threshold starts at the origin and has no part at negative effects. Its label says exactly what it marks, panel by panel when the meaning differs, and it never lies on the edge of the plot, where the axis hides it. Thresholds added as guides are told apart by line type and explained in a key; they change nothing in the analysis.
-- One encoding for one variable: when shape already separates two groups, filled and hollow markers for the same groups go. A colour keeps one meaning in every figure of the paper.
+- One encoding for one variable: when shape already separates two groups, filled and hollow markers for the same groups go. A color keeps one meaning in every figure of the paper.
 - Translucent bands that overlap blend into what reads as another series. Show the intervals at the estimated points, or give each series its own panel.
 - Panels the reader compares share one scale, and the figure shows that they do: one axis title, aligned panels, and row labels given once for blocks of rows that line up.
+- Chart types: a second y-axis only for the same quantity in another unit; no pie charts and no 3D charts; bars and areas start at zero; points for separate categories are not joined by lines.
+- With fewer than about ten observations in a group, plot the raw points, not a bar of the mean.
+- A long list of variables goes in a table, not a figure.
 - Marks fit the data. A few dozen observations are drawn as points, never as a step or cumulative curve. No `All` series that only averages the series shown, no key entry for a single point, and no category dropped without saying so.
 - A figure has one population and one set of denominators; counts with different denominators are not printed side by side. The conclusions of the original authors and the review's own reassessment do not share an encoding: the authors' conclusions go to a table.
 - Panels of sensitivity analyses belong in the supplement unless they change the reading of the main result. The figure's title covers every panel.
@@ -77,13 +84,15 @@ Labels:
 - Short does not mean cryptic: a single letter for a category confuses readers (FIG-05). An abbreviation in an axis title is spelled out when there is room; the legend defines the rest.
 - Labels use the manuscript's own terms and spelling, and the field's established term where one exists.
 - Labels in one key or along one axis are parallel: the same kind of thing in the same grammatical form, one word for one idea (`cost` throughout, or `loss` throughout), and no filler words (`studies`, `several`). A comparison is named the same way everywhere (`Drug A vs placebo`).
-- Check legibility at final size (5–7 pt is the usual minimum), and check that legend titles, tick labels and facet strips do not collide.
+- Check legibility at final size, and check that legend titles, tick labels and facet strips do not collide. Nature and the Nature-branded research journals ask for 5–7 pt sans-serif text (Helvetica or Arial) and 8 pt bold lower-case panel letters at final size; other journals give their own sizes on their figure pages (Communications Biology, 8–12 pt).
+- The order of a key is the same in every panel, and each entry says exactly what its mark means.
 - In reviews, summary figures group studies by theme; study-level rows belong in forest plots and tables. One grouping scheme serves every figure and table. Group by a further variable only when it changes the reading, and show no empty categories unless the gap is the finding.
 - English figures contain no Chinese characters or full-width punctuation (HYG-06).
+- Chinese figures (for a Chinese journal or a thesis): full-width Chinese punctuation; half-width digits, Latin letters, unit symbols, decimal points and the slash; axis titles written as quantity/unit (`λ/nm`), the form GB/T 3101-1993 prefers; and the journal's own instructions where it has them. The Chinese and English versions of a figure are drawn from the same values.
 
 ## Common result figures
 
-- Kaplan–Meier curves: numbers at risk aligned under the axis; groups labelled directly or with a small key; effect estimate with interval (and P value where the journal prints one) inside the plot.
+- Kaplan–Meier curves: numbers at risk aligned under the axis; groups labeled directly or with a small key; effect estimate with interval (and P value where the journal prints one) inside the plot.
 - Forest plots: numeric columns, a line of no effect, direction labels, log scale for ratios.
 - Maps: binned keys with titles, and explicit `No data` and `Not applicable` classes.
 
@@ -93,7 +102,7 @@ Model structures, intervention pathways, conceptual frameworks and study flow di
 
 - The drawing file is the original: edit it, and keep it with its exported images.
 - The diagram matches the plan and the code: the same states, flows, symbols and line styles. Redraw it whenever the model or the study design changes.
-- Model structures: compartments named in words, with subscripts as notation, and compartments with similar names named so the difference is clear. Each arrow carries one parameter symbol from the plan (a single letter, with its sub- and superscripts defined in the legend), and the full rate expressions go to a transition table. Direction is unambiguous: merged lines keep an arrow on each branch, and there are no junction dots. The legend defines every line style and colour. Flows that leave every compartment, such as background deaths, are not drawn, and the legend says so.
+- Model structures: compartments named in words, with subscripts as notation, and compartments with similar names named so the difference is clear. Each arrow carries one parameter symbol from the plan (a single letter, with its sub- and superscripts defined in the legend), and the full rate expressions go to a transition table. Direction is unambiguous: merged lines keep an arrow on each branch, and there are no junction dots. The legend defines every line style and color. Flows that leave every compartment, such as background deaths, are not drawn, and the legend says so.
 - Study flow: PRISMA 2020 diagrams use the template that fits the review (new or updated; databases and registers only, or other sources too) and its wording, drop boxes that do not apply, and give counts in parentheses (`(n=…)`, spaced as the journal prints it); CONSORT boxes start with the count (`355 were assigned…`). Exclusions sit in side boxes level with the box they leave, with reasons in standard wording (`ineligible`, `declined`, `lost to follow-up`) that matches the exclusion table, short but complete. In a PRISMA diagram, each excluded report is counted once under its primary reason, the reasons run from the most to the least frequent, and none is a catch-all `other`; the template's box for records removed for other reasons stays. Symbols are resolved in the legend, and labels such as `post hoc` do not appear. No internal or unfinished labels, and no boxes repeating counts that a results table gives (studies per analysis belong with the results).
 - Layout as for any figure, with boxes aligned and no text over arrows.
 - Legends are short (median 48 words in clinical journals): what the diagram shows, notes on its counts, and the abbreviations. A model structure's legend defines its symbols and points to the transition table.
@@ -103,7 +112,7 @@ Model structures, intervention pathways, conceptual frameworks and study flow di
 - Title: a noun phrase (`Table 1: Baseline characteristics`). Placement follows the journal in print (journals.md); in the submission file put it above the table.
 - Column headers are short (one to four words, two lines at most) and give group sizes: `Intervention (n=1478)`. Detail goes to keyed notes. Under a spanning header, a count column is headed `n`.
 - Characteristics tables use one stub column: group rows in bold across the full width, categories indented beneath them, and the overall row first. Group sizes sit in the column headers, so no row repeats them (`Studies, n`), and the top-left cell stays empty.
-- A denominator shared by a row or a block is given once, in its label: `Economic evaluations (n=6)`. A column that differs from its neighbour in one or two rows is dropped, and the exceptions go to a keyed note.
+- A denominator shared by a row or a block is given once, in its label: `Economic evaluations (n=6)`. A column that differs from its neighbor in one or two rows is dropped, and the exceptions go to a keyed note.
 - Row labels use the field's short term without a bracketed explanation; the definition goes to a keyed note or the Methods. A heading with a single row beneath it becomes one row (`Catastrophic costs reported`). Each label reads correctly under its heading, and every word of a heading matches a row below it.
 - The categories of a block sum to the total. Where they do not, a note says that the categories are not mutually exclusive, and only there. Sparse categories are merged.
 - Declare the statistic format once: `Data are n (%), mean (SD) or median (IQR).` Put units in row labels (`Age, years`).
@@ -117,7 +126,7 @@ Model structures, intervention pathways, conceptual frameworks and study flow di
 - Fit the table to the text width: measure it, set column widths by content, and left-align narrow cells instead of justifying them. Turn the page to landscape only when the first column cannot fit. A group of rows stays on one page. A supplementary table of more than about 20 columns becomes a spreadsheet, with a pointer in the Word file.
 - Keep decimals consistent within a column, and give the same quantity the same decimals in every table. An interval stays on one line; set column widths so it does not wrap.
 - No arrows, operators or `(+)/(−)` shorthand in headers; write `lower is better` in a note if needed.
-- Three-line layout: rules above and below the header and at the bottom; no vertical rules; no coloured fills.
+- Three-line layout: rules above and below the header and at the bottom; no vertical rules; no colored fills.
 - Main and supplementary tables use the same group order and terms. Studies with the same first author and year carry letters (2022a, 2022b).
 
 ## Supplementary figures and tables
@@ -133,8 +142,11 @@ Model structures, intervention pathways, conceptual frameworks and study flow di
 
 ## Result figures and tables made by code
 
-- Change a figure or table only through the script that makes it, never by editing the output. After a change that should not touch values (labels, fonts, layout), confirm that the computed results are unchanged.
-- The scripts write each figure to `figures/` as PDF and TIFF. The manuscript package carries one format of each, since `figures/` keeps the originals. The values each figure plots go to `data/output/`, not `figures/` ([analysis-code.md](analysis-code.md)).
+- Figures and tables come from their own scripts, numbered after the analysis (`09_figures.R`, `10_tables.R`). These read only `data/output/`, and the cleaned data for plots of raw points; they never refit a model, and they set the style and the canvas width at the top. A change to a figure then reruns one short script ([analysis-code.md](analysis-code.md)).
+- The analysis scripts write every value a figure or table shows to `data/output/`: summaries, predictions, confidence bands and, when needed, the fitted model objects. The journal and thesis versions of a figure are drawn from the same values.
+- Change a figure or table only through the plotting or table script that makes it, never by editing the output. After a change that should not touch values (labels, fonts, layout), confirm that the computed results are unchanged.
+- Set the canvas to the journal's final width (single or double column, from its figure page) at export, and do not rescale the figure afterwards; check the font sizes at that size.
+- The plotting scripts write each figure to `figures/` as PDF and TIFF. The manuscript package carries one format of each, since `figures/` keeps the originals. The values each figure plots go to `data/output/`, not `figures/` ([analysis-code.md](analysis-code.md)).
 - Reference lines and curves are computed from their definition on a grid fine enough to draw them smooth, and checked against a few values worked by hand.
 
 ## Assembling and changing the set
@@ -155,8 +167,10 @@ Model structures, intervention pathways, conceptual frameworks and study flow di
 
 - Every rendered page: numbering and order, every title, legend and note present, wide tables fitted (landscape if needed), no row split across pages, nothing cut off, one font, no stray blank space.
 - Counts in legends match the current data after any rerun.
-- A figure plots the statistic the text and tables use: a frontier chosen on means is drawn at means. Totals and differences are computed draw by draw and then summarised, never summed from medians.
+- Someone other than the maker checks each panel against the plotted values the script wrote: the number of points, bars and intervals matches n in the legend, no panel is empty, and each label names the method and the data it shows. A review of the image alone cannot find these errors.
+- A preview that shows missing characters or substituted fonts is checked against the original file first; a conversion problem is not an error in the figure.
+- A figure plots the statistic the text and tables use: a frontier chosen on means is drawn at means. Totals and differences are computed draw by draw and then summarized, never summed from medians.
 - A share names its base when two are possible, such as all costs or attributable costs.
-- Labels say what was done: a fit to the whole period is not labelled held-out.
+- Labels say what was done: a fit to the whole period is not labeled held-out.
 - A point lying on an axis is checked against its source before it is plotted: a value printed as 0·00 may be a small number rounded, and the ratio the paper reports shows which.
 - Axis limits clip no interval or point; facet labels do not reuse the panel letters; a figure uses one currency and price year; a table uses one price year, and each column one unit.

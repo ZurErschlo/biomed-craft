@@ -12,7 +12,7 @@ How research articles in leading journals build sentences and paragraphs. Rates 
 ## Subjects and verbs
 
 - People, groups, data, studies or the trial are the subjects: `Households affected by drug-resistant tuberculosis spent…`, `Most studies measured only hospital costs`. Not abstract nouns (`The concentration in direct medical cost shows…`) and not false agency (`the data tell us`, `the analysis reveals`).
-- Figures and studies show, report or include; judgements such as exclude, establish or determine belong to the authors.
+- Figures and studies show, report or include; judgments such as exclude, establish or determine belong to the authors.
 - Plain reporting verbs: found, estimated, measured, compared, pooled, enrolled, assigned, were associated with, did not differ, accounted for.
 - Write `is`, `are` and `has`; `serves as`, `stands as` and `represents` usually stand in for them (LEX-03).
 - The Lancet prefers `We did a…` and `was done` (3·6 per 10 000 words) to `performed` (1·2); other journals use performed and conducted freely.
@@ -23,7 +23,7 @@ How research articles in leading journals build sentences and paragraphs. Rates 
 - Name every thing so that a reader outside the project understands it on first reading. Shorthand coined during the work (`the week-4 drop`, `the anchor study`, `the fast arm`) becomes the full description: `the change in body weight from baseline to week 4`, `the 2019 cohort study in Malawi`, `the group given the 4-month regimen`.
 - Verbs over nouns made from verbs: `Mortality fell by 12%`, not `A reduction in mortality of 12% was observed`.
 - Plain words over rare synonyms and metaphors (`the treatment gap` only when it is defined and measured).
-- Precision is not obscurity: a technical term the readers' field uses is direct. Test a sentence by asking whether a reviewer from a neighbouring field could restate it after one reading.
+- Precision is not obscurity: a technical term the readers' field uses is direct. Test a sentence by asking whether a reviewer from a neighboring field could restate it after one reading.
 
 ## Tense, voice and length
 
@@ -36,9 +36,9 @@ How research articles in leading journals build sentences and paragraphs. Rates 
 
 | Design | Results | Interpretation |
 |---|---|---|
-| Randomised trial | reduced, increased, resulted in, was non-inferior to | might explain, is likely to reflect |
+| Randomized trial | reduced, increased, resulted in, was non-inferior to | might explain, is likely to reflect |
 | Observational study | was associated with, was higher among | might reflect, could be explained by |
-| Modelling study | we estimated, would avert, was projected to | depends on, is sensitive to |
+| Modeling study | we estimated, would avert, was projected to | depends on, is sensitive to |
 | Systematic review and meta-analysis | pooled estimate with interval; GRADE certainty (`moderate-certainty evidence shows`) | consistent with, explained by |
 | Diagnostic accuracy | sensitivity was, specificity was | if used as…, would |
 | Laboratory study | show (direct observation) | suggest, indicate (mechanism) |
@@ -60,5 +60,5 @@ How research articles in leading journals build sentences and paragraphs. Rates 
 - Labels used inside an analysis (actual, should, gap, scenario codes) get public names before they reach the manuscript.
 - Name earlier work by design and size or trial name (`two trials`, `CRASH-2`); `X et al` is rare in Lancet and NEJM text. Each claim cites the study that supports it.
 - Pointers to your own figures and tables go in parentheses at the end of the clause (`(figure 2; table 3)`); opening with `Table 2 shows` is uncommon (META-06).
-- Reviews synthesise by theme with counts and pooled estimates, not study by study.
+- Reviews synthesize by theme with counts and pooled estimates, not study by study.
 - When compressing, keep the actor, comparator, condition, denominator and time frame; drop low-priority sentences before compressing essential ones.

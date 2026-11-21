@@ -191,7 +191,7 @@ def _is_abbreviation(core: str) -> bool:
     if sum(c.isupper() for c in core) < 2 or sum(c.isdigit() for c in core) >= 4:  # registry and grant numbers
         return False
     if core in ABBR_SECTION_WORDS or re.fullmatch(r"[IVX]+[A-Ca-c]?|[A-Z]{7,}", core) or ABBR_NAME_LIKE.match(core):
-        return False  # section labels, stages and classes, capitalised words and names such as PubMed
+        return False  # section labels, stages and classes, capitalized words and names such as PubMed
     return not re.fullmatch(r"CD\d+[a-z]?", core)
 
 
@@ -277,8 +277,49 @@ def abbreviation_findings(segments: list[ts.Segment], rule: ts.Rule, label: str,
     return findings
 
 
+QUOTED = re.compile(r"“[^”]*”|\"[^\"\n]*\"|‘[^’]*’")
+
+
+def spelling_findings(segments: list[ts.Segment], rule: ts.Rule, label: str, target: str,
+                      design: str = "", journal: str = "") -> list[Finding]:
+    """FMT-07: words spelled otherwise than the target. Quotations, names, URLs, reference lists and back
+    matter keep the spelling they were published with."""
+    findings: list[Finding] = []
+    in_back = False
+    for segment in segments:
+        raw = segment.text.strip()
+        if segment.scope == "prose":
+            if BACK_MATTER.match(raw.lstrip("*_")):
+                in_back = True
+            elif in_back and _is_heading(raw):
+                in_back = False
+        if segment.scope not in rule.scopes or (in_back and segment.scope == "prose"):
+            continue
+        text = ts.URL.sub(lambda m: " " * len(m.group(0)), segment.text)
+        if REFERENCE_ENTRY.match(text.strip()):
+            continue
+        text = QUOTED.sub(lambda m: " " * len(m.group(0)), text)
+        spans = ts.sentence_spans(text)
+        grouped: dict[str, Finding] = {}
+        for offset, word, preferred in ts.spelling_issues(text, target):
+            context = _excerpt(ts.sentence_at(text, spans, offset))
+            if context in grouped:  # one finding per sentence
+                found = grouped[context]
+                found.count += 1
+                if word not in found.match.split(" | "):
+                    found.match += " | " + word
+                    found.hint = found.hint.replace(": write", f", {word} → {preferred}: write", 1)
+                continue
+            grouped[context] = Finding(rule.id, rule.level_for(design, journal), rule.category, label, segment.line,
+                                       segment.scope, segment.source, word, context,
+                                       f"{word} → {preferred}: write the {target.capitalize()} form. {rule.hint}")
+            findings.append(grouped[context])
+    return findings
+
+
 def scan_segments(segments: list[ts.Segment], rules: list[ts.Rule], label: str, file_format: str,
-                  doc_type: str, design: str = "", journal: str = "") -> tuple[list[Finding], list[str]]:
+                  doc_type: str, design: str = "", journal: str = "",
+                  spelling: str = "american") -> tuple[list[Finding], list[str]]:
     rules_by_id = {r.id: r for r in rules}
     active = [r for r in ts.regex_rules(rules) if doc_type not in r.skip_docs
               and (not r.formats or file_format in r.formats) and (not r.docs or doc_type in r.docs)]
@@ -335,6 +376,9 @@ def scan_segments(segments: list[ts.Segment], rules: list[ts.Rule], label: str, 
     abbreviations = rules_by_id.get("FMT-06")
     if abbreviations is not None and doc_type in abbreviations.docs:
         findings.extend(abbreviation_findings(segments, abbreviations, label, design, journal))
+    spelling_rule = rules_by_id.get("FMT-07")
+    if spelling_rule is not None and (not spelling_rule.docs or doc_type in spelling_rule.docs):
+        findings.extend(spelling_findings(segments, spelling_rule, label, spelling, design, journal))
     return findings, prose_sentences
 
 
@@ -468,7 +512,8 @@ def scan_file(path: Path, rules: list[ts.Rule], doc_type: str, scope: str | None
         detected = doc_type == "manuscript" and len(ts.words(prose)) >= 200
     group_name, group = choose_group(groups or {}, journal, design)
     family = "" if journal == "core" else journal
-    findings, prose_sentences = scan_segments(segments, rules, label, file_format, doc_type, design, family)
+    findings, prose_sentences = scan_segments(segments, rules, label, file_format, doc_type, design, family,
+                                              ts.style_spelling(style))
     allowed: dict[str, int] = {}
     if style:
         kept = []

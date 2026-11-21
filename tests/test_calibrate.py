@@ -24,7 +24,7 @@ class CalibrateTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "10.1056_nejmoa0000001.md"
             path.write_text(text, encoding="utf-8")
-            article = cb.analyse_text(cb.read_text(path), PROSE_RULES)
+            article = cb.analyze_text(cb.read_text(path), PROSE_RULES)
         self.assertEqual((article["doi"], article["journal"], article["year"], article["type"], article["design"]),
                          ("10.1056/nejmoa0000001", "NEJM", 2019, "research", "trial"))
         self.assertNotIn("title", article)

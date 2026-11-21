@@ -13,7 +13,7 @@ to the style file: the researcher confirms entries first.
 Examples:
   python3 style_diff.py draft.docx revised.docx
   python3 style_diff.py --doc legends draft_legends.md revised_legends.md
-  python3 style_diff.py --tracked revised_with_track_changes.docx --type modelling
+  python3 style_diff.py --tracked revised_with_track_changes.docx --type modeling
   python3 style_diff.py --json draft.md revised.md
 """
 

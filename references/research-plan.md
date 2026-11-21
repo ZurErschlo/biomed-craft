@@ -16,11 +16,21 @@ A research plan (`research_plan.md`) is the working specification of a study. So
 
 Explain every variable and abbreviation where it first appears. Write each method choice as a choice with its reason and precedent: `We will use a negative binomial model because the counts are overdispersed, as in [citation].` Take values from sources, never from memory; when a value has no source yet, find one before writing it down.
 
+## Before freezing the plan
+
+- Name the primary outcome and the quantity to be estimated. A trial states its estimand (ICH E9(R1)): population, treatment conditions, variable, the handling of intercurrent events and the summary measure. Other designs name the quantity in plain words; reporting guidelines ask about the estimand framework only when it was used.
+- Intercurrent events, such as stopping or switching treatment, are handled in the estimand. Missing data are a separate matter: withdrawal from the study, administrative censoring and data that the chosen strategy needed but that were not collected are handled in the analysis.
+- Each decision rule is a definite condition (item 6), never `if appropriate` or `where necessary`. A diagnostic test such as a test of normality changes the method only through a rule written in advance with its threshold and its alternative model, as in the example below.
+- Multiplicity: define the families of comparisons and how the type I error is controlled. When there is no adjustment, say so and read the results as exploratory.
+- Each hypothesis has one outcome and one primary analysis. List the sensitivity and subgroup analyses in advance and label each one secondary or sensitivity, so that none is added or dropped after the results are seen.
+- Name the software defaults that affect the results, with their values and the software version (the default importance measure in feature selection, for example).
+- A trial's statistical analysis plan is final before unblinding, and the paper marks each departure made after unblinding.
+
 ## What stays out
 
 - Unsettled items and to-dos (PLAN-01). Decide, or move the item to the to-do list in `execution_log.md`.
 - Status labels, ticks and progress marks (PLAN-02).
-- Dates, version numbers, change notes and notes on what replaced what (PLAN-03).
+- Dates, version numbers, change notes and notes on what replaced what (PLAN-03). A trial's statistical analysis plan is the exception: it keeps each amendment with its version, reason and timing (Gamble and colleagues 2017, items 4a–4c). Other plans record their changes in the log.
 - Pointers to the log, meeting notes or chats (PLAN-04).
 - Internal codes that need a key, such as `N12` or `R1–R22` (PLAN-05).
 - Run details: threads, environment variables, profiling, runtime (PLAN-06).

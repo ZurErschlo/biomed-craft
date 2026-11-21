@@ -18,7 +18,7 @@ A master craftsman is exacting in every detail, is never satisfied with almost r
 
 - **Writing to the standard of leading journals** (Lancet, NEJM, JAMA, BMJ, Nature, Science, Cell and their major sub-journals): every section, supplements, figure legends, table notes and text inside figures, without AI-style patterns, engineering register, defensive hedging or narration about the process.
 - **Three layers**: a general standard for wording and shared conventions; the target journal's structure and format; the conventions and required content of the study type.
-- **Thirteen study types**: randomised trials, observational and database studies, Mendelian randomisation, systematic reviews and meta-analyses, narrative reviews, health economic evaluations, diagnostic accuracy, clinical prediction models, disease and epidemiological modelling, laboratory and mechanistic studies, computational and omics studies, qualitative and mixed-methods studies. Each file lists the content a paper must contain, what reviewers flag and how strong papers avoid it, and the writing conventions of leading journals.
+- **Thirteen study types**: randomized trials, observational and database studies, Mendelian randomization, systematic reviews and meta-analyses, narrative reviews, health economic evaluations, diagnostic accuracy, clinical prediction models, disease and epidemiological modeling, laboratory and mechanistic studies, computational and omics studies, qualitative and mixed-methods studies. Each file lists the content a paper must contain, what reviewers flag and how strong papers avoid it, and the writing conventions of leading journals.
 - **The rest of a project**: research plans written as a specification someone else could follow, execution logs, analysis scripts that run section by section in RStudio, comments, and project folders.
 - **Evidence and consistency**: a source for every claim and value, the newest official data, numbers checked against their source, retrieved full texts checked against the reference list, and one story told the same way in the plan, the code, the tables and the text.
 
@@ -81,12 +81,14 @@ python3 scripts/scan.py manuscript.docx
 python3 scripts/scan.py --type prediction --profile draft.md
 python3 scripts/scan.py --doc code analysis/
 python3 scripts/check_numbers.py manuscript.docx
+python3 scripts/check_references.py refs.ris --manuscript manuscript.docx
 python3 scripts/check_fulltext.py included.ris fulltexts/
 python3 scripts/check_preservation.py original.docx revised.docx
+python3 scripts/check_response.py response.docx revised.docx
 python3 scripts/style_diff.py draft.docx revised.docx
 ```
 
-`scan.py` reads Word, Markdown, Quarto, LaTeX, PowerPoint, PDF, SVG and R or Python code, guesses the study type, and reports findings by rule, with levels that follow the study type and journal. `check_numbers.py` finds percentages that do not match their counts, estimates outside their intervals and abstract numbers that appear nowhere else. `check_fulltext.py` lists retrieved PDFs that are the wrong article, a supplement, a page that only cites the article or a duplicate, and records with no PDF. `check_preservation.py` confirms that an edit kept every number, citation and cross-reference.
+`scan.py` reads Word, Markdown, Quarto, LaTeX, PowerPoint, PDF, SVG and R or Python code, guesses the study type, and reports findings by rule, with levels that follow the study type and journal. `check_numbers.py` finds percentages that do not match their counts, estimates outside their intervals, P values that their test statistics cannot give, PRISMA flow counts that do not add up and abstract numbers that appear nowhere else. `check_references.py` checks each reference against Crossref and PubMed (title, authors, year, journal, retraction) and, with a manuscript, that citations and the reference list match both ways. No email address is sent. `check_fulltext.py` lists retrieved PDFs that are the wrong article, a supplement, a page that only cites the article or a duplicate, and records with no PDF. `check_preservation.py` confirms that an edit kept every number, citation, cross-reference and reference-manager field, lists sentences that moved from association to effect, and checks that tracked changes in Word reject back to the original. `check_response.py` checks that new text quoted in a response letter appears word for word in the revision, at the place the letter names.
 
 ## How it is built
 

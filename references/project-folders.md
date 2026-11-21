@@ -8,8 +8,8 @@ project/
   protocol/        registered protocol, research_plan.md, execution_log.md
   data/input/      collected and hand-entered data, read-only, with a dictionary for each table
   data/output/     everything the scripts rebuild
-  analysis/        numbered scripts, and style.R for fonts and table format
-  figures/         each figure as PDF and TIFF, written by the scripts
+  analysis/        numbered scripts: the analysis first, then figures and tables
+  figures/         each figure as PDF and TIFF, written by the plotting scripts
   tables/
   manuscript/      main text, supplement, main figures and main tables as Word files, dated YYYYMMDD
   archive/         files no longer used, in subfolders named by date and content
@@ -21,6 +21,9 @@ project/
 - Data files are CSV. Result tables are xlsx, one file per table. No table is kept in two formats. Figures are kept as PDF and TIFF in `figures/`; the manuscript folder holds one format of each.
 - Dates in file names (YYYYMMDD) instead of version labels such as `v2` or `final`. The data extraction workbook carries its date.
 - Each clean table has a data dictionary: variable name, meaning, unit, allowed values or range, missing-value code and source.
-- No stray README, AGENTS.md or notes files. A single README at the root only when the code is shared or deposited, giving the script order, the inputs and outputs of each script, software versions and data sources.
+- When the researcher already has folder names of their own (`scripts/` for `analysis/`, say), keep theirs.
+- No stray README, AGENTS.md or notes files. A README at the root is written only when the project is handed over or deposited, in one of two forms.
+  - Handoff, for a collaborator or student, in the researcher's language and in this order: what the project is; what each folder holds, which folders are read-only and which the scripts rebuild; how to run it (software versions, the order of the scripts, running section by section, which figures can be redrawn without refitting); the files each script reads and writes; the methods in the order of the Methods section, each with its parameters and the script section that carries it out; the list of figures and tables, with the reviewer comment each change answers. Numbers come from the output files, and another reader checks the methods part against the code. No run times, process notes, defensive wording or engineering detail.
+  - Archive, deposited or published with the paper: the handoff README in English, without the changes and reviewer comments, plus the four parts Nature asks of code central to a paper: system requirements (dependencies and versions, systems tested, special hardware); installation, with its typical time; a demo on example data, with the expected output and run time; and how to use the code on the researcher's data. The license and the archive DOI go in the code availability statement ([sections.md](sections.md)).
 - Nothing copied from other projects.
 - The manuscript is written in Word once the analysis is done.

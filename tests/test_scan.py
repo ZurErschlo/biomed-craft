@@ -95,13 +95,48 @@ class BuiltinChecksTest(unittest.TestCase):
         with_references = "Use of ivacaftor rose.\n\n# References\n\n1. Smith AB, Jones CD. CFTR modulators. 2020."
         self.assertNotIn("FMT-06", self.scan_text(with_references))
         self.assertNotIn("FMT-06", self.scan_text("Use of ETI rose.", doc="response"))
-        named = "Tocilizumab in adults with COVID-19 (RECOVERY): a randomised trial. We searched PubMed and Embase."
+        named = "Tocilizumab in adults with COVID-19 (RECOVERY): a randomized trial. We searched PubMed and Embase."
         self.assertNotIn("FMT-06", self.scan_text(named))
         early_back_matter = "## Data sharing\n\nData will be shared.\n\n## Methods\n\nUse of ETI rose."
         self.assertIn("FMT-06", self.scan_text(early_back_matter))  # back matter ends at the next heading
         self.assertIn("FMT-06", self.scan_text("Rates rose. CKD, which affects 10% of adults, is common."))
         self.assertNotIn("FMT-06", self.scan_text("*Pseudomonas aeruginosa* (PsA) was common. PsA was rare in 2019."))
         self.assertNotIn("FMT-06", self.scan_text("Stage IIIA disease. Two reviewers (AB and CD) used REDCap."))
+
+    def test_spelling_follows_one_target(self):
+        for text in EXAMPLES["FMT-07"]["hit"]:
+            self.assertIn("FMT-07", self.scan_text(text), text)
+        for text in EXAMPLES["FMT-07"]["miss"]:
+            self.assertNotIn("FMT-07", self.scan_text(text), text)
+        references = "Results were similar.\n\n# References\n\n1. Smith AB. Randomised trials of colour. Lancet 2019.\n"
+        self.assertNotIn("FMT-07", self.scan_text(references))
+        self.assertNotIn("FMT-07", self.scan_text("See https://example.org/behaviour-centre for details."))
+        self.assertNotIn("FMT-07", self.scan_text("The FAVOUR trial enrolled adults."))  # acronyms and trial names
+
+    def test_spelling_targets(self):
+        def found(text, target):
+            segments = ts.read_markdown(text)
+            findings, _ = scan.scan_segments(segments, RULES, "test", "md", "manuscript", spelling=target)
+            return [f.match for f in findings if f.rule == "FMT-07"]
+        text = "Patients were randomized, and the color of the tumour was analyzed with gray-scale imaging."
+        self.assertEqual(found(text, "american"), ["tumour"])
+        self.assertEqual(found(text, "british"), ["randomized | color | analyzed"])
+        self.assertEqual(found(text, "oxford"), ["color | analyzed"])
+        self.assertEqual(found("The analyses were labelled by programme.", "british"), [])
+        self.assertEqual(found("Oesophageal and paediatric cases of anaemia rose.", "american"),
+                         ["Oesophageal | paediatric | anaemia"])
+
+    def test_spelling_target_comes_from_the_style_file(self):
+        with tempfile.TemporaryDirectory() as folder:
+            style = Path(folder) / "style.md"
+            style.write_text("# Personal style\n\n## General\n\nSpelling: British\n", encoding="utf-8")
+            entries = ts.read_style(style)
+            self.assertEqual(ts.style_spelling(entries), "british")
+            text = Path(folder) / "draft.md"
+            text.write_text("Patients were randomized. The colour was clear.\n", encoding="utf-8")
+            result = scan.scan_file(text, RULES, "manuscript", None, None, style=entries)
+            self.assertEqual([f["match"] for f in result["findings"] if f["rule"] == "FMT-07"], ["randomized"])
+        self.assertEqual(ts.style_spelling([("general", "- Allow [CON-04]")]), "american")
 
     def test_response_letters_may_describe_revisions(self):
         text = "As requested by the reviewer, we added a sensitivity analysis."
@@ -282,7 +317,7 @@ class ResearchDocumentsTest(unittest.TestCase):
     def test_code_rules(self):
         must, review = self.must_and_review("analysis_bad.R", "code")
         expected = {"CODE-01", "CODE-02", "CODE-03", "CODE-04", "CODE-05", "CODE-06", "CODE-07", "CODE-08",
-                    "CODE-10", "CODE-11", "HYG-06", "META-12"}
+                    "CODE-10", "CODE-11", "CODE-13", "META-12"}
         self.assertTrue(expected <= must, expected - must)
         self.assertIn("CODE-12", review)
         self.assertEqual(self.must_and_review("analysis_good.R", "code"), (set(), set()))
@@ -290,6 +325,22 @@ class ResearchDocumentsTest(unittest.TestCase):
     def test_document_rules_stay_out_of_manuscripts(self):
         found = rules_found(FIXTURES / "plan_bad.md")
         self.assertFalse({r for r in found if r.startswith(("PLAN", "LOG", "CODE"))}, found)
+
+    def test_code_comments_in_another_language_can_be_allowed(self):
+        with tempfile.TemporaryDirectory() as folder:
+            script = Path(folder) / "01_clean.R"
+            script.write_text('# 读入数据\nraw <- read.csv("data/input/raw.csv")\nmessage("完成")\n', encoding="utf-8")
+            found = scan.scan_file(script, RULES, "code", None, None)["findings"]
+            self.assertEqual({(f["rule"], f["scope"]) for f in found}, {("CODE-13", "comment"), ("CODE-13", "code")})
+            style = [("document: code", "- Allow [CODE-13] (said by the researcher, 2026-11-21)")]
+            result = scan.scan_file(script, RULES, "code", None, None, style=style)
+            self.assertEqual(result["findings"], [])
+            self.assertEqual(result["allowed"], {"CODE-13": 2})
+            manuscript = Path(folder) / "draft.md"
+            manuscript.write_text("Costs（US$）were similar.\n", encoding="utf-8")
+            allow_all = [("general", "- Allow [HYG-06] [CODE-13]")]
+            self.assertIn("HYG-06", {f["rule"] for f in scan.scan_file(manuscript, RULES, "manuscript", None, None,
+                                                                         style=allow_all)["findings"]})
 
     def test_comments_and_strings(self):
         segments = ts.read_code('x <- "a # b"  # why: keep the hash\n# Purpose: demo', "r")
@@ -308,22 +359,22 @@ class StudyDesignTest(unittest.TestCase):
                              "bias. Pooled estimates came from random-effects models. The meta-analysis included 40 "
                              "studies, and the systematic review found consistent results.",
         "trial": "In this double-blind, placebo-controlled trial, patients were randomly assigned to drug or placebo. "
-                 "Randomisation was stratified by site. The primary end point was death at 28 days in the "
-                 "intention-to-treat population, reported to CONSORT. Randomised patients who received placebo had "
-                 "more events; placebo recipients were followed for 90 days. The randomised groups were similar.",
+                 "Randomization was stratified by site. The primary end point was death at 28 days in the "
+                 "intention-to-treat population, reported to CONSORT. Randomized patients who received placebo had "
+                 "more events; placebo recipients were followed for 90 days. The randomized groups were similar.",
         "laboratory": "Mice lacking the receptor were generated with CRISPR. Western blot and flow cytometry of mouse "
                       "tissue showed loss of the protein. In vitro, cell lines transfected with the plasmid recovered "
                       "the phenotype, and in vivo the knockout mice were protected.",
-        "computational": "We analysed single-cell RNA-seq data and bulk RNA-seq data with a bioinformatic pipeline. "
+        "computational": "We analyzed single-cell RNA-seq data and bulk RNA-seq data with a bioinformatic pipeline. "
                          "Reads were aligned to the reference genomes, and genome-wide association statistics were "
                          "combined with a machine learning model and phylogenetic analysis.",
-        "modelling": "We built a compartmental transmission model calibrated to notification data and simulated "
+        "modeling": "We built a compartmental transmission model calibrated to notification data and simulated "
                      "scenarios to 2035. Projections under each scenario were compared with the status quo, and "
                      "simulations varied the reproduction number.",
-        "mendelian-randomisation": "We did a two-sample Mendelian randomisation study with genetic instruments for "
+        "mendelian-randomization": "We did a two-sample Mendelian randomization study with genetic instruments for "
                                    "body mass index. Genetically predicted adiposity was associated with risk. MR-Egger and "
                                    "weighted median estimates agreed, pleiotropy tests were null, and we followed STROBE-MR. "
-                                   "Mendelian randomisation estimates were consistent across instrumental variables.",
+                                   "Mendelian randomization estimates were consistent across instrumental variables.",
         "prediction": "We developed and externally validated a prediction model with LASSO and present it as a nomogram. "
                       "Discrimination (C statistic) and calibration slope were good, the calibration plot was close to the "
                       "diagonal, decision curve analysis showed net benefit, and we followed TRIPOD and PROBAST. The "
@@ -338,12 +389,12 @@ class StudyDesignTest(unittest.TestCase):
             self.assertEqual(ts.detect_design(text)[0], design, design)
 
     def test_design_edge_cases(self):
-        review = ("This review summarises the evidence from randomised trials of anticoagulation after venous "
+        review = ("This review summarizes the evidence from randomized trials of anticoagulation after venous "
                   "thromboembolism. " + "Patients were randomly assigned to drug or placebo in double-blind trials "
                   "with intention-to-treat analyses. " * 3)
         self.assertEqual(ts.detect_design(review)[0], "review")
         eqtl = "We mapped cis-eQTL and cis-pQTL across tissues; pleiotropy was common and instrumental variables were scarce. " * 3
-        self.assertNotEqual(ts.detect_design(eqtl)[0], "mendelian-randomisation")
+        self.assertNotEqual(ts.detect_design(eqtl)[0], "mendelian-randomization")
         early = ("In this first-in-human, open-label, dose-escalation phase 1 trial, patients received the antibody. "
                  "Dose-limiting toxicities were recorded during the phase 1 study. " * 2 +
                  "We also studied the antibody in mice and in cell lines.")
@@ -357,7 +408,7 @@ class StudyDesignTest(unittest.TestCase):
         self.assertEqual(len(ts.DASH.findall(text)), 4)
 
     def test_review_needs_no_methods_heading(self):
-        text = "In this Review, we summarise treatment of latent tuberculosis.\n\nThis Review discusses new regimens."
+        text = "In this Review, we summarize treatment of latent tuberculosis.\n\nThis Review discusses new regimens."
         self.assertEqual(ts.detect_design(text)[0], "review")
         self.assertNotEqual(ts.detect_design("Methods\n" + text)[0], "review")
 

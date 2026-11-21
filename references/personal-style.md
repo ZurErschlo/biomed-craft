@@ -1,6 +1,6 @@
 # Personal style
 
-The skill brings the standard; the researcher brings the style. Each researcher keeps a style file that records how they write, so that two people using this skill end up with work that is equally sound and recognisably their own. The file is personal: it stays on the researcher's computer and is never part of this repository.
+The skill brings the standard; the researcher brings the style. Each researcher keeps a style file that records how they write, so that two people using this skill end up with work that is equally sound and recognizably their own. The file is personal: it stays on the researcher's computer and is never part of this repository.
 
 ## The file
 
@@ -18,6 +18,8 @@ Order of precedence:
 2. The target journal's requirements.
 3. The style file, over the skill's style defaults and over review- and density-level rules.
 4. A must-level style rule: say once that leading journals rarely print the form, then follow the researcher if they confirm.
+
+A `Spelling:` line under `General` sets the spelling the skill writes and checks (FMT-07): `American` by default, `British` (-ise and -our) or `Oxford` (-ize and -our). Comments in the researcher's own language need `Allow [CODE-13]` under `Document: code`.
 
 `scan.py` reads the file too. Findings for rules named in `Allow [ID]` entries are listed apart, as allowed by the style file, never for rules on internal material (HYG).
 
@@ -46,6 +48,8 @@ Read by biomed-craft before writing. One entry per line: the rule, then
 `Allow [RULE-ID]` lets a rule the skill flags stand where this section applies.
 
 ## General
+
+Spelling: American
 
 ## Document: manuscript
 ## Document: abstract

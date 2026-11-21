@@ -170,7 +170,7 @@
     "request": "Clean up the comments in this R script.",
     "input": "# 修改: changed to NB on 12 May per user request (v2)\n# TODO check this later\n# see plan §3.2\nfit <- glm.nb(cases ~ year + offset(log(pop)), data = d)\n# fit <- glm(cases ~ year, family = poisson, data = d)",
     "keep": ["fit <- glm.nb(cases ~ year + offset(log(pop)), data = d)"],
-    "focus": ["CODE-08", "CODE-10", "CODE-11", "CODE-12", "HYG-06", "META-12"],
+    "focus": ["CODE-08", "CODE-10", "CODE-11", "CODE-12", "CODE-13", "META-12"],
     "notes": "The code line stays exactly as it is. The reason for the negative binomial model is not given, so a good rewrite asks for it (or states only what the code shows) and moves the open item to the log."
   },
   {

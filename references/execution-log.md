@@ -13,6 +13,7 @@ The log (`execution_log.md`) records what was done, what came out and what was d
 - What was done, the result with its numbers and the output file, problems met, and decisions with their reasons.
 - A design decision takes one line: the date, the decision and the heading of the plan section it changed. The plan carries the content.
 - Record a problem before rerunning anything. Keep failed attempts and the results that did not work out.
+- When looking for why a result changed, change one thing per rerun: write the expected direction first, then record what came out. Two changes in one run leave the cause unknown.
 - For the run that produces the final results, record the R version and the versions of the packages used. The Methods cite the same versions.
 - When the method departs from the registration, amend the registration and record the change here.
 

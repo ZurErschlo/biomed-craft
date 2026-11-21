@@ -16,9 +16,9 @@ Development, validation and updating of diagnostic and prognostic prediction mod
 ## Building the model
 
 - Split before any processing. Every step (imputation, scaling, univariable screening, variable selection, tuning, resampling, nomogram fitting) is fitted on the training data only and then applied unchanged.
-- Save the split once as a file of participant identifiers. Every script, in every language and for every outcome, reads that file; none draws its own. When several outcomes are modelled in the same participants, one split serves them all, and the Methods state how it was stratified (on the outcomes jointly when each must stay balanced).
+- Save the split once as a file of participant identifiers. Every script, in every language and for every outcome, reads that file; none draws its own. When several outcomes are modeled in the same participants, one split serves them all, and the Methods state how it was stratified (on the outcomes jointly when each must stay balanced).
 - Nominal predictors enter as indicator variables and are selected or dropped as one variable; a nominal code is never fitted as a number. One coding of each variable serves the data dictionary, every model, the tables and the text.
-- Prefer prespecified predictors or penalised regression to univariable p-value screening followed by stepwise selection.
+- Prefer prespecified predictors or penalized regression to univariable p-value screening followed by stepwise selection.
 - Multiple imputation for missing predictors, fitted within the training data; report the amount of missing data for each variable and the handling. Complete-case analysis is a weakness to state.
 - Machine learning: tune with cross-validation inside the training data; apply SMOTE or other resampling only inside training folds, and recalibrate afterwards, because resampling distorts predicted probabilities.
 - Choose the model, the threshold, the feature set and any ensemble members from cross-validated training results only, and lock the choice before the test set is opened. Ranking candidates on test performance is selection on the test set.
@@ -38,15 +38,31 @@ Development, validation and updating of diagnostic and prognostic prediction mod
 - Incremental value of a new marker: a likelihood-ratio test between nested models fitted to the same data, and the change in C statistic with its CI as a size. The DeLong test is not used for nested models on the same data; continuous net reclassification is avoided.
 - SHAP and other importance measures describe the model; they carry no inferential intervals and do not show cause. Compute them for the model chosen by cross-validation, state the scale (log-odds or probability) and keep it the same in every panel.
 
+## Time-to-event models
+
+- State which data gave the censoring distribution behind inverse-probability-of-censoring weights (Brier score, time-dependent AUC). In external validation, and whenever censoring differs between the development and evaluation data, estimate it from the evaluation data; in cross-validation, from the whole dataset, with the same weights in every fold (Prince and colleagues 2025). The model itself stays as it was fitted.
+- State the time points at which discrimination is assessed, and check that each one has both events and non-events.
+- With competing events, use the cumulative incidence, not one minus the Kaplan–Meier estimate, which overstates the risk (Austin and colleagues 2016).
+- Assess calibration at each time point in independent data.
+- Before reporting, confirm the direction of the risk score: a higher score means a higher risk, or the C statistic and AUC come out inverted.
+
+## Reporting beyond the metrics
+
+- How fairness was handled, and why (TRIPOD+AI item 14).
+- For external validation, how the development and evaluation data differ in setting, eligibility, outcome and predictors (item 16).
+- Open science: the protocol, registration, and the availability of data and code; patient and public involvement (items 18c–18f and 19).
+- When two models give identical metrics, compare their predictions participant by participant to rule out the same model or the same output saved twice.
+- Count the convergence warnings of the fits and report them in the supplement.
+
 ## What reviewers flag, and the fix
 
 - Predictors measured at the same time as, or after, the outcome: give the time of each measurement, and call them predictive factors, never risk factors.
 - An outcome measured with a screening tool: reframe as the risk of screening positive and add the limitation.
 - No independent test set, or leakage: state when the split happened and which steps were fitted on which data.
-- A feature-selection rule with no reason: justify the rule, or replace it with a penalised model.
+- A feature-selection rule with no reason: justify the rule, or replace it with a penalized model.
 - Too little detail to reproduce: give imputation, tuning, cross-validation and software with versions, and share the code.
 - Performance figures that disagree with the tables: recompute both from the same output.
-- A single-centre sample: state the limits of representativeness and plan external validation in other centres and populations.
+- A single-center sample: state the limits of representativeness and plan external validation in other centers and populations.
 - Metrics without clinical meaning: show what a given sensitivity and specificity mean for the intended use.
 - Inclusion and exclusion criteria mixed together: list them separately, and give a reference for every scale.
 - A method in the text that differs from the code (test names, thresholds, the number of selection methods): make the text describe what the code did.
@@ -54,7 +70,7 @@ Development, validation and updating of diagnostic and prognostic prediction mod
 ## Writing it up
 
 - Title: `Development and validation of a model to predict [outcome] in [population]: a [design] study`, or `External validation of [model] in [population]`.
-- Abstract: the population and setting, the outcome and horizon, the candidate predictors, the modelling method, the type of validation, and the C statistic, calibration and net benefit with their intervals.
+- Abstract: the population and setting, the outcome and horizon, the candidate predictors, the modeling method, the type of validation, and the C statistic, calibration and net benefit with their intervals.
 - Present the final model so that others can use it: the full equation with the intercept, a nomogram, or shared code.
 - Main figures: the calibration plot and the decision curve; a ROC curve adds little next to the C statistic. Main tables: participant characteristics by development and validation set, and the predictors with their coefficients or odds ratios.
 - Baseline tables give medians with quartiles or means with SDs consistently, and no significance tests between the development and validation sets.

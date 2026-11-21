@@ -136,7 +136,7 @@
   "journal": "BMJ",
   "year": 2017,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 5599,
   "sentences": 235
  },
@@ -169,7 +169,7 @@
   "journal": "BMJ",
   "year": 2019,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4073,
   "sentences": 163
  },
@@ -180,7 +180,7 @@
   "journal": "BMJ",
   "year": 2019,
   "type": "research",
-  "design": "mendelian-randomisation",
+  "design": "mendelian-randomization",
   "words": 4914,
   "sentences": 185
  },
@@ -191,7 +191,7 @@
   "journal": "BMJ",
   "year": 2019,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 5219,
   "sentences": 192
  },
@@ -223,7 +223,7 @@
   "journal": "BMJ",
   "year": 2019,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4282,
   "sentences": 193
  },
@@ -266,7 +266,7 @@
   "journal": "BMJ",
   "year": 2020,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 6343,
   "sentences": 196
  },
@@ -357,12 +357,12 @@
   "sentences": 176
  },
  {
-  "doi": "10.1136/bmj-2022-073043\b",
+  "doi": "10.1136/bmj-2022-073043",
   "family": "bmj",
   "journal": "BMJ",
   "year": 2023,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 7903,
   "sentences": 367
  },
@@ -384,7 +384,7 @@
   "journal": "BMJ",
   "year": 2023,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 5254,
   "sentences": 212
  },
@@ -503,7 +503,7 @@
   "journal": "BMJ",
   "year": 2025,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 6463,
   "sentences": 292
  },
@@ -541,7 +541,7 @@
   "sentences": 147
  },
  {
-  "doi": "10.1136/bmj-2025-084909\b",
+  "doi": "10.1136/bmj-2025-084909",
   "family": "bmj",
   "journal": "BMJ",
   "year": 2026,
@@ -1318,7 +1318,7 @@
   "journal": "JAMA specialty",
   "year": 2019,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4208,
   "sentences": 181
  },
@@ -1424,7 +1424,7 @@
   "journal": "JAMA specialty",
   "year": 2022,
   "type": "research",
-  "design": "mendelian-randomisation",
+  "design": "mendelian-randomization",
   "words": 3110,
   "sentences": 119
  },
@@ -1510,7 +1510,7 @@
   "journal": "JAMA",
   "year": 2024,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 5158,
   "sentences": 239
  },
@@ -1586,7 +1586,7 @@
   "journal": "JAMA specialty",
   "year": 2025,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3044,
   "sentences": 138
  },
@@ -1717,7 +1717,7 @@
   "journal": "JAMA specialty",
   "year": 2026,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3467,
   "sentences": 127
  },
@@ -1885,7 +1885,7 @@
   "journal": "Lancet Glob Health",
   "year": 2016,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3040,
   "sentences": 108
  },
@@ -1958,7 +1958,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2018,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4100,
   "sentences": 139
  },
@@ -1999,7 +1999,7 @@
   "journal": "Lancet",
   "year": 2019,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4893,
   "sentences": 161
  },
@@ -2030,7 +2030,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2019,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4885,
   "sentences": 158
  },
@@ -2082,7 +2082,7 @@
   "journal": "Lancet Public Health",
   "year": 2019,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 5209,
   "sentences": 159
  },
@@ -2092,7 +2092,7 @@
   "journal": "Lancet",
   "year": 2020,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 6294,
   "sentences": 216
  },
@@ -2102,7 +2102,7 @@
   "journal": "Lancet",
   "year": 2020,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 6727,
   "sentences": 228
  },
@@ -2113,7 +2113,7 @@
   "journal": "Lancet",
   "year": 2020,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3180,
   "sentences": 108
  },
@@ -2123,7 +2123,7 @@
   "journal": "Lancet",
   "year": 2020,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3921,
   "sentences": 157
  },
@@ -2134,7 +2134,7 @@
   "journal": "Lancet Oncol",
   "year": 2020,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 5225,
   "sentences": 174
  },
@@ -2145,7 +2145,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2020,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 2884,
   "sentences": 97
  },
@@ -2186,7 +2186,7 @@
   "journal": "Lancet Glob Health",
   "year": 2020,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 5124,
   "sentences": 193
  },
@@ -2248,7 +2248,7 @@
   "journal": "Lancet Planet Health",
   "year": 2020,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3827,
   "sentences": 110
  },
@@ -2269,7 +2269,7 @@
   "journal": "Lancet",
   "year": 2021,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 8715,
   "sentences": 264
  },
@@ -2280,7 +2280,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2021,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4071,
   "sentences": 138
  },
@@ -2290,7 +2290,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2021,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 5045,
   "sentences": 196
  },
@@ -2300,7 +2300,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2021,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3628,
   "sentences": 130
  },
@@ -2363,7 +2363,7 @@
   "journal": "Lancet Glob Health",
   "year": 2021,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3647,
   "sentences": 133
  },
@@ -2374,7 +2374,7 @@
   "journal": "Lancet Glob Health",
   "year": 2021,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3651,
   "sentences": 92
  },
@@ -2395,7 +2395,7 @@
   "journal": "Lancet HIV",
   "year": 2021,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4465,
   "sentences": 166
  },
@@ -2405,7 +2405,7 @@
   "journal": "Lancet Public Health",
   "year": 2021,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3408,
   "sentences": 119
  },
@@ -2425,7 +2425,7 @@
   "journal": "Lancet Planet Health",
   "year": 2021,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4643,
   "sentences": 169
  },
@@ -2447,7 +2447,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2022,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4262,
   "sentences": 145
  },
@@ -2489,7 +2489,7 @@
   "journal": "Lancet Glob Health",
   "year": 2022,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3552,
   "sentences": 103
  },
@@ -2499,7 +2499,7 @@
   "journal": "Lancet Glob Health",
   "year": 2022,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3773,
   "sentences": 173
  },
@@ -2520,7 +2520,7 @@
   "journal": "Lancet HIV",
   "year": 2022,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4525,
   "sentences": 145
  },
@@ -2531,7 +2531,7 @@
   "journal": "Lancet Public Health",
   "year": 2022,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 5076,
   "sentences": 160
  },
@@ -2541,7 +2541,7 @@
   "journal": "Lancet Public Health",
   "year": 2022,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 5608,
   "sentences": 179
  },
@@ -2572,7 +2572,7 @@
   "journal": "Lancet",
   "year": 2023,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 7066,
   "sentences": 242
  },
@@ -2634,7 +2634,7 @@
   "journal": "Lancet Glob Health",
   "year": 2023,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4221,
   "sentences": 139
  },
@@ -2664,7 +2664,7 @@
   "journal": "Lancet",
   "year": 2024,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 10906,
   "sentences": 387
  },
@@ -2674,7 +2674,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2024,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 8476,
   "sentences": 245
  },
@@ -2704,7 +2704,7 @@
   "journal": "Lancet Respir Med",
   "year": 2024,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3679,
   "sentences": 155
  },
@@ -2715,7 +2715,7 @@
   "journal": "Lancet Glob Health",
   "year": 2024,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4992,
   "sentences": 169
  },
@@ -2747,7 +2747,7 @@
   "journal": "Lancet HIV",
   "year": 2024,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 7638,
   "sentences": 235
  },
@@ -2769,7 +2769,7 @@
   "journal": "Lancet Public Health",
   "year": 2024,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3685,
   "sentences": 140
  },
@@ -2800,7 +2800,7 @@
   "journal": "Lancet",
   "year": 2025,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 7652,
   "sentences": 259
  },
@@ -2810,7 +2810,7 @@
   "journal": "Lancet Infect Dis",
   "year": 2025,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4308,
   "sentences": 154
  },
@@ -2874,7 +2874,7 @@
   "journal": "Lancet Public Health",
   "year": 2025,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3504,
   "sentences": 147
  },
@@ -2885,7 +2885,7 @@
   "journal": "Lancet Public Health",
   "year": 2025,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3916,
   "sentences": 154
  },
@@ -3046,7 +3046,7 @@
   "journal": "Nat Med",
   "year": 2022,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 6414,
   "sentences": 234
  },
@@ -3079,7 +3079,7 @@
   "journal": "Nat Med",
   "year": 2022,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4891,
   "sentences": 154
  },
@@ -3090,7 +3090,7 @@
   "journal": "Nat Hum Behav",
   "year": 2023,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 7173,
   "sentences": 293
  },
@@ -3131,7 +3131,7 @@
   "journal": "Nat Med",
   "year": 2023,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 8402,
   "sentences": 352
  },
@@ -3202,7 +3202,7 @@
   "journal": "Nature research journal",
   "year": 2024,
   "type": "research",
-  "design": "mendelian-randomisation",
+  "design": "mendelian-randomization",
   "words": 4142,
   "sentences": 183
  },
@@ -3294,7 +3294,7 @@
   "journal": "Nature",
   "year": 2025,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 11308,
   "sentences": 396
  },
@@ -3625,7 +3625,7 @@
   "journal": "NEJM",
   "year": 2020,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3030,
   "sentences": 110
  },
@@ -4002,7 +4002,7 @@
   "journal": "NEJM",
   "year": 2026,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4205,
   "sentences": 169
  },
@@ -4258,7 +4258,7 @@
   "journal": "Science",
   "year": 2018,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 2708,
   "sentences": 86
  },
@@ -4344,7 +4344,7 @@
   "journal": "Science",
   "year": 2019,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 2681,
   "sentences": 84
  },
@@ -4419,7 +4419,7 @@
   "journal": "Science",
   "year": 2020,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 5406,
   "sentences": 196
  },
@@ -4430,7 +4430,7 @@
   "journal": "Science",
   "year": 2020,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 5063,
   "sentences": 219
  },
@@ -4593,7 +4593,7 @@
   "journal": "Sci Transl Med",
   "year": 2020,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 6000,
   "sentences": 195
  },
@@ -4691,7 +4691,7 @@
   "journal": "Science",
   "year": 2021,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 3633,
   "sentences": 131
  },
@@ -4757,7 +4757,7 @@
   "journal": "Science",
   "year": 2021,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 5476,
   "sentences": 182
  },
@@ -4844,7 +4844,7 @@
   "journal": "Sci Transl Med",
   "year": 2021,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4045,
   "sentences": 147
  },
@@ -4972,7 +4972,7 @@
   "journal": "Sci Transl Med",
   "year": 2022,
   "type": "research",
-  "design": "modelling",
+  "design": "modeling",
   "words": 4855,
   "sentences": 192
  },

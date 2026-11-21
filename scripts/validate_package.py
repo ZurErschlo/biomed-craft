@@ -3,7 +3,8 @@
 
 Checks the skill metadata, version numbers, plugin manifests, the labels in
 agents/openai.yaml, local links, rule definitions and their documentation,
-and the calibration files.
+the calibration files, the contents line of long reference files, and
+American spelling in the skill's own text.
 Exit status 0 when everything passes, 1 otherwise.
 """
 
@@ -40,6 +41,12 @@ def load_json(path: Path):
     except json.JSONDecodeError as error:
         problem(f"Fix the JSON in {path.relative_to(ROOT)}: {error}")
         return {}
+
+
+def reference_files() -> list[Path]:
+    """The Markdown files under references/, leaving out hidden folders that editors and agents create."""
+    folder = ROOT / "references"
+    return sorted(p for p in folder.rglob("*.md") if not any(part.startswith(".") for part in p.relative_to(folder).parts))
 
 
 def check_skill() -> str:
@@ -113,7 +120,7 @@ def check_versions(skill_version: str) -> None:
 def check_links() -> None:
     documents = [ROOT / "SKILL.md", ROOT / "README.md", ROOT / "README.zh-CN.md", ROOT / "AGENTS.md",
                  ROOT / "tests" / "README.md"]
-    documents += sorted((ROOT / "references").rglob("*.md"))
+    documents += reference_files()
     for document in documents:
         text = read(document)
         text = re.sub(r"```.*?```", "", text, flags=re.DOTALL)
@@ -129,7 +136,7 @@ def check_links() -> None:
     for reference in sorted((ROOT / "references").glob("*.md")):
         if f"references/{reference.name}" not in skill:
             problem(f"SKILL.md does not link references/{reference.name}")
-    for folder in sorted(p for p in (ROOT / "references").iterdir() if p.is_dir()):
+    for folder in sorted(p for p in (ROOT / "references").iterdir() if p.is_dir() and not p.name.startswith(".")):
         index = read(ROOT / "references" / f"{folder.name}.md")
         for reference in sorted(folder.glob("*.md")):
             if f"{folder.name}/{reference.name}" not in index:
@@ -139,7 +146,7 @@ def check_links() -> None:
 def check_rules() -> None:
     data = load_json(ROOT / "scripts" / "rules.json")
     rules = data.get("rules", [])
-    documented = " ".join(read(p) for p in (ROOT / "references").rglob("*.md"))
+    documented = " ".join(read(p) for p in reference_files())
     seen = set()
     for rule in rules:
         rule_id = rule.get("id", "?")
@@ -187,6 +194,43 @@ def check_calibration() -> None:
             break
 
 
+CONTENTS_LIMIT = 100  # lines; a longer reference file opens with a contents line, so an agent previewing it sees its parts
+SPELLING_FILES = ("SKILL.md", "README.md", "AGENTS.md", "CHANGELOG.md", "tests/README.md")
+
+
+def check_contents() -> None:
+    """Every reference file longer than CONTENTS_LIMIT lines names each of its sections in a contents line near the top."""
+    for path in reference_files():
+        lines = read(path).splitlines()
+        if len(lines) <= CONTENTS_LIMIT:
+            continue
+        name = path.relative_to(ROOT)
+        contents = next((line for line in lines[:12] if line.startswith("Contents:")), None)
+        if contents is None:
+            problem(f"{name} has {len(lines)} lines: add a 'Contents:' line after the opening paragraph")
+            continue
+        for heading in (line[3:].strip() for line in lines if line.startswith("## ")):
+            if re.sub(r"^\d+\.\s*", "", heading) not in contents:
+                problem(f"{name}: the contents line does not name the section '{heading}'")
+
+
+def check_spelling() -> None:
+    """The skill's own text uses American spelling (FMT-07). Code, inline code and the published titles in
+    references/sources.md keep their own spelling."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import textstats as ts
+
+    paths = [ROOT / name for name in SPELLING_FILES] + [p for p in reference_files() if p.name != "sources.md"]
+    for path in paths:
+        if not path.exists():
+            continue
+        for segment in ts.read_markdown(read(path)):
+            text = ts.URL.sub(lambda m: " " * len(m.group(0)), segment.text)
+            found = sorted({f"{word} → {preferred}" for _, word, preferred in ts.spelling_issues(text, "american")})
+            if found:
+                problem(f"{path.relative_to(ROOT)}:{segment.line}: use American spelling: {', '.join(found)}")
+
+
 def check_private_texts() -> None:
     """Article texts in calibration-texts/ are under the publishers' copyright and stay out of git."""
     ignore = ROOT / ".gitignore"
@@ -207,6 +251,8 @@ def main() -> int:
     check_links()
     check_rules()
     check_calibration()
+    check_contents()
+    check_spelling()
     check_private_texts()
     if problems:
         for message in problems:

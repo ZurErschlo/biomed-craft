@@ -2,23 +2,28 @@
 
 Cost-effectiveness, cost-utility, cost-benefit and budget impact analyses, built on a model or alongside a trial. Report to CHEERS 2022 and put the completed checklist in the supplement. For a trial-based analysis, write a health economic analysis plan (HEAP) before the data are unblinded and cite it. Cost-of-illness and economic burden studies follow the costing rules here (perspective, cost categories, currency, price year) and have their own section below.
 
+Contents: Content the paper must contain; What reviewers flag, and the fix; Title and abstract; Methods; Results; Figures and tables; Discussion; Numbers and wording; Cost-of-illness and economic burden studies; Supplement.
+
 ## Content the paper must contain
 
 - The decision: who decides, for which population and jurisdiction, and what the choice is (adopt, scale up, set a price).
 - Every realistic comparator, current practice included. Justify a do-nothing arm and any option left out.
-- The perspective and the cost categories it implies. A societal perspective includes productivity losses and out-of-pocket costs.
+- The perspective and the cost categories it implies. A societal perspective includes productivity losses and out-of-pocket costs, comes with an impact inventory, and says whether transfer payments were counted and why. When a reference case applies (the US Second Panel, NICE, iDSI), follow it.
 - A time horizon justified by the natural history of the condition and the duration of effect. If the analysis stops at trial follow-up, say why that is long enough.
 - Discount rates for costs and outcomes, the guideline they come from, and a test of other rates.
 - The primary outcome (cost per QALY gained, per DALY averted, net monetary benefit or benefit–cost ratio), with the utility instrument and value set or the source of disability weights.
-- Resource use, unit-cost sources, currency, price year, inflation index and conversion method. Include start-up, training and supervision costs.
+- Resource use, unit-cost sources, currency, price year, inflation index and conversion method. Include start-up, training and supervision costs. Check the price year, currency and unit of every price, one by one.
 - For a model: its type and why it fits the question (a transmission-dynamic model when herd effects matter), the structure as a diagram, key assumptions, cycle length and software.
 - Every input in a table: value, range or distribution, and source. Gamma distributions for costs, beta for probabilities and utilities, lognormal for relative risks are the usual choices; name the ones used.
 - Validation: face validity, verification of the code, calibration targets and fit, and external validation.
 - For a model built on a trial: show that it reproduces the trial over the trial period, state how long the effect is assumed to last after the trial, and test waning as a scenario. Explain any gap between the clinical result and the economic result.
 - For a trial-based analysis: multiple imputation for missing costs and outcomes, seemingly unrelated regression or bootstrapping for the correlation between costs and QALYs, multilevel models for clustering, adjustment for baseline utility, and the intention-to-treat population.
 - Uncertainty in full: probabilistic analysis with named distributions and the number of draws, a cost-effectiveness acceptability curve or the probability of being cost-effective at each stated threshold, one-way analyses of the main drivers, structural scenarios, price thresholds for a new product, and value-of-information analysis when the decision is still uncertain.
+- In the probabilistic analysis, each resource takes one price per draw, used wherever the resource appears. Correlated parameters are drawn jointly (regression coefficients from their covariance matrix), given a correlation parameter, or reparameterized so that they can be treated as independent.
 - Results by prespecified subgroup and setting, and distributional (equity) results where they bear on the decision.
-- Complete results: mean costs and outcomes per arm, incremental values with uncertainty, sequential ICERs with dominated options removed, and net monetary benefit.
+- Complete results: mean costs and outcomes per arm, incremental values with uncertainty, sequential ICERs with dominated options removed, and net monetary benefit. The mean incremental costs and outcomes are the main result; the probability of saving money, or a median, from the probabilistic analysis adds to the mean and never replaces it.
+- A table of the net benefit of the best strategy beside the next best, so that readers see how close they are.
+- Public and stakeholder involvement, and how it worked, or a statement that there was none (CHEERS 2022 items 21 and 25).
 - A budget impact analysis, if any, reported separately: undiscounted, from the budget holder's perspective, over one to five years.
 - A threshold for every claim that something is cost-effective or cost saving, with its justification and the probability attached.
 
@@ -34,15 +39,15 @@ Cost-effectiveness, cost-utility, cost-benefit and budget impact analyses, built
 - Overclaiming: give point estimates with intervals and probabilities. A saving whose interval crosses zero is a possible saving.
 - Weak trial-based methods: a prespecified plan, multiple imputation, bootstrapping or seemingly unrelated regression, and multilevel models.
 - Utilities of unclear origin: name the instrument, value set and any mapping algorithm, and test another value set.
-- Programme costs left out: micro-cost delivery by activity.
-- Generalisability asserted without support: name comparable settings and show results by country or setting.
+- Program costs left out: micro-cost delivery by activity.
+- Generalizability asserted without support: name comparable settings and show results by country or setting.
 - Budget impact mixed with cost-effectiveness: keep the two analyses apart.
 - A conclusion that serves no decision: end with the price, budget or scale-up decision the analysis supports.
 
 ## Title and abstract
 
-- Lancet family: `Cost-effectiveness of [X] versus [Y] for [Z] in [country]: a modelling study`. Other labels in use: `an economic evaluation`, `a cost-effectiveness analysis of the [ACRONYM] trial`, `an extended cost-effectiveness analysis`, `a cost–benefit analysis` (en dash).
-- BMJ: `… : pragmatic randomised controlled trial and economic evaluation`, or `… : cost effectiveness analysis based on [model]`. BMJ writes `cost effectiveness` without a hyphen and drops the article before the design.
+- Lancet family: `Cost-effectiveness of [X] versus [Y] for [Z] in [country]: a modeling study`. Other labels in use: `an economic evaluation`, `a cost-effectiveness analysis of the [ACRONYM] trial`, `an extended cost-effectiveness analysis`, `a cost–benefit analysis` (en dash).
+- BMJ: `… : pragmatic randomized controlled trial and economic evaluation`, or `… : cost effectiveness analysis based on [model]`. BMJ writes `cost effectiveness` without a hyphen and drops the article before the design.
 - JAMA: Title Case, `Cost-Effectiveness of X for Y in Z`; trials add a subtitle such as `A Randomized Clinical Trial`. The design line of the abstract reads `This economic evaluation, from a [health care sector] perspective, used a [microsimulation] model with a [lifetime] horizon…`.
 - NEJM: `Cost-Effectiveness of X versus Y`, with no design label.
 - Abstract results give the incremental outcome with its interval, the ICER with its unit, and the threshold. Lancet abstracts usually add the probability of being cost-effective; JAMA abstracts add the time horizon.
@@ -88,7 +93,7 @@ Template for a Lancet Findings section: `[X] would avert [N] DALYs (95% UI a–b
 - Round ICERs to whole currency units or about three significant figures (£45 200); keep thresholds round; give QALY differences to two to four decimals.
 - First use `US$`, then `$`; international dollars as `I$` or `Int$`, one form throughout.
 - Economic evaluations run longer sentences than other research articles, because a result carries an estimate, its interval and a threshold. Split a sentence only when it holds two results.
-- `utilisation` is a costing term and `robust to` describes a sensitivity result; both stay.
+- `utilization` is a costing term and `robust to` describes a sensitivity result; both stay. Name what the result is robust to (`robust to the discount rate and the price of the test`), and without the matching sensitivity analysis leave the word out.
 
 ## Cost-of-illness and economic burden studies
 

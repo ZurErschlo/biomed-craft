@@ -2,11 +2,13 @@
 
 The researcher is the author and answers for every claim. The researcher decides the question, the design, the values that drive the result, the interpretation and what is submitted. The agent prepares the evidence for each decision, does the groundwork completely, and stops at the points below. Between those points it works without asking.
 
+Contents: Stages and confirmation points; Always stop for; Never stop for; Preparing a decision; Explaining a method to the researcher; Reporting back; Runs and computation; What not to add; Other reviews and other models (and handing work to another agent); Sending files to others; Documents shared with co-authors; Briefing a supervisor.
+
 ## Stages and confirmation points
 
 | Stage | The agent prepares | The researcher decides | The agent then does alone |
 |---|---|---|---|
-| Intake | An inventory of what exists: the researcher's own documents and what earlier AI work produced; what is verified and what is a placeholder; where design documents and code disagree; the folder layout | Continue or restart; the layout; what is deleted | Tidy the folders, list files to delete, catalogue the data |
+| Intake | An inventory of what exists: the researcher's own documents and what earlier AI work produced; what is verified and what is a placeholder; where design documents and code disagree; the folder layout | Continue or restart; the layout; what is deleted | Tidy the folders, list files to delete, catalog the data |
 | Question and scope | How published studies framed the question and chose populations, units and comparators; the data available for each unit; the current guidelines and policy targets; the interventions that exist now; one recommendation with costed alternatives | Question, objectives, hypotheses, populations or countries, strategies and comparators, outcomes, perspective, horizon | Write these sections of the plan |
 | Design or structure | A comparison with published designs or model structures, the data that support each element, the complexity it adds, a draft diagram in published style. Reviews: eligibility, outcome hierarchy, synthesis plan | Strata, states, what is left out, definitions, counterfactuals | Finish the diagram and write the rationale into the plan |
 | Inputs and data | The list of parameters the design implies, each marked as taken from the literature, from country data, calibrated or assumed; a source register with page or table; conflicts between sources; the papers that need the researcher's library access | Contested values and the rules for choosing data (newest, official, the same source for every unit, real prices) | Extract and verify values, maintain the input tables, write the data script |
@@ -28,6 +30,7 @@ The researcher is the author and answers for every claim. The researcher decides
 - Deleting files: list exactly what would go and let the researcher delete it or approve it.
 - Dropping records: apparent duplicates, outliers or implausible values. List them with the reason and let the researcher decide.
 - Anything that leaves the project: registration, submission, messages to other people.
+- Someone else's unpublished manuscript: ask whether the journal allows AI tools on it before reading it ([review-response.md](review-response.md)).
 
 ## Never stop for
 
@@ -38,7 +41,7 @@ The researcher is the author and answers for every claim. The researcher decides
 ## Preparing a decision
 
 - Research an open method question before asking: how do published studies, guidelines and the leading groups handle it? Read the paper, the supplement or the code. The same holds for what a document contains and how it looks (a display item, supplementary item, column, checklist, appraisal tool, statement, label or slide design): name the comparable articles checked, and say so when none of them does it.
-- Recommend one option, with its precedent, its reason, its cost, and how much the result would change under the alternative. Put several items in one decision table.
+- Recommend one option, with its precedent, its reason, its cost, and how much the result would change under the alternative. Offer two options at most, and try the recommended one before recommending it. Put several items in one decision table.
 - Logic outranks precedent: an option is chosen because it fits the question, not because someone else used it.
 - When the researcher chooses against the registration, a guideline or the recommendation, state the consequence once, record the decision and follow it. A departure from the registration is then reported as one.
 - Explain any concept the decision depends on, in plain words.
@@ -76,7 +79,27 @@ The researcher is the author and answers for every claim. The researcher decides
 
 ## Other reviews and other models
 
-An agent reviewing its own work misses what it got wrong. Before a finished plan, analysis or document goes back to the researcher, have another model or a separate agent review it, where one is available, and say so when none is. Send the material read-only and keep working on the problem while the review runs. Check every comment against the material and the evidence, and give each a verdict: holds, with the fix; or does not hold, with the reason. Leave no comment unchecked, write the fixes yourself, and reject suggestions that swap plain words for formal ones (`markedly`, `thereby`, `fundamentally`).
+An agent reviewing its own work misses what it got wrong. Before a finished plan, analysis or document goes back to the researcher, have another model or a separate agent review it, where one is available, and say so when none is. Send the material read-only and keep working on the problem while the review runs. Check every comment against the material and the evidence, and give each a verdict: holds, with the fix; partly holds, saying which part (right but minor, right but already handled, or right only in part); or does not hold, with the reason. Leave no comment unchecked, write the fixes yourself, and reject suggestions that swap plain words for formal ones (`markedly`, `thereby`, `fundamentally`).
+
+- When an independent plan is wanted, have the other model write its own before it sees ours, so that ours does not steer it.
+- Send only the named files and sections of the researcher's own work. Data stay in the project, and someone else's unpublished manuscript is never sent.
+
+### Handing work to another agent
+
+Hand over three kinds of work and do the rest yourself (editing, figure changes, small fixes):
+
+- checking claims and citations against their full-text sources, because a writer cannot judge their own paraphrase;
+- reading a batch of full texts, or reviewing many files at once, which would fill the main context;
+- verifying review comments and the reports of other models.
+
+Choose the model by the cost of an error: a cheap one for finding and listing, a middle one for batch reading, the strongest for the final verification and judgment. Run three to five agents at most, split by task; no personas, votes or juries. The brief names the files to read and the section of these references that applies, the checklist, the return format (each item with its location, each check passed, failed, not done or not applicable), read-only access, and, for any search online, that the researcher's email address goes into no query. Verify what comes back before using it. Where the product cannot start another agent, finish the work, then make a second pass that only checks.
+
+## Sending files to others
+
+- First list the files to send and the files to hold back, with their sizes and how they will travel. Remind the researcher before raw data leave the team.
+- An archive opens on Windows: Deflate compression, the UTF-8 file-name flag and paths under 260 characters. Give the package a name the recipient understands, and keep internal working files apart from the files sent.
+- The covering note is short and factual. It leaves out courtesies and what the recipient can see for themselves.
+- Keep a collaborator's questions in one table and follow each one across rounds until it is closed.
 
 ## Documents shared with co-authors
 
@@ -86,4 +109,4 @@ An agent reviewing its own work misses what it got wrong. Before a finished plan
 
 ## Briefing a supervisor
 
-Confirm the outputs are current; open every figure instead of describing it from memory; mark numbers read off a figure as approximate. Frame the work first (question, units, period, groups, counterfactual, outcomes, intervals, and which terms are internal), then go figure by figure and table by table. For each figure: what it is (title, layout, panels), how to read it (keys, colours, line types, axes, ordering, annotations), each panel's numbers and how they match the tables, its one-sentence message, and the likely misreadings. For each table: what each column means, the key rows and numbers, the contrasts to stress and the limits of interpretation. Then state the weaknesses, saying "not verified" where that is true, and close with the questions likely to come and their answers.
+Confirm the outputs are current; open every figure instead of describing it from memory; mark numbers read off a figure as approximate. Frame the work first (question, units, period, groups, counterfactual, outcomes, intervals, and which terms are internal), then go figure by figure and table by table. For each figure: what it is (title, layout, panels), how to read it (keys, colors, line types, axes, ordering, annotations), each panel's numbers and how they match the tables, its one-sentence message, and the likely misreadings. For each table: what each column means, the key rows and numbers, the contrasts to stress and the limits of interpretation. Then state the weaknesses, saying "not verified" where that is true, and close with the questions likely to come and their answers.

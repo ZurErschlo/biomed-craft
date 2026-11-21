@@ -28,7 +28,7 @@ Cohort, case-control and cross-sectional studies, including analyses of routine 
 - Misclassification: validated algorithms, alternative definitions, and the positive predictive value of the codes.
 - Adjusting for mediators or colliders (and reading every coefficient in the adjusted model as an effect, the table 2 fallacy): build the adjustment set from the DAG and report only the exposure effect.
 - Positivity: show overlap of propensity scores and the effective sample size after weighting.
-- Data dredging in large public databases: a prespecified question, correction for multiple outcomes, and a phenome-wide scan labelled as hypothesis-generating. A single-factor analysis of an open database needs a reason to exist beyond the data being available.
+- Data dredging in large public databases: a prespecified question, correction for multiple outcomes, and a phenome-wide scan labeled as hypothesis-generating. A single-factor analysis of an open database needs a reason to exist beyond the data being available.
 - Overclaiming: association wording, and a limitation that says what the design cannot show.
 - Missing data handled by dropping cases: report how much was missing and how the estimate changes with imputation.
 
@@ -43,6 +43,6 @@ Cohort, case-control and cross-sectional studies, including analyses of routine 
 
 ## Burden estimates from aggregate data (secondary analyses of the Global Burden of Disease)
 
-- Report to GATHER, carry the published 95% uncertainty intervals into every figure and trend estimate, and attach no P values to modelled estimates as if they were samples.
-- Joinpoint and age–period–cohort analyses state their limits (few age groups, modelled inputs). Forecasts use rolling-origin validation and carry uncertainty forward; prefer established methods (Bayesian age–period–cohort models or the published reference forecasts) to machine learning on a few dozen annual points, and do not pick a different forecasting model for each outcome.
+- Report to GATHER, carry the published 95% uncertainty intervals into every figure and trend estimate, and attach no P values to modeled estimates as if they were samples.
+- Joinpoint and age–period–cohort analyses state their limits (few age groups, modeled inputs). Forecasts use rolling-origin validation and carry uncertainty forward; prefer established methods (Bayesian age–period–cohort models or the published reference forecasts) to machine learning on a few dozen annual points, and do not pick a different forecasting model for each outcome.
 - State the increment over named earlier analyses of the same data, give the data release and download date, and show bar charts or tables beside maps.

@@ -3,7 +3,7 @@
 
 Finds research articles from leading journals and their major sub-journals by
 the DOI printed on the first two pages of each PDF (or in its file name), reads
-article texts saved as Markdown with a labelled front matter (--texts), and
+article texts saved as Markdown with a labeled front matter (--texts), and
 reads publisher versions of open-access articles from Europe PMC (JATS XML, by
 PMCID). Cleans the text (reference lists, back matter, captions, running heads),
 labels the study design, and records how often each rule in rules.json fires in
@@ -80,7 +80,7 @@ JOURNALS = [
     (r"10\.1126/science", "science", "Science"),
 ]
 JOURNAL_PATTERNS = [(re.compile(p, re.IGNORECASE), f, j) for p, f, j in JOURNALS]
-DOI = re.compile(r"10\.\d{4,9}/[^\s\"<>,;]+", re.IGNORECASE)
+DOI = re.compile(r"10\.\d{4,9}/[^\s\"<>,;\x00-\x1f]+", re.IGNORECASE)  # PDF text can hold control characters
 SKIP_DIRS = ("node_modules", ".git", ".venv", "site-packages", ".app", "__pycache__")
 SUPPLEMENT_NAME = re.compile(
     r"mmc\d|_moesm|_esm|-s00\d|suppl|supp\d|supplement|appendix|supporting|_si[_.]|[._]sm[._]|checklist|mdar"
@@ -228,7 +228,7 @@ def year_of(doi: str, text: str) -> int | None:
     return None
 
 
-def normalise_heading(line: str) -> str:
+def normalize_heading(line: str) -> str:
     return re.sub(r"[^a-z/’' ]", "", line.lower()).strip()
 
 
@@ -243,7 +243,7 @@ def clean_article(text: str) -> tuple[list[str], set[str]]:
         if not line:
             kept.append("")
             continue
-        heading = normalise_heading(line)
+        heading = normalize_heading(line)
         # A heading starts with a capital and has no digits or final full stop, apart from a section number;
         # "References (36-38)" in a list of supplementary materials and sentence ends are not headings.
         core = re.sub(r"^\d+(?:\.\d+)*\.?\s+", "", line)
@@ -347,7 +347,7 @@ def jats_article(xml: str) -> dict | None:
             if child.tag in SKIP_ELEMENTS:
                 continue
             if child.tag == "sec":
-                title = normalise_heading(child.findtext("title") or "")
+                title = normalize_heading(child.findtext("title") or "")
                 if (child.get("sec-type", "").lower() in BACK_SEC_TYPES or title in HEADING_BACK
                         or title in HEADING_REFERENCES):
                     continue
@@ -441,7 +441,7 @@ def finish(base: dict, measured: dict, kind: str, design: str) -> dict:
     return {**base, "type": kind, "design": design if kind != "other" else "", **measured}
 
 
-def analyse(record: dict, rules: list[ts.Rule]) -> dict | None:
+def analyze(record: dict, rules: list[ts.Rule]) -> dict | None:
     text = pdf_text(Path(record["path"]))
     paragraphs, headings = clean_article(text)
     measured = measure(paragraphs, rules)
@@ -456,7 +456,7 @@ def analyse(record: dict, rules: list[ts.Rule]) -> dict | None:
     return finish(base, measured, kind, "")
 
 
-def analyse_text(item: tuple[dict, str], rules: list[ts.Rule]) -> dict | None:
+def analyze_text(item: tuple[dict, str], rules: list[ts.Rule]) -> dict | None:
     meta, body = item
     doi = meta["doi"].lower()
     match = next(((f, j) for pattern, f, j in JOURNAL_PATTERNS if pattern.match(doi)), None)
@@ -475,7 +475,7 @@ def analyse_text(item: tuple[dict, str], rules: list[ts.Rule]) -> dict | None:
     return finish(base, measured, kind, design)
 
 
-def analyse_pmc(item: tuple[str, str], rules: list[ts.Rule]) -> dict | None:
+def analyze_pmc(item: tuple[str, str], rules: list[ts.Rule]) -> dict | None:
     pmcid, design = item
     article = jats_article(fetch_jats(pmcid))
     if not article or not article["doi"]:
@@ -496,7 +496,7 @@ def analyse_pmc(item: tuple[str, str], rules: list[ts.Rule]) -> dict | None:
     return finish(base, measured, kind, design)
 
 
-def summarise(papers: list[dict], rule_ids: list[str]) -> dict:
+def summarize(papers: list[dict], rule_ids: list[str]) -> dict:
     words = sum(p["words"] for p in papers)
     summary = {"papers": len(papers), "words": words, "metrics": {}}
     for metric in ts.PROFILE_METRICS:
@@ -539,10 +539,10 @@ def main(argv=None) -> int:
     texts = [item for folder in args.texts for item in map(read_text, sorted(folder.expanduser().glob("*.md")))
              if item]
     with futures.ThreadPoolExecutor(args.workers) as pool:
-        analysed = [a for a in pool.map(lambda i: analyse_text(i, prose_rules), texts) if a]
+        analyzed = [a for a in pool.map(lambda i: analyze_text(i, prose_rules), texts) if a]
     if texts:
-        print(f"{len(analysed)} of {len(texts)} saved texts kept", file=sys.stderr)
-    known = {p["doi"] for p in analysed}
+        print(f"{len(analyzed)} of {len(texts)} saved texts kept", file=sys.stderr)
+    known = {p["doi"] for p in analyzed}
     pdfs = find_pdfs([r.expanduser() for r in args.roots])
     print(f"Scanning {len(pdfs)} PDFs for journal DOIs", file=sys.stderr)
     with futures.ThreadPoolExecutor(args.workers) as pool:
@@ -560,32 +560,32 @@ def main(argv=None) -> int:
             articles[record["doi"]] = record
     print(f"{len(articles)} unique articles ({supplements} supplements or author manuscripts skipped)", file=sys.stderr)
     with futures.ThreadPoolExecutor(args.workers) as pool:
-        analysed += [a for a in pool.map(lambda r: analyse(r, prose_rules), articles.values()) if a]
+        analyzed += [a for a in pool.map(lambda r: analyze(r, prose_rules), articles.values()) if a]
     pmc_items = list(dict.fromkeys(item for path in args.pmc for item in read_pmc_list(path)))
     if pmc_items:
         print(f"Reading {len(pmc_items)} Europe PMC articles", file=sys.stderr)
-        known = {p["doi"] for p in analysed}
+        known = {p["doi"] for p in analyzed}
         with futures.ThreadPoolExecutor(args.workers) as pool:
-            from_pmc = [a for a in pool.map(lambda i: analyse_pmc(i, prose_rules), pmc_items) if a]
+            from_pmc = [a for a in pool.map(lambda i: analyze_pmc(i, prose_rules), pmc_items) if a]
         skipped = len(pmc_items) - len(from_pmc)
         for article in from_pmc:
             if article["doi"] not in known:
-                analysed.append(article)
+                analyzed.append(article)
                 known.add(article["doi"])
         print(f"{len(from_pmc)} Europe PMC articles kept ({skipped} author manuscripts, other journals or "
               f"unreadable)", file=sys.stderr)
 
-    research = [p for p in analysed if p["type"] == "research"]
+    research = [p for p in analyzed if p["type"] == "research"]
     groups = {"core": research}
     for family in sorted({p["family"] for p in research}):
         groups[family] = [p for p in research if p["family"] == family]
     for design in ts.DESIGNS:
-        members = [p for p in analysed if p["design"] == design]
+        members = [p for p in analyzed if p["design"] == design]
         if len(members) >= MIN_GROUP:
             groups[design] = members
     groups["core_before_2023"] = [p for p in research if p["year"] and p["year"] < 2023]
     groups["core_2023_on"] = [p for p in research if p["year"] and p["year"] >= 2023]
-    groups["reviews_and_other"] = [p for p in analysed if p["type"] != "research"]
+    groups["reviews_and_other"] = [p for p in analyzed if p["type"] != "research"]
 
     calibration = {
         "version": 1,
@@ -594,28 +594,28 @@ def main(argv=None) -> int:
                        "sub-journals. Built by calibrate.py; statistics only.",
         "method": {
             "selection": "PDFs: first DOI on pages 1-2 (or in the file name) matched to the journal list in "
-                         "calibrate.py. Saved texts: publisher PDFs converted to text, labelled by hand, kept "
+                         "calibrate.py. Saved texts: publisher PDFs converted to text, labeled by hand, kept "
                          "outside git. Europe PMC: publisher versions of open-access articles, by PMCID. "
                          "Supplements, author manuscripts and duplicates removed.",
             "cleaning": "PDFs through pdftotext, JATS XML through its structure; reference lists, back matter, "
                         "running heads, captions, tables, boxes and citation markers removed; only complete "
                         "sentences kept.",
             "research_article": "Has a Methods heading and a Results or Discussion heading; reviews excluded.",
-            "design": "Labelled when the article was selected, otherwise guessed by textstats.detect_design; "
+            "design": "Labeled when the article was selected, otherwise guessed by textstats.detect_design; "
                       "design groups with fewer than 10 articles are not written.",
             "metrics": "Per-paper values; quantiles across papers. Rule rates are pooled per 10 000 words.",
         },
-        "groups": {name: summarise(papers, rule_ids) for name, papers in groups.items() if papers},
+        "groups": {name: summarize(papers, rule_ids) for name, papers in groups.items() if papers},
     }
     fields = ("doi", "pmcid", "family", "journal", "year", "type", "design", "words", "sentences")
     corpus = [
         {k: p[k] for k in fields if k in p}
-        for p in sorted(analysed, key=lambda p: (p["family"], p["year"] or 0, p["doi"]))
+        for p in sorted(analyzed, key=lambda p: (p["family"], p["year"] or 0, p["doi"]))
     ]
     args.out_dir.mkdir(parents=True, exist_ok=True)
     (args.out_dir / "calibration.json").write_text(json.dumps(calibration, indent=1) + "\n", encoding="utf-8")
     (args.out_dir / "corpus.json").write_text(json.dumps(corpus, indent=1) + "\n", encoding="utf-8")
-    print(f"{len(research)} research articles, {len(analysed) - len(research)} other items; wrote "
+    print(f"{len(research)} research articles, {len(analyzed) - len(research)} other items; wrote "
           f"{args.out_dir / 'calibration.json'}", file=sys.stderr)
     return 0
 

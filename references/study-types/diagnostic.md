@@ -1,6 +1,6 @@
 # Diagnostic accuracy studies
 
-Studies of the accuracy of a test, a reader or an AI tool against a reference standard. Report to STARD 2015 (STARD for Abstracts for the abstract) and STARD-AI for AI tools, CLAIM for AI in medical imaging, and TRIPOD+AI when the test is a multivariable model. Reviewers judge bias and applicability with QUADAS-3, or QUADAS-C for comparative accuracy.
+Studies of the accuracy of a test, a reader or an AI tool against a reference standard. Report to STARD 2015 (STARD for Abstracts for the abstract) and STARD-AI for AI tools, CLAIM for AI in medical imaging, and TRIPOD+AI when the test is a multivariable model. Reviewers judge bias and applicability with QUADAS-3, or QUADAS-C for comparative accuracy. Studies of agreement between methods or raters report to GRRAS.
 
 ## Content the paper must contain
 
@@ -14,7 +14,7 @@ Studies of the accuracy of a test, a reader or an AI tool against a reference st
 8. The flow diagram, and the 2×2 table of index test against reference standard, overall and by subgroup; the spread of severity and of alternative diagnoses.
 9. Sensitivity, specificity and likelihood ratios with 95% CIs; predictive values with the prevalence they assume; the AUC only beside metrics at clinically relevant thresholds.
 10. Variation across subgroups, readers and sites, and any harm from testing.
-11. Comparative accuracy from paired or randomised comparisons.
+11. Comparative accuracy from paired or randomized comparisons.
 12. Where the test sits in the clinical pathway; registration and protocol.
 13. For AI tools: splits at the patient level, an external test set, how reference labels were produced, an analysis of failures, and how clinicians used the tool.
 
@@ -24,11 +24,18 @@ Studies of the accuracy of a test, a reader or an AI tool against a reference st
 - Partial or differential verification: verify everyone, or correct for it.
 - Incorporation bias: keep the index test out of the reference standard.
 - Thresholds chosen on the same data: prespecify them, or validate them in new data.
-- Indeterminate results excluded: report and analyse them.
+- Indeterminate results excluded: report and analyze them.
 - The AUC as the only metric: give sensitivity, specificity and likelihood ratios at the thresholds that matter.
 - Clinical usefulness claimed without a defined pathway: describe the decision the test changes.
 - Predictive values without prevalence.
-- Generalisation from retrospective data from one site.
+- Generalization from retrospective data from one site.
+
+## Agreement and measurement studies
+
+- Set the limits of acceptable agreement on clinical grounds before the data are collected (Bland and Altman 1986).
+- Report agreement as limits of agreement (Bland–Altman) with their confidence intervals. A correlation coefficient or r² measures how strongly two methods are related, not whether they agree.
+- A claim of equivalence uses two one-sided tests against a margin stated in advance; a difference that is not significant does not show equivalence.
+- Report reliability (the ICC with its form named, or kappa) and agreement separately, each with its uncertainty. Estimate repeatability and variation between days separately.
 
 ## Writing conventions
 

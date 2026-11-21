@@ -9,7 +9,7 @@ python3 scripts/validate_package.py
 python3 -m unittest discover -s tests -v
 ```
 
-They check every rule against its examples, reading of each file format, the command-line options and exit codes, a passage in leading-journal style with no findings, an AI-style passage with the expected findings, the preservation check, the full-text check, how the calibration reads PDFs and saved texts, and that must-level style rules stay rare in the calibration corpus.
+They check every rule against its examples, reading of each file format, the command-line options and exit codes, a passage in leading-journal style with no findings, an AI-style passage with the expected findings, the number checks (P values, GRIM, PRISMA flow arithmetic), the preservation check (claim strength, Word citation fields, tracked changes), the reference check on saved records without a network, the response-letter check, the full-text check, how the calibration reads PDFs and saved texts, and that must-level style rules stay rare in the calibration corpus.
 
 ## Rewrite cases
 
@@ -32,4 +32,4 @@ They check every rule against its examples, reading of each file format, the com
    - Did it introduce new tells (formal substitutes, choppy short sentences, new contrast frames)?
    - Does the result read like the target journal?
 
-One run per case shows behaviour on that run only. Add your own passages (with private details removed) to cover the documents you write.
+One run per case shows behavior on that run only. Add your own passages (with private details removed) to cover the documents you write.

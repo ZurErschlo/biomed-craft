@@ -5,10 +5,12 @@ Analyses of public or new omics data (TCGA, GEO, GTEx, CPTAC, single-cell atlase
 ## Content the paper must contain
 
 - Each dataset with its repository and accession (GSE numbers, dbGaP study identifiers, TCGA through a named portal), the release (GTEx v8), the download date, and the sample size after exclusions.
-- Sample and cell quality control: exclusion rules, doublet and low-quality cell removal, normalisation, and whether raw data were reprocessed uniformly.
+- Sample and cell quality control: exclusion rules, doublet and low-quality cell removal, normalization, and whether raw data were reprocessed uniformly.
 - Batch effects: how they were checked and corrected (ComBat, sva, integration methods with their metrics), and each platform processed separately before combination.
 - The unit of analysis: the donor or patient, not the cell or the read. Technical and biological replicates are kept apart.
-- Multiple testing with Benjamini–Hochberg FDR or Bonferroni over the effective number of tests, with the thresholds stated in advance.
+- Multiple testing with Benjamini–Hochberg FDR or Bonferroni over the effective number of tests, with the thresholds stated in advance, and the correction each tool actually applied.
+- Differential expression from raw counts, or counts estimated with tximport; values already normalized for library size or gene length (TPM, FPKM) are not input. Check that the design matrix has full rank before fitting: when batch and condition coincide, their effects cannot be separated, and the paper says so.
+- Enrichment: over-representation analysis uses as its background the genes detected as expressed in the assay, not the whole genome or a tool's default. Gene set enrichment analysis ranks all genes by a signed statistic, with no threshold applied first. Name each gene-set library with its version or date.
 - Splits at the level of the patient (training, validation and test), and validation in independent cohorts. Freeze modules, signatures and thresholds before validation.
 - Experimental validation for a mechanistic claim (knockdown, immunohistochemistry, qPCR, spatial methods), or the claim stays at association.
 - Software and versions, parameters that are not defaults, and code in a public repository with a DOI.
@@ -27,7 +29,7 @@ Analyses of public or new omics data (TCGA, GEO, GTEx, CPTAC, single-cell atlase
 ## Writing conventions
 
 - `we` is used more than in clinical papers, and Results subheadings often state the finding.
-- Results open with the aim or the data: `To identify [X], we analysed [dataset] ([n] samples from [k] cancer types; Fig. 1a).`
+- Results open with the aim or the data: `To identify [X], we analyzed [dataset] ([n] samples from [k] cancer types; Fig. 1a).`
 - Software appears with versions in the Methods (`STAR v2.7.10a`, `Seurat v5.0`); parameter and function names may appear in the Methods of a computational paper.
 - Figures: a workflow schematic, then results (enrichment, networks, heatmaps, UMAP, Kaplan–Meier, ROC). Legends name the test, the correction and n for each panel.
-- Data and code availability: accessions for every dataset, the repository and DOI for the code, and for Cell Press journals the standard statement that the paper analyses existing public data and reports no original code when that is true.
+- Data and code availability: accessions for every dataset, the repository and DOI for the code, and for Cell Press journals the standard statement that the paper analyzes existing public data and reports no original code when that is true.

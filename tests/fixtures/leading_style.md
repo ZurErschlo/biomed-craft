@@ -1,6 +1,6 @@
 # Methods
 
-We did a cluster-randomised trial in 48 primary care clinics in two provinces between March 1, 2019, and Feb 28, 2021. Clinics were eligible if they diagnosed at least 20 people with tuberculosis each year. The primary outcome was treatment success at 12 months, defined as cure or completion without evidence of failure. We estimated the risk ratio with a log-binomial model that accounted for clustering, and we used multiple imputation for the 6% of participants with missing outcomes.
+We did a cluster-randomized trial in 48 primary care clinics in two provinces between March 1, 2019, and Feb 28, 2021. Clinics were eligible if they diagnosed at least 20 people with tuberculosis each year. The primary outcome was treatment success at 12 months, defined as cure or completion without evidence of failure. We estimated the risk ratio with a log-binomial model that accounted for clustering, and we used multiple imputation for the 6% of participants with missing outcomes.
 
 # Results
 

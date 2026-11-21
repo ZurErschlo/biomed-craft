@@ -46,7 +46,7 @@ NOT_ARTICLE = re.compile(
 )
 
 
-def normalise(text: str) -> str:
+def normalize(text: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9]+", " ", text.lower())).strip()
 
 
@@ -107,14 +107,14 @@ def read_records(path: Path) -> list[dict]:
 
 
 def title_words(title: str) -> list[str]:
-    return [w for w in normalise(title).split() if len(w) > 3]
+    return [w for w in normalize(title).split() if len(w) > 3]
 
 
 def title_coverage(title: str, text: str) -> float:
     words = title_words(title)
     if len(words) < 3:
         return 0.0
-    present = set(normalise(text).split())
+    present = set(normalize(text).split())
     return sum(w in present for w in words) / len(words)
 
 
@@ -134,7 +134,7 @@ def title_at_top(title: str, text: str) -> tuple[float, int]:
     words = title_words(title)
     if len(words) < 3:
         return 0.0, 0
-    tokens = [w for w in normalise(text[:HEAD_CHARS]).split() if len(w) > 3]
+    tokens = [w for w in normalize(text[:HEAD_CHARS]).split() if len(w) > 3]
     wanted = set(words)
     best, position = 0, 0
     for start, token in enumerate(tokens):
@@ -219,10 +219,10 @@ def match(records: list[dict], documents: dict[str, str], pages: dict[str, int] 
                 notes.append({"file": name, "record": best["id"],
                               "problem": "title matches but the year is not on the first pages"})
     for name in documents:
-        stem = normalise(Path(name).stem)
+        stem = normalize(Path(name).stem)
         for record in records:
-            tokens = [t for t in (record["doi"].replace("/", " "), normalise(record["id"])) if len(t) > 4]
-            if any(normalise(t) in stem for t in tokens) and owner.get(name) not in (None, record["id"]):
+            tokens = [t for t in (record["doi"].replace("/", " "), normalize(record["id"])) if len(t) > 4]
+            if any(normalize(t) in stem for t in tokens) and owner.get(name) not in (None, record["id"]):
                 notes.append({"file": name, "record": record["id"],
                               "problem": f"file name points to {record['id']} but the content is {owner[name]}"})
     return {

@@ -1,22 +1,22 @@
 {
-  "version": "2.9.0",
+  "version": "2.10.0",
   "levels": {
     "must": "Fix on sight: leading journals almost never print this, or it is internal material.",
     "review": "Judge in context: often a tell, sometimes the right word.",
     "density": "Normal in leading journals; reported only as a rate per 1000 words."
   },
   "designs": {
-    "trial": "Randomised trials",
+    "trial": "Randomized trials",
     "observational": "Cohort, case-control and cross-sectional studies, including analyses of routine and public databases",
     "economic": "Health economic evaluations",
     "systematic-review": "Systematic reviews, meta-analyses and scoping reviews",
     "diagnostic": "Diagnostic accuracy and test evaluation studies",
-    "modelling": "Disease, transmission and burden models, projections and forecasts",
+    "modeling": "Disease, transmission and burden models, projections and forecasts",
     "laboratory": "Laboratory and mechanistic studies (cell, animal, structural, device)",
     "computational": "Bioinformatics, genomics and other computational studies",
     "review": "Narrative and clinical reviews",
     "prediction": "Clinical prediction models, development and validation",
-    "mendelian-randomisation": "Mendelian randomisation and other genetic-epidemiology designs"
+    "mendelian-randomization": "Mendelian randomization and other genetic-epidemiology designs"
   },
   "families": {
     "lancet": "The Lancet and its specialty journals",
@@ -76,7 +76,7 @@
           "Treatment was not associated with mortality. It was associated with readmission.",
           "PrEP was not used for 359 sexual intercourses (26%); it was used at a suboptimal dose.",
           "Some men were not found at their homes or had migrated out of the study area. They were replaced.",
-          "Screening is not commissioned as one centrally organised service. It was introduced in 2010 as part of a national programme."
+          "Screening is not commissioned as one centrally organized service. It was introduced in 2010 as part of a national program."
         ]
       }
     },
@@ -377,7 +377,7 @@
       ],
       "pattern": "\\bwe\\s+(?:are|were|have\\s+been)\\s+(?:upfront|transparent|open|candid|honest|frank)\\s+(?:about|that)\\b|\\bwe\\s+(?:openly|candidly|honestly|frankly|readily)\\s+(?:acknowledge|admit|note|concede)\\b|\\badmittedly\\b|\\bto\\s+be\\s+(?:clear|transparent|fair|honest)\\b",
       "flags": "i",
-      "hint": "Narrated candour. State the limitation and its consequence.",
+      "hint": "Narrated candor. State the limitation and its consequence.",
       "examples": {
         "hit": [
           "We are upfront about this limitation.",
@@ -619,7 +619,7 @@
       "examples": {
         "hit": [
           "In this section, we describe the model.",
-          "The remainder of this paper is organised as follows.",
+          "The remainder of this paper is organized as follows.",
           "This section describes the data."
         ],
         "miss": [
@@ -1246,7 +1246,7 @@
       "examples": {
         "hit": [
           "AMR imposes substantial costs.",
-          "We utilised routine data.",
+          "We utilized routine data.",
           "thereby reducing costs"
         ],
         "miss": [
@@ -1787,8 +1787,7 @@
         "caption",
         "table",
         "slide",
-        "figure",
-        "comment"
+        "figure"
       ],
       "pattern": "[㐀-䶿一-鿿　-〿！-｠]+",
       "flags": "",
@@ -2078,6 +2077,35 @@
           "Pseudomonas aeruginosa (PsA) was common. PsA was found in 40% of samples.",
           "Figure 2: Change in FEV1 by group. FEV1=forced expiratory volume in 1 s.",
           "The risk ratio was 1·08 (95% CI 1·03–1·14) in people with HIV."
+        ]
+      }
+    },
+    {
+      "id": "FMT-07",
+      "category": "FMT",
+      "level": "review",
+      "scopes": [
+        "prose",
+        "caption",
+        "table",
+        "slide",
+        "figure"
+      ],
+      "kind": "builtin",
+      "hint": "Use one spelling throughout: American unless the personal style file sets Spelling: British or Spelling: Oxford. Quotations, proper names and the titles of references keep the spelling they were published with.",
+      "examples": {
+        "hit": [
+          "Patients were randomised to two groups.",
+          "The colour of the tumour changed after treatment.",
+          "Haemoglobin was measured at baseline.",
+          "Data were analysed with mixed models in each centre."
+        ],
+        "miss": [
+          "Patients were randomized to two groups.",
+          "The analyses were stratified by site.",
+          "Infection with Haemophilus influenzae was rare.",
+          "Staff of the Centre for Global Health enrolled participants.",
+          "Participants called the leaflet “easy to recognise”."
         ]
       }
     },
@@ -2563,16 +2591,17 @@
       "docs": [
         "code"
       ],
-      "pattern": "\\bsource\\s*\\(\\s*(?:here::here\\s*\\(\\s*)?[\\\"'][^\\\"']*(?:function|helper|util|common|setup|config|init)[^\\\"']*[\\\"']",
-      "hint": "A shared helper or setup file hides what this script does. Define the functions the script uses at its top; the one shared file allowed is analysis/style.R, with the fonts and table format only.",
+      "pattern": "\\bsource\\s*\\(\\s*(?:here::here\\s*\\(\\s*)?(?:[\\\"'][^\\\"']*[\\\"']\\s*,\\s*)*[\\\"'][^\\\"']*(?:function|helper|util|common|setup|config|init|(?<![A-Za-z])style)[^\\\"']*[\\\"']",
+      "hint": "A shared helper, setup or style file hides what this script does. Define the functions the script uses at its top, and set the fonts, table format and canvas width at the top of each plotting and table script.",
       "examples": {
         "hit": [
           "source(\"functions.R\")",
-          "source(here::here(\"R/helpers.R\"))"
+          "source(here::here(\"R/helpers.R\"))",
+          "source(here::here(\"analysis\", \"style.R\"))"
         ],
         "miss": [
           "source_table <- read.csv(here::here(\"data\", \"input\", \"sources.csv\"))",
-          "source(here::here(\"analysis\", \"style.R\"))"
+          "source(here::here(\"analysis\", \"03_lifestyle_models.R\"))"
         ]
       }
     },
@@ -2705,6 +2734,32 @@
         ],
         "miss": [
           "Fit a Poisson model (counts are rare)"
+        ]
+      }
+    },
+    {
+      "id": "CODE-13",
+      "category": "CODE",
+      "level": "must",
+      "scopes": [
+        "comment",
+        "code"
+      ],
+      "docs": [
+        "code"
+      ],
+      "pattern": "[㐀-䶿一-鿿　-〿！-｠]+",
+      "flags": "",
+      "hint": "Comment or printed message not in English. Write comments and messages in English, or allow the researcher's own language with Allow [CODE-13] under Document: code in the personal style file; object, function, column and file names stay in English.",
+      "examples": {
+        "hit": [
+          "读入清洗后的数据",
+          "message(\"已完成\")"
+        ],
+        "miss": [
+          "Read the cleaned data",
+          "message(\"Done\")",
+          "naïve estimates"
         ]
       }
     }
