@@ -1791,7 +1791,10 @@
       ],
       "pattern": "[㐀-䶿一-鿿　-〿！-｠]+",
       "flags": "",
-      "hint": "Chinese character or full-width punctuation in an English document (native-script author names allowed by the journal are the exception).",
+      "langs": [
+        "en"
+      ],
+      "hint": "Chinese character or full-width punctuation in an English document (native-script author names allowed by the journal are the exception). A figure, table or legend for a Chinese journal or thesis is checked with --lang zh.",
       "examples": {
         "hit": [
           "已核",

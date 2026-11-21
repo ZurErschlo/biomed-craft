@@ -17,6 +17,7 @@ Examples:
   python3 scan.py --doc log execution_log.md
   python3 scan.py --doc code analysis/
   python3 scan.py --style ~/.biomed-craft/style.md draft.md
+  python3 scan.py --lang zh figures/09_figures_zh.R      # figures for a Chinese journal
 
 The researcher's personal style file (~/.biomed-craft/style.md, or the folder in
 BIOMED_CRAFT_HOME) is read when it exists: rules its 'Allow [ID]' entries permit
@@ -319,14 +320,22 @@ def spelling_findings(segments: list[ts.Segment], rule: ts.Rule, label: str, tar
 
 def scan_segments(segments: list[ts.Segment], rules: list[ts.Rule], label: str, file_format: str,
                   doc_type: str, design: str = "", journal: str = "",
-                  spelling: str = "american") -> tuple[list[Finding], list[str]]:
+                  spelling: str = "american", lang: str = "en") -> tuple[list[Finding], list[str]]:
     rules_by_id = {r.id: r for r in rules}
     active = [r for r in ts.regex_rules(rules) if doc_type not in r.skip_docs
-              and (not r.formats or file_format in r.formats) and (not r.docs or doc_type in r.docs)]
+              and (not r.formats or file_format in r.formats) and (not r.docs or doc_type in r.docs)
+              and (not r.langs or lang in r.langs)]
     findings: list[Finding] = []
     prose_sentences: list[str] = []
+    labels: dict[int, set[str]] = {}  # plotting text by line, checked once under the figure scope
+    for segment in segments:
+        if segment.scope == "figure":
+            labels.setdefault(segment.line, set()).add(segment.text)
     for segment in segments:
         text = segment.text
+        if segment.scope == "code" and segment.line in labels:
+            text = ts.STRING.sub(lambda m: " " * len(m.group(0)) if m.group("s").replace("\\n", " ")
+                                 in labels[segment.line] else m.group(0), text)
         spans = ts.sentence_spans(text)
         sentences = [text[a:b] for a, b in spans]
         if segment.scope == "prose":
@@ -494,7 +503,7 @@ def choose_group(groups: dict, journal: str, design: str) -> tuple[str, dict | N
 
 def scan_file(path: Path, rules: list[ts.Rule], doc_type: str, scope: str | None, groups: dict | None,
               label: str | None = None, text: str | None = None, design: str = "auto",
-              journal: str = "core", style: list[tuple[str, str]] | None = None) -> dict:
+              journal: str = "core", style: list[tuple[str, str]] | None = None, lang: str = "en") -> dict:
     if text is not None:
         segments = ts.read_markdown(text)
         if scope:
@@ -513,7 +522,7 @@ def scan_file(path: Path, rules: list[ts.Rule], doc_type: str, scope: str | None
     group_name, group = choose_group(groups or {}, journal, design)
     family = "" if journal == "core" else journal
     findings, prose_sentences = scan_segments(segments, rules, label, file_format, doc_type, design, family,
-                                              ts.style_spelling(style))
+                                              ts.style_spelling(style), lang)
     allowed: dict[str, int] = {}
     if style:
         kept = []
@@ -551,6 +560,9 @@ def main(argv=None) -> int:
     parser.add_argument("--type", dest="design", choices=("auto",) + ts.DESIGNS, default="auto",
                         help="study design; 'auto' guesses it from the text. Sets rule levels and the reference group")
     parser.add_argument("--scope", choices=ts.SCOPES, help="treat all text in the inputs as this scope (e.g. figure)")
+    parser.add_argument("--lang", choices=ts.LANGS, default="en",
+                        help="language the inputs are written in: 'zh' for figures, tables and legends for a Chinese "
+                             "journal or thesis, which may contain Chinese (HYG-06 is left out)")
     parser.add_argument("--level", choices=("must", "review", "all"), default="review",
                         help="lowest level to list (default: review)")
     parser.add_argument("--profile", action="store_true", help="compare the style profile with leading journals")
@@ -577,14 +589,14 @@ def main(argv=None) -> int:
     for item in args.paths:
         if item == "-":
             results.append(scan_file(Path("stdin"), rules, args.doc, args.scope, groups, "stdin", sys.stdin.read(),
-                                     args.design, args.journal, style))
+                                     args.design, args.journal, style, args.lang))
             continue
         for path in collect_paths([item]):
             if not path.exists():
                 parser.error(f"no such file: {path}")
             try:
                 result = scan_file(path, rules, args.doc, args.scope, groups, design=args.design,
-                                   journal=args.journal, style=style)
+                                   journal=args.journal, style=style, lang=args.lang)
             except (OSError, RuntimeError, KeyError, ValueError) as error:
                 print(f"{path}: cannot read ({error})", file=sys.stderr)
                 continue

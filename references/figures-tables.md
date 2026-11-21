@@ -88,7 +88,7 @@ Labels:
 - The order of a key is the same in every panel, and each entry says exactly what its mark means.
 - In reviews, summary figures group studies by theme; study-level rows belong in forest plots and tables. One grouping scheme serves every figure and table. Group by a further variable only when it changes the reading, and show no empty categories unless the gap is the finding.
 - English figures contain no Chinese characters or full-width punctuation (HYG-06).
-- Chinese figures (for a Chinese journal or a thesis): full-width Chinese punctuation; half-width digits, Latin letters, unit symbols, decimal points and the slash; axis titles written as quantity/unit (`λ/nm`), the form GB/T 3101-1993 prefers; and the journal's own instructions where it has them. The Chinese and English versions of a figure are drawn from the same values.
+- Chinese figures (for a Chinese journal or a thesis): full-width Chinese punctuation; half-width digits, Latin letters, unit symbols, decimal points and the slash; axis titles written as quantity/unit (`λ/nm`), the form GB/T 3101-1993 prefers; and the journal's own instructions where it has them. The Chinese and English versions of a figure are drawn from the same values. Check figure scripts, tables and legends written in Chinese with `scan.py --lang zh`, which leaves out HYG-06; comments and printed messages in the script still follow CODE-13.
 
 ## Common result figures
 

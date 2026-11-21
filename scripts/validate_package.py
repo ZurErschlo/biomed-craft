@@ -163,6 +163,8 @@ def check_rules() -> None:
         for target, level in rule.get("levels", {}).items():
             if target not in known or level not in data.get("levels", {}):
                 problem(f"{rule_id}: level override {target}={level} uses an unknown design, family or level")
+        if any(lang not in ("en", "zh") for lang in rule.get("langs", [])):
+            problem(f"{rule_id}: unknown language in langs")
         if not rule.get("hint"):
             problem(f"{rule_id}: missing hint")
         if not rule.get("examples", {}).get("hit"):

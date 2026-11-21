@@ -21,7 +21,7 @@ Order of precedence:
 
 A `Spelling:` line under `General` sets the spelling the skill writes and checks (FMT-07): `American` by default, `British` (-ise and -our) or `Oxford` (-ize and -our). Comments in the researcher's own language need `Allow [CODE-13]` under `Document: code`.
 
-`scan.py` reads the file too. Findings for rules named in `Allow [ID]` entries are listed apart, as allowed by the style file, never for rules on internal material (HYG).
+`scan.py` reads the file too. Findings for rules named in `Allow [ID]` entries are listed apart, as allowed by the style file, never for rules on internal material (HYG). Chinese in a figure, table or legend for a Chinese journal or thesis is a matter of the document's language, set with `scan.py --lang zh`.
 
 ## Adding to it
 

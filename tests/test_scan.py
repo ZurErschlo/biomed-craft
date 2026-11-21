@@ -1,5 +1,7 @@
 """Tests for scan.py and the shared text helpers. Offline; standard library only."""
 
+import contextlib
+import io
 import json
 import os
 import subprocess
@@ -341,6 +343,27 @@ class ResearchDocumentsTest(unittest.TestCase):
             allow_all = [("general", "- Allow [HYG-06] [CODE-13]")]
             self.assertIn("HYG-06", {f["rule"] for f in scan.scan_file(manuscript, RULES, "manuscript", None, None,
                                                                          style=allow_all)["findings"]})
+
+    def test_figures_in_chinese_are_checked_with_lang_zh(self):
+        with tempfile.TemporaryDirectory() as folder:
+            script = Path(folder) / "09_figures_zh.R"
+            script.write_text('p <- ggplot(est, aes(year, rate)) +\n  labs(x = "年份", y = "发病率/（每10万人）")\n'
+                              'message("图2已保存")\n', encoding="utf-8")
+
+            def found(lang):
+                result = scan.scan_file(script, RULES, "code", None, None, lang=lang)
+                return {(f["rule"], f["scope"], f["line"]) for f in result["findings"]
+                        if f["rule"] in ("HYG-06", "CODE-13")}
+
+            # the labels are checked once, under the figure scope; the message stays a CODE-13 finding
+            self.assertEqual(found("en"), {("HYG-06", "figure", 2), ("CODE-13", "code", 3)})
+            self.assertEqual(found("zh"), {("CODE-13", "code", 3)})
+            legend = Path(folder) / "legend_zh.md"
+            legend.write_text("图2 2010–2020年发病率\n", encoding="utf-8")
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(scan.main(["--no-style", "--strict", "--scope", "caption", str(legend)]), 1)
+                self.assertEqual(scan.main(["--no-style", "--strict", "--scope", "caption", "--lang", "zh",
+                                            str(legend)]), 0)
 
     def test_comments_and_strings(self):
         segments = ts.read_code('x <- "a # b"  # why: keep the hash\n# Purpose: demo', "r")

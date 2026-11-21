@@ -24,6 +24,9 @@ RULES_PATH = HERE / "rules.json"
 CALIBRATION_PATH = HERE / "calibration.json"
 
 SCOPES = ("prose", "caption", "table", "slide", "figure", "comment", "code")
+# Languages a document can be written in. English is the default; a figure, table or legend for a Chinese
+# journal or thesis is scanned as Chinese.
+LANGS = ("en", "zh")
 
 
 @dataclass
@@ -484,6 +487,7 @@ class Rule:
     skip_urls: bool = False
     levels: dict[str, str] = field(default_factory=dict)
     docs: tuple[str, ...] = ()  # when set, the rule applies only to these document types
+    langs: tuple[str, ...] = ()  # when set, the rule applies only to documents in these languages
 
     def level_for(self, design: str = "", journal: str = "") -> str:
         """Level of this rule for a study design or journal family; some words are normal in reviews,
@@ -512,6 +516,7 @@ def load_rules(path: Path = RULES_PATH) -> tuple[dict, list[Rule]]:
             skip_urls=bool(item.get("skip_urls", False)),
             levels=dict(item.get("levels", {})),
             docs=tuple(item.get("docs", ())),
+            langs=tuple(item.get("langs", ())),
         ))
     return data, rules
 
