@@ -1,5 +1,6 @@
 """Tests for check_preservation.py. Offline; standard library only."""
 
+import base64
 import json
 import subprocess
 import sys
@@ -117,6 +118,24 @@ class WordTest(unittest.TestCase):
             report = cp.compare_fields(before, after)
         self.assertEqual(report["counts"], [2, 1])
         self.assertEqual(report["missing"], ["Zotero 4,9 (shown as '[2,3]')"])
+
+    def test_endnote_record_numbers_in_field_data(self):
+        """EndNote keeps a citation of several references in base64 w:fldData, with a nested EN.CITE.DATA field."""
+        xml = ("<EndNote><Cite><Author>Doe</Author><Year>2020</Year><RecNum>12</RecNum></Cite>"
+               "<Cite><Author>Roe</Author><Year>2021</Year><RecNum>30</RecNum></Cite></EndNote>")
+        data = f'<w:fldData xml:space="preserve">{base64.b64encode(xml.encode()).decode()}</w:fldData>'
+        begin = f'<w:r><w:fldChar w:fldCharType="begin">{data}</w:fldChar></w:r>'
+        encoded = (begin + '<w:r><w:instrText xml:space="preserve"> ADDIN EN.CITE </w:instrText></w:r>'
+                   + begin + '<w:r><w:instrText xml:space="preserve"> ADDIN EN.CITE.DATA </w:instrText></w:r>'
+                   '<w:r><w:fldChar w:fldCharType="separate"/></w:r><w:r><w:fldChar w:fldCharType="end"/></w:r>'
+                   '<w:r><w:fldChar w:fldCharType="separate"/></w:r>' + run("[1,2]")
+                   + '<w:r><w:fldChar w:fldCharType="end"/></w:r>')
+        broken = encoded.replace(base64.b64encode(xml.encode()).decode(), "not base64!")
+        with tempfile.TemporaryDirectory() as folder:
+            path = write_docx(Path(folder) / "a.docx", "<w:p>" + run("Rates rose ") + encoded + "</w:p>")
+            self.assertEqual(cp.citation_fields(path), [("EndNote 12,30", "[1,2]")])
+            path = write_docx(Path(folder) / "b.docx", "<w:p>" + broken + "</w:p>")
+            self.assertEqual(cp.citation_fields(path), [("EndNote (no record number)", "[1,2]")])
 
     def test_citation_fields_in_footnotes_are_counted(self):
         with tempfile.TemporaryDirectory() as folder:

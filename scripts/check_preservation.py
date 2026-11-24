@@ -31,6 +31,8 @@ Exit status: 0 when nothing was lost or added, 1 otherwise, 2 for usage errors.
 from __future__ import annotations
 
 import argparse
+import base64
+import binascii
 import difflib
 import json
 import re
@@ -153,11 +155,27 @@ def _parts(path: Path) -> list[ET.Element]:
                 ("word/document.xml", "word/footnotes.xml", "word/endnotes.xml") if name in names]
 
 
-def _field_key(instruction: str) -> str | None:
-    """'EndNote 12,30' or 'Zotero 4,9' from a citation field's instruction; None for other fields."""
+def _field_data(begin: ET.Element) -> str:
+    """The text EndNote stores, base64-encoded, in w:fldData at the start of a field. A citation of several
+    references, or one with a long record, keeps its record numbers there and only `ADDIN EN.CITE` in the
+    instruction."""
+    data = begin.find(W + "fldData")
+    if data is None or not (data.text or "").strip():
+        return ""
+    try:
+        raw = base64.b64decode(re.sub(r"\s+", "", data.text), validate=True)
+    except (binascii.Error, ValueError):
+        return ""
+    if raw[:2] in (b"\xff\xfe", b"\xfe\xff"):
+        return raw.decode("utf-16", errors="replace")
+    return raw.decode("utf-8", errors="replace")
+
+
+def _field_key(instruction: str, data: str = "") -> str | None:
+    """'EndNote 12,30' or 'Zotero 4,9' from a citation field's instruction and stored data; None for other fields."""
     instruction = instruction.strip()
     if instruction.startswith("ADDIN EN.CITE") and not instruction.startswith("ADDIN EN.CITE.DATA"):
-        records = REC_NUM.findall(instruction)
+        records = list(dict.fromkeys(REC_NUM.findall(instruction) + REC_NUM.findall(data)))
         return "EndNote " + (",".join(records) if records else "(no record number)")
     if instruction.startswith("ADDIN ZOTERO_ITEM"):
         found = ZOTERO_JSON.search(instruction)
@@ -182,12 +200,12 @@ def citation_fields(path: Path) -> list[tuple[str, str]]:
         if node.tag == W + "fldChar":
             kind = node.get(W + "fldCharType")
             if kind == "begin":
-                stack.append({"instruction": [], "shown": [], "result": False})
+                stack.append({"instruction": [], "shown": [], "result": False, "data": _field_data(node)})
             elif kind == "separate" and stack:
                 stack[-1]["result"] = True
             elif kind == "end" and stack:
                 field = stack.pop()
-                key = _field_key("".join(field["instruction"]))
+                key = _field_key("".join(field["instruction"]), field["data"])
                 if key:
                     fields.append((key, "".join(field["shown"]).strip()))
         elif node.tag == W + "instrText" and stack and not stack[-1]["result"]:

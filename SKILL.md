@@ -1,6 +1,6 @@
 ---
 name: biomed-craft
-description: "Drafts, polishes, reviews and checks biomedical research documents: manuscripts, research plans, execution logs, analysis code, figures, tables, slides, reporting checklists and replies to reviewers. Use for 润色, 优化表达, 去AI味, 改写, 审校, 改图, 改表, 改图注, 写方案, 写讲稿 or 核对文献, and for any step from the research question and study design to submission and peer review. Writes English to the standard of leading journals (Lancet, NEJM, JAMA, BMJ, Nature, Science, Cell and sub-journals), with the content each study type needs: trials, observational and database studies, systematic reviews and meta-analyses, prediction models, economic evaluations, disease models, Mendelian randomization, diagnostic, laboratory, omics and qualitative studies. The researcher decides; the agent works with a craftsman's care in the researcher's own style, verifies every source and number and reports what it could not do."
+description: "Drafts, polishes, reviews and checks biomedical research documents: manuscripts, research plans, execution logs, analysis code, figures, tables, slides, reporting checklists and replies to reviewers. Use for 润色, 优化表达, 去AI味, 改写, 审校, 改图, 改表, 改图注, 写方案, 写讲稿, 核对文献 or 插文献 (live Zotero or EndNote citations in Word), and for any step from the research question and study design to submission and peer review. Writes English to the standard of leading journals (Lancet, NEJM, JAMA, BMJ, Nature, Science, Cell and sub-journals), with the content each study type needs: trials, observational and database studies, systematic reviews and meta-analyses, prediction models, economic evaluations, disease models, Mendelian randomization, diagnostic, laboratory, omics and qualitative studies. The researcher decides; the agent works with a craftsman's care in the researcher's own style, verifies every source and number and reports what it could not do."
 license: MIT
 metadata:
   version: "2.10.0"
@@ -29,7 +29,7 @@ Biomedical research from the question to the published paper, made with a crafts
 
 ## Where to look
 
-- Manuscripts: [references/sections.md](references/sections.md), [references/craft.md](references/craft.md), [references/figures-tables.md](references/figures-tables.md), [references/format.md](references/format.md).
+- Manuscripts: [references/sections.md](references/sections.md), [references/craft.md](references/craft.md), [references/figures-tables.md](references/figures-tables.md), [references/format.md](references/format.md). Live Zotero or EndNote citations in a Word file built from Markdown: [references/citations.md](references/citations.md).
 - Wording to remove: [references/register.md](references/register.md) (process, engineering and defensive register) and [references/patterns.md](references/patterns.md) (AI-style patterns).
 - Protocols, cover letters, consent forms, slides, talk scripts, grants and documents in Chinese: [references/documents.md](references/documents.md). Peer review and replies to reviewers: [references/review-response.md](references/review-response.md); before reviewing someone else's unpublished manuscript, ask whether the journal allows AI tools on it.
 - Research plans: [references/research-plan.md](references/research-plan.md). Execution logs: [references/execution-log.md](references/execution-log.md). Analysis code and comments: [references/analysis-code.md](references/analysis-code.md). Project folders: [references/project-folders.md](references/project-folders.md).
@@ -104,6 +104,7 @@ python3 <skill>/scripts/check_references.py refs.ris --manuscript ms.docx # each
 python3 <skill>/scripts/check_fulltext.py included.ris fulltexts/         # each PDF is the article it is filed as
 python3 <skill>/scripts/check_preservation.py original.docx revised.docx  # numbers, citations, claim strength, fields kept
 python3 <skill>/scripts/check_response.py response.docx revised.docx      # quoted new text appears in the revision
+python3 <skill>/scripts/live_citations.py zotero ms.md -o ms.zotero.md    # live Zotero citations; also endnote, prefs, check
 python3 <skill>/scripts/style_diff.py draft.docx revised.docx             # the researcher's style habits, for the style file
 python3 <skill>/scripts/calibrate.py ~/Zotero --texts <skill>/calibration-texts --pmc <skill>/scripts/corpus.json   # rebuild the reference rates
 ```
